@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Edit this and add your domain when deploying.
 ALLOWED_HOSTS = [
-    'localhost', '127.0.0.1', 'example.com'
+    'localhost', '127.0.0.1', 'opencouncil.oakland.com'
 ]
 
 
@@ -39,7 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'haystack',
-    'city',
+    'oakland',
     'councilmatic_core',
 )
 
@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'councilmatic.wsgi.application'
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/Los_Angeles'
 
 USE_I18N = True
 
@@ -105,3 +105,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+# TODO: added to get scripts working
+USING_NOTIFICATIONS = ""
