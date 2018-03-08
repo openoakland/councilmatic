@@ -37,7 +37,7 @@ SITE_META = {
     'twitter_creator': '',  # e.g. '@DataMadeCo'
 }
 
-LEGISTAR_URL = 'https://oakland.legistar.com/Calendar.aspx'           # e.g. 'https://chicago.legistar.com/Legislation.aspx'
+LEGISTAR_URL = 'https://oakland.legistar.com/Legislation.aspx'           # e.g. 'https://chicago.legistar.com/Legislation.aspx'
 
 
 # this is for the boundaries of municipal districts, to add
@@ -50,7 +50,7 @@ BOUNDARY_SET = ''           # e.g. 'chicago-wards-2015'
 # this is for configuring a map of council districts using data from the posts
 # set MAP_CONFIG = None to hide map
 MAP_CONFIG = {
-    'center': [41.8369, -87.6847],
+    'center': [37.80532, -122.272544],
     'zoom': 10,
     'color': "#54afe8",
     'highlight_color': "#C00000",
