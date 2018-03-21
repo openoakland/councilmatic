@@ -1,2 +1,2 @@
 psycopg2==2.7
-django-councilmatic<0.7
+django-councilmatic<0.8.1
