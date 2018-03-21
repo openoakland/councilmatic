@@ -2,7 +2,7 @@
 .DS_Store
 
 # Settings
-settings_deployment.py
+#settings_deployment.py
 
 # Collected Static Files
 static/**
