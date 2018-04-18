@@ -66,7 +66,7 @@ FOOTER_CREDITS = [
 ]
 
 # this is the default text in search bars
-SEARCH_PLACEHOLDER_TEXT = 'zoning, tenants, Libby Schaaf, Free Food' # e.g. 'police, zoning, O2015-7825, etc.'
+SEARCH_PLACEHOLDER_TEXT = 'zoning, tenants, Libby Schaaf' # e.g. 'police, zoning, O2015-7825, etc.'
 
 # these should live in oakland/static/
 IMAGES = {
