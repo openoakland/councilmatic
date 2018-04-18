@@ -33,8 +33,8 @@ SITE_META = {
     'site_desc' : 'Oakland City Council activity, simplified. Keep tabs on city council meetings and activity and the activities of your council members.',       # e.g. 'City Council, demystified. Keep tabs on Chicago legislation, aldermen, & meetings.'
     'site_author' : 'OpenOakland',     # e.g. 'DataMade'
     'site_url' : 'https://opencouncil.openoakland.org/',        # e.g. 'https://chicago.councilmatic.org'
-    'twitter_site': '',     # e.g. '@DataMadeCo'
-    'twitter_creator': '',  # e.g. '@DataMadeCo'
+    'twitter_site': '@Oakland',     # e.g. '@DataMadeCo'
+    'twitter_creator': '@Oakland',  # e.g. '@DataMadeCo'
 }
 
 LEGISTAR_URL = 'https://oakland.legistar.com/Legislation.aspx'           # e.g. 'https://chicago.legistar.com/Legislation.aspx'
@@ -61,17 +61,17 @@ FOOTER_CREDITS = [
     {
         'name':     'OpenOakland', # e.g. 'DataMade'
         'url':      'http://openoakland.org/', # e.g. 'http://datamade.us'
-        'image':    '', # e.g. 'datamade-logo.png'
+        'image':    'logo_openoakland.png', # e.g. 'datamade-logo.png'
     },
 ]
 
 # this is the default text in search bars
-SEARCH_PLACEHOLDER_TEXT = 'zoning, tenants, Libby Schaaf' # e.g. 'police, zoning, O2015-7825, etc.'
+SEARCH_PLACEHOLDER_TEXT = 'zoning, tenants, Libby Schaaf, Free Food' # e.g. 'police, zoning, O2015-7825, etc.'
 
-# these should live in APP_NAME/static/
+# these should live in oakland/static/
 IMAGES = {
-    'favicon': 'images/favicon.ico',
-    'logo': 'images/logo.png',
+    'favicon': 'images/icons/favicon.ico',
+    'logo': 'images/logo_oakland.png',
 }
 
 
