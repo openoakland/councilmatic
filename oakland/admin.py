@@ -1,5 +1,10 @@
 from django.contrib import admin
-# import your models
+from councilmatic_core.models import Bill, Event, Person, Organization, Jurisdiction
 
-# Register your models here.
-# admin.site.register(YourModel)
+
+admin.site.register(Event)
+admin.site.register(Bill)
+admin.site.register(Person)
+admin.site.register(Organization)
+admin.site.register(Jurisdiction)
+#
