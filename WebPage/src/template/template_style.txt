@@ -27,9 +27,9 @@
          <link rel=​"apple-touch-icon-precomposed" href=​"http:​/​/​www.openoakland.org/​wp-content/​uploads/​2015/​11/​cropped-logo_240x240-180x180.png">​
          <style>
                 a:link { color: green}              /* unvisited link */
-                a:hover { color: #006400;}          /* mouse over link darkdreen */
-                a:active {color: #90681B;}          /* selected link golden brown */
-                a:visited {color: #8b4513;}         /* visited link SaddleBrown */
+                a:hover { color: darkgreen;}          /* mouse over link */
+                a:active {color: GoldenRod;}          /* selected link */
+                a:visited {color: SaddleBrown;}         /* visited link */
           </style>
          </head>
           <body>
