@@ -141,7 +141,7 @@ def make_navbar(type, list, year_list, committee_list, loop_type, loop_index, f2
 #
 
 
-version = "3.5"
+version = "3.6"
 print(" ")
 print("<------------------Running main.py - Version", version, "------------------>")
 committees = ["City Council", "Rules & Legislation", "Public Works", "Life Enrichment", "Public Safety",
