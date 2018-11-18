@@ -87,6 +87,9 @@ f1.write(" " + "\n")
 currentDay = datetime.now().day
 currentMonth = datetime.now().month
 currentYear = datetime.now().year
+formatedDay = datetime.now()
+theDate = '<font size="-1">Updated: ' + str(formatedDay) + '<br> </font></p>'
+f1.write(theDate + "\n")
 
 # Check if close to a new year
 
