@@ -11,7 +11,8 @@ from create_html import create_html
 
 
 def read_csv_file(datafile, elements):
-    data = list(csv.reader(open(datafile), delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL, skipinitialspace=True))
+    data = list(csv.reader(open(datafile,encoding="utf-8"), delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL,
+                           skipinitialspace=True))
     numrows = len(data)
     present = datetime.now()
     today = present.strftime('%m/%d/%Y')
@@ -87,7 +88,7 @@ f1.write(" " + "\n")
 currentDay = datetime.now().day
 currentMonth = datetime.now().month
 currentYear = datetime.now().year
-formatedDay = datetime.now()
+formatedDay = datetime.now().strftime("%A, %B %d,  %Y %I:%M %p")
 theDate = '<font size="-1">Updated: ' + str(formatedDay) + '<br> </font></p>'
 f1.write(theDate + "\n")
 

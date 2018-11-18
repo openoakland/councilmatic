@@ -17,7 +17,8 @@ def dateLessThanEqual(date1, date2):  # Compare whether deadline has passed
 
 
 def read_csvfile(datafile, search_string, f2):
-    data = list(csv.reader(open(datafile), delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL, skipinitialspace=True))
+    data = list(csv.reader(open(datafile, encoding="utf-8"), delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL,
+                           skipinitialspace=True))
     numrows = len(data)
     # numcolumns = len(data[0])
     citycouncil = search_string
