@@ -1,0 +1,5 @@
+
+export PATH=${PATH:+$PATH:}/home/<login>/phantomjs/bin
+will add phantom js to the path.
+
+also katalon should be used to generate the code to do web scraping (not the defualt selenium b/c it can't export in current version.).

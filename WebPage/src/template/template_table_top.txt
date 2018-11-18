@@ -1,0 +1,12 @@
+<!-- -->
+<!--Begin template_table_top.txt-->
+<!--Table-->
+ <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Date</th>
+            <th>Meeting Detail</th>
+        </tr>
+        </thead>
+        <tbody>
+  <!--End template_table_top.txt-->
