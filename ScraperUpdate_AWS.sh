@@ -20,6 +20,7 @@
 #
 DIR=/home/howard/Councilmatic
 CRONDIR=/home/howard/Councilmatic/WebPage/website/logs
+export PATH=$PATH:/home/howard/Councilmatic
 #
 #
 cd $DIR
@@ -34,7 +35,7 @@ rm next.tmp
 CURRENTMONTH=`date +"%m"`
 PYTHON=/home/howard/miniconda3/bin/python  #Must specify correct version of Python
 echo $PYTHON
-VERSION="2.5"
+VERSION="2.6"
 export MOZ_HEADLESS=1 #Needed to run Firefox Headless
 #
 # for GECKO
