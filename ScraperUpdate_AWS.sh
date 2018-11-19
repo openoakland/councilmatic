@@ -34,7 +34,8 @@ rm next.tmp
 CURRENTMONTH=`date +"%m"`
 PYTHON=/home/howard/miniconda3/bin/python  #Must specify correct version of Python
 echo $PYTHON
-VERSION="2.1"
+VERSION="2.5"
+export MOZ_HEADLESS=1 #Needed to run Firefox Headless
 #
 # for GECKO
 #PATH="/Users/matis/.drivers:${PATH}"   #This is system dependent
@@ -52,7 +53,7 @@ date
 #
 if `grep -q "$CURRENTYEAR" "$CRONDIR/temp.tmp"`; then
     echo "Processing current year scraper file"
-#    $PYTHON  run_calendar.py -d "$CURRENTYEAR"  > WebPage/website/scraped/year"$CURRENTYEAR".csv
+    $PYTHON  run_calendar.py -d "$CURRENTYEAR"  > WebPage/website/scraped/year"$CURRENTYEAR".csv
 fi
 #
 # Check if December
@@ -67,7 +68,7 @@ if [ "$CURRENTMONTH" == "12" ];then
 elif [ "$CURRENTMONTH" == "1" ];then
     if `grep -q "$LASTYEAR" "$CRONDIR/temp.tmp"`; then
         echo "Current month is January - Processing last year"
-#        $PYTHON  run_calendar.py -d "$LASTYEAR"  > WebPage/website/scraped/year"$LASTYEAR".csv
+        $PYTHON  run_calendar.py -d "$LASTYEAR"  > WebPage/website/scraped/year"$LASTYEAR".csv
     else
         echo "Previous year not available"
     fi
@@ -89,7 +90,7 @@ cd $DIR #Go back to councilmatis directory
 # Copy files to actual website
 #
 echo "Copying files to actual website"
-sudo cp -R /home/howard/Councilmatic/WebPage/website /var/www/councilmatic
+sudo cp -R /home/howard/Councilmatic/WebPage/website/* /var/www/councilmatic/
 #
 date
 echo "ScraperUpdate.sh completed"
