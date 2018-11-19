@@ -8,7 +8,7 @@ import csv
 from datetime import datetime, timedelta
 import shutil
 from create_html import create_html
-
+import os
 
 def dateLessThanEqual(date1, date2):  # Compare whether deadline has passed
     datetime1 = datetime.strptime(date1, '%m/%d/%Y')
@@ -141,87 +141,103 @@ def make_navbar(type, list, year_list, committee_list, loop_type, loop_index, f2
 #
 
 
-version = "3.6"
+version = "4.0"
 print(" ")
 print("<------------------Running main.py - Version", version, "------------------>")
 committees = ["City Council", "Rules & Legislation", "Public Works", "Life Enrichment", "Public Safety",
               "Oakland Redevelopment", "Community & Economic Development", "Finance & Management"]
-years = ["2018", "2017", "2016", "2015", "2014"]
+
+# Figure out which years to use
+
+
+earliestYear = 2013    # The earliest year to process minus 1
+maxyears = 10       # Maximum number of years to look at
+currentYear = datetime.now().year
+currentMonth = datetime.now().month
+if currentMonth == 12:      #S tart processing the next year in December
+    startyear = currentYear + 1
+else:
+    startyear = currentYear
+endyear = max(earliestYear, earliestYear - maxyears)
+
+years = []
+for i in range(startyear, endyear, -1):   # Calculated the years to process
+    years.append(str(i))
 
 for index_year, year in enumerate(years):
     for index, committee in enumerate(committees):
         print(year, committee)
+
         outfile = "../website/" + year + "/committee" + str(index) + ".html"
-        f1 = open(outfile, 'w+')
-        #
-        #   write style section of the web page
-        url = "template/template_style.txt"
-        create_html(url, f1)  # Create  template for HTML page
-        f1.write(" " + "\n")
-        #
-        #   write the top section of the web page
-        url = "template/template_top1.txt"
-        create_html(url, f1)  # Create  template for HTML page
-        f1.write(" " + "\n")
-        #
-        f1.write("<tbody> " + "\n")  # Needed when use columns for full webpage
-        #   write the sidebar
-        #
-        f1.write("<tr>" + "\n")  # Needed when use columns for full webpage
-        #
-        f1.write('<td style="width: 388px;">' + "\n")  # Needed when use columns for full webpage
-        #
-        #   write the sidebar
-        url = "temp/dynamic_calendar.txt"
-        create_html(url, f1)  # Create  template for HTML page
-        f1.write(" " + "\n")
-        #
-        #   write the second top of the web page
-        url = "template/template_top2.txt"
-        create_html(url, f1)  # Create  template for HTML page
-        f1.write(" " + "\n")
-        #
-        loop_committee = True # Loop over committees
-        loop_index = index_year  # Fix the year
-        make_navbar(1, committees, years, committees, loop_committee, loop_index, f1)
+        os.makedirs(os.path.dirname(outfile), exist_ok=True)
+        with open(outfile, "w") as f1:
+            #
+            #   write style section of the web page
+            url = "template/template_style.txt"
+            create_html(url, f1)  # Create  template for HTML page
+            f1.write(" " + "\n")
+            #
+            #   write the top section of the web page
+            url = "template/template_top1.txt"
+            create_html(url, f1)  # Create  template for HTML page
+            f1.write(" " + "\n")
+            #
+            f1.write("<tbody> " + "\n")  # Needed when use columns for full webpage
+            #   write the sidebar
+            #
+            f1.write("<tr>" + "\n")  # Needed when use columns for full webpage
+            #
+            f1.write('<td style="width: 388px;">' + "\n")  # Needed when use columns for full webpage
+            #
+            #   write the sidebar
+            url = "temp/dynamic_calendar.txt"
+            create_html(url, f1)  # Create  template for HTML page
+            f1.write(" " + "\n")
+            #
+            #   write the second top of the web page
+            url = "template/template_top2.txt"
+            create_html(url, f1)  # Create  template for HTML page
+            f1.write(" " + "\n")
+            #
+            loop_committee = True # Loop over committees
+            loop_index = index_year  # Fix the year
+            make_navbar(1, committees, years, committees, loop_committee, loop_index, f1)
 
-        #  write the top of the web page
-        url = "template/template_above_table.txt"
-        create_html(url, f1)  # Create  template for HTML page
-        f1.write(" " + "\n")
+            #  write the top of the web page
+            url = "template/template_above_table.txt"
+            create_html(url, f1)  # Create  template for HTML page
+            f1.write(" " + "\n")
 
-        line = '<div align="center"><h3>' + committee + " - " + year + '</h3></div>'
-        f1.write(line)
+            line = '<div align="center"><h3>' + committee + " - " + year + '</h3></div>'
+            f1.write(line)
 
-        url = "template/template_table_top.txt"
-        create_html(url, f1)  # Write bottom of header file
-        f1.write(" " + "\n")
+            url = "template/template_table_top.txt"
+            create_html(url, f1)  # Write bottom of header file
+            f1.write(" " + "\n")
 
-        scraper_file = "../website/scraped/year" + str(year) + ".csv"
-        read_csvfile(scraper_file, committees[index], f1)
+            scraper_file = "../website/scraped/year" + str(year) + ".csv"
+            read_csvfile(scraper_file, committees[index], f1)
 
-        # write the bottom of the table
-        url = "template/template_table_bottom.txt"
-        create_html(url, f1)  # Create  template for HTML page
-        f1.write(" " + "\n")
+            # write the bottom of the table
+            url = "template/template_table_bottom.txt"
+            create_html(url, f1)  # Create  template for HTML page
+            f1.write(" " + "\n")
 
-        # create the lower navigation bar
-        loop_committee = False  # Loop over years
-        loop_index = index  # Fix the year
-        make_navbar(2, years, years, committees, loop_committee, loop_index, f1)
+            # create the lower navigation bar
+            loop_committee = False  # Loop over years
+            loop_index = index  # Fix the year
+            make_navbar(2, years, years, committees, loop_committee, loop_index, f1)
 
-        # write the bottom of the web page
-        url = "template/template_bottom.txt"
-        create_html(url, f1)  # Create  template for HTML page
-        f1.write(" " + "\n")
-        f1.close()  # Close the file
-        if index == 0:
-            indexfile = "../website/" + year + "/index.html"
-            shutil.copyfile(outfile, indexfile)
-            if index_year == 0:
+            # write the bottom of the web page
+            url = "template/template_bottom.txt"
+            create_html(url, f1)  # Create  template for HTML page
+            f1.write(" " + "\n")
+            f1.close()  # Close the file
+            if years[index_year] == str(currentYear):  # Put the main index.html as current year
+                indexfile = "../website/" + year + "/index.html"
+                shutil.copyfile(outfile, indexfile)
                 indexfile = "../website/pc/index.html"
                 shutil.copyfile(outfile, indexfile)
-
 
 print("<-----------------End of main.py------------------------------->")
 
