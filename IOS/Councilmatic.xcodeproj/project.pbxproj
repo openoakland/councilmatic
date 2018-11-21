@@ -16,8 +16,6 @@
 		6547752021755B470084BF1C /* NeighborhoodGuardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6547751F21755B470084BF1C /* NeighborhoodGuardUITests.swift */; };
 		655D843A219E983A00F8EB22 /* openoakland-logo-open-70dc2dcc.png in Resources */ = {isa = PBXBuildFile; fileRef = 655D8439219E983A00F8EB22 /* openoakland-logo-open-70dc2dcc.png */; };
 		656E657621755F0F008E25E2 /* LocalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656E657521755F0F008E25E2 /* LocalConstants.swift */; };
-		65962D472176F9CB009021B4 /* Screen Shot 2018-10-16 at 10.01.17 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 65962D462176F9CB009021B4 /* Screen Shot 2018-10-16 at 10.01.17 PM.png */; };
-		65B0FDF62176AEA400E12336 /* illustrator.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 65B0FDF52176AEA300E12336 /* illustrator.jpg */; };
 		65C363D5219118CB00679A1D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C363D4219118CB00679A1D /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -54,8 +52,6 @@
 		6547752121755B470084BF1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		655D8439219E983A00F8EB22 /* openoakland-logo-open-70dc2dcc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "openoakland-logo-open-70dc2dcc.png"; sourceTree = "<group>"; };
 		656E657521755F0F008E25E2 /* LocalConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalConstants.swift; sourceTree = "<group>"; };
-		65962D462176F9CB009021B4 /* Screen Shot 2018-10-16 at 10.01.17 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2018-10-16 at 10.01.17 PM.png"; sourceTree = "<group>"; };
-		65B0FDF52176AEA300E12336 /* illustrator.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = illustrator.jpg; sourceTree = "<group>"; };
 		65C363D4219118CB00679A1D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,8 +109,6 @@
 				6547750121755B460084BF1C /* ViewController.swift */,
 				6547750321755B460084BF1C /* Main.storyboard */,
 				6547750621755B470084BF1C /* Assets.xcassets */,
-				65962D462176F9CB009021B4 /* Screen Shot 2018-10-16 at 10.01.17 PM.png */,
-				65B0FDF52176AEA300E12336 /* illustrator.jpg */,
 				6547750821755B470084BF1C /* LaunchScreen.storyboard */,
 				655D8439219E983A00F8EB22 /* openoakland-logo-open-70dc2dcc.png */,
 				6547750B21755B470084BF1C /* Info.plist */,
@@ -245,11 +239,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6547750A21755B470084BF1C /* LaunchScreen.storyboard in Resources */,
-				65962D472176F9CB009021B4 /* Screen Shot 2018-10-16 at 10.01.17 PM.png in Resources */,
 				6547750721755B470084BF1C /* Assets.xcassets in Resources */,
 				6547750521755B460084BF1C /* Main.storyboard in Resources */,
 				655D843A219E983A00F8EB22 /* openoakland-logo-open-70dc2dcc.png in Resources */,
-				65B0FDF62176AEA400E12336 /* illustrator.jpg in Resources */,
 				65C363D5219118CB00679A1D /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
