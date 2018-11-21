@@ -17,19 +17,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="openoakland-logo-open-70dc2dcc.png" translatesAutoresizingMaskIntoConstraints="NO" id="Gud-cG-BrV">
+                            <imageView userInteractionEnabled="NO" contentMode="center" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="openoakland-logo-open-70dc2dcc.png" translatesAutoresizingMaskIntoConstraints="NO" id="Gud-cG-BrV">
                                 <rect key="frame" x="0.0" y="146" width="375" height="375"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.31066161854126972" green="0.66799789667129517" blue="0.3802405439324002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Gud-cG-BrV" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="LoR-hU-ZFt"/>
+                            <constraint firstItem="Gud-cG-BrV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="126" id="NdI-UG-ivG"/>
+                            <constraint firstItem="Gud-cG-BrV" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="UEe-60-iEZ"/>
+                            <constraint firstAttribute="trailing" secondItem="Gud-cG-BrV" secondAttribute="trailing" id="hdK-fQ-FBz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+            <point key="canvasLocation" x="302" y="259"/>
         </scene>
     </scenes>
     <resources>
