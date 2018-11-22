@@ -8,8 +8,9 @@
 
 import WebKit
 import UIKit
+import EventKit;
 
-class ViewController: UIViewController, UITextFieldDelegate, WKNavigationDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, WKNavigationDelegate{
  
     // Back and Forward Buttons
     @IBOutlet weak var backButton: UINavigationItem!
@@ -37,6 +38,12 @@ class ViewController: UIViewController, UITextFieldDelegate, WKNavigationDelegat
         toolbarItems = [refresh]
         navigationController?.isToolbarHidden = false
         
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.SOGetPermissionCalendarAccess()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,6 +59,7 @@ class ViewController: UIViewController, UITextFieldDelegate, WKNavigationDelegat
     @IBAction func backButton(_ sender: Any) {
         if webView.canGoBack {
             webView.goBack()
+
         }
     }
    
@@ -63,8 +71,37 @@ class ViewController: UIViewController, UITextFieldDelegate, WKNavigationDelegat
         
     }
     
-
     
+    
+    //MARK: Get Premission for access Calender
+    let eventStore = EKEventStore()
+    
+    func SOGetPermissionCalendarAccess() {
+        
+        switch EKEventStore.authorizationStatus(for: .event) {
+            
+        case .authorized:
+            print("Authorized")
+            
+        case .denied:
+            print("Access denied")
+        
+        case .notDetermined:
+            eventStore.requestAccess(to: .event, completion:
+                {[weak self] (granted: Bool, error: Error?) -> Void in
+                    if granted {
+                        print("Access granted")
+                    } else {
+                        print("Access denied")
+                    }
+            })
+            
+            print("Not Determined")
+        default:
+            print("Case Default")
+            }
+  
+    }
     
     
 }

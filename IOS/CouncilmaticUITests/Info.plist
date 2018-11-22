@@ -16,6 +16,8 @@
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>This app wants to add a council event to your calendar.</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 </dict>
