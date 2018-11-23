@@ -71,8 +71,6 @@ class ViewController: UIViewController, UITextFieldDelegate, WKNavigationDelegat
         
     }
     
-    
-    
     //MARK: Get Premission for access Calender
     let eventStore = EKEventStore()
     
@@ -88,7 +86,7 @@ class ViewController: UIViewController, UITextFieldDelegate, WKNavigationDelegat
         
         case .notDetermined:
             eventStore.requestAccess(to: .event, completion:
-                {[weak self] (granted: Bool, error: Error?) -> Void in
+                {(granted: Bool, error: Error?) -> Void in
                     if granted {
                         print("Access granted")
                     } else {

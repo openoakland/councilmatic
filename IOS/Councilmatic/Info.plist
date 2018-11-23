@@ -47,8 +47,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>CFBundleSignature</key>
-	<string></string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -57,6 +55,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSCalendarsUsageDescription</key>
-	<string>This app need to access your calendar events</string>
+	<string>This app needs to access your calendar so that it can save selected council events.</string>
 </dict>
 </plist>
