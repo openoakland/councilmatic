@@ -74,11 +74,13 @@ Run ScraperUpdate_AWS.sh on Amazon Server
 jupyter notebook calendar.ipynb
 ```
 # Web location of production site
-```
-PC access – http://councilmatic.aws.openoakland.org/pc/
-Moible access – http://councilmatic.aws.openoakland.org/mobile/
 
-```
+1. PC access
+  * http://councilmatic.aws.openoakland.org/pc/
+2. Mobile access
+  * http://councilmatic.aws.openoakland.org/mobile/
+  <br>
+
 # Milestones:
 1. to have a web scraping library.
   * scraping from https://oakland.legistar.com/Calendar.aspx.
