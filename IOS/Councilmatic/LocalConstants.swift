@@ -17,3 +17,4 @@ struct Constants {
     // for instance "http://user:password@aws.xyx.org"
     static let AWSwebsite: String = "http://councilmatic.aws.openoakland.org/mobile/"
 }
+
