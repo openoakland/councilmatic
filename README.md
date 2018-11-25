@@ -62,11 +62,23 @@ python run_calendar.py -d 2018 -s "parking"
 python run_calendar.py -d 2018 -s "parking" > parking2018.csv
 ```
 
+### To create the web page
+
+```
+Run ScraperUpdate_AWS.sh on Amazon Server
+```
+
+
 # To run in jupyter notebook
 ```
 jupyter notebook calendar.ipynb
 ```
+# Web location of production site
+```
+PC access – http://councilmatic.aws.openoakland.org/pc/
+Moible access – http://councilmatic.aws.openoakland.org/mobile/
 
+```
 # Milestones:
 1. to have a web scraping library.
   * scraping from https://oakland.legistar.com/Calendar.aspx.
