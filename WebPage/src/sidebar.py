@@ -70,7 +70,7 @@ def write_event_header(f2, time_event, link_calendar, name_committee, name_locat
     f2.write(' ' + "\n")
 
 
-version = "4.0"
+version = "4.1"
 lookAhead = 21  # Number of the days to look ahead for meetings
 
 print(" ")
@@ -88,7 +88,8 @@ f1.write(" " + "\n")
 currentDay = datetime.now().day
 currentMonth = datetime.now().month
 currentYear = datetime.now().year
-formatedDay = datetime.now().strftime("%A, %B %d,  %Y %I:%M %p")
+formatedDay = datetime.now().strftime("%A, %B %d, %Y at %I:%M %p")
+print(formatedDay)
 theDate = '<font size="-1">Updated: ' + str(formatedDay) + '<br> </font></p>'
 f1.write(theDate + "\n")
 

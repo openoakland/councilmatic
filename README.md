@@ -76,9 +76,9 @@ jupyter notebook calendar.ipynb
 # Web location of production site
 
 1. PC access
-  * http://councilmatic.aws.openoakland.org/pc/
+  http://councilmatic.aws.openoakland.org/pc/
 2. Mobile access
-  * http://councilmatic.aws.openoakland.org/mobile/
+http://councilmatic.aws.openoakland.org/mobile/
   <br>
 
 # Milestones:
