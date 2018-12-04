@@ -10,6 +10,7 @@ import shutil
 from create_html import create_html
 import os
 
+
 def dateLessThanEqual(date1, date2):  # Compare whether deadline has passed
     datetime1 = datetime.strptime(date1, '%m/%d/%Y')
     datetime2 = datetime.strptime(date2, '%m/%d/%Y')
@@ -70,6 +71,7 @@ def read_csvfile(datafile, search_string, f2):
             if len(data[i][:]) > 0:
                 print(data[i][0])
                 print(' ')
+
 
 def write_http_row(f2, date, link, message, emessage):
     https = "https://"
@@ -154,7 +156,7 @@ earliestYear = 2013    # The earliest year to process minus 1
 maxyears = 10       # Maximum number of years to look at
 currentYear = datetime.now().year
 currentMonth = datetime.now().month
-if currentMonth == 12:      #S tart processing the next year in December
+if currentMonth == 12:      # Start processing the next year in December
     startyear = currentYear + 1
 else:
     startyear = currentYear

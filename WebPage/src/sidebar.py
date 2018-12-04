@@ -11,7 +11,7 @@ from create_html import create_html
 
 
 def read_csv_file(datafile, elements):
-    data = list(csv.reader(open(datafile,encoding="utf-8"), delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL,
+    data = list(csv.reader(open(datafile, encoding="utf-8"), delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL,
                            skipinitialspace=True))
     numrows = len(data)
     present = datetime.now()
@@ -70,7 +70,7 @@ def write_event_header(f2, time_event, link_calendar, name_committee, name_locat
     f2.write(' ' + "\n")
 
 
-version = "4.1"
+version = "4.2"
 lookAhead = 21  # Number of the days to look ahead for meetings
 
 print(" ")
@@ -103,6 +103,7 @@ if currentMonth == 12:  # See if need to look at next year's record
 else:
     years = [str(currentYear)]
 
+print("Gathering meetings from ", years)
 schedule = []
 for year in years:
     scraper_file = "../website/scraped/year" + str(year) + ".csv"
@@ -115,9 +116,8 @@ lastdate = today - timedelta(days=1)
 tomorrow = today + timedelta(days=1)
 today_day = str(today.month) + '/' + str(today.day) + '/' + str(today.year)
 tomorrow_day = str(tomorrow.month) + '/' + str(tomorrow.day) + '/' + str(tomorrow.year)
-for i in range(numrows - 1, 0, -1):
+for i in range(numrows - 1, -1, -1):
     event_day = schedule[i][1]
-
     if lastdate != event_day:
         lastdate = event_day
         new_day = True
