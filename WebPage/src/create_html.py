@@ -3,7 +3,7 @@
 
 
 def create_html(url_open, fx):
-    in_file = open(url_open, 'r')
+    in_file = open(url_open, 'r',  encoding="utf-8")
     page = in_file.read()
     fx.write(page)
     in_file.close()

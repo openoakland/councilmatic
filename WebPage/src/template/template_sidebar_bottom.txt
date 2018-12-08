@@ -9,7 +9,7 @@
                     alt="OpenOakland Logo"></div>
                 <div style="text-align: center;"><i><br>
                   </i></div>
-                <div style="text-align: center;"><i>Disclaimer – Beta Code – Check
+                <div style="text-align: center;"><i>Disclaimer - Beta Code - Check
                     Accuracy</i><br>
                   <i> <a href="mailto:councilmatic@openoakland.org?subject=Feedback%20for%20Oakland%20Councilmatic"
                       title="Report bugs"
@@ -20,3 +20,4 @@
                 </div>
               </div>
               <!--End template_sidebar_bottom.txt-->
+
