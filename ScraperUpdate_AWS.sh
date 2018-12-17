@@ -35,7 +35,7 @@ rm next.tmp
 CURRENTMONTH=`date +"%m"`
 PYTHON=/home/howard/miniconda3/bin/python  #Must specify correct version of Python
 echo $PYTHON
-VERSION="2.6"
+VERSION="3.3"
 export MOZ_HEADLESS=1 #Needed to run Firefox Headless
 #
 # for GECKO
@@ -48,21 +48,22 @@ export MOZ_HEADLESS=1 #Needed to run Firefox Headless
 echo "Version "$VERSION" of ScraperUpdate.sh" 			#Clear cron log file
 date
 
-#$PYTHON run_calendar.py --show_dates > $CRONDIR/temp.tmp
+$PYTHON run_calendar.py --show_dates > $CRONDIR/temp.tmp
 #
 # Scrape the current year if it exists
 #
 if `grep -q "$CURRENTYEAR" "$CRONDIR/temp.tmp"`; then
     echo "Processing current year scraper file"
-    $PYTHON  run_calendar.py -d "$CURRENTYEAR"  > WebPage/website/scraped/year"$CURRENTYEAR".csv
+   $PYTHON  run_calendar.py -d "$CURRENTYEAR"  > WebPage/website/scraped/year"$CURRENTYEAR".csv
 fi
 #
 # Check if December
 #
 if [ "$CURRENTMONTH" == "12" ];then
+        echo "This month is December"
     if `grep -q "$NEXTYEAR" "$CRONDIR/temp.tmp"`; then
-        echo "December - Processing next year"
-#        $PYTHON  run_calendar.py -d "$NEXTYEAR"  > WebPage/website/scraped/year"$NEXTYEAR".csv
+        echo "Processing next year"
+        $PYTHON  run_calendar.py -d "$NEXTYEAR"  > WebPage/website/scraped/year"$NEXTYEAR".csv
     else
         echo "Next year file not ready"
     fi
@@ -79,20 +80,13 @@ fi
 #
 # Now make the webpage
 #
-pwd
-cd WebPage/src
+cd Webpage
+cd src
 echo " "
 echo "Running Web Programs"
 $PYTHON  sidebar.py  #Get the sidebar
 $PYTHON  main.py  #Run the main program
 echo " "
-cd $DIR #Go back to councilmatis directory
-#
-# Copy files to actual website
-#
-echo "Copying files to actual website"
-sudo cp -R /home/howard/Councilmatic/WebPage/website/* /var/www/councilmatic/
-#
 date
 echo "ScraperUpdate.sh completed"
 #

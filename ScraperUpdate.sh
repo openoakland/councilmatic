@@ -25,7 +25,7 @@ CURRENTYEAR=`date +"%Y"`
 NEXTYEAR=`date -v+1y  +"%Y"`
 CURRENTMONTH=`date +"%m"`
 PYTHON=/Users/matis/anaconda3/bin/python     #Must specify correct version of Python
-VERSION="1.5"
+VERSION="3.3"
 export MOZ_HEADLESS=1 #Needed to run Firefox Headless
 #
 # for GECKO
@@ -42,14 +42,15 @@ $PYTHON run_calendar.py --show_dates > $CRONDIR/temp.tmp
 #
 if `grep -q "$CURRENTYEAR" "$CRONDIR/temp.tmp"`; then
     echo "Processing current year scraper file"
-    $PYTHON  run_calendar.py -d "$CURRENTYEAR"  > WebPage/website/scraped/year"$CURRENTYEAR".csv
+   $PYTHON  run_calendar.py -d "$CURRENTYEAR"  > WebPage/website/scraped/year"$CURRENTYEAR".csv
 fi
 #
 # Check if December
 #
 if [ "$CURRENTMONTH" == "12" ];then
+        echo "This month is December"
     if `grep -q "$NEXTYEAR" "$CRONDIR/temp.tmp"`; then
-        echo "December - Processing next year"
+        echo "Processing next year"
         $PYTHON  run_calendar.py -d "$NEXTYEAR"  > WebPage/website/scraped/year"$NEXTYEAR".csv
     else
         echo "Next year file not ready"
