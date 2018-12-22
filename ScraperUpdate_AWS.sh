@@ -35,7 +35,6 @@ rm next.tmp
 CURRENTMONTH=`date +"%m"`
 PYTHON=/home/howard/miniconda3/bin/python  #Must specify correct version of Python
 echo $PYTHON
-VERSION="3.3"
 export MOZ_HEADLESS=1 #Needed to run Firefox Headless
 #
 # for GECKO
@@ -45,6 +44,7 @@ export MOZ_HEADLESS=1 #Needed to run Firefox Headless
 #Get a list of current dates
 #
 
+VERSION="3.3"
 echo "Version "$VERSION" of ScraperUpdate.sh" 			#Clear cron log file
 date
 

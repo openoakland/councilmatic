@@ -6,6 +6,7 @@
 
 import csv
 from datetime import datetime, timedelta
+import datetime as dt
 import calendar
 from create_html import create_html
 
@@ -14,22 +15,23 @@ def read_csv_file(datafile, elements):
     data = list(csv.reader(open(datafile, encoding="utf-8"), delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL,
                            skipinitialspace=True))
     numrows = len(data)
-    present = datetime.now()
-    today = present.strftime('%m/%d/%Y')
+    today = dt.datetime.now()
+    midnight = datetime.combine(today, datetime.min.time())
+    out_index_start = len(elements)
 
     for i in range(numrows):  # Find out which meetings have not occurred
         if i > 0:  # Don't read headers
             if len(data[i][:]) >= 8:
                 meeting_daytime = datetime.strptime(data[i][1], '%m/%d/%Y')  # Convert to daytime format to compare
-                meeting_day = meeting_daytime.strftime('%m/%d/%Y')
-                future_meeting = meeting_day >= today
-                if not future_meeting:
+                daydiff = (meeting_daytime - midnight).days
+                if daydiff < 0:
                     break
                 elements.append([])
-                for j in range(0, 10):
-                    elements[i - 1].append(0)
-                    elements[i - 1][j] = data[i][j]
+                for j in range(0, 10):    # date within range
+                    elements[out_index_start + i - 1].append(0)
+                    elements[out_index_start + i - 1][j] = data[i][j]
 
+    return elements
 
 def write_day_header(f2, day1, day2):
     f2.write('<div class="calendar_plan">' + "\n")
@@ -70,7 +72,7 @@ def write_event_header(f2, time_event, link_calendar, name_committee, name_locat
     f2.write(' ' + "\n")
 
 
-version = "4.2"
+version = "4.3"
 lookAhead = 21  # Number of the days to look ahead for meetings
 
 print(" ")
@@ -108,14 +110,16 @@ schedule = []
 for year in years:
     scraper_file = "../website/scraped/year" + str(year) + ".csv"
     print("Scraping", scraper_file)
-    read_csv_file(scraper_file, schedule)
+    schedule = read_csv_file(scraper_file, schedule)
 
+print()
 numrows = len(schedule)
 today = datetime.now()
 lastdate = today - timedelta(days=1)
 tomorrow = today + timedelta(days=1)
 today_day = str(today.month) + '/' + str(today.day) + '/' + str(today.year)
 tomorrow_day = str(tomorrow.month) + '/' + str(tomorrow.day) + '/' + str(tomorrow.year)
+
 for i in range(numrows - 1, -1, -1):
     event_day = schedule[i][1]
     if lastdate != event_day:
@@ -132,9 +136,8 @@ for i in range(numrows - 1, -1, -1):
             day_of_week = "Today"
         elif event_day == tomorrow_day:
             day_of_week = "Tomorrow"
-
-        print(event_day)
-        print("New Day")
+        print()
+        print("New Day", event_day)
         write_day_header(f1, day_of_week, event_day)
 
     committee = schedule[i][0]
