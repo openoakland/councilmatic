@@ -4,7 +4,7 @@
 #
 # Written by Howard Matis - October 30, 2018
 #
-# This script only works on Mac OSX (BSD)
+# This script only works on Ubuntu Linux
 # The command "date" is different depending on flavor of UNIX
 # In December the script will run the script for next year;  In January the script will run the previous year.
 #
@@ -44,8 +44,8 @@ export MOZ_HEADLESS=1 #Needed to run Firefox Headless
 #Get a list of current dates
 #
 
-VERSION="3.3"
-echo "Version "$VERSION" of ScraperUpdate.sh" 			#Clear cron log file
+VERSION="3.5"
+echo "Version "$VERSION" of ScraperUpdate_AWS.sh" 			#Clear cron log file
 date
 
 $PYTHON run_calendar.py --show_dates > $CRONDIR/temp.tmp
@@ -80,13 +80,20 @@ fi
 #
 # Now make the webpage
 #
-cd Webpage
-cd src
+pwd
+cd WebPage/src
 echo " "
 echo "Running Web Programs"
 $PYTHON  sidebar.py  #Get the sidebar
 $PYTHON  main.py  #Run the main program
 echo " "
+cd $DIR #Go back to councilmatis directory
+#
+# Copy files to actual website
+#
+echo "Copying files to actual website"
+sudo cp -R /home/howard/Councilmatic/WebPage/website/* /var/www/councilmatic/
+#
 date
-echo "ScraperUpdate.sh completed"
+echo "ScraperUpdate_AWS.sh completed"
 #
