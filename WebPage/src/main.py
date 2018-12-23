@@ -167,11 +167,14 @@ for i in range(startyear, endyear, -1):   # Calculated the years to process
     years.append(str(i))
 
 for index_year, year in enumerate(years):
+    print()
     for index, committee in enumerate(committees):
         print(year, committee)
 
         outfile = "../website/" + year + "/committee" + str(index) + ".html"
         os.makedirs(os.path.dirname(outfile), exist_ok=True)
+        if index == 0:
+            save_outfile = outfile   # Save the first committee as default
         with open(outfile, "w") as f1:
             #
             #   write style section of the web page
@@ -235,11 +238,13 @@ for index_year, year in enumerate(years):
             create_html(url, f1)  # Create  template for HTML page
             f1.write(" " + "\n")
             f1.close()  # Close the file
-            if years[index_year] == str(currentYear):  # Put the main index.html as current year
+            if index ==0:
                 indexfile = "../website/" + year + "/index.html"
                 shutil.copyfile(outfile, indexfile)
-                indexfile = "../website/pc/index.html"
-                shutil.copyfile(outfile, indexfile)
+    if years[index_year] == str(currentYear):  # Put the main index.html as current year
+            indexfile = "../website/pc/index.html"
+            shutil.copyfile(save_outfile, indexfile)
+            print("Saving ", year, save_outfile, "as default file")
 
 print("<-----------------End of main.py------------------------------->")
 
