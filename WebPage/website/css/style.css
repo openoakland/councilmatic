@@ -28,9 +28,9 @@ html, body, {
   background-color: #fff;
 }
 
-/* was 65px for margin-left */
+/* was 65px, then 23 for margin-left */
 .dark {
-  margin-left: 23px;
+  margin-left: 0px;
   marg
 
 }
