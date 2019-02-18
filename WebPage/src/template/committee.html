@@ -31,14 +31,51 @@
 
   <body>
     <div class="container-fluid">
-      <div class="row">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="../2019/city-council.html">
+          <div class="councilmatic-logo"></div>
+          Oakland Councilmatic
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar-content">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" id="committees-dropdown" data-toggle="dropdown">{{ committee['name'] }}</a>
+
+              <div class="dropdown-menu" aria-labelledby="committees-dropdown">
+                {% for committee_name, committee_link in other_committees.items() %}
+                <a class="dropdown-item" href="{{ committee_link }}">
+                  {{ committee_name }}
+                </a>
+                {% endfor %}
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" id="year-dropdown" data-toggle="dropdown">{{ year }}</a>
+
+              <div class="dropdown-menu" aria-labelledby="year-dropdown">
+                {% for year, link in other_years.items() %}
+                <a class="dropdown-item" href="{{ link }}">
+                  {{ year }}
+                </a>
+                {% endfor %}
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="row mt-3">
         <div class="col-4">
           <div class="calendar dark">
             <div class="calendar_header">
               <h1 class="header_title">City of Oakland Council Calendar</h1>
               <p class="header_copy">Click icons for more info</p>
             </div>
-            <font size="-1">Updated: {{ now.strftime("%A, %B %d, %Y at %I:%M %p") }}<br> </font></p>
 
             {% for date, events in sidebar_items.items() | sort %}
             <div class="calendar_plan">
@@ -83,6 +120,7 @@
             <div style="text-align: center;"><i><br>
               </i></div>
               <div style="text-align: center;"><i>Disclaimer - Beta Code - Check Accuracy</i><br>
+              <font size="-1">Updated: {{ now.strftime("%A, %B %d, %Y at %I:%M %p") }}<br> </font></p>
                 <i> <a href="mailto:councilmatic@openoakland.org?subject=Feedback%20for%20Oakland%20Councilmatic"
                       title="Report bugs"
                       style="background-color: #DDF0C7; color: green; display: block; padding: 5px;">
@@ -103,13 +141,6 @@
           <div align="center"><i>Select the City Council or its subcommittees for current and future meetings</i></div>
           <!-- Navigation bar-->
           <ul class="nav bg-light">
-            {% for committee_name, committee_link in other_committees.items() %}
-            <li class="nav-item">
-              <a class="nav-link" target="_self" href="{{ committee_link }}" data-toggle="tooltip">
-                {{ committee_name }}
-              </a>
-            </li>
-            {% endfor %}
           </ul>
 
           <br>
@@ -157,16 +188,6 @@
               {% endfor %}
             </tbody>
           </table>
-          <div align="center"><i>Select a year of interest</i></div>
-          <nav class="navbar navbar-expand-sm bg-light">
-            <ul class="navbar-nav">
-              {% for year, link in other_years.items() %}
-              <li class="nav-item">
-                <a class="nav-link" target="_self" href="{{ link }}" data-toggle="tooltip">{{ year }}</a>
-              </li>
-              {% endfor %}
-            </ul>
-          </nav>
         </div>
       </div>
     </div>

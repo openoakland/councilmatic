@@ -11,6 +11,14 @@ a:hover { color: darkgreen;}          /* mouse over link */
 a:active {color: GoldenRod;}          /* selected link */
 a:visited {color: SaddleBrown;}         /* visited link */
 
+.councilmatic-logo {
+  background-image: url(../images/icon_oakland.svg);
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-block;
+  vertical-align: text-top;
+}
+
 /* To center the page */
 .light {
   background-color: #fff;
