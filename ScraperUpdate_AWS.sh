@@ -84,10 +84,11 @@ pwd
 cd WebPage/src
 echo " "
 echo "Running Web Programs"
-$PYTHON  sidebar.py  #Get the sidebar
 $PYTHON  main.py  #Run the main program
 echo " "
 cd $DIR #Go back to councilmatis directory
+# Add an index.html file for easier entry into the site
+cp WebPage/website/$CURRENTYEAR/city-council.html WebPage/website/$CURRENTYEAR/index.html
 #
 # Copy files to actual website
 #

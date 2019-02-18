@@ -6,7 +6,7 @@
   * https://www.anaconda.com/download
 2. Create conda env
   * conda env create -f environment.yml
-3. Download geckodriver and add to path
+3. Download geckodriver and add to path. Make sure to install Firefox if you don't have it as well.
   * https://github.com/mozilla/geckodriver/releases
   <br>
 note: We used Katalon IDE brower plugin to easy generate some of python selenium statements the normal selenium IDE no longer supports Python code exports.
@@ -41,7 +41,7 @@ python run_calendar.py -h
 ### By Year Example (2018)
 
 ```
-python run_calendar.py -d 2018
+python run_calendar.py -d 2018 > WebPage/website/scraped/year2018.csv
 ```
 
 ### By Search Words Example (2018)

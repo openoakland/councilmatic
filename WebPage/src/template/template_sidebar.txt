@@ -1,9 +1,0 @@
-<!--Begin template_sidebar.txt-->
-                   <div class="calendar dark">
-                     <div class="calendar_header">
-                       <h1 class="header_title" style="width: 313px;">City of Oakland
-                         Council Calendar</h1>
-                       <p class="header_copy">Click icons for more info</p>
-                     </div>
-<!--End template_sidebar.txt-->
-<!--end-->

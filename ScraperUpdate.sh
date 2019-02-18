@@ -72,8 +72,9 @@ cd Webpage
 cd src
 echo " "
 echo "Running Web Programs"
-$PYTHON  sidebar.py  #Get the sidebar
 $PYTHON  main.py  #Run the main program
+# Add an index.html file for easier entry into the site
+cp WebPage/website/$CURRENTYEAR/city-council.html WebPage/website/$CURRENTYEAR/index.html
 echo " "
 date
 echo "ScraperUpdate.sh completed"

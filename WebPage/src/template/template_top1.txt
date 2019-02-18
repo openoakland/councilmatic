@@ -1,6 +1,0 @@
-<!--Begin template_top1.txt-->
-
-           <table style="width: 1499px; height: 118px;" border="0">
-
-<!--End template_top1.txt-->
-<!--end-->

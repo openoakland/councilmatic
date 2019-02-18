@@ -1,5 +1,0 @@
-<!-- -->
-<!--Begin template_above_table.txt-->
-<br>
-    <div align="center"><h2>City of Oakland Meetings</h2></div>
-<!--End template_above_table.txt-->
