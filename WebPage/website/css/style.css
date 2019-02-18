@@ -2,15 +2,14 @@
   box-sizing: border-box;
 }
 
-html, body, {
-    position:fixed;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    background-color: #fafafa;
-    position:fixed;
+html, body {
+  background-color: #DDF0C7;
 }
+
+a:link { color: green}              /* unvisited link */
+a:hover { color: darkgreen;}          /* mouse over link */
+a:active {color: GoldenRod;}          /* selected link */
+a:visited {color: SaddleBrown;}         /* visited link */
 
 /* To center the page */
 .page {
