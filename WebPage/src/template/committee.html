@@ -30,150 +30,145 @@
   </head>
 
   <body>
-    <table style="width: 1499px; height: 118px;" border="0">
-      <!-- SIDEBAR -->
-      <tbody>
-        <tr>
-          <td style="width: 388px;">
-            <div class="calendar dark">
-              <div class="calendar_header">
-                <h1 class="header_title" style="width: 313px;">City of Oakland Council Calendar</h1>
-                <p class="header_copy">Click icons for more info</p>
-              </div>
-              <font size="-1">Updated: {{ now.strftime("%A, %B %d, %Y at %I:%M %p") }}<br> </font></p>
-
-              {% for date, events in sidebar_items.items() | sort %}
-              <div class="calendar_plan">
-                <div class="cl_plan">
-                  <div class="cl_title"> <font size="+3">{{ date.strftime("%A") }}</font> </div>
-                  <div class="cl_copy">{{ date.strftime("%m/%d/%Y") }}</div>
-                </div>
-              </div>
-
-              {% for event in events %}
-              <div class="event_item">
-                <div class="ei_Dot"></div>
-                <div class="ei_Title">{{ event['meeting_time'] }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                  <a href="{{ event['calendar_link'] }}" data-toggle="tooltip" title="Add to Calendar">
-                    <img alt="Add to Calendar" src="../images/iCal-icon-32.png" width="32" height="32" />
-                  </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                  <a href="{{ event['agenda'] }}" data-toggle="tooltip" title="Agenda">
-                    <img alt="Agenda Link" src="../images/agenda-32.png" width="32" height="32" />
-                  </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                  <a href="{{ event['eComment'] }}" data-toggle="tooltip" title="Comment Online">
-                    <img alt="Comment Online" src="../images/comment-32.png" width="32" height="32" />
-                  </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </div>
-
-                <div class="ei_Copy"> <font size="+1">{{ event['name'] }}</font> <br/>
-                  {{ event['meeting_location'] }}
-                </div>
-              </div>
-              {% endfor %}
-              {% endfor %}
-
-              <hr class="light" style="height: 0px; margin-left: auto; margin-right: auto;">
-              <div style="text-align: center;"><a href="http://www.openoakland.org"
-                                                  style="background-color: #DDF0C7; color: green; display: block; padding: 5px;">
-                  Created by OpenOakland</a></div>
-              <br>
-              <div style="text-align: center;"><img src="../images/openoakland-32.jpg"
-                                                    alt="OpenOakland Logo"></div>
-              <div style="text-align: center;"><i><br>
-                </i></div>
-                <div style="text-align: center;"><i>Disclaimer - Beta Code - Check
-                    Accuracy</i><br>
-                  <i> <a href="mailto:councilmatic@openoakland.org?subject=Feedback%20for%20Oakland%20Councilmatic"
-                         title="Report bugs"
-                         style="background-color: #DDF0C7; color: green; display: block; padding: 5px;">
-                      Report bugs and suggestions to us</a></i><a href="https://solar.oaklandnet.com/Speaker/form"
-                                                                  style="background-color: #DDF0C7; color: green; display: block; padding: 5px;">Sign
-                                                                  up to speak at a council meeting</a> <br>
-                </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-4">
+          <div class="calendar dark">
+            <div class="calendar_header">
+              <h1 class="header_title">City of Oakland Council Calendar</h1>
+              <p class="header_copy">Click icons for more info</p>
             </div>
-          </td>
-          <td style="margin-left: -56px; width: 1453px;"><br>
-            <div align="center"><img src="../images/City-of-Oakland-Logo-GREEN.png"
-                                     alt="logo"
-                                     height="321"
-                                     width="450">
-            </div>
-            <div class="container"></div>
-            <div align="center"><i>Select the City Council or its subcommittees for current and future meetings</i></div>
-            <!-- Navigation bar-->
-            <nav class="navbar navbar-expand-sm bg-light">
-              <ul class="navbar-nav">
-                {% for committee_name, committee_link in other_committees.items() %}
-                <li class="nav-item">
-                  <a class="nav-link" target="_self" href="{{ committee_link }}" data-toggle="tooltip">
-                    {{ committee_name }}
-                  </a>
-                </li>
-                {% endfor %}
-              </ul>
-            </nav>
+            <font size="-1">Updated: {{ now.strftime("%A, %B %d, %Y at %I:%M %p") }}<br> </font></p>
 
+            {% for date, events in sidebar_items.items() | sort %}
+            <div class="calendar_plan">
+              <div class="cl_plan">
+                <div class="cl_title"> <font size="+3">{{ date.strftime("%A") }}</font> </div>
+                <div class="cl_copy">{{ date.strftime("%m/%d/%Y") }}</div>
+              </div>
+            </div>
+
+            {% for event in events %}
+            <div class="event_item">
+              <div class="ei_Dot"></div>
+              <div class="ei_Title">{{ event['meeting_time'] }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <a href="{{ event['calendar_link'] }}" data-toggle="tooltip" title="Add to Calendar">
+                  <img alt="Add to Calendar" src="../images/iCal-icon-32.png" width="32" height="32" />
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <a href="{{ event['agenda'] }}" data-toggle="tooltip" title="Agenda">
+                  <img alt="Agenda Link" src="../images/agenda-32.png" width="32" height="32" />
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <a href="{{ event['eComment'] }}" data-toggle="tooltip" title="Comment Online">
+                  <img alt="Comment Online" src="../images/comment-32.png" width="32" height="32" />
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </div>
+
+              <div class="ei_Copy"> <font size="+1">{{ event['name'] }}</font> <br/>
+                {{ event['meeting_location'] }}
+              </div>
+            </div>
+            {% endfor %}
+            {% endfor %}
+
+            <hr class="light" style="height: 0px; margin-left: auto; margin-right: auto;">
+            <div style="text-align: center;"><a href="http://www.openoakland.org"
+                                                style="background-color: #DDF0C7; color: green; display: block; padding: 5px;">
+                Created by OpenOakland</a></div>
             <br>
-            <div align="center"><h2>City of Oakland Meetings</h2></div>
-            <div align="center"><h3>{{ committee['name'] }} - {{ year }}</h3></div>
+            <div style="text-align: center;"><img src="../images/openoakland-32.jpg"
+                                                  alt="OpenOakland Logo"></div>
+            <div style="text-align: center;"><i><br>
+              </i></div>
+              <div style="text-align: center;"><i>Disclaimer - Beta Code - Check Accuracy</i><br>
+                <i> <a href="mailto:councilmatic@openoakland.org?subject=Feedback%20for%20Oakland%20Councilmatic"
+                      title="Report bugs"
+                      style="background-color: #DDF0C7; color: green; display: block; padding: 5px;">
+                    Report bugs and suggestions to us</a></i><a href="https://solar.oaklandnet.com/Speaker/form"
+                                                                style="background-color: #DDF0C7; color: green; display: block; padding: 5px;">Sign
+                                                                up to speak at a council meeting</a> <br>
+              </div>
+          </div>
+        </div>
 
-            <table class="table table-striped">
-              <thead class="thead-dark">
-                <tr>
-                  <th>Date</th>
-                  <th>Meeting Detail</th>
-                </tr>
-              </thead>
+        <div class="col-8">
+          <div align="center">
+            <img src="../images/City-of-Oakland-Logo-GREEN.png"
+                alt="logo"
+                height="321"
+                width="450">
+          </div>
+          <div align="center"><i>Select the City Council or its subcommittees for current and future meetings</i></div>
+          <!-- Navigation bar-->
+          <ul class="nav bg-light">
+            {% for committee_name, committee_link in other_committees.items() %}
+            <li class="nav-item">
+              <a class="nav-link" target="_self" href="{{ committee_link }}" data-toggle="tooltip">
+                {{ committee_name }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
 
-              <tbody>
+          <br>
+          <div align="center"><h2>City of Oakland Meetings</h2></div>
+          <div align="center"><h3>{{ committee['name'] }} - {{ year }}</h3></div>
+
+          <table class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>Date</th>
+                <th>Meeting Detail</th>
+              </tr>
+            </thead>
+
+            <tbody>
               {% for meeting in meetings %}
-                <tr>
-                  <td><span class="style1">{{ meeting['meeting_date'] }}</span></td>
+              <tr>
+                <td><span class="style1">{{ meeting['meeting_date'] }}</span></td>
 
-                  {% if 'http' in meeting['video'] %}
-                  <td>
-                    <a href="{{ meeting['video'] }}" target="_top" data-toggle="tooltip">
-                      Click for Video Minutes and Agenda
-                    </a>
+                {% if 'http' in meeting['video'] %}
+                <td>
+                  <a href="{{ meeting['video'] }}" target="_top" data-toggle="tooltip">
+                    Click for Video Minutes and Agenda
+                  </a>
                   {% elif 'http' in meeting['minutes'] %}
                   <td>
                     <a href="{{ meeting['minutes'] }}" target="_top" data-toggle="tooltip">
                       Click for Minutes
                     </a>
-                  {% elif 'http' in meeting['agenda'] %}
-                  <td>
-                    Meeting at {{ meeting['meeting_time'] }} in {{ meeting['meeting_location'] }} |
-                    <a href="{{ meeting['agenda'] }}" target="_top">Click for agenda</a>
-                  {% else %}
-                  <td>
-                    Meeting at {{ meeting['meeting_time'] }} in {{ meeting['meeting_location'] }}
-                  {% endif %}
+                    {% elif 'http' in meeting['agenda'] %}
+                    <td>
+                      Meeting at {{ meeting['meeting_time'] }} in {{ meeting['meeting_location'] }} |
+                      <a href="{{ meeting['agenda'] }}" target="_top">Click for agenda</a>
+                      {% else %}
+                      <td>
+                        Meeting at {{ meeting['meeting_time'] }} in {{ meeting['meeting_location'] }}
+                        {% endif %}
 
-                  {% if 'http' in meeting['eComment'] %}
-                  | <a href="{{ meeting['eComment'] }}" target="_top">Click to comment electronically</a>
-                  {% endif %}
+                        {% if 'http' in meeting['eComment'] %}
+                        | <a href="{{ meeting['eComment'] }}" target="_top">Click to comment electronically</a>
+                        {% endif %}
 
-                  </td>
-                </tr>
+                      </td>
+              </tr>
               {% endfor %}
-              </tbody>
-            </table>
-            <div align="center"><i>Select a year of interest</i></div>
-            <nav class="navbar navbar-expand-sm bg-light">
-              <ul class="navbar-nav">
-                {% for year, link in other_years.items() %}
-                <li class="nav-item">
-                  <a class="nav-link" target="_self" href="{{ link }}" data-toggle="tooltip">{{ year }}</a>
-                </li>
-                {% endfor %}
-              </ul>
-            </nav>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            </tbody>
+          </table>
+          <div align="center"><i>Select a year of interest</i></div>
+          <nav class="navbar navbar-expand-sm bg-light">
+            <ul class="navbar-nav">
+              {% for year, link in other_years.items() %}
+              <li class="nav-item">
+                <a class="nav-link" target="_self" href="{{ link }}" data-toggle="tooltip">{{ year }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
