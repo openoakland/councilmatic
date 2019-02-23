@@ -15,9 +15,10 @@
 #   ...
 # This run using cron under UBUNTU
 # m h  dom mon dow   command
-#2 0 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate2.log 2>&1
-#04 18 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate3.log 2>&1
-#53 20 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate1.log 2>&1
+#30 0 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate2.log 2>&1
+#01 12 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate3.log 2>&1
+#04 18 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate1.log 2>&1
+# for test 30 20 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate.log 2>&1
 
 
 # To determine the current host (Mac/Darwin vs. AWS/Ubuntu): 
