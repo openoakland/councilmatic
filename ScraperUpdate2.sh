@@ -11,13 +11,13 @@
 # In January the script will run the previous year.
 #
 # This run using cron under OSX
-#   0 2 * * * /Users/matis/Documents/OpenOakland/Councilmatic-master/Councilmatic/ScraperUpdate.sh
+#   0 2 * * * /Users/matis/Documents/OpenOakland/Councilmatic-master/Councilmatic/ScraperUpdate2.sh
 #   ...
 # This run using cron under UBUNTU
 # m h  dom mon dow   command
-#2 0 * * * /home/howard/Councilmatic/ScraperUpdate_AWS.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate.log 2>&1
-#04 18 * * * /home/howard/Councilmatic/ScraperUpdate_AWS.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate.log 2>&1
-#53 20 * * * /home/howard/Councilmatic/ScraperUpdate_AWS.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate.log 2>&1
+#2 0 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate2.log 2>&1
+#04 18 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate3.log 2>&1
+#53 20 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate1.log 2>&1
 
 
 # To determine the current host (Mac/Darwin vs. AWS/Ubuntu): 
@@ -85,7 +85,7 @@ fi
 # of this shell script
 # Last ScraperUpdate.sh OSX was #VERSION="3.3"
 # Last ScraperUpdateAWS.sh Ubuntu was VERSION="3.5"
-VERSION="3.6" # for ScraperUpdate2.sh
+VERSION="3.7" # for ScraperUpdate2.sh
 
 echo "Version "$VERSION" of ScraperUpdate2.sh" 			#Clear cron log file
 
@@ -129,7 +129,7 @@ pwd
 cd WebPage/src
 echo " "
 echo "Running Web Programs"
-$PYTHON  sidebar.py  #Get the sidebar
+# $PYTHON  sidebar.py  #Get the sidebar
 $PYTHON  main.py  #Run the main program
 echo " "
 
