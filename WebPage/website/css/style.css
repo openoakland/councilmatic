@@ -2,28 +2,24 @@
   box-sizing: border-box;
 }
 
-html, body, {
-    position:fixed;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    background-color: #fafafa;
-    position:fixed;
+html, body {
+  background-color: #DDF0C7;
+}
+
+a:link { color: green}              /* unvisited link */
+a:hover { color: darkgreen;}          /* mouse over link */
+a:active {color: GoldenRod;}          /* selected link */
+a:visited {color: SaddleBrown;}         /* visited link */
+
+.councilmatic-logo {
+  background-image: url(../images/icon_oakland.svg);
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-block;
+  vertical-align: text-top;
 }
 
 /* To center the page */
-.page {
-  margin-left:auto;
-  margin-right:auto;
-  width: 1500px;
-}
-
-.container {
-  margin: 0px;
-  width: 809px;
-}
-
 .light {
   background-color: #fff;
 }
@@ -31,55 +27,21 @@ html, body, {
 /* was 65px, then 23 for margin-left */
 .dark {
   margin-left: 0px;
-  marg
-
 }
 
 .calendar {
-  width: 370px;
-  box-shadow: 0px 0px 35px -16px rgba(0, 0, 0, 0.75);
-  font-family: 'Roboto', sans-serif;
+  width: 100%;
   padding: 20px 30px;
   color: #363b41;
   display: inline-block;
 }
 
-.calendar_header {
-  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
-}
-
-.header_copy {
-  color: #A39D9E;
-  font-size: 20px;
-}
-
 .calendar_plan {
-  margin: 20px 0 40px;
-}
-
-
-.cl_plan {
-  width: 100%;
-  height: 140px;
-  background-image: linear-gradient(-222deg, #005400, #007000);
-  box-shadow: 0px 0px 52px -18px rgba(0, 0, 0, 0.75);
-  padding: 30px;
-  color: #fff;
-}
-
-//.cl_plan {
-  width: 100%;
-  height: 140px;
-  background-image: linear-gradient(-222deg, #FF8494, #ffa9b7);
-  box-shadow: 0px 0px 52px -18px rgba(0, 0, 0, 0.75);
-  padding: 30px;
-  color: #fff;
-}
-
-.cl_copy {
+  margin-top: 40px;
+  color: #007000;
   font-size: 20px;
-  margin: 20px 0;
-  display: inline-block;
+  font-weight: bold;
+  letter-spacing: 0.3px;
 }
 
 .cl_add {
@@ -98,56 +60,29 @@ html, body, {
   color: #A39D9E;
 }
 
-.ce_title {
-  font-size: 14px;
-}
-
 .event_item {
-  margin: 18px 0;
-  padding: 5px;
-  cursor: pointer;
-}
-.event_item:hover {
-  background-image: linear-gradient(-222deg, #007000, #009000);
-  box-shadow: 0px 0px 52px -18px rgba(0, 0, 0, 0.75);
-}
-
-//.event_item:hover {
-  background-image: linear-gradient(-222deg, #FF8494, #ffa9b7);
-  box-shadow: 0px 0px 52px -18px rgba(0, 0, 0, 0.75);
-}
-
-.event_item:hover .ei_Dot {
-  background-color: #fff;
-}
-.event_item:hover .ei_Copy, .event_item:hover .ei_Title {
-  color: #fff;
-}
-
-.ei_Dot, .ei_Title {
-  display: inline-block;
-}
-
-.ei_Dot {
-  border-radius: 50%;
-  width: 10px;
-  height: 10px;
-  background-color: #A39D9E;
-  box-shadow: 0px 0px 52px -18px rgba(0, 0, 0, 0.75);
-}
-
-.dot_active {
-  background-color: #FF8494;
-}
-
-.ei_Title {
-  margin-left: 10px;
   color: #363b41;
+  margin: 2rem 0;
 }
 
-.ei_Copy {
+.event_item__time {
+  color: #007000;
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 2rem;
+}
+
+.event_item__details {
   font-size: 12px;
-  margin-left: 27px;
+  margin-bottom: .5rem;
+}
+
+.event_item__actions {
+  font-size: 20px;
+}
+.event_item__actions > a {
+  margin-right: 1rem;
+  text-decoration: none;
 }
 
 .dark {

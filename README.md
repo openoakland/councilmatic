@@ -30,7 +30,12 @@ python -m ipykernel install --user --name new_councilmatic --display-name "new c
 
 # To run:
 
-## Calendar
+## To scrape and generate website:
+```
+make scrape generate
+```
+
+## Calendar Scraper
 
 ### Help
 
@@ -38,7 +43,7 @@ python -m ipykernel install --user --name new_councilmatic --display-name "new c
 python run_calendar.py -h
 ```
 
-### By Year Example (2018)
+### Scrape a single year
 
 ```
 python run_calendar.py -d 2018 > WebPage/website/scraped/year2018.csv

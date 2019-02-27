@@ -9,6 +9,7 @@ from datetime import datetime
 YEARS = [2019, 2018, 2017, 2016, 2015, 2014]
 COMMITTEES = ["City Council", "Rules & Legislation", "Public Works", "Life Enrichment", "Public Safety",
               "Oakland Redevelopment", "Community & Economic Development", "Finance & Management"]
+CURRENT_DIRECTORY = os.path.abspath(os.path.dirname(__file__))
 
 
 def committee_name_to_url(committee_name):  # e.g. "Rules & Legislation" -> 'rules-and-legislation'
@@ -77,7 +78,7 @@ def render_committee_page(output_filename, committee_name, year, meetings=[], si
         link = '../../website/{}/{}.html'.format(other_year, slug)
         other_years[other_year] = link
 
-    template = Template(open('./template/committee.html').read())
+    template = Template(open(os.path.join(CURRENT_DIRECTORY, './template/committee.html')).read())
     with open(output_filename, 'w') as f:
         template_args = {
             "other_years": other_years,
@@ -93,27 +94,25 @@ def render_committee_page(output_filename, committee_name, year, meetings=[], si
         f.write(template.render(**template_args))
 
 
-current_directory = os.path.abspath(os.path.dirname(__file__))
-
 # the sidebar is identical regardless of the year; let's load the data for it
 # first.
 current_year = datetime.now().year
-scraped_file = os.path.join(current_directory, '../website/scraped/year{}.csv'.format(current_year))
-scraped_data = list(csv.DictReader(open(scraped_file, encoding="utf-8"),delimiter=',', quotechar='"',
-                                   quoting=csv.QUOTE_ALL, skipinitialspace=True))
+scraped_file = os.path.join(CURRENT_DIRECTORY, '../website/scraped/year{}.csv'.format(current_year))
+scraped_data = list(csv.DictReader(open(scraped_file, encoding="utf-8"),
+    delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL, skipinitialspace=True))
 sidebar_items = load_meetings(scraped_data, upcoming_only=True)
 
 # generate the pages for other years
 for year in YEARS:
     # load the CSV for the year
-    scraped_file = os.path.join(current_directory, '../website/scraped/year{}.csv'.format(year))
-    scraped_data = list(csv.DictReader(open(scraped_file, encoding="utf-8"),delimiter=',', quotechar='"',
-                                       quoting=csv.QUOTE_ALL, skipinitialspace=True))
+    scraped_file = os.path.join(CURRENT_DIRECTORY, '../website/scraped/year{}.csv'.format(year))
+    scraped_data = list(csv.DictReader(open(scraped_file, encoding="utf-8"),
+        delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL, skipinitialspace=True))
 
     # generate a page for each committee in that year
     for committee_name in COMMITTEES:
         slug = committee_name_to_url(committee_name)
-        outfile = os.path.join(current_directory, '../website/{}/{}.html'.format(year, slug))
+        outfile = os.path.join(CURRENT_DIRECTORY, '../website/{}/{}.html'.format(year, slug))
 
         render_committee_page(outfile, committee_name, year, sidebar_items = sidebar_items,
                               meetings=load_meetings(scraped_data, committee_name_filter=committee_name,
