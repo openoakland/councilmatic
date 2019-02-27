@@ -12,20 +12,19 @@ COMMITTEES = ["City Council", "Rules & Legislation", "Public Works", "Life Enric
 CURRENT_DIRECTORY = os.path.abspath(os.path.dirname(__file__))
 
 
-def committee_name_to_url(committee_name):
-    ''' e.g. "Rules & Legislation" -> 'rules-and-legislation' '''
+def committee_name_to_url(committee_name):  # e.g. "Rules & Legislation" -> 'rules-and-legislation'
     return re.sub(r'[^a-z]+', '-', committee_name.lower().replace('&', 'and'))
 
 
 def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False, skip_cancellations=False):
-    '''
+    """
     given a parsed CSV (scraped_data), returns a dict that can be used in the
     sidebar and main content area that looks like:
 
     {
         (date): [{meeting row dict}, {meeting row dict}, ...]
     }
-    '''
+    """
 
     today = datetime.now()
     midnight = datetime.combine(today, datetime.min.time())
@@ -115,7 +114,6 @@ for year in YEARS:
         slug = committee_name_to_url(committee_name)
         outfile = os.path.join(CURRENT_DIRECTORY, '../website/{}/{}.html'.format(year, slug))
 
-        render_committee_page(outfile, committee_name, year,
-            sidebar_items=sidebar_items,
-            meetings=load_meetings(scraped_data, committee_name_filter=committee_name, skip_cancellations=True),
-        )
+        render_committee_page(outfile, committee_name, year, sidebar_items = sidebar_items,
+                              meetings=load_meetings(scraped_data, committee_name_filter=committee_name,
+                                                skip_cancellations=True),)   # Don't know what this comma is for - HSM
