@@ -1,23 +1,22 @@
-from scraper.model.json_model import JsonModel
-from scraper.model.csv_model import CSVModel
+from scraper.model import ModelBase, CSVModel, JsonModel
 
-class Calendar(JsonModel, CSVModel):
-    field_names = [
-        'name', 
-        'meeting_date', 
-        'calendar_link', 
-        'meeting_time', 
-        'meeting_location', 
-        'meeting_details', 
-        'agenda', 
-        'minutes', 
-        'video', 
-        'eComment']    
-
+class Calendar(ModelBase, JsonModel, CSVModel):
     def __init__(self, name, meeting_date, calendar_link, 
         meeting_time, meeting_location, meeting_details, agenda, 
         minutes, video, eComment):
         super().__init__()
+
+        self.field_names = [
+            'name', 
+            'meeting_date', 
+            'calendar_link', 
+            'meeting_time', 
+            'meeting_location', 
+            'meeting_details', 
+            'agenda', 
+            'minutes', 
+            'video', 
+            'eComment']    
 
         self._name = name
         self.meeting_date = meeting_date
@@ -29,21 +28,6 @@ class Calendar(JsonModel, CSVModel):
         self.minutes = minutes
         self.video = video
         self.eComment = eComment
-
-    def filter_newlines(self, text_str):
-        if text_str is None:
-            return None
-            
-        return text_str.replace('\n', ' ')
-
-    def remove_starting_asterisk(self, text_str):
-        if text_str is None:
-            return None
-
-        if text_str.startswith('*'):
-            return text_str[1:]
-        else:
-            return text_str    
 
     @property
     def name(self):
@@ -63,25 +47,19 @@ class Calendar(JsonModel, CSVModel):
 
     @property
     def meeting_details(self):
-        return self.filter_newlines(self._meeting_details)
+        return self._meeting_details
 
     @meeting_details.setter
     def meeting_details(self, raw_meeting_details):
         self._meeting_details = raw_meeting_details
 
     def to_map(self):
-        return {
-            'name': self.name, 
-            'meeting_date': self.meeting_date, 
-            'calendar_link': self.calendar_link, 
-            'meeting_time': self.meeting_time, 
-            'meeting_location': self.meeting_location, 
-            'meeting_details': self.meeting_details, 
-            'agenda': self.agenda, 
-            'minutes': self.minutes, 
-            'video': self.video, 
-            'eComment': self.eComment
-        }
+        map = super().to_map()
+
+        if map is not None and 'meeting_details' in map and map['meeting_details'] is not None:
+            map['meeting_details'] = map['meeting_details'].to_map()           
+
+        return map
 
     
 

@@ -10,7 +10,7 @@ from scraper import Scraper
 from model.legislation import Legislation as LegislationModel
 
 class Legislation(Scraper):
-    def __init__(self, default_url='https://oakland.legistar.com/Legislation.aspx', wait=30, driver=None):
+    def __init__(self, default_url='https://oakland.legistar.com/Legislation.aspx', wait=5, driver=None):
         super().__init__(default_url, wait, driver)    
 
     def run(self):
