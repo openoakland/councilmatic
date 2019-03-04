@@ -6,7 +6,7 @@ import re
 from jinja2 import Template
 from datetime import datetime
 
-VERSION = "5.1"     # Version of Program
+VERSION = "5.2"     # Version of Program
 MAXYEARS = 10       # Maximum number of years to output
 FIRSTYEAR = 2014    # First year to start
 COMMITTEES = ["City Council", "Rules & Legislation", "Public Works", "Life Enrichment", "Public Safety",
@@ -133,3 +133,14 @@ for year in YEARS:
         render_committee_page(outfile, committee_name, year, sidebar_items = sidebar_items,
                               meetings=load_meetings(scraped_data, committee_name_filter=committee_name,
                                                 skip_cancellations=True),)   # Don't know what this comma is for - HSM
+        if committee_name == COMMITTEES[0]:
+            outfile = os.path.join(CURRENT_DIRECTORY, '../website/{}/index.html'.format(year))
+            render_committee_page(outfile, committee_name, year, sidebar_items = sidebar_items,
+                                  meetings=load_meetings(scraped_data, committee_name_filter=committee_name,
+                                                         skip_cancellations=True),)
+            if year == YEARS[0]:
+                outfile = os.path.join(CURRENT_DIRECTORY, '../website/pc/index.html')
+                render_committee_page(outfile, committee_name, year, sidebar_items = sidebar_items,
+                                  meetings=load_meetings(scraped_data, committee_name_filter=committee_name,
+                                                         skip_cancellations=True),)
+
