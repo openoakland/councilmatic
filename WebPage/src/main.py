@@ -71,13 +71,13 @@ def render_committee_page(output_filename, committee_name, year, meetings=[], si
     # populate the list of "Other Committees" for the page navigation
     other_committees = {}
     for other_committee_name in COMMITTEES:
-        link = './{}/{}.html'.format(year, committee_name_to_url(other_committee_name))
+        link = '/{}/{}.html'.format(year, committee_name_to_url(other_committee_name))
         other_committees[other_committee_name] = link
 
     # populate the list of "Other Years" for the page navigation
     other_years = {}
     for other_year in YEARS:
-        link = './{}/{}.html'.format(other_year, slug)
+        link = '/{}/{}.html'.format(other_year, slug)
         other_years[other_year] = link
 
     template = Template(open(os.path.join(CURRENT_DIRECTORY, './template/committee.html')).read())
