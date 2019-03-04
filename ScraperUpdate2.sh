@@ -130,7 +130,7 @@ pwd
 cd WebPage/src
 echo " "
 echo "Running Web Programs"
-# $PYTHON  sidebar.py  #Get the sidebar
+$PYTHON  sidebar.py  #Get the sidebar
 $PYTHON  main.py  #Run the main program
 echo " "
 

@@ -6,7 +6,9 @@ import re
 from jinja2 import Template
 from datetime import datetime
 
-YEARS = [2019, 2018, 2017, 2016, 2015, 2014]
+VERSION = "5.0"
+MAXYEARS = 10  # Maximum number of years to display
+FIRSTYEAR = 2014  # First year to display
 COMMITTEES = ["City Council", "Rules & Legislation", "Public Works", "Life Enrichment", "Public Safety",
               "Oakland Redevelopment", "Community & Economic Development", "Finance & Management"]
 
@@ -93,11 +95,19 @@ def render_committee_page(output_filename, committee_name, year, meetings=[], si
         f.write(template.render(**template_args))
 
 
+print(" ")
+print("<------------------Running main.py - Version", VERSION, "------------------>")
 current_directory = os.path.abspath(os.path.dirname(__file__))
 
 # the sidebar is identical regardless of the year; let's load the data for it
 # first.
-current_year = datetime.now().year
+current_year = datetime.now().year   # Automatically  update (probably need to increase year in December
+int_current_year = int(current_year) + 1
+if int_current_year - FIRSTYEAR > MAXYEARS:
+    FIRSTYEAR = int_current_year - MAXYEARS
+YEARS = list(range(FIRSTYEAR, int_current_year))
+YEARS.reverse()
+
 scraped_file = os.path.join(current_directory, '../website/scraped/year{}.csv'.format(current_year))
 scraped_data = list(csv.DictReader(open(scraped_file, encoding="utf-8"),delimiter=',', quotechar='"',
                                    quoting=csv.QUOTE_ALL, skipinitialspace=True))
@@ -118,3 +128,9 @@ for year in YEARS:
         render_committee_page(outfile, committee_name, year, sidebar_items = sidebar_items,
                               meetings=load_meetings(scraped_data, committee_name_filter=committee_name,
                                                 skip_cancellations=True),)   # Don't know what this comma is for - HSM
+        if committee_name == COMMITTEES[0] and year == YEARS[0]:
+            outfile = os.path.join(current_directory, '../website/pc/index.html')
+            render_committee_page(outfile, committee_name, year, sidebar_items = sidebar_items,
+                                  meetings=load_meetings(scraped_data, committee_name_filter=committee_name,
+                                                         skip_cancellations=True),)
+                                                                        # Don't know what this comma is for - HSM
