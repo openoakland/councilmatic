@@ -59,7 +59,8 @@ def scrape(args):
     wait_time=args.wait_time)
   cal.close()
 
-  print(CalendarModel.to_csv(cal_rows))
+  #print(CalendarModel.to_csv(cal_rows))
+  print(CalendarModel.to_map_list_json(cal_rows))
 
 def main():
   args = get_args()

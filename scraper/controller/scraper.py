@@ -10,9 +10,10 @@ from selenium.webdriver.support import expected_conditions as EC
 
 import unittest, time, re
 from urllib.parse import urlsplit
+import sys, traceback
 
 class Scraper(ABC):
-    def __init__(self, default_url, wait=30, driver=None):
+    def __init__(self, default_url=None, wait=5, driver=None):
         self.default_url = default_url
 
         self.base_url = None
@@ -35,7 +36,7 @@ class Scraper(ABC):
         try:
             link_elt = elt.find_element(By.TAG_NAME, 'a')
             return link_elt.get_attribute('href')
-        except:
+        except Exception as e:
             return None
 
     def get_web_element_attribute_names(self, web_element):
@@ -105,8 +106,9 @@ class Scraper(ABC):
         for i in range(num_of_retries):
             try:
                 return fnc()
-            except Exception as e:
-                err = e
+            except Exception as ex:
+                traceback.print_exception(type(ex), ex, ex.__traceback__)
+                err = ex
                 #print(e)
                 self.sleep(sleep_time)
 
@@ -182,15 +184,13 @@ class Scraper(ABC):
 
         return data
     
-        
-
-
-
     def close(self):
         try:
+            self.driver.stop_client()
+            self.driver.close()
             self.driver.quit()
-        except:
-            pass
+        except Exception as e:
+            print(e)
 
     def wait_for(self, id_str, wait_time=10):
         try:
@@ -198,6 +198,34 @@ class Scraper(ABC):
                 EC.presence_of_element_located((By.ID, id_str)))
         except:
             raise Exception("%s was not found" % id_str)
+
+    def wait_for_by_class(self, class_str, wait_time=10):
+        try:
+            WebDriverWait(self.driver, wait_time).until(
+                EC.presence_of_element_located((By.CLASS, class_str)))
+        except:
+            raise Exception("%s was not found" % class_str)
+
+    def get_video_link(self, video_elt, base_url=None):
+        if base_url is None:
+            base_url = self.base_url
+
+        if video_elt is None:
+            return None
+
+        link_elt = video_elt.find_element(By.TAG_NAME, 'a')
+        if link_elt is None:
+            return None
+
+        onclick_str = link_elt.get_attribute('onclick')
+        if onclick_str is None or onclick_str == "":
+            return None 
+
+        video_links = re.findall(r"'(.*?)'",  onclick_str)
+        if video_links is None or len(video_links) == 0:
+            return None
+
+        return "%s%s" % (base_url, video_links[0])
 
 
 
