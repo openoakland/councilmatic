@@ -7,13 +7,19 @@ import twitter
 import datetime
 import calendar
 
+import string
+import random
+
 import csv
 from datetime import datetime, timedelta
 import datetime as dt
 
+
 VERSION = "1,0"
-LOOKAHEAD = 21  # Number of the days to look ahead for meetings
+LOOKAHEAD = 7  # Number of the days to look ahead for meetings
 MAKEATWEET = True
+MAXTWEETSIZE = 280      # Maximums size for a tweet#
+TWEETURLSIZE = 23       # Size of a URL
 
 '''
 This runs off a a file  ".tweeter"  which resides in your home directory.  The format is below
@@ -73,13 +79,16 @@ def tweet_meeting(key, message, doatweet):    # Tweet to the world
     api = twitter.Api(consumer_key=consumer_key, consumer_secret=consumer_secret,
                       access_token_key=access_key, access_token_secret=access_secret,
                       input_encoding=encoding)
+    status = ''
     if doatweet:
         did_tweet = False
         try:
-            status = api.PostUpdate(message)
+            status = api.PostUpdate(message, verify_status_length=False)
+            print(status)
         except UnicodeDecodeError:
             print("Your message could not be encoded.  Perhaps it contains non-ASCII characters? ")
             print("Try explicitly specifying the encoding with the --encoding flag")
+        else:
             did_tweet = True
 
         if did_tweet:
@@ -89,11 +98,12 @@ def tweet_meeting(key, message, doatweet):    # Tweet to the world
         print(message)
 
 
+def random_string(length):      # Return a random string
+    return ''.join(random.choice(string.ascii_letters) for m in range(length))
+
+
 print(" ")
 print("<---------Running Software Version:", VERSION, "- Tweeter.py ----------->")
-
-tempfile = "tempfile.html"
-f1 = open(tempfile, 'w+')
 
 
 key = read_dot_tweeter()   # Read the permissions for sending the Tweet
@@ -131,40 +141,30 @@ tomorrow_day = str(tomorrow.month) + '/' + str(tomorrow.day) + '/' + str(tomorro
 
 for i in range(numrows - 1, -1, -1):
     event_day = schedule[i][1]
-    if lastdate != event_day:
-        lastdate = event_day
-        new_day = True
-    else:
-        new_day = False
-
-    if new_day:
-        day_datetime = datetime.strptime(event_day, '%m/%d/%Y')
-        day_label = datetime.date(day_datetime).weekday()
-        day_of_week = calendar.day_name[day_label]
-        if event_day == today_day:
-            day_of_week = "Today"
-        elif event_day == tomorrow_day:
-            day_of_week = "Tomorrow"
-        print()
-        print("New Day", event_day)
-
+    day_datetime = datetime.strptime(event_day, '%m/%d/%Y')
+    day_label = datetime.date(day_datetime).weekday()
+    day_of_week = calendar.day_name[day_label]
+    if event_day == today_day:
+        day_of_week = "Today"
+    elif event_day == tomorrow_day:
+        day_of_week = "Tomorrow"
 
     committee = schedule[i][0]
     if "City Council" in committee:
         committee = "City Council - (" + committee + ")"
-    #print("Meeting description")
-    #print(committee)  # Committee
-    #print(schedule[i][2])  # Calendar
-    #print(schedule[i][3])  # Time
-    #print(schedule[i][4])  # Room
     agenda = schedule[i][6]
-    #ecomment = schedule[i][9]
-    theTweet = "City of Oakland Meeting for " + committee + " on " + event_day + " at " + schedule[i][3] + \
-               ': <a href="' + agenda + '">' + "AGENDA</a>"
-    f1.write(theTweet+ "\n")
-    print(theTweet)
+    theTweet1 = day_of_week + " at " + schedule[i][3]+ " Oakland " + committee
+    theTweetend = " Meeting. Agenda is " + agenda + " " + random_string(2)
+    theTweet = theTweet1 + theTweetend
+    maximumCouncilTweet = MAXTWEETSIZE - min(TWEETURLSIZE - len(agenda), TWEETURLSIZE)  # Twitter has a fixed URL Size
+    extra_chars = len(theTweet) - maximumCouncilTweet
+    if extra_chars > 0:  # Trim the Tweet to the maximum size
+        theTweet = theTweet1[:-extra_chars] + theTweetend
+
+    print("final_tweet", len(theTweet), theTweet)
     # MAKEATWEET = False
     tweet_meeting(key, theTweet, MAKEATWEET)
+    print()
 
 
 print("<----------------End of process - Tweeter.py----------------->")
