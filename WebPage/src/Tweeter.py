@@ -16,7 +16,7 @@ import datetime as dt
 
 
 VERSION = "1,0"
-LOOKAHEAD = 7  # Number of the days to look ahead for meetings
+LOOKAHEAD = 7  # Number of the days to look ahead for meetings. Program witten for a week.
 MAKEATWEET = True
 MAXTWEETSIZE = 280      # Maximums size for a tweet#
 TWEETURLSIZE = 23       # Size of a URL
@@ -65,7 +65,8 @@ def read_dot_tweeter():  # Read the .tweeter file in the home directory to get t
     return key
 
 
-def tweet_meeting(key, message, doatweet):    # Tweet to the world
+def tweet_meeting(key, message, doatweet, the_image):    # Tweet to the world
+    # Docs https://python-twitter.readthedocs.io/en/latest/twitter.html?highlight=postupdate
     encoding = None
     key = read_dot_tweeter()  # Fetch the code values from  ~.tweeter
     consumer_key = key[0]
@@ -83,8 +84,8 @@ def tweet_meeting(key, message, doatweet):    # Tweet to the world
     if doatweet:
         did_tweet = False
         try:
-            status = api.PostUpdate(message, verify_status_length=False)
-            print(status)
+            the_image = "http://councilmatic.aws.openoakland.org/images/tweets/image1.png"
+            status = api.PostUpdate(message, verify_status_length=False, media=the_image)
         except UnicodeDecodeError:
             print("Your message could not be encoded.  Perhaps it contains non-ASCII characters? ")
             print("Try explicitly specifying the encoding with the --encoding flag")
@@ -141,31 +142,36 @@ tomorrow_day = str(tomorrow.month) + '/' + str(tomorrow.day) + '/' + str(tomorro
 
 for i in range(numrows - 1, -1, -1):
     event_day = schedule[i][1]
+    print("Meeting Date:", event_day)
     day_datetime = datetime.strptime(event_day, '%m/%d/%Y')
-    day_label = datetime.date(day_datetime).weekday()
-    day_of_week = calendar.day_name[day_label]
-    if event_day == today_day:
-        day_of_week = "Today"
-    elif event_day == tomorrow_day:
-        day_of_week = "Tomorrow"
+    days = int((day_datetime - today).days)  # of days awas from today
+    if days >= 0 and days < LOOKAHEAD:
+        day_label = datetime.date(day_datetime).weekday()
+        day_of_week = calendar.day_name[day_label]
+        if event_day == today_day:
+            day_of_week = "Today"
+        elif event_day == tomorrow_day:
+            day_of_week = "Tomorrow"
 
-    committee = schedule[i][0]
-    if "City Council" in committee:
-        committee = "City Council - (" + committee + ")"
-    agenda = schedule[i][6]
-    theTweet1 = day_of_week + " at " + schedule[i][3]+ " Oakland " + committee
-    theTweetend = " Meeting. Agenda is " + agenda + " " + random_string(2)
-    theTweet = theTweet1 + theTweetend
-    maximumCouncilTweet = MAXTWEETSIZE - min(TWEETURLSIZE - len(agenda), TWEETURLSIZE)  # Twitter has a fixed URL Size
-    extra_chars = len(theTweet) - maximumCouncilTweet
-    if extra_chars > 0:  # Trim the Tweet to the maximum size
-        theTweet = theTweet1[:-extra_chars] + theTweetend
+        committee = schedule[i][0]
+        if "City Council" in committee:
+            committee = "City Council - (" + committee + ")"
+        agenda = schedule[i][6]
+        theTweet1 = day_of_week + " at " + schedule[i][3]+ " Oakland " + committee
+        if "CANCELLED" in theTweet1:   # Don't put the agenda if cancelled
+            theTweetend = " Meeting, "+ random_string(2)
+        else:
+            theTweetend = " Meeting. Agenda is " + agenda + " " + random_string(2)
+        theTweet = theTweet1 + theTweetend
+        maximumCouncilTweet = MAXTWEETSIZE - min(TWEETURLSIZE - len(agenda), TWEETURLSIZE)  # Twitter has a fixed URL Size
+        extra_chars = len(theTweet) - maximumCouncilTweet
+        if extra_chars > 0:  # Trim the Tweet to the maximum size
+            theTweet = theTweet1[:-extra_chars] + theTweetend
+        print("The Tweet:", len(theTweet), theTweet)
 
-    print("final_tweet", len(theTweet), theTweet)
-    # MAKEATWEET = False
-    tweet_meeting(key, theTweet, MAKEATWEET)
-    print()
-
+        MAKEATWEET = False
+        tweet_meeting(key, theTweet, MAKEATWEET, "temp")
+        print()
 
 print("<----------------End of process - Tweeter.py----------------->")
 print(" ")
