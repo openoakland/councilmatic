@@ -7,79 +7,12 @@ from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re
 
 from .scraper import Scraper
-from ..model.meeting_file import MeetingFile
-from ..model.meeting_file_bridge import MeetingFileBridge
+from ..controller.meeting_details import MeetingDetails
 from ..model.calendar import Calendar as CalendarModel
 
 class Calendar(Scraper):
-    def __init__(self, default_url='https://oakland.legistar.com/Calendar.aspx', wait=30, driver=None):
-        super().__init__(default_url, wait, driver)   
-
-    def get_files(self, calendar_events):
-        #get all city council files referenced in the calendar events.
-        bridges = []
-        meeting_files = {}
-        #for testing
-        for calendar_event in calendar_events[:10]:
-            self.get_meeting_files(calendar_event, meeting_files, bridges)
-        '''
-        for calendar_event in calendar_events:
-            self.get_meeting_files(calendar_event, meeting_files, bridges)
-        '''
-
-        return (meeting_files,bridges)
-    
-
-    def get_meeting_files(self, calendar_event, meeting_files, bridges):
-        #gets file links referenced in a particular meeting
-        
-        try:
-            self.get(calendar_event.meeting_details)
-        except:
-            print('event {name} has no more details link'.format(name = calendar_event.name))
-            return
-      
-        #ctl00_ContentPlaceHolder1_gridMain_ctl00
-        rows = self.driver.find_elements(By.XPATH, 
-                    "//div[@id='ctl00_ContentPlaceHolder1_gridMain']//table[@class='rgMasterTable']/tbody/tr")
-        
-        
-        for row in rows:
-            #get each column of the row
-            cols = row.find_elements(By.XPATH, 'td')
-            
-            
-            if cols is not None and len(cols) > 0:
-                # extract data
-                number = cols[0].text
-                if number not in meeting_files:
-                    
-                    version = cols[1].text
-                    agenda_number = cols[2].text
-                    name = cols[3].text
-                    doc_type = cols[4].text
-                    title = cols[5].text
-                    action = cols[6].text
-                    result = cols[7].text
-                    action_details = cols[8].text
-                    video = self.get_video_link(self.base_url, cols[9])
-                    #there's more here to grab as well.
-                    #link = self.get_meeting_file_link(self.elt_get_href(cols[0]))
-                    link = self.elt_get_href(cols[0])
-
-                    
-            
-                    meeting_file =  MeetingFile(number = number, version = version, agenda_number = agenda_number, name = name,
-                        doc_type= doc_type, title = title, action =  action, result = result,
-                        action_details = action_details, video = video, link = link)
-                   
-                    meeting_files[meeting_file.number] = meeting_file
-                    
-                bridges.append(MeetingFileBridge(calendar_event, meeting_files[number]))   
-        
-
-                    
-        
+    def __init__(self, default_url='https://oakland.legistar.com/Calendar.aspx', wait=5, driver=None):
+        super().__init__(default_url=default_url, wait=wait, driver=driver)   
 
     def get_search_input_elt(self, highlight=False, sleep_time=2):
         search_input_elt = self.driver.find_element(By.XPATH, "//input[@name='ctl00$ContentPlaceHolder1$txtSearch']")
@@ -156,25 +89,14 @@ class Calendar(Scraper):
 
         return self.scrape_pages(sleep_time=sleep_time)
 
-    def get_video_link(self, base_url, video_elt):
-        if video_elt is None:
-            return None
+    def get_meeting_details(self, url, wait=5):
+        mdc = MeetingDetails(url=url, wait=wait)
+        mdc.go_to_meeting_details_page()
+        meeting_details = mdc.scrape_page()
 
-        link_elt = video_elt.find_element(By.TAG_NAME, 'a')
-        if link_elt is None:
-            return None
+        mdc.close()
 
-        onclick_str = link_elt.get_attribute('onclick')
-        if onclick_str is None or onclick_str == "":
-            return None 
-
-        video_links = re.findall(r"'(.*?)'",  onclick_str)
-        if video_links is None or len(video_links) == 0:
-            return None
-
-        return "%s%s" % (base_url, video_links[0])
-    
-
+        return meeting_details
 
     def _scrape_page(self):
         calendar_list = []
@@ -188,7 +110,9 @@ class Calendar(Scraper):
             cols = row.find_elements(By.XPATH, 'td')
 
             if cols is not None and len(cols) > 0:
-                # extract data
+                if cols[0].text == "No records to display.":
+                    break
+                    
                 name = cols[0].text
                 meeting_date = cols[1].text
 
@@ -198,11 +122,16 @@ class Calendar(Scraper):
                 meeting_time = cols[3].text
 
                 meeting_location = cols[4].text
-                meeting_details = self.elt_get_href(cols[5])
+
+                meeting_details_url = self.elt_get_href(cols[5])
+                meeting_details = None
+                if meeting_details_url is not None and meeting_details_url != '':
+                    meeting_details = self.get_meeting_details(meeting_details_url, wait=self.wait_time)
+
                 agenda = self.elt_get_href(cols[6])
                 minutes = self.elt_get_href(cols[7])
 
-                video = self.get_video_link(self.base_url, cols[8])
+                video = self.get_video_link(cols[8])
                 eComment = self.elt_get_href(cols[9])
             
                 #create calendar event data storage object.
@@ -227,12 +156,6 @@ class Calendar(Scraper):
         calendar_list = self.query(date_sel="2018", closed_caption=True)
         cl_json = CalendarModel.to_map_list_json(calendar_list)
         print(cl_json)
-        
-        files = self.get_files(calendar_list)
-        
-        print('~~~~~~~~~~~~~~~~~~~~')
-        print(files[0])
-        
 
 def main():
     cal = Calendar()
