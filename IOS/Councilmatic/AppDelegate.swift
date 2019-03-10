@@ -44,9 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // from https://stackoverflow.com/questions/40815641/swift-3-how-to-lock-orientation-for-ios-app
     
     // Lock the orientation to Portrait mode
-    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask(rawValue: UIInterfaceOrientationMask.portrait.rawValue)
-    }
+  //  func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+   //     return UIInterfaceOrientationMask(rawValue: UIInterfaceOrientationMask.portrait.rawValue)
+   // }
 
 }
 

@@ -25,23 +25,12 @@
     <link rel="icon" href="http://www.openoakland.org/wp-content/uploads/2015/11/cropped-logo_240x240-32x32.png" sizes="32x32" />
     <link rel="icon" href="http://www.openoakland.org/wp-content/uploads/2015/11/cropped-logo_240x240-192x192.png" sizes="192x192" />
     <link rel="apple-touch-icon-precomposed" href="http://www.openoakland.org/wp-content/uploads/2015/11/cropped-logo_240x240-180x180.png" />
-    <!-- added by HSM -->
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130660241-1"></script>
-    <script>
-           window.dataLayer = window.dataLayer || [];
-           function gtag(){dataLayer.push(arguments);}
-           gtag('js', new Date());
-
-           gtag('config', 'UA-130660241-1');
-     </script>
-    <!-- end of add by HSM-->
   </head>
 
   <body>
     <div class="container-fluid">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="../2019/city-council.html">
+        <a class="navbar-brand" href="../2019/city-council.html"> <!-- Should not hardcode year -->
           <div class="councilmatic-logo"></div>
           Oakland Councilmatic
         </a>
@@ -126,6 +115,10 @@
                                                   alt="OpenOakland Logo"></div>
             <div style="text-align: center;"><i><br>
               </i></div>
+            <div align="center">
+            <a href="https://twitter.com/OCouncilmatic?ref_src=twsrc%5Etfw" class="twitter-follow-button"
+               data-show-count="false">Follow @OCouncilmatic</a><script
+                    async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> </div>
               <div style="text-align: center;"><i>Disclaimer - Beta Code - Check Accuracy</i><br>
               <font size="-1">Updated: {{ now.strftime("%A, %B %d, %Y at %I:%M %p") }}<br> </font></p>
                 <i> <a href="mailto:councilmatic@openoakland.org?subject=Feedback%20for%20Oakland%20Councilmatic"

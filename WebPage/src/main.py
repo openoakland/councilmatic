@@ -6,7 +6,7 @@ import re
 from jinja2 import Template
 from datetime import datetime
 
-VERSION = "5.2"     # Version of Program
+VERSION = "5.3"     # Version of Program
 MAXYEARS = 10       # Maximum number of years to output
 FIRSTYEAR = 2014    # First year to start
 COMMITTEES = ["City Council", "Rules & Legislation", "Public Works", "Life Enrichment", "Public Safety",
@@ -27,7 +27,6 @@ def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False,
         (date): [{meeting row dict}, {meeting row dict}, ...]
     }
     """
-
     today = datetime.now()
     midnight = datetime.combine(today, datetime.min.time())
     meetings_by_date = {}
@@ -47,13 +46,15 @@ def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False,
             if daydiff < 0:
                 continue
 
-        # skip the meeting if it's a cancellation
-        if skip_cancellations and 'cancellation' in meeting['name'].lower():
-            continue
+        # Do not skip upcoming meetings in the Calendar if they are cancelled
+        if not upcoming_only:
+            # skip the meeting if it's a cancellation
+            if skip_cancellations and 'cancellation' in meeting['name'].lower():
+                continue
 
-        # skip the meeting if there's no `meeting_time` in the agenda:
-        if not meeting['meeting_time']:
-            continue
+            # skip the meeting if there's no `meeting_time` in the agenda:
+            if not meeting['meeting_time']:
+                continue
 
         # add the meeting to the calendar
         if not meeting_date in meetings_by_date:
@@ -63,7 +64,6 @@ def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False,
     for meeting_date in meetings_by_date.keys():
         meetings_by_date[meeting_date].sort(
                 key=lambda m: datetime.strptime(m['meeting_time'], "%I:%M %p"))
-
     return meetings_by_date
 
 
@@ -104,8 +104,8 @@ current_directory = os.path.abspath(os.path.dirname(__file__))
 # first.
 current_year = datetime.now().year
 scraped_file = os.path.join(CURRENT_DIRECTORY, '../website/scraped/year{}.csv'.format(current_year))
-scraped_data = list(csv.DictReader(open(scraped_file, encoding="utf-8"),
-    delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL, skipinitialspace=True))
+scraped_data = list(csv.DictReader(open(scraped_file, encoding="utf-8"), delimiter=',', quotechar='"',
+                                   quoting=csv.QUOTE_ALL, skipinitialspace=True))
 current_year = datetime.now().year   # Automatically  update (probably need to increase year in December
 int_current_year = int(current_year) + 1
 if int_current_year - FIRSTYEAR > MAXYEARS:
@@ -122,8 +122,8 @@ sidebar_items = load_meetings(scraped_data, upcoming_only=True)
 for year in YEARS:
     # load the CSV for the year
     scraped_file = os.path.join(CURRENT_DIRECTORY, '../website/scraped/year{}.csv'.format(year))
-    scraped_data = list(csv.DictReader(open(scraped_file, encoding="utf-8"),
-        delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL, skipinitialspace=True))
+    scraped_data = list(csv.DictReader(open(scraped_file, encoding="utf-8"), delimiter=',', quotechar='"',
+                                       quoting=csv.QUOTE_ALL, skipinitialspace=True))
 
     # generate a page for each committee in that year
     for committee_name in COMMITTEES:

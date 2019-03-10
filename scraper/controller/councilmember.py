@@ -12,7 +12,7 @@ from ..model.councilmember import CouncilMember as CouncilMemberModel
 from ..model.department import Department as DepartmentModel
 
 class CouncilMember(Scraper):
-    def __init__(self, default_url='https://oakland.legistar.com/Calendar.aspx', wait=30, driver=None):
+    def __init__(self, default_url='https://oakland.legistar.com/Calendar.aspx', wait=5, driver=None):
         #Started selenium on legistar calendar webpage. Since the city council page generates an ID for the url
         #and I am not sure that the ID is persistent or changing.
         super().__init__(default_url, wait, driver)   
@@ -71,17 +71,6 @@ class CouncilMember(Scraper):
             email = cols[5].text
             website = cols[6].text
             appointed_by = cols[7].text
-
-            """
-            print("department name", department_name)
-            print("name: ", name)
-            print("title: ", title)
-            print("start_date: ", start_date)
-            print("end_date: ", end_date) 
-            print("email: ", email)
-            print("website: ", website)
-            print("appointed_by ", appointed_by)
-            """
 
             department = DepartmentModel(department_name, title,
                                             start_date, end_date, appointed_by)

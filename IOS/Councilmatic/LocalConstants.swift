@@ -15,6 +15,6 @@ struct Constants {
     
     // The format is User_Name:Password:Website
     // for instance "http://user:password@aws.xyx.org"
-    static let AWSwebsite: String = "http://councilmatic.aws.openoakland.org/mobile/"
+    static let AWSwebsite: String = "http://councilmatic.aws.openoakland.org/pc/"
 }
 
