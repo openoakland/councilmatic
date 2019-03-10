@@ -86,7 +86,8 @@ fi
 # of this shell script
 # Last ScraperUpdate.sh OSX was #VERSION="3.3"
 # Last ScraperUpdateAWS.sh Ubuntu was VERSION="3.5"
-VERSION="3.7" # for ScraperUpdate2.sh
+# Version 3.8 introduces images for tweets
+VERSION="3.8" # for ScraperUpdate2.sh
 
 echo "Version "$VERSION" of ScraperUpdate2.sh" 			#Clear cron log file
 
@@ -141,6 +142,8 @@ else
 	# Copy files to actual website
 	echo "Copying files to actual website"
 	sudo cp -R /home/howard/Councilmatic/WebPage/website/* /var/www/councilmatic/
+	rm -f /home/howard/Councilmatic/WebPage/website/images/tweets/*   #remove files from local tweet directory	
+	sudo sh -c 'ls --format single-column /var/www/councilmatic/images/tweets/ > /var/www/councilmatic/images/tweets/filelist.txt' 
 fi
 
 
