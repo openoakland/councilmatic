@@ -13,7 +13,7 @@ import random
 import csv
 from datetime import datetime, timedelta
 import datetime as dt
-
+import requests
 
 VERSION = "1,0"
 LOOKAHEAD = 7  # Number of the days to look ahead for meetings. Program witten for a week.
@@ -55,6 +55,21 @@ def read_csv_file(datafile, elements):
     return elements
 
 
+def pick_image_directory(): # Return an image at random (This should be initialized first to be faster)
+    target = "http://councilmatic.aws.openoakland.org/images/tweets/"
+    index = "filelist.txt"
+    target_url = target + index
+    response = requests.get(target_url)
+    filelist = []
+    for line in response.iter_lines():
+        file_url = line.decode("utf-8")
+        file_url = file_url.replace(" ", "%20")
+        if file_url != index:
+            filelist.append(target + file_url)
+    index = random.randint(0, len(filelist)-1)
+    return(filelist[index])
+
+
 def read_dot_tweeter():  # Read the .tweeter file in the home directory to get the keys to the twitter account
     path = os.path.expanduser('~') + "/.tweeter"
     file = open(path, "r")
@@ -84,7 +99,6 @@ def tweet_meeting(key, message, doatweet, the_image):    # Tweet to the world
     if doatweet:
         did_tweet = False
         try:
-            the_image = "http://councilmatic.aws.openoakland.org/images/tweets/image1.png"
             status = api.PostUpdate(message, verify_status_length=False, media=the_image)
         except UnicodeDecodeError:
             print("Your message could not be encoded.  Perhaps it contains non-ASCII characters? ")
@@ -105,8 +119,6 @@ def random_string(length):      # Return a random string
 
 print(" ")
 print("<---------Running Software Version:", VERSION, "- Tweeter.py ----------->")
-
-
 key = read_dot_tweeter()   # Read the permissions for sending the Tweet
 currentDay = datetime.now().day
 currentMonth = datetime.now().month
@@ -161,7 +173,7 @@ for i in range(numrows - 1, -1, -1):
         if "CANCELLED" in theTweet1:   # Don't put the agenda if cancelled
             theTweetend = " Meeting, "+ random_string(2)
         else:
-            theTweetend = " Meeting. Agenda is " + agenda + " " + random_string(2)
+            theTweetend = " Meeting. Agenda is " + agenda + " " + random_string(1)
         theTweet = theTweet1 + theTweetend
         maximumCouncilTweet = MAXTWEETSIZE - min(TWEETURLSIZE - len(agenda), TWEETURLSIZE)  # Twitter has a fixed URL Size
         extra_chars = len(theTweet) - maximumCouncilTweet
@@ -169,8 +181,8 @@ for i in range(numrows - 1, -1, -1):
             theTweet = theTweet1[:-extra_chars] + theTweetend
         print("The Tweet:", len(theTweet), theTweet)
 
-        MAKEATWEET = False
-        tweet_meeting(key, theTweet, MAKEATWEET, "temp")
+        # MAKEATWEET = False     # Keep here so easily can turn off tweeting
+        tweet_meeting(key, theTweet, MAKEATWEET, pick_image_directory())
         print()
 
 print("<----------------End of process - Tweeter.py----------------->")
