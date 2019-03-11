@@ -25,6 +25,8 @@ class MeetingDetails(ModelBase, JsonModel, CSVModel):
             'meeting_items'
             ]    
 
+        self.list_field_class_dict = {'meeting_items': MeetingItem}
+
         self._meeting_name = meeting_name
         self.meeting_datetime = meeting_datetime
         self._meeting_location = meeting_location

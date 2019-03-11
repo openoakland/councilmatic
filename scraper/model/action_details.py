@@ -2,15 +2,17 @@ from scraper.model import ModelBase, CSVModel, JsonModel
 from scraper.model.vote_item import VoteItem 
 
 class ActionDetails(ModelBase, JsonModel, CSVModel):
-    def __init__(self, file_num, file_url, version, action_type, title, 
-                mover, seconder, result, agenda_note, minute_note,
-                action, action_text, vote_items=None):
+    def __init__(self, file_num=None, file_url=None, version=None, action_type=None, title=None, 
+                mover=None, seconder=None, result=None, agenda_note=None, minute_note=None,
+                action=None, action_text=None, vote_items=None):
         super().__init__()
 
         self.field_names = [
             "file_num", "file_url", "version", "action_type", "title", 
             "mover", "seconder", "result", "agenda_note", "minute_note",
             "action", "action_text", "vote_items"]    
+
+        self.list_field_class_dict = {"vote_items": VoteItem}
 
         self.file_num = file_num
         self.file_url = file_url

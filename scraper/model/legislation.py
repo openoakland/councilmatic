@@ -1,8 +1,8 @@
 from scraper.model import ModelBase, CSVModel, JsonModel
 
 class Legislation(ModelBase, JsonModel):
-    def __init__(self, file_num, file_link, legislation_type, status, file_created, 
-                    final_action, title):
+    def __init__(self, file_num=None, file_link=None, legislation_type=None, status=None,
+                    file_created=None, final_action=None, title=None):
         super().__init__()
 
         self.defined_fields = [

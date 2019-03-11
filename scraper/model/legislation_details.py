@@ -1,10 +1,10 @@
 from scraper.model import ModelBase, CSVModel, JsonModel
 
 class LegislationDetails(ModelBase, JsonModel, CSVModel):
-    def __init__(self, file_num, version, legislation_details_name,
-                  legislation_detail_type, status, file_created,
-                  in_control, on_agenda, final_action,
-                  title, attachments=None, legislation_details_history=None):
+    def __init__(self, file_num=None, version=None, legislation_details_name=None,
+                  legislation_detail_type=None, status=None, file_created=None,
+                  in_control=None, on_agenda=None, final_action=None,
+                  title=None, attachments=None, legislation_details_history=None):
         super().__init__()
 
         self.field_names = [

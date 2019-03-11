@@ -1,9 +1,9 @@
 from scraper.model import ModelBase, CSVModel, JsonModel
 
 class CouncilMember(ModelBase, JsonModel, CSVModel):
-    def __init__(self, name, email, website, 
-                                departments = {}, 
-                                last_member_start_date = None):
+    def __init__(self, name=None, email=None, website=None, 
+                    departments = {}, 
+                    last_member_start_date = None):
         super().__init__()
 
         self.field_names = [

@@ -1,9 +1,10 @@
 from scraper.model import ModelBase, CSVModel, JsonModel
+from scraper.model.meeting_details import MeetingDetails
 
 class Calendar(ModelBase, JsonModel, CSVModel):
-    def __init__(self, name, meeting_date, calendar_link, 
-        meeting_time, meeting_location, meeting_details, agenda, 
-        minutes, video, eComment):
+    def __init__(self, name=None, meeting_date=None, calendar_link=None, 
+        meeting_time=None, meeting_location=None, meeting_details=None, agenda=None, 
+        minutes=None, video=None, eComment=None):
         super().__init__()
 
         self.field_names = [
@@ -17,6 +18,8 @@ class Calendar(ModelBase, JsonModel, CSVModel):
             'minutes', 
             'video', 
             'eComment']    
+
+        self.field_class_dict = {"meeting_details": MeetingDetails}
 
         self._name = name
         self.meeting_date = meeting_date
