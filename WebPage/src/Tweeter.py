@@ -20,6 +20,7 @@ LOOKAHEAD = 7  # Number of the days to look ahead for meetings. Program witten f
 MAKEATWEET = True
 MAXTWEETSIZE = 280      # Maximums size for a tweet#
 TWEETURLSIZE = 23       # Size of a URL
+HASHTAG = "#oakmtg"     # Hashtag to use
 
 '''
 This runs off a a file  ".tweeter"  which resides in your home directory.  The format is below
@@ -177,9 +178,9 @@ for i in range(-1, numrows):
             agenda = schedule[i][6]
             theTweet1 = day_of_week + " " + event_day + " at " + schedule[i][3] + " Oakland " + committee
             if "CANCELLED" in theTweet1:   # Don't put the agenda if cancelled
-                theTweetend = " Meeting, #OakMtg "+ random_string(2)
+                theTweetend = " Meeting, " + HASHTAG  + " " + random_string(2)
             else:
-                theTweetend = " Meeting. Agenda is " + agenda + " #OakMtg " + random_string(1)
+                theTweetend = " Meeting. Agenda is " + agenda + " " + HASHTAG + " " + random_string(1)
             theTweet = theTweet1 + theTweetend
             maximumCouncilTweet = MAXTWEETSIZE - min(TWEETURLSIZE - len(agenda), TWEETURLSIZE)  # Twitter has a fixed URL Size
             extra_chars = len(theTweet) - maximumCouncilTweet
