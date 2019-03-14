@@ -157,7 +157,6 @@ tomorrow_day = str(tomorrow.month) + '/' + str(tomorrow.day) + '/' + str(tomorro
 
 for i in range(-1, numrows):
     event_day = schedule[i][1]
-    print("examinging", event_day)
     print("Meeting Date:", event_day)
     day_datetime = datetime.strptime(event_day, '%m/%d/%Y')
     days = int((day_datetime - today).days) + 1 # of days awas from today
@@ -178,9 +177,9 @@ for i in range(-1, numrows):
             agenda = schedule[i][6]
             theTweet1 = day_of_week + " " + event_day + " at " + schedule[i][3] + " Oakland " + committee
             if "CANCELLED" in theTweet1:   # Don't put the agenda if cancelled
-                theTweetend = " Meeting, "+ random_string(2)
+                theTweetend = " Meeting, #OakMtg "+ random_string(2)
             else:
-                theTweetend = " Meeting. Agenda is " + agenda + " " + random_string(1)
+                theTweetend = " Meeting. Agenda is " + agenda + " #OakMtg " + random_string(1)
             theTweet = theTweet1 + theTweetend
             maximumCouncilTweet = MAXTWEETSIZE - min(TWEETURLSIZE - len(agenda), TWEETURLSIZE)  # Twitter has a fixed URL Size
             extra_chars = len(theTweet) - maximumCouncilTweet
