@@ -30,7 +30,6 @@ def read_csv_file(datafile, elements):
                 for j in range(0, 10):    # date within range
                     elements[out_index_start + i - 1].append(0)
                     elements[out_index_start + i - 1][j] = data[i][j]
-
     return elements
 
 def write_day_header(f2, day1, day2):
