@@ -46,7 +46,7 @@ python run_calendar.py -h
 ### Scrape a single year
 
 ```
-python run_calendar.py -d 2018 > WebPage/website/scraped/year2018.csv
+python run_calendar.py -d 2018 > WebPage/website/scraped/year2018.json
 ```
 
 ### By Search Words Example (2018)
@@ -64,7 +64,7 @@ python run_calendar.py -d 2018 -s "parking"
 ### Save as CSV Example
 
 ```
-python run_calendar.py -d 2018 -s "parking" > parking2018.csv
+python run_calendar.py -d 2018 -s "parking" > parking2018.json
 ```
 
 ### To create the web page
@@ -84,7 +84,6 @@ jupyter notebook calendar.ipynb
   http://councilmatic.aws.openoakland.org/pc/
 2. Mobile access
 http://councilmatic.aws.openoakland.org/mobile/
-  <br>
 
 # Milestones:
 1. to have a web scraping library.
@@ -92,7 +91,7 @@ http://councilmatic.aws.openoakland.org/mobile/
   * need to scrape data from the city council table, city council events(aka city meetings, the calendar page) table and the legislation page.
   * scrapers inherit from the scraper class and use selenium to naviagate to the pages, which might require javascript and access web content inside tables on the page.
   * store in models(that are decoupled from DB).
-  <br>
+  
  next milestones...
  might want to have some kind of user interface.(note: almost done with the first milestone)
 
