@@ -58,7 +58,7 @@ fi
 #
 cd $DIR
 pwd
-
+rm geckodriver.log   #This file gets big quickly
 # Here is the DATE-RELATED year-gathering code, deal with differences in Darwin vs. Ubuntu date command.
 
 if [ $LINUXTYPE = $ISDARWIN ]; then
