@@ -27,7 +27,17 @@
 # Finally, compare $LINUXTYPE to $ISDARWIN.
 # if equal, we are running local Mac OSX/Darwin, else assume Ubuntu/AWS
 
-ISDARWIN='Darwin' 
+
+# VERSION was set differently for OSX vs. Ubuntu, but I think this is just the version
+# of this shell script
+
+# Last ScraperUpdate.sh OSX was #VERSION="3.3"
+# Last ScraperUpdateAWS.sh Ubuntu was VERSION="3.5"
+# Version 3.8 introduces images for tweets
+# Version 3.9 allows for csv or jason.  Does not produce a file if a crash
+
+VERSION="3.9" # for ScraperUpdate2.sh
+ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 if [ $LINUXTYPE = $ISDARWIN ]; then
 	echo "ScraperUpdate2.sh is Running under Mac OSX/Darwin"
@@ -48,7 +58,7 @@ fi
 #
 cd $DIR
 pwd
-
+rm geckodriver.log   #This file gets big quickly
 # Here is the DATE-RELATED year-gathering code, deal with differences in Darwin vs. Ubuntu date command.
 
 if [ $LINUXTYPE = $ISDARWIN ]; then
@@ -82,26 +92,33 @@ if [ $LINUXTYPE = $ISDARWIN ]; then
 	export PATH
 fi
 
-# VERSION was set differently for OSX vs. Ubuntu, but I think this is just the version 
-# of this shell script
-# Last ScraperUpdate.sh OSX was #VERSION="3.3"
-# Last ScraperUpdateAWS.sh Ubuntu was VERSION="3.5"
-# Version 3.8 introduces images for tweets
-VERSION="3.8" # for ScraperUpdate2.sh
 
 echo "Version "$VERSION" of ScraperUpdate2.sh" 			#Clear cron log file
 
 #
 #Get a list of current dates
 #
+unlink scraper
+ROOT="scraper_"
+CHOICE="csv"
+SCRAPER_DIRECTORY=$ROOT$CHOICE
+echo "Creating a "$CHOICE" file"
+ln -s $SCRAPER_DIRECTORY scraper
 date
 $PYTHON run_calendar.py --show_dates > $CRONDIR/temp.tmp
 #
 # Scrape the current year if it exists
 #
 if `grep -q "$CURRENTYEAR" "$CRONDIR/temp.tmp"`; then
-    echo "Processing current year scraper file"
-   $PYTHON  run_calendar.py -d "$CURRENTYEAR"  > WebPage/website/scraped/year"$CURRENTYEAR".csv
+   echo "Processing current year scraper file"
+   $PYTHON  run_calendar.py -d "$CURRENTYEAR"  > WebPage/website/scraped/temp1."$CHOICE"
+   retVal=$?
+   if [ $retVal -ne 0 ]; then
+        echo "Scraper error. Will ignore"
+   else
+        mv WebPage/website/scraped/temp1."$CHOICE" WebPage/website/scraped/year"$CURRENTYEAR"."$CHOICE"
+        echo "Successful scraper file"
+   fi
 fi
 #
 # Check if December
@@ -110,14 +127,29 @@ if [ "$CURRENTMONTH" == "12" ];then
         echo "This month is December"
     if `grep -q "$NEXTYEAR" "$CRONDIR/temp.tmp"`; then
         echo "Processing next year"
-        $PYTHON  run_calendar.py -d "$NEXTYEAR"  > WebPage/website/scraped/year"$NEXTYEAR".csv
+        $PYTHON  run_calendar.py -d "$NEXTYEAR"  > WebPage/website/scraped/temp2."$CHOICE"
+        retVal=$?
+        if [ $retVal -ne 0 ]; then
+            echo "Scraper error. Will ignore"
+        else
+            mv WebPage/website/scraped/temp2."$CHOICE" WebPage/website/scraped/year"$NEXTYEAR"."$CHOICE"
+            echo "Successful scraper file"
+        fi
     else
         echo "Next year file not ready"
     fi
+
 elif [ "$CURRENTMONTH" == "1" ];then
     if `grep -q "$LASTYEAR" "$CRONDIR/temp.tmp"`; then
         echo "Current month is January - Processing last year"
-        $PYTHON  run_calendar.py -d "$LASTYEAR"  > WebPage/website/scraped/year"$LASTYEAR".csv
+        $PYTHON  run_calendar.py -d "$LASTYEAR"  > WebPage/website/scraped/temp3."$CHOICE"
+        retVal=$?
+        if [ $retVal -ne 0 ]; then
+            echo "Scraper error. Will ignore"
+        else
+            mv WebPage/website/scraped/temp3."$CHOICE" WebPage/website/scraped/year"$LASTYEAR"."$CHOICE"
+            echo "Successful scraper file"
+        fi
     else
         echo "Previous year not available"
     fi
