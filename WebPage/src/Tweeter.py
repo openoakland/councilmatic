@@ -188,7 +188,7 @@ for i in range(0, numrows):
                 theTweet = theTweet1[:-extra_chars] + theTweetend
             print("The Tweet for", day_of_week, "is:", len(theTweet), theTweet)
 
-            MAKEATWEET = False     # Keep here so easily can turn off tweeting
+            # MAKEATWEET = False     # Keep here so easily can turn off tweeting
             tweet_meeting(key, theTweet, MAKEATWEET, pick_image_directory())
             print()
 
