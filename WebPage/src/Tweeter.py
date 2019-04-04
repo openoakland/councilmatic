@@ -15,7 +15,7 @@ from datetime import datetime, timedelta
 import datetime as dt
 import requests
 
-VERSION = "1.2"
+VERSION = "1.3"
 LOOKAHEAD = 7  # Number of the days to look ahead for meetings. Program witten for a week.
 MAKEATWEET = True
 MAXTWEETSIZE = 280      # Maximums size for a tweet#
@@ -156,12 +156,11 @@ tomorrow = today + timedelta(days=1)
 today_day = str(today.month) + '/' + str(today.day) + '/' + str(today.year)
 tomorrow_day = str(tomorrow.month) + '/' + str(tomorrow.day) + '/' + str(tomorrow.year)
 
-for i in range(-1, numrows):
+for i in range(0, numrows):
     event_day = schedule[i][1]
     print("Meeting Date:", event_day)
     day_datetime = datetime.strptime(event_day, '%m/%d/%Y')
     days = int((day_datetime - today).days) + 1 # of days awas from today
-    print("days", days)
     if days >= 0 and days < LOOKAHEAD + 1:
         day_label = datetime.date(day_datetime).weekday()
         day_of_week = calendar.day_name[day_label]
@@ -170,8 +169,8 @@ for i in range(-1, numrows):
         elif event_day == tomorrow_day:
             day_of_week = "Tomorrow"
 
-        if day_of_week == "Today" or "Tomorrow" or today_day_of_week:  # Only tweet if Today,
-                                                                       # tomorrow, or same day of week
+        if days == 7 or day_of_week == "Today" or day_of_week == "Tomorrrow":   # Only tweet if today,
+                                                                                # tomorrow, or same day of week
             committee = schedule[i][0]
             if "City Council" in committee:
                 committee = "City Council - (" + committee + ")"
@@ -187,9 +186,9 @@ for i in range(-1, numrows):
             extra_chars = len(theTweet) - maximumCouncilTweet
             if extra_chars > 0:  # Trim the Tweet to the maximum size
                 theTweet = theTweet1[:-extra_chars] + theTweetend
-            print("The Tweet:", len(theTweet), theTweet)
+            print("The Tweet for", day_of_week, "is:", len(theTweet), theTweet)
 
-            # MAKEATWEET = False     # Keep here so easily can turn off tweeting
+            MAKEATWEET = False     # Keep here so easily can turn off tweeting
             tweet_meeting(key, theTweet, MAKEATWEET, pick_image_directory())
             print()
 
