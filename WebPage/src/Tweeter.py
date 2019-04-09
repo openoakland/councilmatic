@@ -15,7 +15,7 @@ from datetime import datetime, timedelta
 import datetime as dt
 import requests
 
-VERSION = "1.3"
+VERSION = "1.4"
 LOOKAHEAD = 7  # Number of the days to look ahead for meetings. Program witten for a week.
 MAKEATWEET = True
 MAXTWEETSIZE = 280      # Maximums size for a tweet#
@@ -168,8 +168,7 @@ for i in range(0, numrows):
             day_of_week = "Today"
         elif event_day == tomorrow_day:
             day_of_week = "Tomorrow"
-
-        if days == 7 or day_of_week == "Today" or day_of_week == "Tomorrrow":   # Only tweet if today,
+        if days == 7 or day_of_week == "Today" or day_of_week == "Tomorrow":   # Only tweet if today,
                                                                                 # tomorrow, or same day of week
             committee = schedule[i][0]
             if "City Council" in committee:
