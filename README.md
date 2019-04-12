@@ -49,6 +49,12 @@ python run_calendar.py -h
 python run_calendar.py -d 2018 > WebPage/website/scraped/year2018.json
 ```
 
+### Scrape a single year and filter by date range
+
+```
+python run_calendar.py -d 2019 -sdt 1/1/2019 -edt 1/14/2019 > WebPage/website/scraped/cal01012019_01142019.json
+```
+
 ### By Search Words Example (2018)
 
 ```
@@ -61,10 +67,10 @@ python run_calendar.py -s "parking"
 python run_calendar.py -d 2018 -s "parking"
 ```
 
-### Save as CSV Example
+### Save as CSV Example (deprecated)
 
 ```
-python run_calendar.py -d 2018 -s "parking" > parking2018.json
+python run_calendar.py -d 2018 -s "parking" > parking2018.csv
 ```
 
 ### To create the web page

@@ -5,14 +5,19 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re
+from datetime import datetime
 
 from .scraper import Scraper
 from ..controller.meeting_details import MeetingDetails
 from ..model.calendar import Calendar as CalendarModel
 
 class Calendar(Scraper):
-    def __init__(self, default_url='https://oakland.legistar.com/Calendar.aspx', wait=5, driver=None):
+    def __init__(self, default_url='https://oakland.legistar.com/Calendar.aspx', wait=5, driver=None,
+                    start_dt=None, end_dt=None):
         super().__init__(default_url=default_url, wait=wait, driver=driver)   
+
+        self.start_dt = start_dt
+        self.end_dt = end_dt
 
     def get_search_input_elt(self, highlight=False, sleep_time=2):
         search_input_elt = self.driver.find_element(By.XPATH, "//input[@name='ctl00$ContentPlaceHolder1$txtSearch']")
@@ -92,11 +97,39 @@ class Calendar(Scraper):
     def get_meeting_details(self, url, wait=5):
         mdc = MeetingDetails(url=url, wait=wait)
         mdc.go_to_meeting_details_page()
-        meeting_details = mdc.scrape_page()
+        meeting_details  = mdc.scrape_page()
 
         mdc.close()
 
         return meeting_details
+
+    def is_meeting_date_past_range(self, meeting_date, end_dt):
+        if end_dt is None:
+            return False
+
+        try:
+            meeting_dt = datetime.strptime(meeting_date, "%m/%d/%Y")
+
+            return (meeting_dt >= end_dt)
+        except Exception as e:
+            return False            
+                        
+    def is_meeting_date_in_range(self, meeting_date, start_dt, end_dt):
+        if start_dt is None and end_dt is None:
+            return True
+
+        try:
+            meeting_dt = datetime.strptime(meeting_date, "%m/%d/%Y")
+
+            if start_dt is not None and end_dt is not None:
+                return (meeting_dt >= start_dt and meeting_dt < end_dt)
+            elif start_dt is None:
+                return (meeting_dt < end_dt)
+            else:
+                return (meeting_dt >= start_dt)
+        except Exception as e:
+            print(e)
+            return False
 
     def _scrape_page(self):
         calendar_list = []
@@ -113,35 +146,35 @@ class Calendar(Scraper):
                 if cols[0].text == "No records to display.":
                     break
                     
-                name = cols[0].text
                 meeting_date = cols[1].text
 
-                calendar_link = self.elt_get_href(cols[2])
+                if self.is_meeting_date_in_range(meeting_date, self.start_dt, self.end_dt):
+                    name = cols[0].text
+                    calendar_link = self.elt_get_href(cols[2])
 
-        
-                meeting_time = cols[3].text
+                    meeting_time = cols[3].text
 
-                meeting_location = cols[4].text
+                    meeting_location = cols[4].text
 
-                meeting_details_url = self.elt_get_href(cols[5])
-                meeting_details = None
-                if meeting_details_url is not None and meeting_details_url != '':
-                    meeting_details = self.get_meeting_details(meeting_details_url, wait=self.wait_time)
+                    meeting_details_url = self.elt_get_href(cols[5])
+                    meeting_details = None
+                    if meeting_details_url is not None and meeting_details_url != '':
+                        meeting_details = self.get_meeting_details(meeting_details_url, wait=self.wait_time)
 
-                agenda = self.elt_get_href(cols[6])
-                minutes = self.elt_get_href(cols[7])
+                    agenda = self.elt_get_href(cols[6])
+                    minutes = self.elt_get_href(cols[7])
 
-                video = self.get_video_link(cols[8])
-                eComment = self.elt_get_href(cols[9])
+                    video = self.get_video_link(cols[8])
+                    eComment = self.elt_get_href(cols[9])
             
-                #create calendar event data storage object.
-                calendar = CalendarModel(
-                    name, meeting_date, calendar_link, 
-                    meeting_time, meeting_location, 
-                    meeting_details, agenda, 
-                    minutes, video, eComment)
-                #add to event list
-                calendar_list.append(calendar)
+                    #create calendar event data storage object.
+                    calendar = CalendarModel(
+                        name, meeting_date, calendar_link, 
+                        meeting_time, meeting_location, 
+                        meeting_details, agenda, 
+                        minutes, video, eComment)
+                    #add to event list
+                    calendar_list.append(calendar)
 
         return calendar_list        
 

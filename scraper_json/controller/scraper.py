@@ -105,7 +105,13 @@ class Scraper(ABC):
         err = None
         for i in range(num_of_retries):
             try:
-                return fnc()
+                try:
+                    result = fnc() 
+                    return result
+                except WebDriverException as wde:
+                    # catching WebDriverException
+                    if i >= num_of_retries:
+                        raise wde
             except Exception as ex:
                 traceback.print_exception(type(ex), ex, ex.__traceback__)
                 err = ex
@@ -172,7 +178,9 @@ class Scraper(ABC):
                 self.curr_page_link = pagination_link_dict[page_num_str]
                 self.curr_page_link.click()
                 self.sleep(sleep_time)
-                data += self.scrape_page(num_of_retries, sleep_time=sleep_time)
+
+                result = self.scrape_page(num_of_retries, sleep_time=sleep_time)
+                data += result
 
                 pagination_link_dict = self.get_pagination_link_dict(
                     num_of_retries=num_of_retries,

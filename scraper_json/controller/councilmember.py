@@ -104,7 +104,9 @@ class CouncilMember(Scraper):
                 curr_page_link = pagination_link_dict[page_num_str]
                 curr_page_link.click()
                 self.sleep(sleep_time)
-                data.update(self.scrape_page(num_of_retries, sleep_time=sleep_time))
+
+                result = self.scrape_page(num_of_retries, sleep_time=sleep_time)
+                data.update(result)
 
                 pagination_link_dict = self.get_pagination_link_dict(
                     num_of_retries=num_of_retries,

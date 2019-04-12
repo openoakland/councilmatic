@@ -100,8 +100,15 @@ class MeetingDetails(Scraper):
         published_agenda_elt = self.driver.find_element_by_id("ctl00_ContentPlaceHolder1_tdAgenda")
         published_agenda = self.elt_get_href(published_agenda_elt)
 
-        agenda_packet_elt = self.driver.find_element_by_id("ctl00_ContentPlaceHolder1_tdAgendaPacket")
-        agenda_packet = self.elt_get_href(agenda_packet_elt)
+        agenda_packet = None
+        try:
+            self.wait_for("ctl00_ContentPlaceHolder1_tdAgendaPacket", wait_time=1)
+            agenda_packet_elt = self.driver.find_element_by_id("ctl00_ContentPlaceHolder1_tdAgendaPacket")
+            if agenda_packet_elt is not None:
+                agenda_packet = self.elt_get_href(agenda_packet_elt)
+        except:
+            agenda_packet = None
+
         
         meeting_video_elt = self.driver.find_element_by_id("ctl00_ContentPlaceHolder1_trVideoX")
         meeting_video = self.get_video_link(meeting_video_elt)

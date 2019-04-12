@@ -1,4 +1,5 @@
 import argparse
+from datetime import datetime
 
 from scraper.controller.calendar import Calendar
 from scraper.model.calendar import Calendar as CalendarModel
@@ -13,6 +14,8 @@ def get_args():
                         default="")
   parser.add_argument("-d", "--date", help="date", type=str,
                         default="All Years")
+  parser.add_argument("-sdt", "--start_dt", help="start_dt - fine grain date filter for start date (mm/dd/yyyy)", type=str, default=None)
+  parser.add_argument("-edt", "--end_dt", help="end_dt - fine grain date filter for end date (mm/dd/yyyy)", type=str, default=None)
   parser.add_argument("-dn", "--dept", help="dept name", type=str, 
                         default="All Departments")
   parser.add_argument("-n", "--notes", help="notes flag (i.e. 0, 1)", type=int,
@@ -46,7 +49,11 @@ def show_depts():
     print(dept_str)
 
 def scrape(args):
-  cal = Calendar()
+  start_dt = None if args.start_dt is None else datetime.strptime(args.start_dt, "%m/%d/%Y")
+  end_dt = None if args.end_dt is None else datetime.strptime(args.end_dt, "%m/%d/%Y")
+
+  cal = Calendar(start_dt=start_dt, end_dt=end_dt)
+
   cal.go_to_cal_page()
 
   cal_rows = cal.query(
@@ -59,8 +66,8 @@ def scrape(args):
     wait_time=args.wait_time)
   cal.close()
 
-  #print(CalendarModel.to_csv(cal_rows))
-  print(CalendarModel.to_map_list_json(cal_rows))
+  cal_rows_json = CalendarModel.to_map_list_json(cal_rows)
+  print(cal_rows_json)
 
 def main():
   args = get_args()

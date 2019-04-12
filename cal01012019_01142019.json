@@ -1,0 +1,1578 @@
+[
+    {
+        "name": "Rules & Legislation Committee",
+        "meeting_date": "1/10/2019",
+        "calendar_link": "https://oakland.legistar.com/View.ashx?M=IC&ID=669099&GUID=9A22A684-A9E8-48E7-8D24-493933D283DC",
+        "meeting_time": "10:45 AM",
+        "meeting_location": "City Council Chamber, 3rd Floor",
+        "meeting_details": {
+            "meeting_name": "Rules & Legislation Committee",
+            "meeting_datetime": "1/10/2019",
+            "meeting_location": "City Council Chamber, 3rd Floor",
+            "published_agenda": "https://oakland.legistar.com/View.ashx?M=A&ID=669099&GUID=9A22A684-A9E8-48E7-8D24-493933D283DC",
+            "agenda_packet": null,
+            "meeting_video": "https://oakland.legistar.com/Video.aspx?Mode=Granicus&ID1=3040&Mode2=Video",
+            "agenda_status": "SUPPLEMENTAL",
+            "minutes_status": "FINAL",
+            "published_minutes": "https://oakland.legistar.com/View.ashx?M=M&ID=669099&GUID=9A22A684-A9E8-48E7-8D24-493933D283DC",
+            "eComment": null,
+            "additional_notes": null,
+            "meeting_items": [
+                {
+                    "file_num": "18-1210",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3823427&GUID=06144A32-027E-45DC-80A2-C55532949415&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "1",
+                    "meeting_type": "Report and Recommendation",
+                    "title": "Determinations Of Closed Session",
+                    "action": "Accepted",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1210",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3823427&GUID=06144A32-027E-45DC-80A2-C55532949415",
+                        "version": "1",
+                        "action_type": "Report and Recommendation",
+                        "title": "Determinations Of Closed Session",
+                        "mover": "Lynette McElhaney",
+                        "seconder": "Dan Kalb",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "There will be a Closed Session on January 22, 2019 at 2 p.m. in Hearing Room 4.",
+                        "action": "Accepted",
+                        "action_text": "A motion was made by Lynette McElhaney, seconded by Dan Kalb, that this matter be Accepted. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1209",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3823426&GUID=10CC99DA-7B59-41AC-81FE-BC3B8495FF97&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "2",
+                    "meeting_type": "Report and Recommendation",
+                    "title": "Approval Of The Draft Minutes From The Committee Meeting Of November 29, and December 6, 2018",
+                    "action": "Accepted",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1209",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3823426&GUID=10CC99DA-7B59-41AC-81FE-BC3B8495FF97",
+                        "version": "1",
+                        "action_type": "Report and Recommendation",
+                        "title": "Approval Of The Draft Minutes From The Committee Meeting Of November 29, and December 6, 2018",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Accepted",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Accepted. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1211",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3823428&GUID=8C6D7B42-1139-46EA-8DE4-8AE542DA96F0&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "3",
+                    "meeting_type": "Report and Recommendation",
+                    "title": "Determination Of Schedule Of Outstanding Committee Items",
+                    "action": "Accepted",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1211",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3823428&GUID=8C6D7B42-1139-46EA-8DE4-8AE542DA96F0",
+                        "version": "1",
+                        "action_type": "Report and Recommendation",
+                        "title": "Determination Of Schedule Of Outstanding Committee Items",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "There were no changes made to the pending list",
+                        "action": "Accepted",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Accepted. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1213",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3823430&GUID=A2391B37-A81D-49AF-9246-1D7AB4954878&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4",
+                    "meeting_type": "Report and Recommendation",
+                    "title": "Scheduling Of Agenda Items And Revisions To Previously Distributed 10-Day Agendas (SUPPLEMENTAL)",
+                    "action": "Accepted as Amended",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1213",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3823430&GUID=A2391B37-A81D-49AF-9246-1D7AB4954878",
+                        "version": "1",
+                        "action_type": "Report and Recommendation",
+                        "title": "Scheduling Of Agenda Items And Revisions To Previously Distributed 10-Day Agendas (SUPPLEMENTAL)",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "There were 2 speakers on this item",
+                        "action": "Accepted as Amended",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Accepted as Amended. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1216",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833376&GUID=6C5D557C-FD6F-4FD8-9DCB-50DCB9090C1C&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4.1",
+                    "meeting_type": "Informational Report",
+                    "title": "Subject: CAFR Report And Management Letter From: Finance Department Recommendation: Receive The Comprehensive Annual Financial Report (CAFR) And The Auditor’s Required Communication To City Council (Management Letter) For The Year Ended June 30, 2018",
+                    "action": "Scheduled",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1216",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833376&GUID=6C5D557C-FD6F-4FD8-9DCB-50DCB9090C1C",
+                        "version": "1",
+                        "action_type": "Informational Report",
+                        "title": "Subject: CAFR Report And Management Letter From: Finance Department Recommendation Receive The Comprehensive Annual Financial Report (CAFR) And The Auditor’s Required Communication To City Council (Management Letter) For The Year Ended June 30, 2018; On The January 15, 2019, Special Finance And Management Committee Agenda",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Scheduled",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Scheduled to go before the *Special Finance & Management Committee, to be heard 1/15/2019. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1219",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833377&GUID=77A6D8A1-57EA-4532-8430-D3B9DFA5CBE1&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4.2",
+                    "meeting_type": "City Resolution",
+                    "title": "Subject: Extension Of Temporary Employment Agency On-Call Contracts From: Human Resources Management Department Recommendation: Adopt A A Resolution Authorizing The City Administrator To Execute A Two Year Extension For Existing On-Call Professional Service Agreements With (1) HR Management, Inc., (2) Robert Half International And (3) TemPositions, Inc. To Provide Temporary Employment Agency Services On An As-Needed And Rotating Basis At A Cost Not To Exceed $1,000,000 Per Contract, Which Is An Increase Of $750,000 Per Contract, For A Total Contracting Cost Not To Exceed $3,000,000 Through July 1, 2022 And Waiving The Competitive Request For Proposals/Qualifications Process",
+                    "action": "Scheduled",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1219",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833377&GUID=77A6D8A1-57EA-4532-8430-D3B9DFA5CBE1",
+                        "version": "1",
+                        "action_type": "City Resolution",
+                        "title": "Subject: Extension Of Temporary Employment Agency On-Call Contracts From: Human Resources Management Department Recommendation: Adopt A Resolution Authorizing The City Administrator To Execute A One-Year Extension For Existing On-Call Professional Service Agreements With (1) HR Management, Inc., (2) Robert Half International And (3) TemPositions, Inc., To Provide Temporary Employment Agency Services On An As-Needed And Rotating Basis At A Cost Not To Exceed Of $1,000,000 Per Contract, Which Is An Increase Of $750,000 Per Contract For A Total Contracting Cost Not To Exceed $3,000,000 Through July 1, 2022 And Waiving The Competitive Request For Proposals/Qualifications Process; On The January 15, 2019, Special Finance And Management Committee Agenda",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "There was a title change read into record",
+                        "action": "Scheduled",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Scheduled to go before the *Special Finance & Management Committee, to be heard 1/15/2019. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1221",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833379&GUID=A5164717-CFA2-454A-BEF5-899137189D4E&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4.3",
+                    "meeting_type": "City Resolution",
+                    "title": "Subject: Extend And Increase Contract With International Contact, Inc. From: Human Resources Management Department Recommendation: Adopt A Resolution Extending And Increasing The Contract For On-Call Translation And Interpretation Service With International Contact, Inc. For One Year, From April 1, 2019 To March 31, 2020, By An Amount Not To Exceed $110,000 (One Hundred Ten Thousand Dollars) To A New Cap Of $395,000 (Three Hundred Ninety-Five Thousand Dollars) For The Four-Year Contract Term",
+                    "action": "Scheduled",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1221",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833379&GUID=A5164717-CFA2-454A-BEF5-899137189D4E",
+                        "version": "1",
+                        "action_type": "City Resolution",
+                        "title": "Subject: Extend And Increase Contract With International Contact, Inc. From: Human Resources Management Department Recommendation: Adopt A Resolution To Extend And Increase The Contract For On-Call Translation And Interpretation Service With International Contact, Inc For One Year, From April 1, 2019 To March 31, 2020, By An Amount Not To Exceed $110,000 (One Hundred And Ten Thousand Dollars) To A New Cap Of $395,000 (Three Hundred And Ninety-Five Thousand Dollars) For The Entire Four-Year Contract Term; On The January 15, 2019, Special Finance And Management Committee Agenda",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Scheduled",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Scheduled to go before the *Special Finance & Management Committee, to be heard 1/15/2019. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1226",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833380&GUID=BD5FC0EF-D885-4A79-A325-DED2EC724BFF&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4.4",
+                    "meeting_type": "Informational Report",
+                    "title": "Subject: Oakland Redevelopment Successor Agency Audit Report From: Finance Department Recommendation: Receive The Oakland Redevelopment Successor Agency (ORSA) Audit Report For The Year Ended June 30, 2018",
+                    "action": "Scheduled",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1226",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833380&GUID=BD5FC0EF-D885-4A79-A325-DED2EC724BFF",
+                        "version": "1",
+                        "action_type": "Informational Report",
+                        "title": "Subject: Oakland Redevelopment Successor Agency Audit Report From: Finance Department Recommendation: Receive The Oakland Redevelopment Successor Agency (ORSA) Audit Report For The Year Ended June 30, 2018; On The January 15, 2019, Special Finance And Management Committee Agenda",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Scheduled",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Scheduled to go before the *Special Finance & Management Committee, to be heard 1/15/2019. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1259",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833382&GUID=4E344D00-7885-41BC-8DBA-164D92E1C809&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4.5",
+                    "meeting_type": "ORSA Resolution",
+                    "title": "Subject: Recognized Obligation Payment Schedule 19-20 From: Finance Department Recommendation: Adopt An Oakland Redevelopment Successor Agency Resolution Approving The Submission Of A Recognized Obligation Payment Schedule And Successor Agency Administrative Budget For July 1, 2019, Through June 30, 2020, To The Countywide Oversight Board, The County And The State",
+                    "action": "Scheduled",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1259",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833382&GUID=4E344D00-7885-41BC-8DBA-164D92E1C809",
+                        "version": "1",
+                        "action_type": "ORSA Resolution",
+                        "title": "Subject: Recognized Obligation Payment Schedule 19-20 From: Finance Department Recommendation: Adopt An Oakland Redevelopment Successor Agency Resolution Approving The Submission Of A Recognized Obligation Payment Schedule And Successor Agency Administrative Budget For July 1, 2019, Through June 30, 2020, To The Countywide Oversight Board, The County And The State; On The January 15, 2019, Special Finance And Management Committee Agenda",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Scheduled",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Scheduled to go before the *Special Finance & Management Committee, to be heard 1/15/2019. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1227",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833381&GUID=6495937E-B427-40AD-9DBA-D7A703B72F6D&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4.6",
+                    "meeting_type": "City Resolution",
+                    "title": "Subject: On-Call Surveying Professional Services Agreements From: Transportation Department Recommendation: Adopt A Resolution Authorizing The City Administrator, Or Designee To Execute Professional Services Agreement Contracts For On-Call Land Surveying Services In The Amount Of Nine Hundred And Fifty Thousand Dollars ($950,000) Each To Five Firms Including 1) Aliquot Associates, Inc.; 2) Bay Area Land Surveyors; 3) BFK Engineers; 4) Towill, Inc.; And 5) Wood Rodgers Inc.",
+                    "action": "Scheduled",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1227",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833381&GUID=6495937E-B427-40AD-9DBA-D7A703B72F6D",
+                        "version": "1",
+                        "action_type": "City Resolution",
+                        "title": "Subject: On-Call Surveying Professional Services Agreements From: Transportation Department Recommendation: Adopt A Resolution Authorizing The City Administrator Or Designee To Execute Professional Services Agreements For On-Call Land Surveying Services To Five (5) Firms For Nine Hundred And Fifty Thousand Dollars ($950,000) Each To: Aliquot Associates, Inc.; Bay Area Land Surveyors, Inc.; BKF Engineers; Towill, Inc.; And Wood Rodgers Inc.; On The January 15, 2019, Special Public Works Committee Agenda",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Scheduled",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Scheduled to go before the *Special Public Works Committee, to be heard 1/15/2019. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1228",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833414&GUID=F715D2E5-4607-4CE4-BD84-DAF9B7F1573F&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4.7",
+                    "meeting_type": "City Resolution",
+                    "title": "Subject: Citywide Curb Ramps And Sidewalk Repair 2019 From: Transportation Department Recommendation: Adopt A Resolution Awarding A Construction Contract To Rosas Brothers Construction, The Lowest Responsive, Responsible Bidder, For Citywide Curb Ramps And Sidewalk Repair (Project No. 1004519) In Accordance With Plans And Specifications For The Project And With Contractor’s Bid In The Amount Of Two Million, Two Hundred Fifty-Seven Thousand, Four Hundred Dollars ($2,257,400.00)",
+                    "action": "Scheduled",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1228",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833414&GUID=F715D2E5-4607-4CE4-BD84-DAF9B7F1573F",
+                        "version": "1",
+                        "action_type": "City Resolution",
+                        "title": "Subject: Citywide Curb Ramps And Sidewalk Repair 2019 From: Transportation Department Recommendation: Adopt A Resolution Awarding A Construction Contract To Rosas Brothers Construction, The Lowest Responsive, Responsible Bidder, For Citywide Curb Ramps And Sidewalk Repair (Project No. 1004519) In Accordance With Plans And Specifications For The Project And With Contractor’s Bid In The Amount Of Two Million, Two Hundred Fifty-Seven Thousand, Four Hundred Dollars ($2,257,400.00); On The January 15, 2019, Special Public Works Committee Agenda",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Scheduled",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Scheduled to go before the *Special Public Works Committee, to be heard 1/15/2019. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1220",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833378&GUID=ECF08CA0-B436-461A-A322-5D2B9278D2C4&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4.8",
+                    "meeting_type": "City Resolution",
+                    "title": "Subject: Caltrans Transportation Art Proposal For Madison Street I-880 Underpass From: Economic Workforce Development Department Recommendation: Adopt A Resolution Authorizing The City Administrator To: 1) Submit An Application And Enter Into An Agreement With The State Of California Department Of Transportation For The Sponsorship And Maintenance Of A Permanent Public Art Project Designed By The Artist Team Machinic LLC (“Future Cities Lab”) For The 500 Block Of Madison Street, Under Interstate 880 Between 5th And 6th Streets, As Proposed And Funded By CP V JLS, LLC To Comply With Oakland Municipal Code Chapter 15.78 - Public Art Requirements For Private Development; And 2) Enter Into An Agreement With CP V JLS, LLC For Installation Of The Public Art Project And Ongoing Maintenance Responsibilities",
+                    "action": "Scheduled",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1220",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833378&GUID=ECF08CA0-B436-461A-A322-5D2B9278D2C4",
+                        "version": "1",
+                        "action_type": "City Resolution",
+                        "title": "Subject: Caltrans Transportation Art Proposal For Madison Street I-880 Underpass From: Economic Workforce Development Department Recommendation: Adopt A Resolution Authorizing The City Administrator To: 1) Submit An Application And Enter Into An Agreement With The State Of California Department Of Transportation For The Sponsorship And Maintenance Of A Permanent Public Art Project Designed By The Artist Team Machinic LLC (“Future Cities Lab”) For The 500 Block Of Madison Street, Under Interstate 880 Between 5th And 6th Streets, As Proposed And Funded By CP V JLS, LLC To Comply With Oakland Municipal Code Chapter 15.78 - Public Art Requirements For Private Development; And 2) Enter Into An Agreement With CP V JLS, LLC For Installation Of The Public Art Project And Ongoing Maintenance Responsibilities",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Scheduled",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Scheduled to go before the *Special Community & Economic Development Committee, to be heard 1/15/2019. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1222",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833471&GUID=E41EE7A8-6997-4E5E-A420-1D5D9DB44C2B&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4.9",
+                    "meeting_type": "City Resolution",
+                    "title": "Subject: OPL Resolution For Purchase Authorization And Waiver From: Oakland Public Library Recommendation: Adopt A Resolution Rescinding Resolution No. 68254 C.M.S And Authorizing The City Administrator To Purchase Oakland Public Library Materials And Specialized Services Necessary To Facilitate And Support Staff In Lending Materials To Library Patrons, Such As Books, E-Books, DVDS, Newspapers, Periodicals, Database Subscriptions, Tools, And Toys In An Amount Not To Exceed The Budget Available In Designated Library Funds, For Fiscal Years 2019 Through 2023 And Waiving The Competitive Procurement Process For Such Purchases",
+                    "action": "Scheduled",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1222",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833471&GUID=E41EE7A8-6997-4E5E-A420-1D5D9DB44C2B",
+                        "version": "1",
+                        "action_type": "City Resolution",
+                        "title": "Subject: OPL Resolution For Purchase Authorization And Waiver From: Oakland Public Library Recommendation: Adopt A Resolution Rescinding Resolution No. 68254 C.M.S. And Authorizing The City Administrator To Purchase Oakland Public Library Materials And Specialized Services Necessary To Facilitate And Support Staff In Lending Materials To Library Patrons, Such As Books, E-Books, DVDS, Newspapers, Periodicals, Database Subscriptions, Tools, And Toys In An Amount Not To Exceed The Budget Available In Designated Library Funds For Fiscal Years 2019 Through 2023 And Waiving The Competitive Procurement Process For Such Purchases; On The January 15, 2019, Special Life Enrichment Committee Agenda",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Scheduled",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Scheduled to go before the *Special Life Enrichment Committee, to be heard 1/15/2019. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1223",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833472&GUID=9762C0FB-EFB1-4339-93E1-042FB38E8388&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4.10",
+                    "meeting_type": "City Resolution",
+                    "title": "Subject: Amendment To FY2018-19 Cultural Funding Grants-Approval From: Cultural Affairs Department Recommendation: Adopt A Resolution Amending Resolution No. 87345 C.M.S., Which Authorized Fiscal Year 2018-19 Grant Agreements For Arts And Cultural Services In Oakland, To Correct The Grantee Name From Grown Women Dance Collective To Dancers’ Group And To Correct The Name Of Lotus Bloom To Dancers’ Group",
+                    "action": "Scheduled",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1223",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833472&GUID=9762C0FB-EFB1-4339-93E1-042FB38E8388",
+                        "version": "1",
+                        "action_type": "City Resolution",
+                        "title": "Subject: Amendment To FY2018-19 Cultural Funding Grants-Approval From: Cultural Affairs Department Recommendation: Adopt A Resolution Amending Resolution No. 87345 C.M.S., Which Authorized Fiscal Year 2018-19 Grant Agreements For Arts And Cultural Services In Oakland, To Correct The Grantee Name From Grown Women Dance Collective To Dancers’ Group And To Correct The Name Of Lotus Bloom To Dancers’ Group",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Scheduled",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Scheduled to go before the *Special Life Enrichment Committee, to be heard 1/15/2019. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1224",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833473&GUID=C8A2535A-DCEF-4367-8A14-1E637680C722&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4.11",
+                    "meeting_type": "City Resolution",
+                    "title": "Subject: Northern California Grantmakers Arts Loan Fund For FY2018-2021 From: Economic Workforce And Development Department Recommendation: Adopt A Resolution Authorizing The City Administrator To Enter Into A Grant Agreement In An Amount Not To Exceed $4,000 With Northern California Grantmakers As A Contribution To The Arts Loan Fund Corpus For The Period Of FY2018-2021",
+                    "action": "Scheduled",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1224",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833473&GUID=C8A2535A-DCEF-4367-8A14-1E637680C722",
+                        "version": "1",
+                        "action_type": "City Resolution",
+                        "title": "Subject: Northern California Grantmakers Arts Loan Fund For FY2018-2021 From: Economic Workforce And Development Department Recommendation: Adopt A Resolution Authorizing The City Administrator To Enter Into A Grant Agreement In An Amount Not To Exceed $4,000 With Northern California Grantmakers As A Contribution To The Arts Loan Fund Corpus For FY2018-202",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Scheduled",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Scheduled to go before the *Special Life Enrichment Committee, to be heard 1/15/2019. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-0508",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3512734&GUID=219AA655-F6E6-4988-8821-14C72FEF8072&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4.12",
+                    "meeting_type": "Report and Recommendation",
+                    "title": "Subject: Demand For Fire Service Along The Oakland Waterfront From: Councilmember Guillén Recommendation: Receive A Report From The City Administrator, Based On Relevant Data And Information From The Department Of Planning And Building And The Oakland Fire Department, That Provides: (1) An Analysis Of The Projected Increase In Demand For Fire Service Along The Oakland Waterfront Through 2030 And What Resources Are Needed To Meet This Demand, Including Brooklyn Basin And Howard Terminal, (2) An Analysis That Compares Oakland’s Waterfront Fire Response Resources To Other Port/Waterfront Cities Of Similar Population Size, And (3) Recommendations For Further Study And How To Fund The Resources Needed To Meet The Projected Increase In Demand For Fire Services Throughout The City Of Oakland",
+                    "action": "Scheduled",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-0508",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3512734&GUID=219AA655-F6E6-4988-8821-14C72FEF8072",
+                        "version": "1",
+                        "action_type": "Report and Recommendation",
+                        "title": "Subject: Demand For Fire Service Along The Oakland Waterfront From: President Pro Tempore Guillén Recommendation: Receive A Report From The City Administrator, Based On Relevant Data And Information From The Department Of Planning And Building And The Oakland Fire Department, That Provides: (1) An Analysis Of The Projected Increase In Demand For Fire Service Along The Oakland Waterfront Through 2030 And What Resources Are Needed To Meet This Demand, Including Brooklyn Basin And Howard Terminal, (2) An Analysis That Compares Oakland’s Waterfront Fire Response Resources To Other Port/Waterfront Cities Of Similar Population Size, And (3) Recommendations For Further Study And How To Fund The Resources Needed To Meet The Projected Increase In Demand For Fire Services Throughout The City Of Oakland; On The February 19, 2019, Special Public Safety Committee Agenda",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Scheduled",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Scheduled to go before the *Special Public Safety Committee, to be heard 2/19/2019. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1215",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833447&GUID=9370F905-F286-4441-A2BD-87344528CFC6&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4.13",
+                    "meeting_type": "Informational Report",
+                    "title": "Subject: Unapproved Surveillance Technology From: Oakland Police Department Recommendation: Receive An Informational Report From The Oakland Police Department With Information Regarding Usage of Unapproved Surveillance Technology",
+                    "action": "Scheduled",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1215",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833447&GUID=9370F905-F286-4441-A2BD-87344528CFC6",
+                        "version": "1",
+                        "action_type": "Informational Report",
+                        "title": "Subject: Unapproved Surveillance Technology From: Oakland Police Department Recommendation: Receive An Informational Report From The Oakland Police Department With Information Regarding Usage of Unapproved Surveillance Technology; On The January 15, 2019, Special Public Safety Committee Agenda",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Scheduled",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Scheduled to go before the *Special Public Safety Committee, to be heard 1/15/2019. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1217",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833480&GUID=705BB26E-FEC4-43E9-B7D9-8CFA6965E282&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4.14",
+                    "meeting_type": "City Resolution",
+                    "title": "Subject: Fiscal Year 2018 Urban Area Security Initiative Program Grant Agreement From: Oakland Fire Department Recommendation: Adopt A Resolution: (1) Authorizing The City Administrator, Or Her Designee To: (A) Enter Into The Urban Area Security Initiative (UASI) Grant Administration Agreement With The City And County Of San Francisco; (B) Accept, Appropriate, And Administer Up To One Million, Fifty Thousand Dollars (1,050,000.00) Of UASI Grant Funds For Federal Fiscal Year (FY) 2018; (C) Approve The FY 2018 UASI Recommended Spending Plan; (D) Expend Funds In Accordance With Said Spending Plan And Grantor Approved Amendments Without Further Council Approval Or Action, Including The Purchase In Excess Of The City Administrator’s Purchasing Authority Of Equipment And Services Required By The Grant Provided City’s Hiring And Contract Requirements/Policies Are Followed; (2) Authorizing A General Purpose Fund Contribution At A Rate Of 13.61% To Cover Associated Costs For Disallowed Central Service Overhead (CSO) Charges Estimated At Eighty-One Thousand Six Hundred Six Hundred Sixty Dol",
+                    "action": "Scheduled",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1217",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833480&GUID=705BB26E-FEC4-43E9-B7D9-8CFA6965E282",
+                        "version": "1",
+                        "action_type": "City Resolution",
+                        "title": "Subject: Fiscal Year 2018 Urban Area Security Initiative Program Grant Agreement From: Oakland Fire Department Recommendation Adopt A Resolution Authorizing The City Administrator, Or Her Designee To: 1) Enter Into The Urban Area Security Initiative (UASI) Grant Administration Agreement With The City And County Of San Francisco; 2) Accept, Appropriate, And Administer Up To One Million Fifty Thousand Dollars ($1,050,000.00) UASI Grant Funds For Federal Fiscal Year (FY) 2018; 3) Approve The FY 2018 UASI Recommended Spending Plan; 4) Authorize A Contribution From The General Purpose Fund In An Amount Equivalent To The Department’s Central Services Overhead (CSO) Charges Affiliated With Said Grant Estimated At Fifty-One Thousand, Four Hundred Seventy-One Dollars ($51,471.00) For FY 2018-19 And Sixty-Eight Thousand, Four Hundred Ninety-Seven Dollars ($68,497.00) For FY 2019-20; And 5) Expend Funds In Accordance With Said Recommended Spending Plan Without Further Council Approval Provided The City’s Hiring And Contract Services Requirements And Programs/Policies Are Followed; On The January 29, 2019, Special Public Safety Committee Agenda",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Scheduled",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Scheduled to go before the *Special Public Safety Committee, to be heard 1/29/2019. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1218",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833470&GUID=605A0A09-C297-4288-BCEE-EC66E3E11F6C&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4.15",
+                    "meeting_type": "City Resolution",
+                    "title": "Subject: SAFER Grant From: Oakland Fire Department Recommendation: Adopt A Resolution Authorizing The City Administrator, Or Her Designee, To: 1) Enter Into A Grant Agreement With The Federal Emergency Management Agency (FEMA) To Accept Staffing For Adequate Fire Emergency Response (SAFER) Grant Funds In The Amount Of Four Million Two Hundred And Fourteen Thousand One Hundred And Ninety-Nine Dollars (4,214,199,00); 2) Accept, Appropriate, And Administer Said SAFER Funds; And 3) Expend Funds To Hire Up To Fifteen (15) Firefighters And/Or Firefighter Paramedics For The Grant Performance Period Of April 15, 2019 To April 14, 2022, In Accordance With The City's Hiring Policies",
+                    "action": "Scheduled",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1218",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833470&GUID=605A0A09-C297-4288-BCEE-EC66E3E11F6C",
+                        "version": "1",
+                        "action_type": "City Resolution",
+                        "title": "Subject: SAFER Grant From: Oakland Fire Department Recommendation: Adopt A Resolution Authorizing The City Administrator, Or Her Designee, To: 1) Enter Into A Grant Agreement With The Federal Emergency Management Agency (FEMA) To Accept Staffing For Adequate Fire Emergency Response (SAFER) Grant Funds In The Amount Of Four Million Two Hundred And Fourteen Thousand One Hundred And Ninety-Nine Dollars (4,214,199.00); 2) Accept, Appropriate, And Administer Said SAFER Funds; And 3) Expend Funds To Hire Up To Fifteen (15) Firefighters And/Or Firefighter Paramedics For The Grant Performance Period Of April 15, 2019 To April 14, 2022, In Accordance With The City's Hiring Policies; On The January 15, 2019, Special Public Safety Committee Agenda",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Scheduled",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Scheduled to go before the *Special Public Safety Committee, to be heard 1/15/2019. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1225",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833448&GUID=D285D2A2-BCDC-4B28-8AC2-43B32E5F8B51&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4.16",
+                    "meeting_type": "City Resolution",
+                    "title": "Subject: Fiscal Year 2017 State Homeland Security Grant Program Award From: Oakland Fire Department Recommendation: Adopt A Resolution Authorizing The City Administrator, Or Her Designee, To Accept And Appropriate Fiscal Year 2017 State Homeland Security Grant In The Amount Of Fifty-Two Thousand Dollars ($52,000) From The California Governor’s Office Of Emergency Services (Cal OES) For The Communities Of Oakland Responding To Emergencies (CORE) Program",
+                    "action": "Scheduled",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1225",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833448&GUID=D285D2A2-BCDC-4B28-8AC2-43B32E5F8B51",
+                        "version": "1",
+                        "action_type": "City Resolution",
+                        "title": "Subject: FY 2017 Homeland Security Grant From: Oakland Fire Department Recommendation: Adopt A Resolution Authorizing The City Administrator, Or Her Designee To Accept And Appropriate The Fiscal Year 2017 State Homeland Security Grant In The Amount Of Fifty-Two Thousand Dollars ($52,000) From The California Governor’s Office Of Emergency Services (Cal OES) That Was Approved For The Communities Of Oakland Respond To Emergencies (CORE) Program; On The January 15, 2019, Special Public Safety Committee Agenda",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Scheduled",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Scheduled to go before the *Special Public Safety Committee, to be heard 1/15/2019. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1229",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833474&GUID=C46D82A3-D70A-4CDA-B534-5F801EFF6F83&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4.17",
+                    "meeting_type": "City Resolution",
+                    "title": "Subject: Federal Emergency Management Agency, Urban Search And Rescue Grant From: Oakland Fire Department Recommendation: Adopt A Resolution: (1) Authorizing The City Administrator, Or Her Designee To: (A) Enter Into A Grant Cooperative Agreement With The Federal Emergency Management Agency (FEMA) For Receipt Of Funds For The Period September 1, 2018 To August 31, 2021, In The Amount Of One Million Two Hundred Thirty-Seven Thousand And Nine Hundred Ninety Dollars ($1,237,990); (B) Accept And Appropriate Said FEMA Funds For The Fire Department’s Urban Search And Rescue (US&R) Task Force (US&R Task Force); (C) To Host The US&R Medical Team Training In June 2019; (D) Expend The FEMA Funds In Accordance With The Preliminary Spending Plan Without Further Council Approval, Including Funding For Training And The Purchase Of Equipment From The General Services Administration And Other Government Pricing Schedules; (2) Waiving The City’s Advertising And Competitive Bidding And Purchasing Requirements For Procurement Of Equipment When Required By The Grant Funds; (3) Approve Travel For C",
+                    "action": "Scheduled",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1229",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833474&GUID=C46D82A3-D70A-4CDA-B534-5F801EFF6F83",
+                        "version": "1",
+                        "action_type": "City Resolution",
+                        "title": "Subject: Federal Emergency Management Agency, Urban Search And Rescue Grant From: Oakland Fire Department Recommendation: Adopt A Resolution Authorizing The City Administrator, Or Her Designee To: 1) Enter Into A Grant Cooperative Agreement With The Federal Emergency Management Agency (FEMA) To Accept And Appropriate Federal FEMA Funds For The Period September 1, 2018 To August 31, 2021, In The Amount Of One Million Two Hundred And Thirty-Seven Thousand Nine Hundred And Ninety Dollars ($1,237,990) To Meet Continuing Management, Training And Equipment Needs Of The Oakland Fire Department's Urban Search And Rescue (US&R) California Task Force Four (CA-TF4); 2) To Host The US&R Medical Team Training In June 2019; 3) Expend The FEMA Funds In Accordance With The Preliminary Spending Plan Without Further Council Approval, Including Funding For Training And The Purchase Of Equipment From The General Services Administration And Other Government Pricing Schedules; 4) Waiving The City's Advertising And Competitive Bidding And Purchasing Requirements For Procurement Of Equipment When Required By The Grantor; 5) Approve Travel For City Personnel That Provide Services Under The FEMA Cooperative Agreement Program On Short Notice Without Further Council Authorization; And 6) Allow The City To Collect And Appropriate Revenue Received From Trainings Provided by US&R CA-TF4. 7) Approve A Contribution From The General Purpose Fund (GPF) In An Amount Equivalent To The Information Technology Department (ITD) - Internal Service Fund (ISF) Charges Affiliated With Said Grant For FY 2018-19, And To Provide A Contribution Equivalent To The ITD-ISF Charge For The Duration Of The Grant Period; On The January 15, 2019 Special Public Safety Committee Agenda",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Scheduled",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Scheduled to go before the *Special Public Safety Committee, to be heard 1/15/2019. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1257",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3840001&GUID=669B98F8-2239-4168-9B34-B193C073D932&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4.18",
+                    "meeting_type": "Informational Report",
+                    "title": "Subject: BPAC 2018 Annual Report From: Councilmember Kalb Recommendation: Receive This Informational Report On The Bicyclist And Pedestrian Advisory Commission’s 2018 Activities",
+                    "action": "Scheduled",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1257",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3840001&GUID=669B98F8-2239-4168-9B34-B193C073D932",
+                        "version": "1",
+                        "action_type": "Informational Report",
+                        "title": "Subject: BPAC 2018 Annual Report From: Councilmember Kalb Recommendation Receive An Oakland Bicyclist And Pedestrian Advisory Commission 2018 Annual Report; On The January 29, 2019, Public Works Committee Agenda",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Scheduled",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Scheduled to go before the *Special Public Works Committee, to be heard 1/29/2019. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1256",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833255&GUID=D1F71EA3-1D48-4B2E-B994-7DA55E42A911&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4.19",
+                    "meeting_type": "City Resolution",
+                    "title": "Subject: Appointments To The Housing, Residential Rent And Relocation Board From: Office Of The Mayor Recommendation: Adopt A Resolution Confirming The Mayor’s Appointments Of Terrence Williams As A Regular Landlord Member, Kathleen Sims As An Alternate Landlord Member, Tanaiia Hall As A Regular Tenant Member, And Hannah Flanery As An Alternate Tenant Member To The Housing, Residential Rent And Relocation Board",
+                    "action": "Scheduled",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1256",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3833255&GUID=D1F71EA3-1D48-4B2E-B994-7DA55E42A911",
+                        "version": "1",
+                        "action_type": "City Resolution",
+                        "title": "Subject: Appointments To The Housing, Residential Rent And Relocation Board From: Office Of The Mayor Recommendation: Adopt A Resolution Confirming The Mayor’s Appointments Of Terrence Williams As A Regular Landlord Member, Kathleen Sims As An Alternate Landlord Member, Tanaiia Hall As A Regular Tenant Member, And Hannah Flanery As An Alternate Tenant Member To The Housing, Residential Rent And Relocation Board; On The January 24, 2019, Rules And Legislation Committee Agenda",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Scheduled",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Scheduled to go before the *Rules & Legislation Committee, to be heard 1/24/2019. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1258",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3856995&GUID=22586A3C-CA28-4686-AD77-2AB148FEF340&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4.20",
+                    "meeting_type": "City Resolution",
+                    "title": "Subject: Amending The City Council Rules Of Procedures From: Councilmember Kalb Recommendation: TITLE CHANGE: Adopt A Resolution Amending And Superseding The Council’s Rules Of Procedure Currently Set Forth In Resolution No. 87044 C.M.S., To Amend: (1) The Order Of Business To Have Ceremonial Items Occur After Roll Call And Before Open Forum, (2) Rule 4 To Provide For The Appointment Of A Designated Alternate For The Rules Committee To Maintain A Quorum, (3) Rule 5 To Clarify And Limit The Authority Of Committees, Other Than The Rules Committee, And Committee Chairs To Designate Items As Consent And Non-Consent Items, (4) The Council Meeting Time, Order Of Business, And Rule 7 To Begin Council Meetings At 4:30 P.M. And The Non-Consent Calendar At 5:30 Pm, (5) Rule 7 To Require Action On Consent Items For Which There Is No Council Comment Or Public Speaker Card Prior To Taking Action On Other Consent Items, (6) Rule 18 To Clarify Requirements For The Council To Endorse Or Oppose Ballot Measures Submitted By The Electorate And To Approve Measures On The Council’s Own Motion To Be",
+                    "action": "Rescheduled",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1258",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3856995&GUID=22586A3C-CA28-4686-AD77-2AB148FEF340",
+                        "version": "1",
+                        "action_type": "City Resolution",
+                        "title": "Subject: Amending The City Council Rules Of Procedures From: Councilmember Kalb Recommendation: Adopt A Resolution Amending And Superseding The Council’s Rules Of Procedure Currently Set Forth In Resolution No. 87044 C.M.S., To Amend: (1) The Order Of Business To Have Ceremonial Items Occur After Roll Call And Before Open Forum, (2) Rule 4 To Provide For The Appointment Of A Designated Alternate For The Rules Committee To Maintain A Quorum, (3) Rule 5 To Clarify And Limit The Authority Of Committees, Other Than The Rules Committee, And Committee Chairs To Designate Items As Consent And Non-Consent Items, (4) The Council Meeting Time, Order Of Business, And Rule 7 To Begin Council Meetings At 4:30 P.M. And The Non-Consent Calendar At 5:30 Pm, (5) Rule 7 To Require Action On Consent Items For Which There Is No Council Comment Or Public Speaker Card Prior To Taking Action On Other Consent Items, (6) Rule 18 To Clarify Requirements For The Council To Endorse Or Oppose Ballot Measures Submitted By The Electorate And To Approve Measures On The Council’s Own Motion To Be Placed On The Ballot, (7) Rule 19 To Add The Oakland Housing Authority To The List Of Bodies Whose Appointments Must Be Reviewed By The Rules Committee , (8) Rule 23 To Clarify Rules Committee Jurisdiction Over City Proposed Ballot Measures, And (9) Rule 24 To Allow Submission Of Scheduling Requests From The Public Only If Requested In Writing By Ten Members Of The Public Or If Sponsored By A Councilmember",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "There was a title change read into record The committee approved as amended to reschedule this item to the next Rules and Legislation Committee meeting with direction to meet with the City Clerk for further analysis.",
+                        "action": "Rescheduled",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Rescheduled to go before the *Rules & Legislation Committee, to be heard 1/17/2019. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1190",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3856994&GUID=A5464B2C-3296-45E6-B436-7FE7504AB575&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": " ",
+                    "meeting_type": "Report and Recommendation",
+                    "title": "Subject: Scheduling Of Special Council Retreats From: Finance Department Recommendation: Approve A Report And Reccomendation Scheduling Of Two Special Council Budget Retreats For Thursday, January 31, 2019 From 9:00am-4:00pm And Wednesday, March 6, 2019 From 9:00am-4:00pm",
+                    "action": " ",
+                    "result": " ",
+                    "action_details": {
+                        "file_num": "18-1190",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3856994&GUID=A5464B2C-3296-45E6-B436-7FE7504AB575",
+                        "version": "1",
+                        "action_type": "Report and Recommendation",
+                        "title": "Subject: Scheduling Of Special Council Retreats From: Finance Department Recommendation: Approve A Report And Reccomendation Scheduling Of Two Special Council Budget Retreats For Thursday, January 31, 2019 From 9:00am-4:00pm And Wednesday, March 6, 2019 From 9:00am-4:00pm",
+                        "mover": "",
+                        "seconder": "",
+                        "result": "",
+                        "agenda_note": "",
+                        "minute_note": "The Committee removing the previously scheduled item regarding the \"Scheduling Of Special Council Retreats\" and directed staff to return to rules at a future date for rescheduling",
+                        "action": "",
+                        "action_text": "",
+                        "vote_items": []
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-0592",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3510991&GUID=D3F08AFB-971A-4CFD-9C87-5878B20FBD1C&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": " ",
+                    "meeting_type": "Informational Report",
+                    "title": "Subject: Semi-Annual City Administrator Approved Purchases And Contracts Report From: Office Of The City Administrator Recommendation: Receive An Informational Report On All Purchases And Contracts Authorized By The City Administrator Or Designee, Within The City Administrator’s Contract Authority During Fiscal Year 2017-18, In Accordance With The Oakland Municipal Code Section 2.04.020.",
+                    "action": "* Withdrawn and Rescheduled",
+                    "result": " ",
+                    "action_details": {
+                        "file_num": "18-0592",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3510991&GUID=D3F08AFB-971A-4CFD-9C87-5878B20FBD1C",
+                        "version": "1",
+                        "action_type": "Informational Report",
+                        "title": "Subject: Semi-Annual City Administrator Approved Purchases And Contracts Report From: Office Of The City Administrator Recommendation: Receive An Informational Report On All Purchases And Contracts Authorized By The City Administrator Or Designee, Within The City Administrator’s Contract Authority During Fiscal Year 2017-18, In Accordance With The Oakland Municipal Code Section 2.04.020.D",
+                        "mover": "",
+                        "seconder": "",
+                        "result": "",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "* Withdrawn and Rescheduled",
+                        "action_text": "This Informational Report be * Withdrawn from the January 15, 2019 *Special Finance & Management Committee and Rescheduled.to go before the *Special Finance & Management Committee to be heard 2/19/2019",
+                        "vote_items": []
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1008",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3712329&GUID=655D85A9-C831-4139-88E4-1E5EA69C2ECE&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": " ",
+                    "meeting_type": "Informational Report",
+                    "title": "Subject: Equity Indicators Report From: Race And Equity Department Recommendation: Receive An Informational Report Regarding The 2018 Oakland Equity Indicators",
+                    "action": " ",
+                    "result": " ",
+                    "action_details": {
+                        "file_num": "18-1008",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3712329&GUID=655D85A9-C831-4139-88E4-1E5EA69C2ECE",
+                        "version": "1",
+                        "action_type": "Informational Report",
+                        "title": "Subject: Equity Indicators Report From: Race And Equity Department Recommendation: Receive An Informational Report Regarding The 2018 Oakland Equity Indicators",
+                        "mover": "",
+                        "seconder": "",
+                        "result": "",
+                        "agenda_note": "",
+                        "minute_note": "The item regarding \"Equity Indicators Report\" was removed from the January 15, 2019 Special Community And Economic Development Committee Agenda with no new date",
+                        "action": "",
+                        "action_text": "",
+                        "vote_items": []
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1197",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3826906&GUID=66E1B3BA-54CD-44F8-AC94-514A8C75AA4C&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": " ",
+                    "meeting_type": "City Resolution",
+                    "title": "Subject: Support For Green New Deal Resolution From: President Pro Tempore Kalb, Council President Kaplan And Councilmember Thao And McElhnaey Recommendation: Adopt A Resolution Supporting A Green New Deal And Encouraging The United States Congress To Solve Human- Caused Climate Change Through Transitioning To A Clean Energy Economy, Phasing Out The Burning Of Fossil Fuels, Increasing Democratic Control Over Our Energy Systems, And Directing The City Administrator To Incorporate, To The Extent Practicable, Principles Of The Green New Deal Into The Energy And Climate Action Plan For Oakland",
+                    "action": " ",
+                    "result": " ",
+                    "action_details": {
+                        "file_num": "18-1197",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3826906&GUID=66E1B3BA-54CD-44F8-AC94-514A8C75AA4C",
+                        "version": "1",
+                        "action_type": "City Resolution",
+                        "title": "Subject: Support For Green New Deal Resolution From: Councilmember Kalb And Kaplan Recommendation: Adopt A Resolution Supporting A Green New Deal And Encouraging The United States Congress To Solve Human-Caused Climate Change Through Transitioning To A Clean Energy Economy, Phasing Out The Burning Of Fossil Fuels, Increasing Democratic Control Over Our Energy System, And Directing The City Administrator To Incorporate, To The Extent Practicable, Principles Of The Green New Deal Into The Energy And Climate Action Plan For Oakland",
+                        "mover": "",
+                        "seconder": "",
+                        "result": "",
+                        "agenda_note": "",
+                        "minute_note": "There was a title change read into record and Council President Kaplan was added as a co-sponsor",
+                        "action": "",
+                        "action_text": "",
+                        "vote_items": []
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1212",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3823429&GUID=44E3B52D-AFAC-42A6-979F-F8FF517EC02E&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "5",
+                    "meeting_type": "Report and Recommendation",
+                    "title": "A Review Of The Draft Agendas For The Special City Council Meeting Of January 22, 2019 And The Rules And Legislation Committee Of January 24, 2019",
+                    "action": "Accepted",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1212",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3823429&GUID=44E3B52D-AFAC-42A6-979F-F8FF517EC02E",
+                        "version": "1",
+                        "action_type": "Report and Recommendation",
+                        "title": "A Review Of The Draft Agendas For The Special City Council Meeting Of January 22, 2019 And The Rules And Legislation Committee Of January 24, 2019",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Accepted",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Lynette McElhaney, that this matter be Accepted. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                }
+            ]
+        },
+        "agenda": "https://oakland.legistar.com/View.ashx?M=A&ID=669099&GUID=9A22A684-A9E8-48E7-8D24-493933D283DC",
+        "minutes": "https://oakland.legistar.com/View.ashx?M=M&ID=669099&GUID=9A22A684-A9E8-48E7-8D24-493933D283DC",
+        "video": "https://oakland.legistar.com/Video.aspx?Mode=Granicus&ID1=3040&Mode2=Video",
+        "eComment": null
+    },
+    {
+        "name": " Special Meeting of the Oakland City Council",
+        "meeting_date": "1/7/2019",
+        "calendar_link": "https://oakland.legistar.com/View.ashx?M=IC&ID=668154&GUID=859260D1-38FA-49B1-8710-2BD6DC8BC771",
+        "meeting_time": "11:00 AM",
+        "meeting_location": "City Council Chamber, 3rd Floor",
+        "meeting_details": {
+            "meeting_name": " Special Meeting of the Oakland City Council",
+            "meeting_datetime": "1/7/2019",
+            "meeting_location": "City Council Chamber, 3rd Floor",
+            "published_agenda": "https://oakland.legistar.com/View.ashx?M=A&ID=668154&GUID=859260D1-38FA-49B1-8710-2BD6DC8BC771",
+            "agenda_packet": null,
+            "meeting_video": "https://oakland.legistar.com/Video.aspx?Mode=Granicus&ID1=3037&Mode2=Video",
+            "agenda_status": "FINAL",
+            "minutes_status": "FINAL",
+            "published_minutes": "https://oakland.legistar.com/View.ashx?M=M&ID=668154&GUID=859260D1-38FA-49B1-8710-2BD6DC8BC771",
+            "eComment": null,
+            "additional_notes": null,
+            "meeting_items": [
+                {
+                    "file_num": "18-1206",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3822096&GUID=3400F756-0043-4130-9D49-9898EDC22CB9&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "2",
+                    "meeting_type": "City Resolution",
+                    "title": "Subject: Election Of The President Of The City Council From: Office Of The City Clerk Recommendation: Adopt A Resolution Electing Councilmember ______________ As President Of The City Council Of The City Of Oakland For The Term Beginning January 7, 2019 And Ending in January of 2021, Pursuant To The City Council's Rules Of Procedure, Resolution No. 87044 C.M.S.",
+                    "action": "Adopted as Amended",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1206",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3822096&GUID=3400F756-0043-4130-9D49-9898EDC22CB9",
+                        "version": "1",
+                        "action_type": "City Resolution",
+                        "title": "Subject: Election Of The President Of The City Council From: Office Of The City Clerk Recommendation: Adopt A Resolution Electing Councilmember ______________ As President Of The City Council Of The City Of Oakland For The Term Beginning January 7, 2019 And Ending in January of 2021, Pursuant To The City Council's Rules Of Procedure, Resolution No. 87044 C.M.S.",
+                        "mover": "Laurence E. Reid",
+                        "seconder": "Dan Kalb",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "Councilmember Reid made a motion, seconded by Councilmember Kalb, to adopt a resolution Electing Councilmember Kaplan as Council President, and hearing no objections, the motion passed by with the following vote: 8 Ayes: Bas, Gallo,Kalb, McElhaney, Theng, Taylor and Council Kaplan. There were 18 speakers on this item",
+                        "action": "Adopted as Amended",
+                        "action_text": "This City Resolution be Adopted as Amended.",
+                        "vote_items": [
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Noel Gallo",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Laurence E. Reid",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Nikki Bas",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Loren Taylor",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1208",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3822098&GUID=B2176B49-D459-441B-9069-E7D0620010C5&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "4",
+                    "meeting_type": "City Resolution",
+                    "title": "Subject: Election Of The Vice-Mayor Of The City Council From: Office Of The City Clerk Recommendation: Adopt A Resolution Electing The Vice-Mayor Of The City of Oakland For A One-Year Term Pursuant To Article II, Section 208 Of The City Charter Of The City Of Oakland, To Begin On The Date Of The Council’s First Meeting In January 2019 (January 7) And Ending On The Date Of The Council’s First Meeting In January 2020 (January 6, 2020)",
+                    "action": "Adopted as Amended",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1208",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3822098&GUID=B2176B49-D459-441B-9069-E7D0620010C5",
+                        "version": "1",
+                        "action_type": "City Resolution",
+                        "title": "Subject: Election Of The Vice-Mayor Of The City Council From: Office Of The City Clerk Recommendation: Adopt A Resolution Electing The Vice-Mayor Of The City of Oakland For A One-Year Term Pursuant To Article II, Section 208 Of The City Charter Of The City Of Oakland, To Begin On The Date Of The Council’s First Meeting In January 2019 (January 7) And Ending On The Date Of The Council’s First Meeting In January 2020 (January 6, 2020)",
+                        "mover": "Dan Kalb",
+                        "seconder": "Noel Gallo",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "Councilmember Kalb made a motion, seconded by Councilmember Gallo, to adopt a Resolution Electing Councilmember Reid as Vice Mayor, and hearing no objections, the motion passed by with the following vote: 8 Ayes: Bas, Gallo,Kalb, McElhaney, Theng, Taylor and Council Kaplan.",
+                        "action": "Adopted as Amended",
+                        "action_text": "A motion was made by Noel Gallo, seconded by Larry Reid, that this matter be Adopted as Amended. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Noel Gallo",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Laurence E. Reid",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Nikki Bas",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Loren Taylor",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1207",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3822097&GUID=9BF78576-13CB-4A54-8268-FEEBCDEB33C1&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "3",
+                    "meeting_type": "City Resolution",
+                    "title": "Subject: Designation Of President Pro Tempore From: Office Of The City Clerk Recommendation: Adopt A Resolution Confirming Councilmember _____________ As President Pro Tempore Of The City Council Of The City Of Oakland For The Term Beginning January 7, 2019 And Ending In January of 2021 Pursuant To The City Council's Rules Of Procedure, Resolution No. 87044 C.M.S.",
+                    "action": "Adopted as Amended",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1207",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3822097&GUID=9BF78576-13CB-4A54-8268-FEEBCDEB33C1",
+                        "version": "1",
+                        "action_type": "City Resolution",
+                        "title": "Subject: Designation Of President Pro Tempore From: Office Of The City Clerk Recommendation: Adopt A Resolution Confirming Councilmember _____________ As President Pro Tempore Of The City Council Of The City Of Oakland For The Term Beginning January 7, 2019 And Ending In January of 2021 Pursuant To The City Council's Rules Of Procedure, Resolution No. 87044 C.M.S.",
+                        "mover": "Laurence E. Reid",
+                        "seconder": "Noel Gallo",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "Councilmember Reid made a motion, seconded by Councilmember Kalb, to adopt a resolution Electing Councilmember Kalb as President Pro Tempore, and hearing no objections, the motion passed by with the following vote: 8 Ayes: Bas, Gallo,Kalb, McElhaney, Theng, Taylor and Council Kaplan.",
+                        "action": "Adopted as Amended",
+                        "action_text": "A motion was made by Larry Reid, seconded by Noel Gallo, that this matter be Adopted as Amended. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Noel Gallo",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Laurence E. Reid",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Nikki Bas",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Loren Taylor",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1231",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3826589&GUID=63A983B5-BCFD-4E7D-B2FE-B13995A76F79&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "6",
+                    "meeting_type": "City Resolution",
+                    "title": "Subject: Re-Appointing And Appointing Members To The Oakland-Alameda County Coliseum Authority Board Of Commissioners From: Councilmember At Large Kaplan And Council President Reid Recommendation: Adopt A Resolution Re-Appointing And Appointing Members To The Oakland-Alameda County Coliseum Authority Board Of Commissioners As Follows - Reappointing Larry E. Reid For The Term Beginning January 20th, 2019 And Ending January 19th, 2021, And Appointing Loren Taylor For The Term Beginning January 20th, 2019 And Ending January 19th, 2021 To The Seat Previously Held By Lynette McElhaney",
+                    "action": "Adopted",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1231",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3826589&GUID=63A983B5-BCFD-4E7D-B2FE-B13995A76F79",
+                        "version": "1",
+                        "action_type": "City Resolution",
+                        "title": "Subject: Re-Appointing And Appointing Members To The Oakland-Alameda County Coliseum Authority Board Of Commissioners From: Councilmember At Large Kaplan And Council President Reid Recommendation: Adopt A Resolution Re-Appointing And Appointing Members To The Oakland-Alameda County Coliseum Authority Board Of Commissioners As Follows - Reappointing Larry E. Reid For The Term Beginning January 20th, 2019 And Ending January 19th, 2021, And Appointing Loren Taylor For The Term Beginning January 20th, 2019 And Ending January 19th, 2021 To The Seat Previously Held By Lynette McElhaney",
+                        "mover": "Dan Kalb",
+                        "seconder": "Lynette McElhaney",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Adopted",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Noel Gallo, that this matter be Adopted. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Noel Gallo",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Laurence E. Reid",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Nikki Bas",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Loren Taylor",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                },
+                {
+                    "file_num": "18-1232",
+                    "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3826590&GUID=BE843B39-881C-4F48-801C-0DFF9C57090C&Options=&Search=",
+                    "version": "1",
+                    "agenda_num": "5",
+                    "meeting_type": "City Resolution",
+                    "title": "Subject: Council President Appointments To Council Committees For 2019-2021 From: Councilmember At Large Kaplan And Council President Larry Reid Recommendation: Adopt A Resolution Pursuant To The Council’s Rules Of Procedure (Resolution No. 87044 C.M.S.) To Confirm The City Council President’s Appointments Of The Members And Chairpersons Of The Public Works, Finance And Management, Community And Economic Development, Life Enrichment, Public Safety, Rules And Legislation, City Port Liaison Committee And Education Partnership Committees Of The City Council",
+                    "action": "Adopted",
+                    "result": "Pass",
+                    "action_details": {
+                        "file_num": "18-1232",
+                        "file_url": "https://oakland.legistar.com/LegislationDetail.aspx?ID=3826590&GUID=BE843B39-881C-4F48-801C-0DFF9C57090C",
+                        "version": "1",
+                        "action_type": "City Resolution",
+                        "title": "Subject: Council President Appointments To Council Committees For 2019-2021 From: Councilmember At Large Kaplan And Council President Larry Reid Recommendation: Adopt A Resolution Pursuant To The Council’s Rules Of Procedure (Resolution No. 87044 C.M.S.) To Confirm The City Council President’s Appointments Of The Members And Chairpersons Of The Public Works, Finance And Management, Community And Economic Development, Life Enrichment, Public Safety, Rules And Legislation, City Port Liaison Committee And Education Partnership Committees Of The City Council",
+                        "mover": "Rebecca Kaplan",
+                        "seconder": "Noel Gallo",
+                        "result": "Pass",
+                        "agenda_note": "",
+                        "minute_note": "",
+                        "action": "Adopted",
+                        "action_text": "A motion was made by Rebecca Kaplan, seconded by Noel Gallo, that this matter be Adopted. The motion carried by the following vote:",
+                        "vote_items": [
+                            {
+                                "person_name": "Rebecca Kaplan",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Dan Kalb",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Noel Gallo",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Laurence E. Reid",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Nikki Bas",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Sheng Thao",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Lynette McElhaney",
+                                "vote": "Aye"
+                            },
+                            {
+                                "person_name": "Loren Taylor",
+                                "vote": "Aye"
+                            }
+                        ]
+                    },
+                    "video": null
+                }
+            ]
+        },
+        "agenda": "https://oakland.legistar.com/View.ashx?M=A&ID=668154&GUID=859260D1-38FA-49B1-8710-2BD6DC8BC771",
+        "minutes": "https://oakland.legistar.com/View.ashx?M=M&ID=668154&GUID=859260D1-38FA-49B1-8710-2BD6DC8BC771",
+        "video": "https://oakland.legistar.com/Video.aspx?Mode=Granicus&ID1=3037&Mode2=Video",
+        "eComment": null
+    },
+    {
+        "name": "Rules and Legislation Committee - CANCELLED",
+        "meeting_date": "1/3/2019",
+        "calendar_link": "https://oakland.legistar.com/View.ashx?M=IC&ID=667932&GUID=012A2681-E188-47BD-81A0-EFA8B3C583B1",
+        "meeting_time": "10:45 AM",
+        "meeting_location": "City Council Chamber, 3rd Floor",
+        "meeting_details": {
+            "meeting_name": "Rules and Legislation Committee - CANCELLED",
+            "meeting_datetime": "1/3/2019",
+            "meeting_location": "City Council Chamber, 3rd Floor",
+            "published_agenda": null,
+            "agenda_packet": null,
+            "meeting_video": null,
+            "agenda_status": "FINAL",
+            "minutes_status": "DRAFT",
+            "published_minutes": null,
+            "eComment": null,
+            "additional_notes": "Please note: this meeting's minutes have not been finalized yet. Actions taken on legislation and their results are not available.",
+            "meeting_items": []
+        },
+        "agenda": null,
+        "minutes": null,
+        "video": null,
+        "eComment": null
+    },
+    {
+        "name": "Meeting of the Oakland City Council - CANCELLATION",
+        "meeting_date": "1/1/2019",
+        "calendar_link": "https://oakland.legistar.com/View.ashx?M=IC&ID=663180&GUID=DAB2330F-FE83-4E41-AD0E-8F6FDF243971",
+        "meeting_time": "5:30 PM",
+        "meeting_location": "City Council Chamber, 3rd Floor",
+        "meeting_details": {
+            "meeting_name": "Meeting of the Oakland City Council - CANCELLATION",
+            "meeting_datetime": "1/1/2019",
+            "meeting_location": "City Council Chamber, 3rd Floor",
+            "published_agenda": null,
+            "agenda_packet": null,
+            "meeting_video": null,
+            "agenda_status": "FINAL",
+            "minutes_status": "DRAFT",
+            "published_minutes": null,
+            "eComment": null,
+            "additional_notes": "Please note: this meeting's minutes have not been finalized yet. Actions taken on legislation and their results are not available.",
+            "meeting_items": []
+        },
+        "agenda": null,
+        "minutes": null,
+        "video": null,
+        "eComment": null
+    }
+]
