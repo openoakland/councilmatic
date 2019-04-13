@@ -160,17 +160,17 @@
               <tr>
                 <td><span class="style1">{{ meeting['meeting_date'] }}</span></td>
 
-                {% if 'http' in meeting['video'] %}
+                {% if meeting['video'] %}
                 <td>
                   <a href="{{ meeting['video'] }}" target="_top" data-toggle="tooltip">
                     Click for Video Minutes and Agenda
                   </a>
-                {% elif 'http' in meeting['minutes'] %}
+                {% elif meeting['minutes'] %}
                 <td>
                   <a href="{{ meeting['minutes'] }}" target="_top" data-toggle="tooltip">
                     Click for Minutes
                   </a>
-                {% elif 'http' in meeting['agenda'] %}
+                {% elif meeting['agenda'] %}
                 <td>
                   Meeting at {{ meeting['meeting_time'] }} in {{ meeting['meeting_location'] }} |
                   <a href="{{ meeting['agenda'] }}" target="_top">Click for agenda</a>
@@ -179,7 +179,7 @@
                     Meeting at {{ meeting['meeting_time'] }} in {{ meeting['meeting_location'] }}
                 {% endif %}
 
-                {% if 'http' in meeting['eComment'] %}
+                {% if meeting['eComment'] %}
                 | <a href="{{ meeting['eComment'] }}" target="_top">Click to comment electronically</a>
                 {% endif %}
 

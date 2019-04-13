@@ -1,6 +1,6 @@
 # Creates a webpage
 import os
-import csv
+import json
 import re
 
 from jinja2 import Template
@@ -20,7 +20,7 @@ def committee_name_to_url(committee_name):  # e.g. "Rules & Legislation" -> 'rul
 
 def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False, skip_cancellations=False):
     """
-    given a parsed CSV (scraped_data), returns a dict that can be used in the
+    given a parsed JSON file (scraped_data), returns a dict that can be used in the
     sidebar and main content area that looks like:
 
     {
@@ -100,47 +100,44 @@ print(" ")
 print("<------------------Running main.py - Version", VERSION, "------------------>")
 current_directory = os.path.abspath(os.path.dirname(__file__))
 
-# the sidebar is identical regardless of the year; let's load the data for it
-# first.
-current_year = datetime.now().year
-scraped_file = os.path.join(CURRENT_DIRECTORY, '../website/scraped/year{}.csv'.format(current_year))
-scraped_data = list(csv.DictReader(open(scraped_file, encoding="utf-8"), delimiter=',', quotechar='"',
-                                   quoting=csv.QUOTE_ALL, skipinitialspace=True))
-current_year = datetime.now().year   # Automatically  update (probably need to increase year in December
-int_current_year = int(current_year) + 1
+# determine the list of years that we'll render pages for
+CURRENT_YEAR = datetime.now().year
+int_current_year = int(CURRENT_YEAR) + 1
 if int_current_year - FIRSTYEAR > MAXYEARS:
     FIRSTYEAR = int_current_year - MAXYEARS
 YEARS = list(range(FIRSTYEAR, int_current_year))
 YEARS.reverse()
 
-scraped_file = os.path.join(current_directory, '../website/scraped/year{}.csv'.format(current_year))
-scraped_data = list(csv.DictReader(open(scraped_file, encoding="utf-8"),delimiter=',', quotechar='"',
-                                   quoting=csv.QUOTE_ALL, skipinitialspace=True))
-sidebar_items = load_meetings(scraped_data, upcoming_only=True)
-
-# generate the pages for other years
+# load the data produced by `make scrape` the command
+DATA_BY_YEAR = {}
 for year in YEARS:
-    # load the CSV for the year
-    scraped_file = os.path.join(CURRENT_DIRECTORY, '../website/scraped/year{}.csv'.format(year))
-    scraped_data = list(csv.DictReader(open(scraped_file, encoding="utf-8"), delimiter=',', quotechar='"',
-                                       quoting=csv.QUOTE_ALL, skipinitialspace=True))
+    # load the JSON for the year
+    scraped_file = os.path.join(CURRENT_DIRECTORY, '../website/scraped/year{}.csv'.format(CURRENT_YEAR))
+    with open(scraped_file) as f:
+        scraped_data = json.load(f)
+    DATA_BY_YEAR[year] = scraped_data
 
-    # generate a page for each committee in that year
+# the sidebar is identical regardless of the year; let's load the data for it
+# first.
+SIDEBAR_ITEMS = load_meetings(DATA_BY_YEAR[CURRENT_YEAR], upcoming_only=True)
+
+# then, generate a page for each committee in that year
+for (year, scraped_data) in DATA_BY_YEAR.items():
     for committee_name in COMMITTEES:
         slug = committee_name_to_url(committee_name)
         outfile = os.path.join(CURRENT_DIRECTORY, '../website/{}/{}.html'.format(year, slug))
 
-        render_committee_page(outfile, committee_name, year, sidebar_items = sidebar_items,
+        render_committee_page(outfile, committee_name, year, sidebar_items = SIDEBAR_ITEMS,
                               meetings=load_meetings(scraped_data, committee_name_filter=committee_name,
                                                 skip_cancellations=True),)   # Don't know what this comma is for - HSM
         if committee_name == COMMITTEES[0]:
             outfile = os.path.join(CURRENT_DIRECTORY, '../website/{}/index.html'.format(year))
-            render_committee_page(outfile, committee_name, year, sidebar_items = sidebar_items,
+            render_committee_page(outfile, committee_name, year, sidebar_items = SIDEBAR_ITEMS,
                                   meetings=load_meetings(scraped_data, committee_name_filter=committee_name,
                                                          skip_cancellations=True),)
             if year == YEARS[0]:
                 outfile = os.path.join(CURRENT_DIRECTORY, '../website/pc/index.html')
-                render_committee_page(outfile, committee_name, year, sidebar_items = sidebar_items,
+                render_committee_page(outfile, committee_name, year, sidebar_items = SIDEBAR_ITEMS,
                                   meetings=load_meetings(scraped_data, committee_name_filter=committee_name,
                                                          skip_cancellations=True),)
 
