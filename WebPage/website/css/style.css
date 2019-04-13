@@ -3,7 +3,7 @@
 }
 
 html, body {
-  background-color: #DDF0C7;
+  background-color: #F9F9F9;
 }
 
 a:link { color: green}              /* unvisited link */
@@ -11,12 +11,18 @@ a:hover { color: darkgreen;}          /* mouse over link */
 a:active {color: GoldenRod;}          /* selected link */
 a:visited {color: SaddleBrown;}         /* visited link */
 
+.councilmatic-navbar {
+  background-color: #212528;
+}
+
 .councilmatic-logo {
-  background-image: url(../images/icon_oakland.svg);
-  width: 1.5rem;
-  height: 1.5rem;
+  background-color: #fff;
   display: inline-block;
+  mask: url(../images/icon_oakland.svg);
+  -webkit-mask: url(../images/icon_oakland.svg);
+  height: 1.5rem;
   vertical-align: text-top;
+  width: 1.5rem;
 }
 
 /* To center the page */
@@ -31,7 +37,7 @@ a:visited {color: SaddleBrown;}         /* visited link */
 
 .calendar {
   width: 100%;
-  padding: 20px 30px;
+  padding: 20px 0;
   color: #363b41;
   display: inline-block;
 }

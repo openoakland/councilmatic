@@ -8,6 +8,8 @@ __pycache__
 /WebPage/website/logs/
 /.ipynb_checkpoints/
 /calendar.ipynb
+/WebPage/website/index.html
+/WebPage/website/upcoming/*
 /WebPage/website/2019/*
 /WebPage/website/2018/*
 /WebPage/website/2014/*

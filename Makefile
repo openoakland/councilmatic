@@ -3,6 +3,9 @@ WebPage/website/scraped/year%.json: run_calendar.py
 
 .PHONY: clean
 
+serve:
+	cd WebPage/website && python -m SimpleHTTPServer
+
 scrape: WebPage/website/scraped/year2019.json WebPage/website/scraped/year2018.json WebPage/website/scraped/year2017.json WebPage/website/scraped/year2016.json WebPage/website/scraped/year2015.json WebPage/website/scraped/year2014.json
 
 generate: WebPage/src/main.py

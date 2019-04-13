@@ -3,7 +3,7 @@ import os
 import json
 import re
 
-from jinja2 import Template
+from jinja2 import Environment, FileSystemLoader, select_autoescape
 from datetime import datetime
 
 VERSION = "5.3"     # Version of Program
@@ -67,12 +67,9 @@ def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False,
     return meetings_by_date
 
 
-def render_committee_page(output_filename, committee_name, year, meetings=[], sidebar_items=[]):
-    # populate the list of "Other Committees" for the page navigation
-    other_committees = {}
-    for other_committee_name in COMMITTEES:
-        link = '/{}/{}.html'.format(year, committee_name_to_url(other_committee_name))
-        other_committees[other_committee_name] = link
+def render_committee_page(committee_name, year, meetings=[], sidebar_items=[]):
+    slug = committee_name_to_url(committee_name)
+    outfile = os.path.join(CURRENT_DIRECTORY, '../website/{}/{}.html'.format(year, slug))
 
     # populate the list of "Other Years" for the page navigation
     other_years = {}
@@ -80,17 +77,33 @@ def render_committee_page(output_filename, committee_name, year, meetings=[], si
         link = '/{}/{}.html'.format(other_year, slug)
         other_years[other_year] = link
 
-    template = Template(open(os.path.join(CURRENT_DIRECTORY, './template/committee.html')).read())
-    with open(output_filename, 'w') as f:
+    # populate the list of "Other Committees" for the page navigation
+    other_committees = {}
+    for other_committee_name in COMMITTEES:
+        link = '/{}/{}.html'.format(year, committee_name_to_url(other_committee_name))
+        other_committees[other_committee_name] = link
+
+    jinja_env = Environment(
+        loader=FileSystemLoader('WebPage/src/template/'),
+        autoescape=select_autoescape(['html'])
+    )
+    template = jinja_env.get_template('committee.html')
+    os.makedirs(os.path.dirname(os.path.abspath(outfile)), exist_ok=True)
+    if year != 'upcoming':
+        past_year = year
+    else:
+        past_year = False
+
+    with open(outfile, 'w') as f:
         template_args = {
             "other_years": other_years,
             "other_committees": other_committees,
-            "sidebar_items": sidebar_items,
             "committee": {
                 "name": committee_name,
+                "slug": slug,
             },
-            "meetings": [meeting[0] for meeting in meetings.values()],
-            "year": year,
+            "meetings": meetings,
+            "past_year": past_year,
             "now": datetime.now()
         }
         f.write(template.render(**template_args))
@@ -111,33 +124,34 @@ YEARS.reverse()
 # load the data produced by `make scrape` the command
 DATA_BY_YEAR = {}
 for year in YEARS:
-    # load the JSON for the year
-    scraped_file = os.path.join(CURRENT_DIRECTORY, '../website/scraped/year{}.csv'.format(CURRENT_YEAR))
-    with open(scraped_file) as f:
-        scraped_data = json.load(f)
-    DATA_BY_YEAR[year] = scraped_data
+    try:
+        # load the JSON for the year
+        scraped_file = os.path.abspath(os.path.join(CURRENT_DIRECTORY, '../website/scraped/year{}.csv'.format(year)))
+        with open(scraped_file) as f:
+            scraped_data = json.load(f)
+        DATA_BY_YEAR[year] = scraped_data
+    except Exception as e:
+        raise Exception("Could not process {}: {}".format(scraped_file, e))
 
-# the sidebar is identical regardless of the year; let's load the data for it
-# first.
-SIDEBAR_ITEMS = load_meetings(DATA_BY_YEAR[CURRENT_YEAR], upcoming_only=True)
+# generate a page for each committee in that year
+for committee_name in COMMITTEES:
+    # render the "Upcoming" page for that meeting
+    upcoming_meetings = load_meetings(
+            DATA_BY_YEAR[CURRENT_YEAR],
+            committee_name_filter=committee_name,
+            skip_cancellations=True,
+            upcoming_only=True)
+    render_committee_page(committee_name, 'upcoming', meetings=upcoming_meetings)
 
-# then, generate a page for each committee in that year
-for (year, scraped_data) in DATA_BY_YEAR.items():
-    for committee_name in COMMITTEES:
-        slug = committee_name_to_url(committee_name)
-        outfile = os.path.join(CURRENT_DIRECTORY, '../website/{}/{}.html'.format(year, slug))
+    for (year, scraped_data) in DATA_BY_YEAR.items():
+        past_meetings = load_meetings(
+                scraped_data,
+                committee_name_filter=committee_name,
+                skip_cancellations=True)
+        render_committee_page(committee_name, year, meetings=past_meetings)
 
-        render_committee_page(outfile, committee_name, year, sidebar_items = SIDEBAR_ITEMS,
-                              meetings=load_meetings(scraped_data, committee_name_filter=committee_name,
-                                                skip_cancellations=True),)   # Don't know what this comma is for - HSM
-        if committee_name == COMMITTEES[0]:
-            outfile = os.path.join(CURRENT_DIRECTORY, '../website/{}/index.html'.format(year))
-            render_committee_page(outfile, committee_name, year, sidebar_items = SIDEBAR_ITEMS,
-                                  meetings=load_meetings(scraped_data, committee_name_filter=committee_name,
-                                                         skip_cancellations=True),)
-            if year == YEARS[0]:
-                outfile = os.path.join(CURRENT_DIRECTORY, '../website/pc/index.html')
-                render_committee_page(outfile, committee_name, year, sidebar_items = SIDEBAR_ITEMS,
-                                  meetings=load_meetings(scraped_data, committee_name_filter=committee_name,
-                                                         skip_cancellations=True),)
-
+# generate symlinks for index.html files
+os.symlink(
+    "upcoming/city-council.html",
+    os.path.abspath(os.path.join(CURRENT_DIRECTORY, "../website/index.html")),
+)

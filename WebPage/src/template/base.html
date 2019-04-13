@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130660241-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-130660241-1');
+    </script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>{% block page_title %}Oakland City Council Meetings{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <meta name="twitter:widgets:link-color" content="#000000">
+    <meta name="twitter:widgets:border-color" content="#000000">
+    <meta name="twitter:partner" content="tfwp">
+    <link rel="icon" href="http://www.openoakland.org/wp-content/uploads/2015/11/cropped-logo_240x240-32x32.png" sizes="32x32" />
+    <link rel="icon" href="http://www.openoakland.org/wp-content/uploads/2015/11/cropped-logo_240x240-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon-precomposed" href="http://www.openoakland.org/wp-content/uploads/2015/11/cropped-logo_240x240-180x180.png" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark councilmatic-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <div class="councilmatic-logo"></div>
+          Oakland City Council
+        </a>
+      </div>
+    </nav>
+
+    <div class="container">
+      {% block body_content %}{% endblock %}
+    </div>
+  </body>
+</html>
