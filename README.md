@@ -51,6 +51,8 @@ python run_calendar.py -d 2018 > WebPage/website/scraped/year2018.json
 
 ### Scrape a single year and filter by date range
 
+Starting from 1/1/2019 up to (but not including) 1/14/2019 
+
 ```
 python run_calendar.py -d 2019 -sdt 1/1/2019 -edt 1/14/2019 > WebPage/website/scraped/cal01012019_01142019.json
 ```
