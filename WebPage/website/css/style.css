@@ -25,6 +25,12 @@ a:visited {color: SaddleBrown;}         /* visited link */
   width: 1.5rem;
 }
 
+.councilmatic-body-container {
+  /* experimentally determined to be just tall enough to show a little of the
+   * footer: */
+  min-height: 650px;
+}
+
 .councilmatic-sidebar {
   background-color: #215276;
   color: #fff;
@@ -47,6 +53,18 @@ a:visited {color: SaddleBrown;}         /* visited link */
 
 .councilmatic-sidebar a {
   color: #fff;
+}
+
+.councilmatic-footer {
+  background-color: #212528;
+  color: #fff;
+  text-align: center;
+  padding: 1em 0;
+}
+
+.councilmatic-footer a {
+  color: #fff;
+  text-decoration: underline;
 }
 
 /* To center the page */

@@ -38,8 +38,29 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div class="councilmatic-body-container container">
       {% block body_content %}{% endblock %}
+    </div>
+
+
+    <div class="councilmatic-footer">
+      <div class="container">
+        <p>
+          Created by
+          <a href="https://openoakland.org" target="_blank">
+            <img src="../images/OpenOakland-logo-white-316.png" alt="OpenOakland Logo">
+          </a>
+        </p>
+
+        <p>
+          Disclaimer: This site is in beta. <br>
+          Our data was last updated on {{ now.strftime("%A, %B %d, %Y at %I:%M %p") }}.
+          <br>Please report bugs and suggestions to <a href="mailto:councilmatic@openoakland.org?subject=Feedback%20for%20Oakland%20Councilmatic" title="Report bugs">councilmatic@openoakland.org</a>
+        </p>
+
+        <a href="https://twitter.com/OCouncilmatic?ref_src=twsrc%5Etfw" class="twitter-follow-button"
+            data-show-count="false">Follow @OCouncilmatic</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
     </div>
   </body>
 </html>
