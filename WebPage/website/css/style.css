@@ -4,6 +4,7 @@
 
 html, body {
   background-color: #F9F9F9;
+  min-width: 360px;
 }
 
 a:link { color: green}              /* unvisited link */
@@ -44,10 +45,6 @@ a:visited {color: SaddleBrown;}         /* visited link */
 @media screen and (max-width: 568px) {
   .councilmatic-sidebar {
     margin: -16px -15px 15px;
-  }
-
-  .councilmatic-sidebar__header {
-    display: none;
   }
 }
 
@@ -102,7 +99,8 @@ a:visited {color: SaddleBrown;}         /* visited link */
 
 .event-day {
   display: block;
-  margin-top: 3em;
+  margin-top: 2em;
+  margin-bottom: 3em;
 }
 
 .event-day__date {
@@ -126,12 +124,15 @@ a:visited {color: SaddleBrown;}         /* visited link */
 
 .event-day__item-actions {
   float: right;
-  font-size: 20px;
+  font-size: 14px;
+  margin-top: 1px;
+  line-height: 24px;
 }
 .event-day__item-actions > a {
   color: #215276;
   margin-right: 1rem;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .dark {
