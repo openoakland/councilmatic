@@ -25,6 +25,30 @@ a:visited {color: SaddleBrown;}         /* visited link */
   width: 1.5rem;
 }
 
+.councilmatic-sidebar {
+  background-color: #215276;
+  color: #fff;
+  padding: 20px 20px 10px 20px;
+}
+
+.councilmatic-sidebar__header {
+  margin-bottom: 15px;
+}
+
+@media screen and (max-width: 568px) {
+  .councilmatic-sidebar {
+    margin: -16px -15px 15px;
+  }
+
+  .councilmatic-sidebar__header {
+    display: none;
+  }
+}
+
+.councilmatic-sidebar a {
+  color: #fff;
+}
+
 /* To center the page */
 .light {
   background-color: #fff;

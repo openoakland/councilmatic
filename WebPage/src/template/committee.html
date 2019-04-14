@@ -11,7 +11,7 @@
 
 {% block body_content %}
 <div class="row mt-3">
-  <div class="col-8">
+  <div class="col-xs-12 col-sm-8 order-2 order-sm-1">
     <div class="calendar">
       <h1 class="header_title">Meeting Schedule</h1>
 
@@ -25,7 +25,7 @@
 
       <h3>Filter by Committee</h3>
       <div class="dropdown">
-        <button class="btn dropdown-toggle" type="button" id="committeeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <button class="btn btn-outline-dark dropdown-toggle" type="button" id="committeeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           {{ committee['name'] }}
         </button>
 
@@ -110,8 +110,34 @@
     </div>
   </div>
 
-  <div class="col-4">
-    Sidebar goes here
+  <div class="col-xs-12 col-sm-4 order-1 order-sm-2">
+    <div class="councilmatic-sidebar">
+      <h3 class="councilmatic-sidebar__header">Additional Services</h3>
+
+      <p>
+      <a href="http://gisapps.mapoakland.com/councildistricts/" target="_blank">
+        Find Your District &amp; Representative
+        <i class="fas fa-external-link-alt fa-xs"></i>
+      </a>
+
+      <p>
+      <a href="https://www.oaklandca.gov/services/order-an-agenda-packet" target="_blank">
+        Subscribe to Meeting Notes
+        <i class="fas fa-external-link-alt fa-xs"></i>
+      </a>
+
+      <p>
+      <a href="https://www.oaklandca.gov/services/request-a-city-council-agenda-item" target="_blank">
+        Request an Agenda Item
+        <i class="fas fa-external-link-alt fa-xs"></i>
+      </a>
+
+      <p>
+      <a href="https://solar.oaklandnet.com/Speaker/form" target="_blank">
+        Sign Up to Speak
+        <i class="fas fa-external-link-alt fa-xs"></i>
+      </a>
+    </div>
   </div>
 </div>
 {% endblock %}
