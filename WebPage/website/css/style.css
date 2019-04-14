@@ -7,10 +7,10 @@ html, body {
   min-width: 360px;
 }
 
-a:link { color: green}              /* unvisited link */
+a:link { color: #215276; }              /* unvisited link */
 a:hover { color: darkgreen;}          /* mouse over link */
 a:active {color: GoldenRod;}          /* selected link */
-a:visited {color: SaddleBrown;}         /* visited link */
+a:visited {color: #215276;}         /* visited link */
 
 .councilmatic-navbar {
   background-color: #212528;
