@@ -13,6 +13,15 @@ COMMITTEES = ["City Council", "Rules & Legislation", "Public Works", "Life Enric
               "Oakland Redevelopment", "Community & Economic Development", "Finance & Management"]
 CURRENT_DIRECTORY = os.path.abspath(os.path.dirname(__file__))
 
+def format_date(date):
+    """
+    format a date object in month/day/year format, but convert dates like:
+        01/02/2013
+    to:
+        1/2/2013
+    """
+    return re.sub("\\b0(\\d)", "\\1", date.strftime("%m/%d/%Y"))
+
 
 def committee_name_to_url(committee_name):  # e.g. "Rules & Legislation" -> 'rules-and-legislation'
     return re.sub(r'[^a-z]+', '-', committee_name.lower().replace('&', 'and'))
@@ -85,8 +94,9 @@ def render_committee_page(committee_name, year, meetings=[], sidebar_items=[]):
 
     jinja_env = Environment(
         loader=FileSystemLoader('WebPage/src/template/'),
-        autoescape=select_autoescape(['html'])
+        autoescape=select_autoescape(['html']),
     )
+    jinja_env.filters['format_date'] = format_date
     template = jinja_env.get_template('committee.html')
     os.makedirs(os.path.dirname(os.path.abspath(outfile)), exist_ok=True)
     if year != 'upcoming':
