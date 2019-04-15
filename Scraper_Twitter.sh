@@ -56,13 +56,17 @@ if [ $LINUXTYPE = $ISDARWIN ]; then
     LASTYEAR=`date -v+10d +"%Y"`
     LASTMONTH=`date -v+10d +"%m"`
     LASTDAY=`date -v+10d +"%d"`
-    FINALDAY=$LASTMONTH"/"$LASTDAY"/"$LASTYEAR   # uncomment for debug
 else
     echo "On Ubuntu"
-	date --date="10 day" +"%D" > next.tmp
-	FINALDAY=$(<next.tmp)
-	rm next.tmp
+	date --date="10 day" +"%Y" > year.tmp
+	date --date="10 day" +"%m" > month.tmp
+	date --date="10 day" +"%d" > day.tmp
+	LASTYEAR=$(<year.tmp)
+	LASTMONTH=$(<month.tmp)
+	LASTDAY=$(<day.tmp)
+	rm year.tmp, month.tmp, day.tmp
 fi
+FINALDAY=$LASTMONTH"/"$LASTDAY"/"$LASTYEAR   # uncomment for debug
 echo "The final day is "$FINALDAY
 
 
