@@ -61,7 +61,7 @@ else
     echo "On Ubuntu"
 	date --date="10 day" +"%D" > next.tmp
 	FINALDAY=$(<next.tmp)
-	rm next.mtp
+	rm next.tmp
 fi
 echo "The final day is "$FINALDAY
 
