@@ -11,7 +11,7 @@
 # if equal, we are running local Mac OSX/Darwin, else assume Ubuntu/AWS
 
 
-VERSION="1.0"
+VERSION="1.1"
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 if [ $LINUXTYPE = $ISDARWIN ]; then
@@ -64,7 +64,7 @@ else
 	LASTYEAR=$(<year.tmp)
 	LASTMONTH=$(<month.tmp)
 	LASTDAY=$(<day.tmp)
-	rm year.tmp, month.tmp, day.tmp
+	rm year.tmp month.tmp day.tmp
 fi
 FINALDAY=$LASTMONTH"/"$LASTDAY"/"$LASTYEAR   # uncomment for debug
 echo "The final day is "$FINALDAY
