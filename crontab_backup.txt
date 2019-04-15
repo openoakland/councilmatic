@@ -20,8 +20,12 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 # 
 # m h  dom mon dow   command
-#30 0 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate2.log 2>&1
-#01 12 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate3.log 2>&1
-#04 18 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate1.log 2>&1
-# for test 30 20 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate.log 2>&1
-
+30 0 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate_12am.log 2>&1
+01 12 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate_12pm.log 2>&1
+04 18 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate_6pm.log 2>&1
+# For testing 07 15 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate.log 2>&1
+#
+# For Tweetit.  Files must be scraped
+#
+55 0 * * * /home/howard/Councilmatic/Scraper_Twitter.sh > /home/howard/Councilmatic/WebPage/website/logs/TweetIt_12am.log 2>&1
+#58 21 * * * /home/howard/Councilmatic/TweetIt.sh > /home/howard/Councilmatic/WebPage/website/logs/TweetIt.log 2>&1
