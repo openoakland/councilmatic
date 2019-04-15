@@ -37,7 +37,7 @@
 # Version 3.9 allows for csv or jason.  Does not produce a file if a crash
 # Version 3.10 uses run_calendar2.py
 
-VERSION="3.10" # for ScraperUpdate2.sh
+VERSION="3.11" # for ScraperUpdate2.sh
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 if [ $LINUXTYPE = $ISDARWIN ]; then
@@ -99,14 +99,7 @@ echo "Version "$VERSION" of ScraperUpdate2.sh" 			#Clear cron log file
 #
 #Get a list of current dates
 #
-unlink scraper
-ROOT="scraper_"
-CHOICE="csv"
-SCRAPER_DIRECTORY=$ROOT$CHOICE
-echo "Creating a "$CHOICE" file"
-ln -s $SCRAPER_DIRECTORY scraper
-echo "Symbolic Link:" scraper
-ls -l $SCRAPER_DIRECTORY scraper
+source set_csv_scraper_symlink.sh  # Using CSV files
 date
 $PYTHON run_calendar2.py --show_dates > $CRONDIR/temp.tmp
 #
