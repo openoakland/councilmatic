@@ -95,9 +95,9 @@ source set_json_scraper_symlink.sh # Set environment for jacosn
 date
 echo "Doing the JSON Scrape"
 # Example of doing a date scrape: python run_calendar.py -d 2019 -sdt 1/1/2019 -edt 1/14/2019
-COMMAND="-d $CURRENTYEAR -sdt $FIRSTDAY -edt $LASTDAY > WebPage/website/scraped/TwitterTEMP.JSON"
-echo $COMMAND
-#$PYTHON  run_calendar.py $COMMAND
+COMMAND="run_calendar.py -d $CURRENTYEAR -sdt $FIRSTDAY -edt $LASTDAY"
+echo "Starting the Scrape with the command" $COMMAND
+$PYTHON $COMMAND > WebPage/website/scraped/TwitterTEMP.JSON
 date
 
 echo "Scraper_Twitter.sh completed"
