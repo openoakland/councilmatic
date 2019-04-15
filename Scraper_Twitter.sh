@@ -43,31 +43,29 @@ else
     echo "nok"
 fi
 
+# This works on both platforms
 
-# Here is the DATE-RELATED year-gathering code, deal with differences in Darwin vs. Ubuntu date command.
-
-if [ $LINUXTYPE = $ISDARWIN ]; then
-    echo "On a Macintosh"
-
-else
-	date --date="1 year ago" +"%Y" > last.tmp
-	LASTYEAR=$(<last.tmp)
-	date --date="1 year" +"%Y" > next.tmp
-	NEXTYEAR=$(<next.tmp)
-	rm last.tmp
-	rm next.tmp
-fi
 CURRENTYEAR=`date +"%Y"`
 CURRENTMONTH=`date +"%m"`
 CURRENTDAY=`date +"%d"`
 FIRSTDAY=$CURRENTMONTH"/"$CURRENTDAY"/"$CURRENTYEAR   # uncomment for debug
 echo "The starting day is "$FIRSTDAY
 
-LASTYEAR=`date -v+10d +"%Y"`
-LASTMONTH=`date -v+10d +"%m"`
-LASTDAY=`date -v+10d +"%d"`
-LASTDAY=$LASTMONTH"/"$LASTDAY"/"$LASTYEAR   # uncomment for debug
-echo "The last day is "$LASTDAY
+# Here is the DATE-RELATED year-gathering code, deal with differences in Darwin vs. Ubuntu date command.
+
+if [ $LINUXTYPE = $ISDARWIN ]; then
+    echo "On a Macintosh"
+    LASTYEAR=`date -v+10d +"%Y"`
+    LASTMONTH=`date -v+10d +"%m"`
+    LASTDAY=`date -v+10d +"%d"`
+    FINALDAY=$LASTMONTH"/"$LASTDAY"/"$LASTYEAR   # uncomment for debug
+else
+    echo "On Ubuntu"
+	date --date="10 day" +"%D" > next.tmp
+	FINALDAY=$(<next.tmp)
+	rm next.mtp
+fi
+echo "The final day is "$FINALDAY
 
 
 if [ $LINUXTYPE = $ISDARWIN ]; then
@@ -95,9 +93,9 @@ source set_json_scraper_symlink.sh # Set environment for jacosn
 date
 echo "Doing the JSON Scrape"
 # Example of doing a date scrape: python run_calendar.py -d 2019 -sdt 1/1/2019 -edt 1/14/2019
-COMMAND="run_calendar.py -d $CURRENTYEAR -sdt $FIRSTDAY -edt $LASTDAY"
+COMMAND="run_calendar.py -d $CURRENTYEAR -sdt $FIRSTDAY -edt $FINALDAY"
 echo "Starting the Scrape with the command" $COMMAND
-$PYTHON $COMMAND > WebPage/website/scraped/TwitterTEMP.JSON
+$PYTHON $COMMAND > WebPage/website/scraped/TwitterTEMP.json
 date
 
 echo "Scraper_Twitter.sh completed"
