@@ -4,6 +4,7 @@ from datetime import datetime
 from scraper.controller.calendar import Calendar
 from scraper.model.calendar import Calendar as CalendarModel
 
+
 def get_args():
   parser = argparse.ArgumentParser()
   parser.add_argument("-sd", "--show_dates", help="show date values",     
@@ -68,6 +69,7 @@ def scrape(args):
 
   cal_rows_json = CalendarModel.to_map_list_json(cal_rows)
   print(cal_rows_json)
+
 
 def main():
   args = get_args()

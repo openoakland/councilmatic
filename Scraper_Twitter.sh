@@ -102,6 +102,6 @@ else
     echo "Successful scraper file"
 fi
 date
-
+$PYTHON Tweeter.py TRUE
 echo "Scraper_Twitter.sh completed"
 #
