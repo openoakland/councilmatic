@@ -23,7 +23,7 @@
 
 # To determine the current host (Mac/Darwin vs. AWS/Ubuntu): 
 # Assign ISDARWIN to string 'Darwin'.
-# Run the system command $(uname -s) and assign the result to LINUXTYPE. 
+# Run the system command $(uname -s) and assign 0the result to LINUXTYPE.
 # Finally, compare $LINUXTYPE to $ISDARWIN.
 # if equal, we are running local Mac OSX/Darwin, else assume Ubuntu/AWS
 
@@ -37,9 +37,11 @@
 # Version 3.9 allows for csv or jason.  Does not produce a file if a crash
 # Version 3.10 uses run_calendar2.py
 
-VERSION="3.11" # for ScraperUpdate2.sh
+VERSION="3.12" # for ScraperUpdate2.sh
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
+CHOICE="csv"
+
 if [ $LINUXTYPE = $ISDARWIN ]; then
 	echo "ScraperUpdate2.sh is Running under Mac OSX/Darwin"
 else
@@ -92,7 +94,6 @@ if [ $LINUXTYPE = $ISDARWIN ]; then
 	PATH="/Users/matis/.drivers:${PATH}"   #PATH set and export ONLY necessary when ISDARWIN
 	export PATH
 fi
-
 
 echo "Version "$VERSION" of ScraperUpdate2.sh" 			#Clear cron log file
 
