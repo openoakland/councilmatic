@@ -33,8 +33,6 @@ fi
 #
 cd $DIR
 pwd
-
-
 if [ -e  geckodriver.log ]
 then
     rm geckodriver.log   #This file gets big quickly
@@ -69,7 +67,7 @@ echo "The final day is "$FINALDAY
 
 
 if [ $LINUXTYPE = $ISDARWIN ]; then
-	PYTHON=/Users/matis/anaconda3/bin/python     #Must specify correct version of Python
+	PYTHON=/Users/matis/anaconda3/bin/python   #Must specify correct version of Python
 else
 	PYTHON=/home/howard/miniconda3/bin/python  #Must specify correct version of Python
 fi
@@ -94,8 +92,15 @@ date
 echo "Doing the JSON Scrape"
 # Example of doing a date scrape: python run_calendar.py -d 2019 -sdt 1/1/2019 -edt 1/14/2019
 COMMAND="run_calendar.py -d $CURRENTYEAR -sdt $FIRSTDAY -edt $FINALDAY"
-echo "Starting the Scrape with the command" $COMMAND
+echo "Starting the Scrape with the command:" $COMMAND
 $PYTHON $COMMAND > WebPage/website/scraped/TwitterTEMP.json
+retVal=$?
+if [ $retVal -ne 0 ]; then
+    echo "Scraper error. Will ignore"
+else
+    mv  WebPage/website/scraped/TwitterTEMP.json  WebPage/website/scraped/Twitter.json
+    echo "Successful scraper file"
+fi
 date
 
 echo "Scraper_Twitter.sh completed"

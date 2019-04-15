@@ -15,6 +15,8 @@ from datetime import datetime, timedelta
 import datetime as dt
 import requests
 
+from twitter_read_json import twitter_read_json
+
 VERSION = "2.0"
 LOOKAHEAD = 7  # Number of the days to look ahead for meetings. Program witten for a week.
 MAKEATWEET = True
@@ -32,28 +34,6 @@ This runs off a a file  ".tweeter"  which resides in your home directory.  The f
     
 Make sure this file does not have world access and is not accessible to the public    
 '''
-
-
-def read_csv_file(datafile, elements):
-    data = list(csv.reader(open(datafile, encoding="utf-8"), delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL,
-                           skipinitialspace=True))
-    numrows = len(data)
-    today = dt.datetime.now()
-    midnight = datetime.combine(today, datetime.min.time())
-    out_index_start = len(elements)
-
-    for i in range(numrows):  # Find out which meetings have not occurred
-        if i > 0:  # Don't read headers
-            if len(data[i][:]) >= 8:
-                meeting_daytime = datetime.strptime(data[i][1], '%m/%d/%Y')  # Convert to daytime format to compare
-                daydiff = (meeting_daytime - midnight).days
-                if daydiff < 0:
-                    break
-                elements.append([])
-                for j in range(0, 10):    # date within range
-                    elements[out_index_start + i - 1].append(0)
-                    elements[out_index_start + i - 1][j] = data[i][j]
-    return elements
 
 
 def pick_image_directory(): # Return an image at random (This should be initialized first to be faster)
@@ -138,12 +118,8 @@ if currentMonth == 12:  # See if need to look at next year's record
 else:
     years = [str(currentYear)]
 
-print("Gathering meetings from ", years)
-schedule = []
-for year in years:
-    scraper_file = "../website/scraped/year" + str(year) + ".csv"
-    print("Scraping", scraper_file)
-    schedule = read_csv_file(scraper_file, schedule)
+
+schedule = twitter_read_json
 
 print()
 numrows = len(schedule)
@@ -173,10 +149,12 @@ for i in range(0, numrows):
             committee = schedule[i][0]
             if "City Council" in committee:
                 committee = "City Council - (" + committee + ")"
-            agenda = schedule[i][6]
-            theTweet1 = day_of_week + " " + event_day + " at " + schedule[i][3] + " Oakland " + committee
+            agenda = schedule[i][3]
+            theTweet1 = day_of_week + " " + event_day + " at " + schedule[i][2] + " Oakland " + committee
             if "CANCELLED" in theTweet1:   # Don't put the agenda if cancelled
-                theTweetend = " Meeting, " + HASHTAG  + " " + random_string(1)
+                theTweetend = " Meeting, " + HASHTAG + " " + random_string(1)
+            elif agenda == "none":
+                theTweetend = " Meeting, " + HASHTAG + " " + random_string(1)
             else:
                 theTweetend = " Meeting. Agenda is " + agenda + " " + HASHTAG + " " + random_string(1)
             theTweet = theTweet1 + theTweetend
