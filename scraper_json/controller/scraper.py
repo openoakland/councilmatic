@@ -3,8 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import NoAlertPresentException
+from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException, WebDriverException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -196,9 +195,9 @@ class Scraper(ABC):
         try:
             self.driver.stop_client()
             self.driver.close()
-            self.driver.quit()
+            #self.driver.quit()
         except Exception as e:
-            print(e)
+            traceback.print_exception(type(e), e, e.__traceback__)
 
     def wait_for(self, id_str, wait_time=10):
         try:

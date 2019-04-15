@@ -4,7 +4,7 @@ from scraper.model.meeting_details import MeetingDetails
 class Calendar(ModelBase, JsonModel, CSVModel):
     def __init__(self, name=None, meeting_date=None, calendar_link=None, 
         meeting_time=None, meeting_location=None, meeting_details=None, agenda=None, 
-        minutes=None, video=None, eComment=None):
+        minutes=None, video=None, eComment=None, cancelled=None):
         super().__init__()
 
         self.field_names = [
@@ -17,7 +17,8 @@ class Calendar(ModelBase, JsonModel, CSVModel):
             'agenda', 
             'minutes', 
             'video', 
-            'eComment']    
+            'eComment',
+            'cancelled']    
 
         self.field_class_dict = {"meeting_details": MeetingDetails}
 
@@ -31,10 +32,25 @@ class Calendar(ModelBase, JsonModel, CSVModel):
         self.minutes = minutes
         self.video = video
         self.eComment = eComment
+        self._cancelled = cancelled
 
     @property
     def name(self):
         return self.remove_starting_asterisk(self.filter_newlines(self._name))
+
+    @property
+    def cancelled(self):
+        if ((self.name is not None and 'CANCELLED' in self.name.upper()) or
+            (self.meeting_location is not None and 'CANCELLED' in self.meeting_location.upper())):
+            self._cancelled = True
+        else:
+            self._cancelled = False
+
+        return self._cancelled
+
+    @cancelled.setter
+    def cancelled(self, val):
+        self._cancelled = val
 
     @name.setter
     def name(self, raw_name):
