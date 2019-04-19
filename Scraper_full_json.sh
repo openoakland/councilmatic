@@ -11,7 +11,7 @@
 # if equal, we are running local Mac OSX/Darwin, else assume Ubuntu/AWS
 
 
-VERSION="1.0"
+VERSION="1.1"
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 if [ $LINUXTYPE = $ISDARWIN ]; then
@@ -83,12 +83,9 @@ echo "Version "$VERSION" of Scraoer_full_jason.sh" 			#Clear cron log file
 #
 #Get a list of current dates
 #
-unlink scraper
-ROOT="scraper_"
+source set_json_scraper_symlink.sh
 CHOICE="json"
-SCRAPER_DIRECTORY=$ROOT$CHOICE
 echo "Creating a "$CHOICE" file"
-ln -s $SCRAPER_DIRECTORY scraper
 date
 echo "JSON Scrape of 2018"
 $PYTHON  run_calendar.py -d 2018  > WebPage/website/scraped/year2018."$CHOICE"
