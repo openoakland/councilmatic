@@ -84,6 +84,7 @@ echo "Version "$VERSION" of Scraoer_full_jason.sh" 			#Clear cron log file
 #Get a list of current dates
 #
 source set_json_scraper_symlink.sh
+ls -a scraper    # Just to check if it is working
 CHOICE="json"
 echo "Creating a "$CHOICE" file"
 date
