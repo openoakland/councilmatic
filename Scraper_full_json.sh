@@ -11,7 +11,7 @@
 # if equal, we are running local Mac OSX/Darwin, else assume Ubuntu/AWS
 
 
-VERSION="1.2"
+VERSION="1.2.1"
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 if [ $LINUXTYPE = $ISDARWIN ]; then
@@ -89,20 +89,6 @@ CHOICE="json"
 echo "Creating a "$CHOICE" file"
 date
 #
-YEAR="2017"
-echo "JSON Scrape of ""$YEAR"
-$PYTHON  run_calendar.py -d "$YEAR"  > WebPage/website/scraped/temp"$YEAR"."$CHOICE"
-retVal=$?
-if [ $retVal -ne 0 ]; then
-    echo "Scraper error for ""YEAR"". Will ignore"
-else
-    mv WebPage/website/scraped/temp"$YEAR"."$CHOICE" WebPage/website/scraped/year"$YEAR"."$CHOICE"
-    echo "Successful scrape of YEAR ""$YEAR"
-fi
-date
-echo "Scraper_full_json.sh completed"
-#
-#
 YEAR="2014"
 echo "JSON Scrape of ""$YEAR"
 $PYTHON  run_calendar.py -d "$YEAR"  > WebPage/website/scraped/temp"$YEAR"."$CHOICE"
@@ -156,7 +142,7 @@ date
 echo "Scraper_full_json.sh completed"
 #
 #
-YEAR="2018"
+YEAR="2018"  System information as of Sat Apr 20 16:09:26 PDT 2019
 echo "JSON Scrape of ""$YEAR"
 $PYTHON  run_calendar.py -d "$YEAR"  > WebPage/website/scraped/temp"$YEAR"."$CHOICE"
 retVal=$?
