@@ -11,7 +11,7 @@
 # if equal, we are running local Mac OSX/Darwin, else assume Ubuntu/AWS
 
 
-VERSION="1.1"
+VERSION="1.2"
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 if [ $LINUXTYPE = $ISDARWIN ]; then
@@ -88,23 +88,96 @@ ls -a scraper    # Just to check if it is working
 CHOICE="json"
 echo "Creating a "$CHOICE" file"
 date
-echo "JSON Scrape of 2018"
-$PYTHON  run_calendar.py -d 2018  > WebPage/website/scraped/year2018."$CHOICE"
-date
-echo "JSON Scrape of 2017"
-$PYTHON  run_calendar.py -d 2017  > WebPage/website/scraped/year2017."$CHOICE"
-date
-echo "JSON Scrape of 2016"
-$PYTHON  run_calendar.py -d 2016  > WebPage/website/scraped/year2016."$CHOICE"
-date
-echo "JSON Scrape of 2015"
-$PYTHON  run_calendar.py -d 2015  > WebPage/website/scraped/year2015."$CHOICE"
-date
-echo "JSON Scrape of 2014"
-$PYTHON  run_calendar.py -d 2014  > WebPage/website/scraped/year2014."$CHOICE"
-date
-echo "JSON Scrape of 2019"
-$PYTHON  run_calendar.py -d 2019  > WebPage/website/scraped/year2019."$CHOICE"
+#
+YEAR="2017"
+echo "JSON Scrape of ""$YEAR"
+$PYTHON  run_calendar.py -d "$YEAR"  > WebPage/website/scraped/temp"$YEAR"."$CHOICE"
+retVal=$?
+if [ $retVal -ne 0 ]; then
+    echo "Scraper error for ""YEAR"". Will ignore"
+else
+    mv WebPage/website/scraped/temp"$YEAR"."$CHOICE" WebPage/website/scraped/year"$YEAR"."$CHOICE"
+    echo "Successful scrape of YEAR ""$YEAR"
+fi
 date
 echo "Scraper_full_json.sh completed"
 #
+#
+YEAR="2014"
+echo "JSON Scrape of ""$YEAR"
+$PYTHON  run_calendar.py -d "$YEAR"  > WebPage/website/scraped/temp"$YEAR"."$CHOICE"
+retVal=$?
+if [ $retVal -ne 0 ]; then
+    echo "Scraper error for ""YEAR"". Will ignore"
+else
+    mv WebPage/website/scraped/temp"$YEAR"."$CHOICE" WebPage/website/scraped/year"$YEAR"."$CHOICE"
+    echo "Successful scrape of YEAR ""$YEAR"
+fi
+date
+echo "Scraper_full_json.sh completed"
+#
+YEAR="2015"
+echo "JSON Scrape of ""$YEAR"
+$PYTHON  run_calendar.py -d "$YEAR"  > WebPage/website/scraped/temp"$YEAR"."$CHOICE"
+retVal=$?
+if [ $retVal -ne 0 ]; then
+    echo "Scraper error for ""YEAR"". Will ignore"
+else
+    mv WebPage/website/scraped/temp"$YEAR"."$CHOICE" WebPage/website/scraped/year"$YEAR"."$CHOICE"
+    echo "Successful scrape of YEAR ""$YEAR"
+fi
+date
+echo "Scraper_full_json.sh completed"
+#
+YEAR="2016"
+echo "JSON Scrape of ""$YEAR"
+$PYTHON  run_calendar.py -d "$YEAR"  > WebPage/website/scraped/temp"$YEAR"."$CHOICE"
+retVal=$?
+if [ $retVal -ne 0 ]; then
+    echo "Scraper error for ""YEAR"". Will ignore"
+else
+    mv WebPage/website/scraped/temp"$YEAR"."$CHOICE" WebPage/website/scraped/year"$YEAR"."$CHOICE"
+    echo "Successful scrape of YEAR ""$YEAR"
+fi
+date
+echo "Scraper_full_json.sh completed"
+#
+YEAR="2017"
+echo "JSON Scrape of ""$YEAR"
+$PYTHON  run_calendar.py -d "$YEAR"  > WebPage/website/scraped/temp"$YEAR"."$CHOICE"
+retVal=$?
+if [ $retVal -ne 0 ]; then
+    echo "Scraper error for ""YEAR"". Will ignore"
+else
+    mv WebPage/website/scraped/temp"$YEAR"."$CHOICE" WebPage/website/scraped/year"$YEAR"."$CHOICE"
+    echo "Successful scrape of YEAR ""$YEAR"
+fi
+date
+echo "Scraper_full_json.sh completed"
+#
+#
+YEAR="2018"
+echo "JSON Scrape of ""$YEAR"
+$PYTHON  run_calendar.py -d "$YEAR"  > WebPage/website/scraped/temp"$YEAR"."$CHOICE"
+retVal=$?
+if [ $retVal -ne 0 ]; then
+    echo "Scraper error for ""YEAR"". Will ignore"
+else
+    mv WebPage/website/scraped/temp"$YEAR"."$CHOICE" WebPage/website/scraped/year"$YEAR"."$CHOICE"
+    echo "Successful scrape of YEAR ""$YEAR"
+fi
+date
+echo "Scraper_full_json.sh completed"
+#
+YEAR="2019"
+echo "JSON Scrape of ""$YEAR"
+$PYTHON  run_calendar.py -d "$YEAR"  > WebPage/website/scraped/temp"$YEAR"."$CHOICE"
+retVal=$?
+if [ $retVal -ne 0 ]; then
+    echo "Scraper error for ""YEAR"". Will ignore"
+else
+    mv WebPage/website/scraped/temp"$YEAR"."$CHOICE" WebPage/website/scraped/year"$YEAR"."$CHOICE"
+    echo "Successful scrape of YEAR ""$YEAR"
+fi
+date
+echo "Scraper_full_json.sh completed"
