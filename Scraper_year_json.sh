@@ -28,9 +28,9 @@ export MOZ_HEADLESS=1 # Needed to run Firefox Headless
 if [ $LINUXTYPE = $ISDARWIN ]; then
 	PATH="/Users/matis/.drivers:${PATH}"   # PATH set and export ONLY necessary when ISDARWIN
 	export PATH
-else
-    PATH="/home/howard/Councilmatic:${PATH}"
-    expor PATH
+#else
+#    PATH="/home/howard/Councilmatic:${PATH}"
+#    export PATH
 fi
 source set_json_scraper_symlink.sh
 # ls -a scraper    # Just to check if it is working
