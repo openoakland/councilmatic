@@ -4,7 +4,7 @@
 #
 # Written by Howard Matis - April 2, 2019
 
-VERSION="2.2"
+VERSION="2.3"
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 
@@ -18,6 +18,7 @@ fi
 
 echo "Beginning full json scrape. Version "$VERSION
 set $DIR
+pwd
 ./Scraper_year_json.sh 2014
 ./Scraper_year_json.sh 2015
 ./Scraper_year_json.sh 2016

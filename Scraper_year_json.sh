@@ -5,6 +5,7 @@
 # Written by Howard Matis - April 21, 2019
 
 echo " "
+
 echo "Beginning scrape of "$1
 date
 if [ -e  geckodriver.log ]
