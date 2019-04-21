@@ -1,14 +1,8 @@
 #!/usr/bin/env bash
 #
-# Scrape a year and produce json file.  The year is indicated by the arguement of this script
+# Scrape a year and produce json file.  The year is indicated by the argument of this script
 #
 # Written by Howard Matis - April 21, 2019
-
-# To determine the current host (Mac/Darwin vs. AWS/Ubuntu):
-# Assign ISDARWIN to string 'Darwin'.
-# Run the system command $(uname -s) and assign the result to LINUXTYPE.
-# Finally, compare $LINUXTYPE to $ISDARWIN.
-# if equal, we are running local Mac OSX/Darwin, else assume Ubuntu/AWS
 
 echo " "
 echo "Beginning scrape of "$1

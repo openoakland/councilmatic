@@ -4,14 +4,7 @@
 #
 # Written by Howard Matis - April 2, 2019
 
-# To determine the current host (Mac/Darwin vs. AWS/Ubuntu): 
-# Assign ISDARWIN to string 'Darwin'.
-# Run the system command $(uname -s) and assign the result to LINUXTYPE. 
-# Finally, compare $LINUXTYPE to $ISDARWIN.
-# if equal, we are running local Mac OSX/Darwin, else assume Ubuntu/AWS
-
-
-VERSION="2.1"
+VERSION="2.2"
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 
