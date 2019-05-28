@@ -12,9 +12,9 @@ import random
 from datetime import datetime, timedelta
 import requests
 
-from twitter_read_json import twitter_read_json
+from twitter_read_json_legistar import twitter_read_json
 
-VERSION = "2.2"
+VERSION = "3.0"
 LOOKAHEAD = 7  # Number of the days to look ahead for meetings. Program witten for a week.
 MAXTWEETSIZE = 280      # Maximums size for a tweet
 TWEETURLSIZE = 23       # Size of a URL
@@ -94,12 +94,10 @@ def random_string(length):      # Return a random string
     return ''.join(random.choice(string.ascii_letters) for m in range(length))
 
 
-
-
 def main_program(make_a_tweet):
     key = read_dot_tweeter()   # Read the permissions for sending the Tweet
-
-    schedule = twitter_read_json(False)  # The json will contains region of interest.
+    filename = "WebPage/website/scraped/Twitter.json"
+    schedule = twitter_read_json(filename, False)  # The json will contains region of interest.
     # Argument says whether want to print out parts of json file
 
     numrows = len(schedule)
@@ -109,7 +107,9 @@ def main_program(make_a_tweet):
     tomorrow_day = str(tomorrow.month) + '/' + str(tomorrow.day) + '/' + str(tomorrow.year)
 
     for i in range(0, numrows):
-        event_day = parse_timestamp(schedule[i][1])
+        print("json date", schedule[i][1])
+        #event_day = parse_timestamp(schedule[i][1])
+        event_day = schedule[i][1]
         print("Meeting Date:", event_day)
         day_datetime = datetime.strptime(event_day, '%m/%d/%Y')
         days = int((day_datetime - today).days) + 1 # of days awas from today

@@ -1,3 +1,6 @@
+# Written by Max Flander
+# Scrapes data by using Legistar API
+
 import json
 
 
@@ -6,8 +9,8 @@ def parse_timestamp(ts):
     return f"{month}/{day}/{year}"
 
 
-def twitter_read_json(printit=False):
-    with open('meetings.json') as f:
+def twitter_read_json(filename, printit=False):
+    with open(filename) as f:
         meetings = json.load(f)
 
     csv = [[m['EventBodyName'],
