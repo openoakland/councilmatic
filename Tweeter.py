@@ -94,6 +94,8 @@ def random_string(length):      # Return a random string
     return ''.join(random.choice(string.ascii_letters) for m in range(length))
 
 
+
+
 def main_program(make_a_tweet):
     key = read_dot_tweeter()   # Read the permissions for sending the Tweet
 
@@ -107,7 +109,7 @@ def main_program(make_a_tweet):
     tomorrow_day = str(tomorrow.month) + '/' + str(tomorrow.day) + '/' + str(tomorrow.year)
 
     for i in range(0, numrows):
-        event_day = schedule[i][1]
+        event_day = parse_timestamp(schedule[i][1])
         print("Meeting Date:", event_day)
         day_datetime = datetime.strptime(event_day, '%m/%d/%Y')
         days = int((day_datetime - today).days) + 1 # of days awas from today
@@ -119,7 +121,7 @@ def main_program(make_a_tweet):
             elif event_day == tomorrow_day:
                 day_of_week = "Tomorrow"
             if days == 7 or day_of_week == "Today" or day_of_week == "Tomorrow":   # Only tweet if today,
-                                                                                    # tomorrow, or same day of week
+                            # tomorrow, or same day of week
                 committee = schedule[i][0]
                 if "City Council" in committee:
                     committee = "City Council - (" + committee + ")"
