@@ -102,9 +102,6 @@ def main_program(make_a_tweet):
 
     numrows = len(schedule)
     today = datetime.now()
-    tomorrow = today + timedelta(days=1)
-    today_day = str(today.month) + '/' + str(today.day) + '/' + str(today.year)
-    tomorrow_day = str(tomorrow.month) + '/' + str(tomorrow.day) + '/' + str(tomorrow.year)
 
     for i in range(0, numrows):
         print("json date", schedule[i][1])
@@ -116,9 +113,9 @@ def main_program(make_a_tweet):
         if days >= 0 and days < LOOKAHEAD + 1:
             day_label = datetime.date(day_datetime).weekday()
             day_of_week = calendar.day_name[day_label]
-            if event_day == today_day:
+            if days == 0:
                 day_of_week = "Today"
-            elif event_day == tomorrow_day:
+            elif days == 1:
                 day_of_week = "Tomorrow"
             if days == 7 or day_of_week == "Today" or day_of_week == "Tomorrow":   # Only tweet if today,
                             # tomorrow, or same day of week

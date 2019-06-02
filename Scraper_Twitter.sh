@@ -96,7 +96,7 @@ date
 echo "Doing the JSON Scrape"
 # Example of doing a date scrape: python run_calendar.py -d 2019 -sdt 1/1/2019 -edt 1/14/2019
 #COMMAND="run_calendar.py -d $CURRENTYEAR -sdt $FIRSTDAY -edt $FINALDAY"
-COMMAND="run_meeting_json.py 7  WebPage/website/scraped/TwitterTEMP.json"
+COMMAND="run_meeting_json.py --days 7 --output WebPage/website/scraped/TwitterTEMP.json"
 echo "Starting the Scrape with the command:" $COMMAND
 $PYTHON $COMMAND
 retVal=$?
