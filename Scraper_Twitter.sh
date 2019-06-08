@@ -11,7 +11,7 @@
 # if equal, we are running local Mac OSX/Darwin, else assume Ubuntu/AWS
 
 
-VERSION="2.0"
+VERSION="2.1"
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 if [ $LINUXTYPE = $ISDARWIN ]; then
@@ -94,8 +94,6 @@ echo "Version "$VERSION" of Scraoer_Twitter.sh" 			#Clear cron log file
 source set_json_scraper_symlink.sh # Set environment for jsonn
 date
 echo "Doing the JSON Scrape"
-# Example of doing a date scrape: python run_calendar.py -d 2019 -sdt 1/1/2019 -edt 1/14/2019
-#COMMAND="run_calendar.py -d $CURRENTYEAR -sdt $FIRSTDAY -edt $FINALDAY"
 COMMAND="run_meeting_json.py --days 7 --output WebPage/website/scraped/TwitterTEMP.json"
 echo "Starting the Scrape with the command:" $COMMAND
 $PYTHON $COMMAND
