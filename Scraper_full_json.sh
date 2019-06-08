@@ -4,7 +4,9 @@
 #
 # Written by Howard Matis - April 2, 2019
 
-VERSION="2.3.1"
+# Now using API scraper
+
+VERSION="3.0.0"
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 
@@ -16,15 +18,36 @@ else
 	DIR=/home/howard/Councilmatic
 fi
 
+if [ $LINUXTYPE = $ISDARWIN ]; then
+	PYTHON=/Users/matis/anaconda3/bin/python   #Must specify correct version of Python
+else
+	PYTHON=/home/howard/miniconda3/bin/python  #Must specify correct version of Python
+fi
+
+echo $PYTHON
+
+
 echo "Beginning full json scrape. Version "$VERSION
 cd $DIR
 pwd
-./Scraper_year_json.sh 2014
-./Scraper_year_json.sh 2015
-./Scraper_year_json.sh 2016
-./Scraper_year_json.sh 2017
-./Scraper_year_json.sh 2018
-./Scraper_year_json.sh 2019
+
+YEAR="2014"
+for YEAR in {2014..2019..1}     # Loop from years 2014 to 2019
+    do
+        echo "Doing the JSON Scrape for YEAR $YEAR"
+        COMMAND="run_meeting_json.py --year $YEAR --output WebPage/website/scraped/ScraperTEMP.json"
+        echo "Starting the Scrape with the command:" $COMMAND
+        $PYTHON $COMMAND
+        retVal=$?
+        if [ $retVal -ne 0 ]; then
+            echo "Scraper error. Will ignore"
+        else
+            mv  WebPage/website/scraped/ScraperTEMP.json  WebPage/website/scraped/Scraper$YEAR.json
+            echo "Successful scraper file for year $YEAR"
+        fi
+        echo ""
+done
+
 echo "Scraper_full_json.sh completed"
 #
 
