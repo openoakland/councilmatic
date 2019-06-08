@@ -5,8 +5,9 @@
 # Written by Howard Matis - April 2, 2019
 
 # Now using API scraper
+# This does a full update from 2014 to the current year
 
-VERSION="3.0.0"
+VERSION="3.0.1"
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 
@@ -31,9 +32,9 @@ echo "Beginning full json scrape. Version "$VERSION
 cd $DIR
 pwd
 
-YEAR="2014"
-for YEAR in {2014..2019..1}     # Loop from years 2014 to 2019
-    do
+CURRENTYEAR=`date +"%Y"`
+
+for ((YEAR=2014; YEAR<=CURRENTYEAR; YEAR++)); do      # Start the loop from 2014
         echo "Doing the JSON Scrape for YEAR $YEAR"
         COMMAND="run_meeting_json.py --year $YEAR --output WebPage/website/scraped/ScraperTEMP.json"
         echo "Starting the Scrape with the command:" $COMMAND
