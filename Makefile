@@ -1,5 +1,5 @@
-WebPage/website/scraped/year%.csv: run_calendar.py
-	python run_calendar.py -d $(subst .csv,,$(subst WebPage/website/scraped/year,,$@)) > $@
+WebPage/website/scraped/year%.csv: run_calendar2.py
+	python run_calendar2.py -d $(subst .csv,,$(subst WebPage/website/scraped/year,,$@)) > $@
 
 .PHONY: clean
 
