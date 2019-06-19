@@ -43,13 +43,13 @@ def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False,
     for meeting in scraped_data:
         # skip the meeting if the meeting name doesn't match the committee filter
         if committee_name_filter:
-            normalized_meeting_name = meeting['name'].replace(' & ', ' and ')
+            normalized_meeting_name = meeting['EventBodyName'].replace(' & ', ' and ')
             normalized_filter = committee_name_filter.replace(' & ', ' and ')
             if normalized_meeting_name.find(normalized_filter) == -1:
                 continue
 
         # skip the meeting if only upcoming meetings were requested
-        meeting_date = datetime.strptime(meeting['meeting_date'], '%m/%d/%Y')
+        meeting_date = datetime.strptime(meeting['EventDate'], '%Y-%m-%dT%H:%M:%S')
         if upcoming_only:
             daydiff = (meeting_date - midnight).days
             if daydiff < 0:
@@ -58,11 +58,11 @@ def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False,
         # Do not skip upcoming meetings in the Calendar if they are cancelled
         if not upcoming_only:
             # skip the meeting if it's a cancellation
-            if skip_cancellations and 'cancellation' in meeting['name'].lower():
+            if skip_cancellations and 'cancellation' in meeting['EventBodyName'].lower():
                 continue
 
-            # skip the meeting if there's no `meeting_time` in the agenda:
-            if not meeting['meeting_time']:
+            # skip the meeting if there's no `EventDate` in the agenda:
+            if not meeting['EventDate']:
                 continue
 
         # add the meeting to the calendar
@@ -72,7 +72,7 @@ def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False,
 
     for meeting_date in meetings_by_date.keys():
         meetings_by_date[meeting_date].sort(
-                key=lambda m: datetime.strptime(m['meeting_time'], "%I:%M %p"))
+                key=lambda m: datetime.strptime(m['EventDate'], "%Y-%m-%dT%H:%M:%S"))
     return meetings_by_date
 
 
@@ -136,7 +136,7 @@ DATA_BY_YEAR = {}
 for year in YEARS:
     try:
         # load the JSON for the year
-        scraped_file = os.path.abspath(os.path.join(CURRENT_DIRECTORY, '../website/scraped/year{}.csv'.format(year)))
+        scraped_file = os.path.abspath(os.path.join(CURRENT_DIRECTORY, '../website/scraped/year{}.json'.format(year)))
         with open(scraped_file) as f:
             scraped_data = json.load(f)
         DATA_BY_YEAR[year] = scraped_data
@@ -161,7 +161,6 @@ for committee_name in COMMITTEES:
         render_committee_page(committee_name, year, meetings=past_meetings)
 
 # generate symlinks for index.html files
-os.symlink(
-    "upcoming/city-council.html",
-    os.path.abspath(os.path.join(CURRENT_DIRECTORY, "../website/index.html")),
-)
+index_path = os.path.abspath(os.path.join(CURRENT_DIRECTORY, "../website/index.html"))
+if not os.path.exists(index_path):
+    os.symlink("upcoming/city-council.html", index_path)

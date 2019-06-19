@@ -79,29 +79,19 @@
         {% for event in events %}
         <div class="event-day__item">
           <h5 class="event-day__item-time">
-            {{ event['meeting_time'] }}
+            {{ event['EventTime'] }}
           </h5>
 
           <div class="event-day__item-actions">
-            <a href="{{ event['calendar_link'] }}" title="Add to Calendar">
-              <i class="far fa-calendar-plus"></i>
-              Add to Calendar
-            </a>
-
-            <a href="{{ event['agenda'] }}" title="View Agenda" target="_blank">
+            <a href="{{ event['EventAgendaFile'] }}" title="View Agenda" target="_blank">
               <i class="far fa-list-alt"></i>
               Agenda
-            </a>
-
-            <a href="{{ event['eComment'] }}" title="Leave a Comment Online" target="_blank">
-              <i class="far fa-comment"></i>
-              Comment
             </a>
           </div>
 
           <div class="event-day__item-details">
-            <font size="+1">{{ event['name'] }}</font> <br/>
-            {{ event['meeting_location'] }}
+            <font size="+1">{{ event['EventBodyName'] }}</font> <br/>
+            {{ event['EventLocation'] }}
           </div>
         </div>
         {% endfor %}
