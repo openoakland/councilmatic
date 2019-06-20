@@ -1,9 +1,9 @@
 # Creates a webpage
 import os
-import csv
+import json
 import re
 
-from jinja2 import Template
+from jinja2 import Environment, FileSystemLoader, select_autoescape
 from datetime import datetime
 
 VERSION = "5.3"     # Version of Program
@@ -13,6 +13,15 @@ COMMITTEES = ["City Council", "Rules & Legislation", "Public Works", "Life Enric
               "Oakland Redevelopment", "Community & Economic Development", "Finance & Management"]
 CURRENT_DIRECTORY = os.path.abspath(os.path.dirname(__file__))
 
+def format_date(date):
+    """
+    format a date object in month/day/year format, but convert dates like:
+        01/02/2013
+    to:
+        1/2/2013
+    """
+    return re.sub("\\b0(\\d)", "\\1", date.strftime("%m/%d/%Y"))
+
 
 def committee_name_to_url(committee_name):  # e.g. "Rules & Legislation" -> 'rules-and-legislation'
     return re.sub(r'[^a-z]+', '-', committee_name.lower().replace('&', 'and'))
@@ -20,7 +29,7 @@ def committee_name_to_url(committee_name):  # e.g. "Rules & Legislation" -> 'rul
 
 def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False, skip_cancellations=False):
     """
-    given a parsed CSV (scraped_data), returns a dict that can be used in the
+    given a parsed JSON file (scraped_data), returns a dict that can be used in the
     sidebar and main content area that looks like:
 
     {
@@ -34,13 +43,13 @@ def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False,
     for meeting in scraped_data:
         # skip the meeting if the meeting name doesn't match the committee filter
         if committee_name_filter:
-            normalized_meeting_name = meeting['name'].replace(' & ', ' and ')
+            normalized_meeting_name = meeting['EventBodyName'].replace(' & ', ' and ')
             normalized_filter = committee_name_filter.replace(' & ', ' and ')
             if normalized_meeting_name.find(normalized_filter) == -1:
                 continue
 
         # skip the meeting if only upcoming meetings were requested
-        meeting_date = datetime.strptime(meeting['meeting_date'], '%m/%d/%Y')
+        meeting_date = datetime.strptime(meeting['EventDate'], '%Y-%m-%dT%H:%M:%S')
         if upcoming_only:
             daydiff = (meeting_date - midnight).days
             if daydiff < 0:
@@ -49,11 +58,11 @@ def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False,
         # Do not skip upcoming meetings in the Calendar if they are cancelled
         if not upcoming_only:
             # skip the meeting if it's a cancellation
-            if skip_cancellations and 'cancellation' in meeting['name'].lower():
+            if skip_cancellations and 'cancellation' in meeting['EventBodyName'].lower():
                 continue
 
-            # skip the meeting if there's no `meeting_time` in the agenda:
-            if not meeting['meeting_time']:
+            # skip the meeting if there's no `EventDate` in the agenda:
+            if not meeting['EventDate']:
                 continue
 
         # add the meeting to the calendar
@@ -63,16 +72,13 @@ def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False,
 
     for meeting_date in meetings_by_date.keys():
         meetings_by_date[meeting_date].sort(
-                key=lambda m: datetime.strptime(m['meeting_time'], "%I:%M %p"))
+                key=lambda m: datetime.strptime(m['EventDate'], "%Y-%m-%dT%H:%M:%S"))
     return meetings_by_date
 
 
-def render_committee_page(output_filename, committee_name, year, meetings=[], sidebar_items=[]):
-    # populate the list of "Other Committees" for the page navigation
-    other_committees = {}
-    for other_committee_name in COMMITTEES:
-        link = '/{}/{}.html'.format(year, committee_name_to_url(other_committee_name))
-        other_committees[other_committee_name] = link
+def render_committee_page(committee_name, year, meetings=[], sidebar_items=[]):
+    slug = committee_name_to_url(committee_name)
+    outfile = os.path.join(CURRENT_DIRECTORY, '../website/{}/{}.html'.format(year, slug))
 
     # populate the list of "Other Years" for the page navigation
     other_years = {}
@@ -80,17 +86,34 @@ def render_committee_page(output_filename, committee_name, year, meetings=[], si
         link = '/{}/{}.html'.format(other_year, slug)
         other_years[other_year] = link
 
-    template = Template(open(os.path.join(CURRENT_DIRECTORY, './template/committee.html')).read())
-    with open(output_filename, 'w') as f:
+    # populate the list of "Other Committees" for the page navigation
+    other_committees = {}
+    for other_committee_name in COMMITTEES:
+        link = '/{}/{}.html'.format(year, committee_name_to_url(other_committee_name))
+        other_committees[other_committee_name] = link
+
+    jinja_env = Environment(
+        loader=FileSystemLoader('WebPage/src/template/'),
+        autoescape=select_autoescape(['html']),
+    )
+    jinja_env.filters['format_date'] = format_date
+    template = jinja_env.get_template('committee.html')
+    os.makedirs(os.path.dirname(os.path.abspath(outfile)), exist_ok=True)
+    if year != 'upcoming':
+        past_year = year
+    else:
+        past_year = False
+
+    with open(outfile, 'w') as f:
         template_args = {
             "other_years": other_years,
             "other_committees": other_committees,
-            "sidebar_items": sidebar_items,
             "committee": {
                 "name": committee_name,
+                "slug": slug,
             },
-            "meetings": [meeting[0] for meeting in meetings.values()],
-            "year": year,
+            "meetings": meetings,
+            "past_year": past_year,
             "now": datetime.now()
         }
         f.write(template.render(**template_args))
@@ -100,47 +123,44 @@ print(" ")
 print("<------------------Running main.py - Version", VERSION, "------------------>")
 current_directory = os.path.abspath(os.path.dirname(__file__))
 
-# the sidebar is identical regardless of the year; let's load the data for it
-# first.
-current_year = datetime.now().year
-scraped_file = os.path.join(CURRENT_DIRECTORY, '../website/scraped/year{}.csv'.format(current_year))
-scraped_data = list(csv.DictReader(open(scraped_file, encoding="utf-8"), delimiter=',', quotechar='"',
-                                   quoting=csv.QUOTE_ALL, skipinitialspace=True))
-current_year = datetime.now().year   # Automatically  update (probably need to increase year in December
-int_current_year = int(current_year) + 1
+# determine the list of years that we'll render pages for
+CURRENT_YEAR = datetime.now().year
+int_current_year = int(CURRENT_YEAR) + 1
 if int_current_year - FIRSTYEAR > MAXYEARS:
     FIRSTYEAR = int_current_year - MAXYEARS
 YEARS = list(range(FIRSTYEAR, int_current_year))
 YEARS.reverse()
 
-scraped_file = os.path.join(current_directory, '../website/scraped/year{}.csv'.format(current_year))
-scraped_data = list(csv.DictReader(open(scraped_file, encoding="utf-8"),delimiter=',', quotechar='"',
-                                   quoting=csv.QUOTE_ALL, skipinitialspace=True))
-sidebar_items = load_meetings(scraped_data, upcoming_only=True)
-
-# generate the pages for other years
+# load the data produced by `make scrape` the command
+DATA_BY_YEAR = {}
 for year in YEARS:
-    # load the CSV for the year
-    scraped_file = os.path.join(CURRENT_DIRECTORY, '../website/scraped/year{}.csv'.format(year))
-    scraped_data = list(csv.DictReader(open(scraped_file, encoding="utf-8"), delimiter=',', quotechar='"',
-                                       quoting=csv.QUOTE_ALL, skipinitialspace=True))
+    try:
+        # load the JSON for the year
+        scraped_file = os.path.abspath(os.path.join(CURRENT_DIRECTORY, '../website/scraped/year{}.json'.format(year)))
+        with open(scraped_file) as f:
+            scraped_data = json.load(f)
+        DATA_BY_YEAR[year] = scraped_data
+    except Exception as e:
+        raise Exception("Could not process {}: {}".format(scraped_file, e))
 
-    # generate a page for each committee in that year
-    for committee_name in COMMITTEES:
-        slug = committee_name_to_url(committee_name)
-        outfile = os.path.join(CURRENT_DIRECTORY, '../website/{}/{}.html'.format(year, slug))
+# generate a page for each committee in that year
+for committee_name in COMMITTEES:
+    # render the "Upcoming" page for that meeting
+    upcoming_meetings = load_meetings(
+            DATA_BY_YEAR[CURRENT_YEAR],
+            committee_name_filter=committee_name,
+            skip_cancellations=True,
+            upcoming_only=True)
+    render_committee_page(committee_name, 'upcoming', meetings=upcoming_meetings)
 
-        render_committee_page(outfile, committee_name, year, sidebar_items = sidebar_items,
-                              meetings=load_meetings(scraped_data, committee_name_filter=committee_name,
-                                                skip_cancellations=True),)   # Don't know what this comma is for - HSM
-        if committee_name == COMMITTEES[0]:
-            outfile = os.path.join(CURRENT_DIRECTORY, '../website/{}/index.html'.format(year))
-            render_committee_page(outfile, committee_name, year, sidebar_items = sidebar_items,
-                                  meetings=load_meetings(scraped_data, committee_name_filter=committee_name,
-                                                         skip_cancellations=True),)
-            if year == YEARS[0]:
-                outfile = os.path.join(CURRENT_DIRECTORY, '../website/pc/index.html')
-                render_committee_page(outfile, committee_name, year, sidebar_items = sidebar_items,
-                                  meetings=load_meetings(scraped_data, committee_name_filter=committee_name,
-                                                         skip_cancellations=True),)
+    for (year, scraped_data) in DATA_BY_YEAR.items():
+        past_meetings = load_meetings(
+                scraped_data,
+                committee_name_filter=committee_name,
+                skip_cancellations=True)
+        render_committee_page(committee_name, year, meetings=past_meetings)
 
+# generate symlinks for index.html files
+index_path = os.path.abspath(os.path.join(CURRENT_DIRECTORY, "../website/index.html"))
+if not os.path.exists(index_path):
+    os.symlink("upcoming/city-council.html", index_path)

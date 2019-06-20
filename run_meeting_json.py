@@ -58,5 +58,8 @@ if __name__ == '__main__':
     if args.days is None and args.year is None:
         print('Must provide either days or year param')
         exit(1)
+    if args.output is None:
+        print('Must provide output argument')
+        exit(1)
 
     scrape_api(args.days, args.year, args.output)
