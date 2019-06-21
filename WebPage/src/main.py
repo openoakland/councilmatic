@@ -93,7 +93,7 @@ def render_committee_page(committee_name, year, meetings=[], sidebar_items=[]):
         other_committees[other_committee_name] = link
 
     jinja_env = Environment(
-        loader=FileSystemLoader('WebPage/src/template/'),
+        loader=FileSystemLoader(os.path.abspath(os.path.join(__file__, '../template'))),
         autoescape=select_autoescape(['html']),
     )
     jinja_env.filters['format_date'] = format_date
