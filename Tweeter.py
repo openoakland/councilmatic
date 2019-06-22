@@ -124,12 +124,21 @@ def main_program(make_a_tweet):
                     committee = "City Council - (" + committee + ")"
                 agenda = schedule[i][3]
                 theTweet1 = day_of_week + " " + event_day + " at " + schedule[i][2] + " Oakland " + committee
-                if "CANCELLED" in theTweet1:   # Don't put the agenda if cancelled
-                    theTweetend = " Meeting, " + HASHTAG + " " + random_string(1)
-                elif agenda == "none":
-                    theTweetend = " Meeting, " + HASHTAG + " " + random_string(1)
+                hashtags = schedule[i][4]
+                emojis = schedule[i][5]
+
+                if not "Meeting" in theTweet1:
+                    theTweetend = ' Meeting.'
                 else:
-                    theTweetend = " Meeting. Agenda is " + agenda + " " + HASHTAG + " " + random_string(1)
+                    theTweetend = ''
+
+                if "CANCELLED" in theTweet1:   # Don't put the agenda if cancelled
+                    theTweetend += ' ' + hashtags + " " + emojis
+                elif agenda == "":
+                    theTweetend += ' ' + hashtags + emojis
+                else:
+                    theTweetend += ' ' + " Agenda is " + agenda + " " + hashtags + emojis
+
                 theTweet = theTweet1 + theTweetend
                 maximumCouncilTweet = MAXTWEETSIZE - min(TWEETURLSIZE - len(agenda), TWEETURLSIZE)  # Twitter has a
                                                                                                     # fixed URL Size
