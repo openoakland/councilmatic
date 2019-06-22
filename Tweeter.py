@@ -69,11 +69,11 @@ def tweet_meeting(key, message, doatweet, the_image):    # Tweet to the world
     if not consumer_key or not consumer_secret or not access_key or not access_secret:
         print("To Tweet, you need four environmental variables")
         sys.exit(2)
-    api = twitter.Api(consumer_key=consumer_key, consumer_secret=consumer_secret,
-                      access_token_key=access_key, access_token_secret=access_secret,
-                      input_encoding=encoding)
     status = ''
     if doatweet:
+        api = twitter.Api(consumer_key=consumer_key, consumer_secret=consumer_secret,
+                          access_token_key=access_key, access_token_secret=access_secret,
+                          input_encoding=encoding)
         did_tweet = False
         try:
             status = api.PostUpdate(message, verify_status_length=False, media=the_image)
