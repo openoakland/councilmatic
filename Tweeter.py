@@ -14,7 +14,7 @@ import requests
 
 from twitter_read_json_legistar import twitter_read_json
 
-VERSION = "3.0"
+VERSION = "3.1"
 LOOKAHEAD = 7  # Number of the days to look ahead for meetings. Program witten for a week.
 MAXTWEETSIZE = 280      # Maximums size for a tweet
 TWEETURLSIZE = 23       # Size of a URL
@@ -69,11 +69,11 @@ def tweet_meeting(key, message, doatweet, the_image):    # Tweet to the world
     if not consumer_key or not consumer_secret or not access_key or not access_secret:
         print("To Tweet, you need four environmental variables")
         sys.exit(2)
-    api = twitter.Api(consumer_key=consumer_key, consumer_secret=consumer_secret,
-                      access_token_key=access_key, access_token_secret=access_secret,
-                      input_encoding=encoding)
     status = ''
     if doatweet:
+        api = twitter.Api(consumer_key=consumer_key, consumer_secret=consumer_secret,
+                          access_token_key=access_key, access_token_secret=access_secret,
+                          input_encoding=encoding)
         did_tweet = False
         try:
             status = api.PostUpdate(message, verify_status_length=False, media=the_image)
@@ -109,7 +109,7 @@ def main_program(make_a_tweet):
         event_day = schedule[i][1]
         print("Meeting Date:", event_day)
         day_datetime = datetime.strptime(event_day, '%m/%d/%Y')
-        days = int((day_datetime - today).days) + 1 # of days awas from today
+        days = int((day_datetime - today).days) + 1 # of days away from today
         if days >= 0 and days < LOOKAHEAD + 1:
             day_label = datetime.date(day_datetime).weekday()
             day_of_week = calendar.day_name[day_label]
@@ -124,19 +124,28 @@ def main_program(make_a_tweet):
                     committee = "City Council - (" + committee + ")"
                 agenda = schedule[i][3]
                 theTweet1 = day_of_week + " " + event_day + " at " + schedule[i][2] + " Oakland " + committee
-                if "CANCELLED" in theTweet1:   # Don't put the agenda if cancelled
-                    theTweetend = " Meeting, " + HASHTAG + " " + random_string(1)
-                elif agenda == "none":
-                    theTweetend = " Meeting, " + HASHTAG + " " + random_string(1)
+                hashtags = schedule[i][4]
+                emojis = schedule[i][5]
+
+                if not "Meeting" in theTweet1:
+                    theTweetend = ' Meeting.'
                 else:
-                    theTweetend = " Meeting. Agenda is " + agenda + " " + HASHTAG + " " + random_string(1)
+                    theTweetend = ''
+
+                if "CANCELLED" in theTweet1:   # Don't put the agenda if cancelled
+                    theTweetend += ' ' + hashtags + " " + emojis
+                elif agenda == "":
+                    theTweetend += ' ' + hashtags + emojis
+                else:
+                    theTweetend += ' ' + " Agenda is " + agenda + " " + hashtags + emojis
+
                 theTweet = theTweet1 + theTweetend
                 maximumCouncilTweet = MAXTWEETSIZE - min(TWEETURLSIZE - len(agenda), TWEETURLSIZE)  # Twitter has a
                                                                                                     # fixed URL Size
                 extra_chars = len(theTweet) - maximumCouncilTweet
                 if extra_chars > 0:  # Trim the Tweet to the maximum size
                     theTweet = theTweet1[:-extra_chars] + theTweetend
-                print("The Tweet for", day_of_week, "is:", len(theTweet), theTweet)
+                print("The Tweet for", day_of_week, "with length", len(theTweet), "is:", theTweet)
 
                 tweet_meeting(key, theTweet, make_a_tweet, pick_image_directory())
                 print()
