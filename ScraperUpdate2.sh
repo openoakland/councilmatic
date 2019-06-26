@@ -38,7 +38,7 @@
 # Version 3.10 uses run_calendar2.py
 # Version 4.0 switching to JSON scraper.  4.0 does csv and json scrape.  Analysis program uses CSV file
 
-VERSION="4.0" # for ScraperUpdate2.sh
+VERSION="4.2" # for ScraperUpdate2.sh
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 CHOICE="csv"

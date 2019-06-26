@@ -181,6 +181,6 @@ f2.write(" " + "\n")
 #
 f2.close()  # Close the file
 
-print("<----------------End of process - sidebar.py----------------->")
+print("<----------------End of process - sidebar.py---------------->")
 print(" ")
 quit()
