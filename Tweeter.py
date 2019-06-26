@@ -18,7 +18,8 @@ VERSION = "3.1"
 LOOKAHEAD = 7  # Number of the days to look ahead for meetings. Program witten for a week.
 MAXTWEETSIZE = 280      # Maximums size for a tweet
 TWEETURLSIZE = 23       # Size of a URL
-HASHTAG = "#oakmtg"     # Hashtag to use
+
+#HASHTAG = "#oakmtg"     # Hashtag to use
 
 '''
 This runs off a a file  ".tweeter"  which resides in your home directory.  The format is below

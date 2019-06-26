@@ -25,12 +25,13 @@ def read_topics(filename):
 
 
 def get_topics(meeting, keyword_map):
-    topics = set()
+    topics = set()   # Tells this is an Oakland meeting
+    topics.add("#oakmtg ")
     emojis = set()
     agenda = meeting['EventBodyName'] + " " +  " ".join(a['EventItemTitle'] or '' for a in meeting['EventAgenda'])
     for k, v in keyword_map.items():
         if re.search('\\b' + k + '\\b', agenda, re.IGNORECASE):
-            #topics.add("#" + v['topic'].replace(' ', ''))
+            # topics.add("#" + v['topic'].replace(' ', ''))
             topics.add("#" + v['topic'].replace(' ', '') + " ")  # HSM adding a space afterwards
             emojis.add(v['emoji'])
 
