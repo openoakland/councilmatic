@@ -30,12 +30,12 @@ def get_topics(meeting, keyword_map):
     agenda = meeting['EventBodyName'] + " " +  " ".join(a['EventItemTitle'] or '' for a in meeting['EventAgenda'])
     for k, v in keyword_map.items():
         if re.search('\\b' + k + '\\b', agenda, re.IGNORECASE):
-            topics.add("#" + v['topic'].replace(' ', ''))
+            #topics.add("#" + v['topic'].replace(' ', ''))
+            topics.add("#" + v['topic'].replace(' ', '') + " ")  # HSM adding a space afterwards
             emojis.add(v['emoji'])
 
     return ''.join(topics), ''.join(emojis)
 
-    
 
 def twitter_read_json(filename, printit=False):
     with open(filename) as f:
