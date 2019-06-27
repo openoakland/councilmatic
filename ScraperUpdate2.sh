@@ -38,7 +38,7 @@
 # Version 3.10 uses run_calendar2.py
 # Version 4.0 switching to JSON scraper.  4.0 does csv and json scrape.  Analysis program uses CSV file
 
-VERSION="4.2" # for ScraperUpdate2.sh
+VERSION="4.4" # for ScraperUpdate2.sh
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 CHOICE="csv"
@@ -206,8 +206,11 @@ $PYTHON  sidebar.py  #Get the sidebar
 $PYTHON  main.py  #Run the main program
 echo " "
 
+cd ../website    #Go back to Webpage
+cp $CURRENTYEAR/city-council.html pc/index.html  # make a default page
+
 if [ $LINUXTYPE = $ISDARWIN ]; then
-	echo 'skipping CopyFiles step because LINUXTYPE = ISDARWIN'
+	echo 'Skipping CopyFiles step because LINUXTYPE = ISDARWIN'
 else
 	cd $DIR #Go back to councilmatis directory
 	# Copy files to actual website
