@@ -6,10 +6,10 @@ import re
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from datetime import datetime
 
-VERSION = "8.2"     # Version of Program
+VERSION = "8.3"     # Version of Program
 MAXYEARS = 10       # Maximum number of years to output
 FIRSTYEAR = 2014    # First year to start
-COMMITTEES = ["City Council", "Rules & Legislation", "Public Works", "Life Enrichment", "Public Safety",
+COMMITTEES = ["All Meetings", "City Council", "Rules & Legislation", "Public Works", "Life Enrichment", "Public Safety",
               "Oakland Redevelopment", "Community & Economic Development", "Finance & Management"]
 CURRENT_DIRECTORY = os.path.abspath(os.path.dirname(__file__))
 
@@ -42,11 +42,12 @@ def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False,
 
     for meeting in scraped_data:
         # skip the meeting if the meeting name doesn't match the committee filter
-        if committee_name_filter:
-            normalized_meeting_name = meeting['EventBodyName'].replace(' & ', ' and ')
-            normalized_filter = committee_name_filter.replace(' & ', ' and ')
-            if normalized_meeting_name.find(normalized_filter) == -1:
-                continue
+        if committee_name_filter != "All Meetings":
+            if committee_name_filter:
+                normalized_meeting_name = meeting['EventBodyName'].replace(' & ', ' and ')
+                normalized_filter = committee_name_filter.replace(' & ', ' and ')
+                if normalized_meeting_name.find(normalized_filter) == -1:
+                    continue
 
         # skip the meeting if only upcoming meetings were requested
         meeting_date = datetime.strptime(meeting['EventDate'], '%Y-%m-%dT%H:%M:%S')
@@ -164,3 +165,5 @@ for committee_name in COMMITTEES:
 index_path = os.path.abspath(os.path.join(CURRENT_DIRECTORY, "../website/index.html"))
 if not os.path.exists(index_path):
     os.symlink("upcoming/city-council.html", index_path)
+
+print("<------------------Program main.py completeted------------------>")
