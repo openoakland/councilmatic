@@ -166,4 +166,4 @@ index_path = os.path.abspath(os.path.join(CURRENT_DIRECTORY, "../website/index.h
 if not os.path.exists(index_path):
     os.symlink("upcoming/all-meetings.html", index_path)
 
-print("<------------------Program main.py completeted------------------>")
+print("<------------------Program main.py completed------------------>")
