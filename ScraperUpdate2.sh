@@ -39,7 +39,7 @@
 # Version 4.0 switching to JSON scraper.  4.0 does csv and json scrape.  Analysis program uses CSV file
 # Version 4.6 stops csv scraper
 
-VERSION="4.6" # for ScraperUpdate2.sh
+VERSION="4.7" # for ScraperUpdate2.sh
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 CHOICE="csv"
@@ -214,6 +214,7 @@ echo " "
 
 cd ../website    #Go back to Webpage
 cp upcoming/all-meetings.html pc/index.html  # make a default page
+cp upcoming/all-meetings.html index.html  # make a default page
 
 if [ $LINUXTYPE = $ISDARWIN ]; then
 	echo 'Skipping CopyFiles step because LINUXTYPE = ISDARWIN'
