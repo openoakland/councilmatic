@@ -6,7 +6,7 @@ import re
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from datetime import datetime
 
-VERSION = "8.3"     # Version of Program
+VERSION = "8.4"     # Version of Program
 MAXYEARS = 10       # Maximum number of years to output
 FIRSTYEAR = 2014    # First year to start
 COMMITTEES = ["All Meetings", "City Council", "Rules & Legislation", "Public Works", "Life Enrichment", "Public Safety",
@@ -164,6 +164,6 @@ for committee_name in COMMITTEES:
 # generate symlinks for index.html files
 index_path = os.path.abspath(os.path.join(CURRENT_DIRECTORY, "../website/index.html"))
 if not os.path.exists(index_path):
-    os.symlink("upcoming/city-council.html", index_path)
+    os.symlink("upcoming/all-meetings.html", index_path)
 
 print("<------------------Program main.py completeted------------------>")

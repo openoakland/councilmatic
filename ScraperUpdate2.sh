@@ -37,8 +37,9 @@
 # Version 3.9 allows for csv or jason.  Does not produce a file if a crash
 # Version 3.10 uses run_calendar2.py
 # Version 4.0 switching to JSON scraper.  4.0 does csv and json scrape.  Analysis program uses CSV file
+# Version 4.6 stops csv scraper
 
-VERSION="4.5" # for ScraperUpdate2.sh
+VERSION="4.6" # for ScraperUpdate2.sh
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 CHOICE="csv"
@@ -101,24 +102,26 @@ echo "Version "$VERSION" of ScraperUpdate2.sh" 			#Clear cron log file
 #
 #Get a list of current dates
 #
-source set_csv_scraper_symlink.sh  # Using CSV files
+#source set_csv_scraper_symlink.sh  # Using CSV files
 date
-$PYTHON run_calendar2.py --show_dates > $CRONDIR/temp.tmp
+#$PYTHON run_calendar2.py --show_dates > $CRONDIR/temp.tmp
 #
 # Scrape the current year if it exists
 #
 if `grep -q "$CURRENTYEAR" "$CRONDIR/temp.tmp"`; then
+
    #
-   echo "Processing current year CSV scraper file"
-   $PYTHON  run_calendar2.py -d "$CURRENTYEAR"  > WebPage/website/scraped/temp1."$CHOICE"
-   retVal=$?
-   if [ $retVal -ne 0 ]; then
-        echo "CSV Scraper error. Will ignore"
-   else
-        mv WebPage/website/scraped/temp1."$CHOICE" WebPage/website/scraped/year"$CURRENTYEAR"."$CHOICE"
-        echo "Successful CSV scraper file"
-   fi
+   #echo "Processing current year CSV scraper file"
+   #$PYTHON  run_calendar2.py -d "$CURRENTYEAR"  > WebPage/website/scraped/temp1."$CHOICE"
+   #retVal=$?
+   #if [ $retVal -ne 0 ]; then
+   #     echo "CSV Scraper error. Will ignore"
+   #else
+   #     mv WebPage/website/scraped/temp1."$CHOICE" WebPage/website/scraped/year"$CURRENTYEAR"."$CHOICE"
+   #     echo "Successful CSV scraper file"
+   #fi
    #
+
    echo "Doing the JSON Scrape for YEAR $CURRENTYEAR"
    COMMAND="run_meeting_json.py --year $CURRENTYEAR --output WebPage/website/scraped/ScraperTEMP.json"
    echo "Starting the JSON Scrape with the command:" $COMMAND
@@ -139,16 +142,18 @@ if [ "$CURRENTMONTH" == "12" ];then
     echo "This month is December"
     if `grep -q "$NEXTYEAR" "$CRONDIR/temp.tmp"`; then
 
-        echo "Processing next year"
-        $PYTHON  run_calendar2.py -d "$NEXTYEAR"  > WebPage/website/scraped/temp2."$CHOICE"
-        retVal=$?
-        if [ $retVal -ne 0 ]; then
-            echo "CSV Scraper error. Will ignore"
-        else
-            mv WebPage/website/scraped/temp2."$CHOICE" WebPage/website/scraped/year"$NEXTYEAR"."$CHOICE"
-            echo "CSV Successful scraper file"
-        fi
-    #
+        #echo "Processing next year"
+        #$PYTHON  run_calendar2.py -d "$NEXTYEAR"  > WebPage/website/scraped/temp2."$CHOICE"
+        #retVal=$?
+        #if [ $retVal -ne 0 ]; then
+        #    echo "CSV Scraper error. Will ignore"
+        #else
+        #    mv WebPage/website/scraped/temp2."$CHOICE" WebPage/website/scraped/year"$NEXTYEAR"."$CHOICE"
+        #    echo "CSV Successful scraper file"
+        #fi
+        #
+
+
         echo "Doing the JSON Scrape for YEAR $NEXTYEAR"
         COMMAND="run_meeting_json.py --year $NEXTYEAR --output WebPage/website/scraped/ScraperTEMP.json"
         echo "Starting the JSON Scrape with the command:" $COMMAND
@@ -167,15 +172,16 @@ if [ "$CURRENTMONTH" == "12" ];then
 
 elif [ "$CURRENTMONTH" == "1" ];then
     if `grep -q "$LASTYEAR" "$CRONDIR/temp.tmp"`; then
-        echo "CSV Current month is January - Processing last year"
-        $PYTHON  run_calendar2.py -d "$LASTYEAR"  > WebPage/website/scraped/temp3."$CHOICE"
-        retVal=$?
-        if [ $retVal -ne 0 ]; then
-            echo " CSV Scraper error. Will ignore"
-        else
-            mv WebPage/website/scraped/temp3."$CHOICE" WebPage/website/scraped/year"$LASTYEAR"."$CHOICE"
-            echo "CSV Successful scraper file"
-        fi
+
+        #echo "CSV Current month is January - Processing last year"
+        #$PYTHON  run_calendar2.py -d "$LASTYEAR"  > WebPage/website/scraped/temp3."$CHOICE"
+        #retVal=$?
+        #if [ $retVal -ne 0 ]; then
+        #    echo " CSV Scraper error. Will ignore"
+        #else
+        #    mv WebPage/website/scraped/temp3."$CHOICE" WebPage/website/scraped/year"$LASTYEAR"."$CHOICE"
+        #    echo "CSV Successful scraper file"
+        #fi
         #
         echo "Doing the JSON Scrape for YEAR $LASTYEAR"
         COMMAND="run_meeting_json.py --year $LASTYEAR --output WebPage/website/scraped/ScraperTEMP.json"
@@ -202,12 +208,12 @@ pwd
 cd WebPage/src
 echo " "
 echo "Running Web Programs"
-$PYTHON  sidebar.py  #Get the sidebar
+#$PYTHON  sidebar.py  #Get the sidebar
 $PYTHON  main.py  #Run the main program
 echo " "
 
 cd ../website    #Go back to Webpage
-cp $CURRENTYEAR/all-meetings.html pc/index.html  # make a default page
+cp upcoming/all-meetings.html pc/index.html  # make a default page
 
 if [ $LINUXTYPE = $ISDARWIN ]; then
 	echo 'Skipping CopyFiles step because LINUXTYPE = ISDARWIN'
@@ -219,7 +225,6 @@ else
 	rm -f /home/howard/Councilmatic/WebPage/website/images/tweets/*   #remove files from local tweet directory	
 	sudo sh -c 'ls --format single-column /var/www/councilmatic/images/tweets/ > /var/www/councilmatic/images/tweets/filelist.txt' 
 fi
-
 
 date
 echo "ScraperUpdate2.sh completed"
