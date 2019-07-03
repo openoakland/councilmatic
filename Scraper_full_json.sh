@@ -43,7 +43,7 @@ for ((YEAR=2014; YEAR<=CURRENTYEAR; YEAR++)); do      # Start the loop from 2014
         if [ $retVal -ne 0 ]; then
             echo "Scraper error. Will ignore"
         else
-            mv  WebPage/website/scraped/ScraperTEMP.json  WebPage/website/scraped/year$YEAR.json
+            mv  WebPage/website/scraped/ScraperTEMP.json  WebPage/website/scraped/Scraper$YEAR.json
             echo "Successful scraper file for year $YEAR"
         fi
         echo ""
