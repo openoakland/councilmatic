@@ -137,7 +137,7 @@ DATA_BY_YEAR = {}
 for year in YEARS:
     try:
         # load the JSON for the year
-        scraped_file = os.path.abspath(os.path.join(CURRENT_DIRECTORY, '../website/scraped/Scraper{}.json'.format(year)))
+        scraped_file = os.path.abspath(os.path.join(CURRENT_DIRECTORY, '../website/scraped/year{}.json'.format(year)))
         with open(scraped_file) as f:
             scraped_data = json.load(f)
         DATA_BY_YEAR[year] = scraped_data
