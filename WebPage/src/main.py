@@ -6,7 +6,7 @@ import re
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from datetime import datetime
 
-VERSION = "8.5"     # Version of Program
+VERSION = "8.6"     # Version of Program
 MAXYEARS = 10       # Maximum number of years to output
 FIRSTYEAR = 2014    # First year to start
 COMMITTEES = ["All Meetings", "City Council", "Rules & Legislation", "Public Works", "Life Enrichment", "Public Safety",
@@ -137,7 +137,7 @@ DATA_BY_YEAR = {}
 for year in YEARS:
     try:
         # load the JSON for the year
-        scraped_file = os.path.abspath(os.path.join(CURRENT_DIRECTORY, '../website/scraped/year{}.json'.format(year)))
+        scraped_file = os.path.abspath(os.path.join(CURRENT_DIRECTORY, '../website/scraped/Scraper{}.json'.format(year)))
         with open(scraped_file) as f:
             scraped_data = json.load(f)
         DATA_BY_YEAR[year] = scraped_data
