@@ -104,7 +104,7 @@
               <details>
                 <summary class="mb-3">Meeting Agenda</summary>
                 <ul>
-                  {% for agendaItem in event['EventAgenda'] %}
+                  {% for agendaItem in event.get('EventAgenda', []) %}
                     {% if 'EventItemSubject' in agendaItem %}
                       <li>
                         <b>{{ agendaItem['EventItemMatterType'] }}</b> - {{ agendaItem['EventItemSubject'] }}
