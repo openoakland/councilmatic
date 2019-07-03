@@ -39,7 +39,7 @@
 # Version 4.0 switching to JSON scraper.  4.0 does csv and json scrape.  Analysis program uses CSV file
 # Version 4.6 stops csv scraper
 
-VERSION="4.7" # for ScraperUpdate2.sh
+VERSION="4.8" # for ScraperUpdate2.sh
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 CHOICE="csv"
@@ -63,7 +63,8 @@ fi
 #
 cd $DIR
 pwd
-rm geckodriver.log   #This file gets big quickly
+rm -rf geckodriver.log || true  #This file gets big quickly
+
 # Here is the DATE-RELATED year-gathering code, deal with differences in Darwin vs. Ubuntu date command.
 
 if [ $LINUXTYPE = $ISDARWIN ]; then

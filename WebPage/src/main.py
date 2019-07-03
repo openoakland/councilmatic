@@ -6,7 +6,7 @@ import re
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from datetime import datetime
 
-VERSION = "8.4"     # Version of Program
+VERSION = "8.5"     # Version of Program
 MAXYEARS = 10       # Maximum number of years to output
 FIRSTYEAR = 2014    # First year to start
 COMMITTEES = ["All Meetings", "City Council", "Rules & Legislation", "Public Works", "Life Enrichment", "Public Safety",
@@ -59,7 +59,7 @@ def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False,
         # Do not skip upcoming meetings in the Calendar if they are cancelled
         if not upcoming_only:
             # skip the meeting if it's a cancellation
-            if skip_cancellations and 'cancellation' in meeting['EventBodyName'].lower():
+            if skip_cancellations and 'cancel' in meeting['EventBodyName'].lower():  # different spelling of Cancel...
                 continue
 
             # skip the meeting if there's no `EventDate` in the agenda:

@@ -83,10 +83,18 @@
           </h5>
 
           <div class="event-day__item-actions">
+            {% if event['EventMinutesFile'] %}
+            <a href="{{ event['EventMinutesFile'] }}" title="View Minutes" target="_blank">
+              <i class="far fa-list-alt"></i>
+              Minutes
+            </a>
+            {% else %}
             <a href="{{ event['EventAgendaFile'] }}" title="View Agenda" target="_blank">
               <i class="far fa-list-alt"></i>
               Agenda
             </a>
+
+            {% endif %}
           </div>
 
           <div class="event-day__item-details">
