@@ -56,6 +56,13 @@ def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False,
             if daydiff < 0:
                 continue
 
+        # Make agenda items more presentable
+        for agendaItem in meeting['EventAgenda']:
+            title = agendaItem.get('EventItemTitle', '')
+            if title and title.startswith('Subject:'):
+                agendaItem['EventItemSubject'] = title.split("\n")[0].replace("Subject:","")
+                meeting['EventAgendaDisplayable'] = True
+
         # Do not skip upcoming meetings in the Calendar if they are cancelled
         if not upcoming_only:
             # skip the meeting if it's a cancellation

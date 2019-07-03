@@ -100,6 +100,20 @@
           <div class="event-day__item-details">
             <font size="+1">{{ event['EventBodyName'] }}</font> <br/>
             {{ event['EventLocation'] }}
+            {% if event.get('EventAgendaDisplayable') %}
+              <details>
+                <summary class="mb-3">Meeting Agenda</summary>
+                <ul>
+                  {% for agendaItem in event['EventAgenda'] %}
+                    {% if 'EventItemSubject' in agendaItem %}
+                      <li>
+                        <b>{{ agendaItem['EventItemMatterType'] }}</b> - {{ agendaItem['EventItemSubject'] }}
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              </details>
+            {% endif %}
           </div>
         </div>
         {% endfor %}
