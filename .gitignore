@@ -25,3 +25,5 @@ WebPage/website/scraped/*
 /scraper/.ipynb_checkpoints/*
 /year2019.json
 test_read_json.py
+/scraper_csv/*
+/scraper_json/*
