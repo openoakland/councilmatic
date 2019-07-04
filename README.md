@@ -28,39 +28,7 @@ source activate new_councilmatic
 python -m ipykernel install --user --name new_councilmatic --display-name "new councilmatic"
 ```
 
-# To run:
 
-## To scrape and generate website:
-```
-make scrape generate
-```
-
-## Calendar Scraper
-
-### Help
-
-```
-python run_calendar.py -h
-```
-
-### Scrape a single year
-
-```
-python run_calendar.py -d 2018 > WebPage/website/scraped/year2018.json
-```
-
-### Scrape a single year and filter by date range
-
-Starting from 1/1/2019 up to (but not including) 1/14/2019 
-
-```
-python run_calendar.py -d 2019 -sdt 1/1/2019 -edt 1/14/2019 > WebPage/website/scraped/cal01012019_01142019.json
-```
-
-### By Search Words Example (2018)
-
-```
-python run_calendar.py -s "parking"
 ```
 
 ### By Year and Search Words Example (2018)
@@ -88,18 +56,6 @@ jupyter notebook calendar.ipynb
 ```
 # Web location of production site
 
-1. PC access
-  http://councilmatic.aws.openoakland.org/pc/
-2. Mobile access
-http://councilmatic.aws.openoakland.org/mobile/
+https://oaklandcouncil.net
 
-# Milestones:
-1. to have a web scraping library.
-  * scraping from https://oakland.legistar.com/Calendar.aspx.
-  * need to scrape data from the city council table, city council events(aka city meetings, the calendar page) table and the legislation page.
-  * scrapers inherit from the scraper class and use selenium to naviagate to the pages, which might require javascript and access web content inside tables on the page.
-  * store in models(that are decoupled from DB).
-  
- next milestones...
- might want to have some kind of user interface.(note: almost done with the first milestone)
 
