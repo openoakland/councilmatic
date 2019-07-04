@@ -57,7 +57,7 @@ def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False,
                 continue
 
         # Make agenda items more presentable
-        for agendaItem in meeting['EventAgenda']:
+        for agendaItem in meeting.get('EventAgenda', []):
             title = agendaItem.get('EventItemTitle', '')
             if title and title.startswith('Subject:'):
                 agendaItem['EventItemSubject'] = title.split("\n")[0].replace("Subject:","")
