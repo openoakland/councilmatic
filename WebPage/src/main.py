@@ -9,12 +9,13 @@ import re
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from datetime import datetime, timedelta
 
-VERSION = "8.8"     # Version of Program
+VERSION = "8.9"     # Version of Program
 MAXYEARS = 10       # Maximum number of years to output
 FIRSTYEAR = 2014    # First year to start
 COMMITTEES = ["All Meetings", "City Council", "Rules & Legislation", "Public Works", "Life Enrichment", "Public Safety",
               "Oakland Redevelopment", "Community & Economic Development", "Finance & Management"]
 CURRENT_DIRECTORY = os.path.abspath(os.path.dirname(__file__))
+CURRENT_YEAR = datetime.now().year
 
 
 def councilmatic_date(mydate):  # function used in Jinja2
@@ -47,7 +48,7 @@ def councilmatic_date(mydate):  # function used in Jinja2
     return timestamp
 
 
-def format_date(date):  # function used in Jinja2
+def format_date(date):  # Function used in Jinja2
     """
     format a date object in month/day/year format, but convert dates like:
         01/02/2013
@@ -57,8 +58,13 @@ def format_date(date):  # function used in Jinja2
     return re.sub("\\b0(\\d)", "\\1", date.strftime("%m/%d/%Y"))
 
 
+def get_this_year():    # Returns current year for Jinja2
+    return CURRENT_YEAR
+
+
 def committee_name_to_url(committee_name):  # e.g. "Rules & Legislation" -> 'rules-and-legislation'
     return re.sub(r'[^a-z]+', '-', committee_name.lower().replace('&', 'and'))
+
 
 
 def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False, skip_cancellations=False):
@@ -141,6 +147,7 @@ def render_committee_page(committee_name, year, meetings=[], sidebar_items=[]):
     )
     jinja_env.filters['format_date'] = format_date
     jinja_env.filters['councilmatic_date'] = councilmatic_date
+    jinja_env.filters['get_this_year'] = get_this_year
     template = jinja_env.get_template('committee.html')
     os.makedirs(os.path.dirname(os.path.abspath(outfile)), exist_ok=True)
     if year != 'upcoming':
@@ -164,11 +171,11 @@ def render_committee_page(committee_name, year, meetings=[], sidebar_items=[]):
 
 
 print(" ")
-print("<------------------Running main.py - Version", VERSION, "------------------>")
+print("<------------------Running main.py - Version", VERSION, "------------->")
 current_directory = os.path.abspath(os.path.dirname(__file__))
 
 # determine the list of years that we'll render pages for
-CURRENT_YEAR = datetime.now().year
+
 int_current_year = int(CURRENT_YEAR) + 1
 if int_current_year - FIRSTYEAR > MAXYEARS:
     FIRSTYEAR = int_current_year - MAXYEARS
