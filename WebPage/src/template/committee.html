@@ -70,7 +70,7 @@
       {% for date, events in meetings.items() | sort %}
       <div class="event-day">
         <h4>
-          {{ date.strftime("%A") }}
+          {{ date | councilmatic_date }}
           <span class="event-day__date" >
             {{ date | format_date }}
           </span>

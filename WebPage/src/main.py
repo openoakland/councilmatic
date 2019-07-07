@@ -1,19 +1,53 @@
-# Creates a webpage
+# Creates a webpage for Councilmatic
+# Uses Jinja2 to produce the HTML
+#
+#
 import os
 import json
 import re
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
-from datetime import datetime
+from datetime import datetime, timedelta
 
-VERSION = "8.7"     # Version of Program
+VERSION = "8.8"     # Version of Program
 MAXYEARS = 10       # Maximum number of years to output
 FIRSTYEAR = 2014    # First year to start
 COMMITTEES = ["All Meetings", "City Council", "Rules & Legislation", "Public Works", "Life Enrichment", "Public Safety",
               "Oakland Redevelopment", "Community & Economic Development", "Finance & Management"]
 CURRENT_DIRECTORY = os.path.abspath(os.path.dirname(__file__))
 
-def format_date(date):
+
+def councilmatic_date(mydate):  # function used in Jinja2
+    #  The input of the routine is a date in datetime format that you want to display
+    #  The output is the text that we want to display
+    today = datetime.now()
+    tomorrow = today + timedelta(days=1)
+    weekdiff = int(mydate.strftime('%U')) - int(today.strftime('%U'))
+
+    if weekdiff < 0: # Check for last week
+        timestamp = mydate.strftime('%A')
+    elif weekdiff == 0: # Check for dates for this week
+        if today.strftime('%A') == mydate.strftime('%A'):
+            timestamp = "Today"
+        elif tomorrow.strftime('%A') == mydate.strftime('%A'):
+            if tomorrow.strftime('%d') == mydate.strftime('%d'): # Overlapping a week
+                timestamp = "Tomorrow"
+            else:
+                timestamp = mydate.strftime('%A')
+        else:
+            timestamp = mydate.strftime('%A')
+    elif weekdiff == 1: # Check for next week
+        if tomorrow.strftime('%d') == mydate.strftime('%d'): # Overlapping a week
+            timestamp = "Tomorrow"
+        else:
+            timestamp = mydate.strftime('%A') + " - Next Week"
+    else:
+        timestamp = mydate.strftime('%A') + " - in " + str(weekdiff) + " Weeks"
+
+    return timestamp
+
+
+def format_date(date):  # function used in Jinja2
     """
     format a date object in month/day/year format, but convert dates like:
         01/02/2013
@@ -106,6 +140,7 @@ def render_committee_page(committee_name, year, meetings=[], sidebar_items=[]):
         autoescape=select_autoescape(['html']),
     )
     jinja_env.filters['format_date'] = format_date
+    jinja_env.filters['councilmatic_date'] = councilmatic_date
     template = jinja_env.get_template('committee.html')
     os.makedirs(os.path.dirname(os.path.abspath(outfile)), exist_ok=True)
     if year != 'upcoming':
