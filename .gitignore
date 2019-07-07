@@ -24,3 +24,6 @@ WebPage/website/scraped/*
 /IOS/
 /scraper/.ipynb_checkpoints/*
 /year2019.json
+test_read_json.py
+/scraper_csv/*
+/scraper_json/*
