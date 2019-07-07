@@ -9,7 +9,7 @@ import re
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from datetime import datetime, timedelta
 
-VERSION = "8.9"     # Version of Program
+VERSION = "8.10"     # Version of Program
 MAXYEARS = 10       # Maximum number of years to output
 FIRSTYEAR = 2014    # First year to start
 COMMITTEES = ["All Meetings", "City Council", "Rules & Legislation", "Public Works", "Life Enrichment", "Public Safety",
@@ -59,7 +59,7 @@ def format_date(date):  # Function used in Jinja2
 
 
 def get_this_year():    # Returns current year for Jinja2
-    return CURRENT_YEAR
+    return datetime.now().year
 
 
 def committee_name_to_url(committee_name):  # e.g. "Rules & Legislation" -> 'rules-and-legislation'
