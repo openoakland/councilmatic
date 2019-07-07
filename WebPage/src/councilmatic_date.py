@@ -5,7 +5,8 @@
 # Code looks at the day of the week and adds text to make clear which week it represents
 # It also labels today and tomorrow.
 #
-
+#  The input of the routine is a date in datetime format that you want to display
+#  The output is the text that we want to display
 import datetime
 
 
