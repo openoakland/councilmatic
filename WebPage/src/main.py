@@ -81,6 +81,7 @@ def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False,
     for meeting_date in meetings_by_date.keys():
         meetings_by_date[meeting_date].sort(
                 key=lambda m: datetime.strptime(m['EventDate'], "%Y-%m-%dT%H:%M:%S"))
+
     return meetings_by_date
 
 
