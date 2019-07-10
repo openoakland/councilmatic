@@ -16,7 +16,7 @@ from twitter_read_json_legistar import twitter_read_json
 
 VERSION = "3.1"
 LOOKAHEAD = 7  # Number of the days to look ahead for meetings. Program witten for a week.
-MAXTWEETSIZE = 279      # Maximums size for a tweet
+MAXTWEETSIZE = 273      # Maximums size for a tweet
 TWEETURLSIZE = 23       # Size of a URL
 
 #HASHTAG = "#oakmtg"     # Hashtag to use
@@ -28,8 +28,8 @@ This runs off a a file  ".tweeter"  which resides in your home directory.  The f
     consumer_secret: "consumer_password"
     access_key: "access_key"
     access_secret: "access_password"
-    
-Make sure this file does not have world access and is not accessible to the public    
+
+Make sure this file does not have world access and is not accessible to the public
 '''
 
 
