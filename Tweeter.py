@@ -16,7 +16,7 @@ from twitter_read_json_legistar import twitter_read_json
 
 VERSION = "3.1"
 LOOKAHEAD = 7  # Number of the days to look ahead for meetings. Program witten for a week.
-MAXTWEETSIZE = 280      # Maximums size for a tweet
+MAXTWEETSIZE = 279      # Maximums size for a tweet
 TWEETURLSIZE = 23       # Size of a URL
 
 #HASHTAG = "#oakmtg"     # Hashtag to use
