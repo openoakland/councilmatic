@@ -9,7 +9,7 @@ import re
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from datetime import datetime, timedelta
 
-VERSION = "8.11"    # Version of Program
+VERSION = "8.12"    # Version of Program
 MAXYEARS = 10       # Maximum number of years to output
 FIRSTYEAR = 2014    # First year to start
 COMMITTEES = ["All Meetings", "City Council", "Rules & Legislation", "Public Works", "Life Enrichment", "Public Safety",
@@ -145,7 +145,6 @@ def render_committee_page(committee_name, year, meetings=[], sidebar_items=[]):
 
     jinja_env.filters['format_date'] = format_date
     jinja_env.filters['councilmatic_date'] = councilmatic_date
-    jinja_env.filters['get_this_year'] = get_this_year
     template = jinja_env.get_template('committee.html')
 
 
