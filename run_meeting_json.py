@@ -38,6 +38,10 @@ def scrape_api(days, year, meeting_file):
         try:
             agenda = requests.get(API_URL + 'Events/{}/EventItems?AgendaNote=1&MinutesNote=1&Attachments=1'.format(meeting['EventId'])).json()
             meeting['EventAgenda'] = agenda
+            for item in agenda:
+                if item['EventItemVideo'] is not None:
+                    meeting['EventVideoPath'] = 'https://oakland.granicus.com/MediaPlayer.php?view_id=2&meta_id=' + str(item['EventItemVideo'])
+                    break
         except requests.exceptions.RequestException:
             logging.warning("Error retriving agenda...")
 
