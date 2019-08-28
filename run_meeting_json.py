@@ -35,13 +35,15 @@ def scrape_api(days, year, meeting_file):
 
     logging.info("Retrieving meeting details from EventItems API...")
     for meeting in tqdm.tqdm(meetings):
-        try:
-            agenda = requests.get(API_URL + 'Events/{}/EventItems?AgendaNote=1&MinutesNote=1&Attachments=1'.format(meeting['EventId'])).json()
-            meeting['EventAgenda'] = agenda
-            for item in agenda:
-                if item['EventItemVideo'] is not None:
-                    meeting['EventVideoPath'] = 'https://oakland.granicus.com/MediaPlayer.php?view_id=2&meta_id=' + str(item['EventItemVideo'])
-                    break
+        agenda = requests.get(API_URL + 'Events/{}/EventItems?AgendaNote=1&MinutesNote=1&Attachments=1'.format(meeting['EventId'])).json()
+        meeting['EventAgenda'] = agenda
+        # Sometimes the EventVideoLink ID is null, so we just take the ID of the first EventItemVideo
+        # WARNING: there is a bug with the granicus video player, where if you access via https,
+        # the agenda doesn't show up, so we need to use the http URL
+        for item in agenda:
+            if item['EventItemVideo'] is not None:
+                meeting['EventVideoPath'] = 'http://oakland.granicus.com/MediaPlayer.php?view_id=2&meta_id=' + str(item['EventItemVideo'])
+                break
         except requests.exceptions.RequestException:
             logging.warning("Error retriving agenda...")
 
