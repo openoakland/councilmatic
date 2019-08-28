@@ -10,7 +10,7 @@ def get_args():
   parser.add_argument("-dn", "--dept", help="dept name", type=str, 
                         default="All Departments")
   parser.add_argument("-w", "--wait_time", help="wait time", type=int,
-                        default=1)
+                      default=1)
   return parser.parse_args()
 
 def show_depts():

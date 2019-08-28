@@ -83,16 +83,23 @@
           </h5>
 
           <div class="event-day__item-actions">
-            {% if event['EventMinutesFile'] %}
+            {% if event['EventVideoPath'] %}
+            <a href="{{ event['EventVideoPath'] }}" title="View Minutes" target="_blank">
+              <i class="far fa-list-alt"></i>
+              Video Minutes
+            </a>
+            {% elif event['EventMinutesFile'] %}
             <a href="{{ event['EventMinutesFile'] }}" title="View Minutes" target="_blank">
               <i class="far fa-list-alt"></i>
-              PDF Minutes
+              Minutes
             </a>
-            {% else %}
+            {% elif event['EventAgendaFile'] %}
             <a href="{{ event['EventAgendaFile'] }}" title="View Agenda" target="_blank">
               <i class="far fa-list-alt"></i>
-              PDF Agenda
+              Agenda
             </a>
+            {% else %}
+              Agenda is not available
 
             {% endif %}
           </div>

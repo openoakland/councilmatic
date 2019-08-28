@@ -12,7 +12,7 @@ import datetime as dt
 import argparse
 import logging
 
-VERSION = "1.0"
+VERSION = "1.1"
 
 API_URL = 'http://webapi.legistar.com/v1/oakland/'
 logging.basicConfig(level=logging.INFO)

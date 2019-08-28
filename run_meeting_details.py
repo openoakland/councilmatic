@@ -23,6 +23,7 @@ def scrape(args):
     except Exception as ex:
         traceback.print_exception(type(ex), ex, ex.__traceback__)
 
+
 def main():
     args = get_args()
 
@@ -30,5 +31,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-        
