@@ -9,7 +9,7 @@ import re
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from datetime import datetime, timedelta
 
-VERSION = "8.13"    # Version of Program
+VERSION = "8.15"    # Version of Program
 MAXYEARS = 10       # Maximum number of years to output
 FIRSTYEAR = 2014    # First year to start
 COMMITTEES = ["All Meetings", "City Council", "Rules & Legislation", "Public Works", "Life Enrichment", "Public Safety",
@@ -110,6 +110,15 @@ def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False,
             if not meeting['EventDate']:
                 continue
 
+            # skip is the word cancel is in the comments
+            if "cancel" in str(meeting["EventComment"]).lower():
+                continue
+
+            # skip is desiginated a test meeting is in the comments
+            if "THIS IS NOT A REAL MEETING" in str(meeting["EventComment"]):
+                continue
+
+
         # add the meeting to the calendar
         if not meeting_date in meetings_by_date:
             meetings_by_date[meeting_date] = []
@@ -170,7 +179,7 @@ def render_committee_page(committee_name, year, meetings=[], sidebar_items=[]):
 
 
 print(" ")
-print("<------------------Running main.py - Version", VERSION, "------------->")
+print("<------------------Running main.py - Version", VERSION, "------------>")
 current_directory = os.path.abspath(os.path.dirname(__file__))
 
 # determine the list of years that we'll render pages for
