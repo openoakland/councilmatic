@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Update CSV Database - To be run be a cron job daily
+# Update JSON Database and then create a webpage
 #
 # Written by Howard Matis - October 30, 2018
 
@@ -10,17 +10,6 @@
 # In December the script will run the script for next year.
 # In January the script will run the previous year.
 #
-# This run using cron under OSX
-#   0 2 * * * /Users/matis/Documents/OpenOakland/Councilmatic-master/Councilmatic/ScraperUpdate2.sh
-#   ...
-# This run using cron under UBUNTU
-# m h  dom mon dow   command
-#30 0 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate2.log 2>&1
-#01 12 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate3.log 2>&1
-#04 18 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate1.log 2>&1
-# for test 30 20 * * * /home/howard/Councilmatic/ScraperUpdate2.sh > /home/howard/Councilmatic/WebPage/website/logs/scraperdailyupdate.log 2>&1
-
-
 # To determine the current host (Mac/Darwin vs. AWS/Ubuntu): 
 # Assign ISDARWIN to string 'Darwin'.
 # Run the system command $(uname -s) and assign 0the result to LINUXTYPE.
@@ -39,8 +28,9 @@
 # Version 4.0 switching to JSON scraper.  4.0 does csv and json scrape.  Analysis program uses CSV file
 # Version 4.6 stops csv scraper
 # Version 4.9 - Removing old csv stuff
+# Version 5.0 - Moving code to individual directories
 
-VERSION="4.9" # for ScraperUpdate2.sh
+VERSION="5.0" # for ScraperUpdate2.sh
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 CHOICE="csv"
@@ -111,7 +101,7 @@ if `grep -q "$CURRENTYEAR" "$CRONDIR/temp.tmp"`; then
 
 
    echo "Doing the JSON Scrape for YEAR $CURRENTYEAR"
-   COMMAND="run_meeting_json.py --year $CURRENTYEAR --output WebPage/website/scraped/ScraperTEMP.json"
+   COMMAND="src-Scraper/run_meeting_json.py --year $CURRENTYEAR --output WebPage/website/scraped/ScraperTEMP.json"
    echo "Starting the JSON Scrape with the command:" $COMMAND
    $PYTHON $COMMAND
    retVal=$?
@@ -143,7 +133,7 @@ if [ "$CURRENTMONTH" == "12" ];then
 
 
         echo "Doing the JSON Scrape for YEAR $NEXTYEAR"
-        COMMAND="run_meeting_json.py --year $NEXTYEAR --output WebPage/website/scraped/ScraperTEMP.json"
+        COMMAND="src-Scraper/run_meeting_json.py --year $NEXTYEAR --output WebPage/website/scraped/ScraperTEMP.json"
         echo "Starting the JSON Scrape with the command:" $COMMAND
         $PYTHON $COMMAND
         retVal=$?
@@ -162,7 +152,7 @@ elif [ "$CURRENTMONTH" == "1" ];then
     if `grep -q "$LASTYEAR" "$CRONDIR/temp.tmp"`; then
 
         echo "Doing the JSON Scrape for YEAR $LASTYEAR"
-        COMMAND="run_meeting_json.py --year $LASTYEAR --output WebPage/website/scraped/ScraperTEMP.json"
+        COMMAND="src-Scraper/run_meeting_json.py --year $LASTYEAR --output WebPage/website/scraped/ScraperTEMP.json"
         echo "Starting the JSON Scrape with the command:" $COMMAND
         $PYTHON $COMMAND
         retVal=$?
@@ -183,21 +173,20 @@ fi
 # Now make the webpage
 #
 pwd
-cd WebPage/src
 echo " "
 echo "Running Web Programs"
 
-$PYTHON  main.py  #Run the main program
+$PYTHON  src-Webpage/main.py  #Run the main program
 echo " "
 
-cd ../website    #Go back to Webpage
+#cd Webpage/website    #Go back to Webpage
 
 #cp upcoming/all-meetings.html index.html  # make a default page
 
 if [ $LINUXTYPE = $ISDARWIN ]; then
 	echo 'Skipping CopyFiles step because LINUXTYPE = ISDARWIN'
 else
-	cd $DIR #Go back to councilmatis directory
+	cd $DIR #Go back to councilmatic directory
 	# Copy files to actual website
 	echo "Copying files to actual website"
 	sudo cp -R /home/howard/Councilmatic/WebPage/website/* /var/www/councilmatic/

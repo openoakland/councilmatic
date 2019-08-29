@@ -1,6 +1,7 @@
 # Councilmatic
 
 # Setup
+# This needs to be updated.  It is completly wrong
 
 1. Install Anaconda 
   * https://www.anaconda.com/download

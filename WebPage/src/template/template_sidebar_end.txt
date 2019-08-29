@@ -1,8 +1,0 @@
- <!-- -->
- <!--Begin template_sidebar_end.txt-->
- <!--Used only for webpages with sidebar only-->
-    <p><br>
-    </p>
-  </body>
-</html>
-<!--End template_sidebar_end.txt-->

@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 #
-# Update JSON Database - To be run to establish a baseline of files
-#
+# Scrape the Oakland Counmcil Legistar webpage and then Tweet upcoming meetings
 # Written by Howard Matis - April 14, 2019
 
 # To determine the current host (Mac/Darwin vs. AWS/Ubuntu): 
@@ -10,8 +9,9 @@
 # Finally, compare $LINUXTYPE to $ISDARWIN.
 # if equal, we are running local Mac OSX/Darwin, else assume Ubuntu/AWS
 
+# Version 2.2 refelects moving code to different directory
 
-VERSION="2.1"
+VERSION="2.2"
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 if [ $LINUXTYPE = $ISDARWIN ]; then
@@ -91,10 +91,10 @@ echo "Version "$VERSION" of Scraoer_Twitter.sh" 			#Clear cron log file
 #
 #Preparing to run the scraper
 #
-source set_json_scraper_symlink.sh # Set environment for jsonn
+## source set_json_scraper_symlink.sh # Set environment for json
 date
 echo "Doing the JSON Scrape"
-COMMAND="run_meeting_json.py --days 7 --output WebPage/website/scraped/TwitterTEMP.json"
+COMMAND="src-Scraper/run_meeting_json.py --days 7 --output WebPage/website/scraped/TwitterTEMP.json"
 echo "Starting the Scrape with the command:" $COMMAND
 $PYTHON $COMMAND
 retVal=$?
@@ -105,6 +105,6 @@ else
     echo "Successful scraper file"
 fi
 date
-$PYTHON Tweeter.py TRUE
+$PYTHON src-Tweeter/Tweeter.py TRUE
 echo "Scraper_Twitter.sh completed"
 #
