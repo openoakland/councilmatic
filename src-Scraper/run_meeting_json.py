@@ -1,5 +1,6 @@
 # Written by Max Flander
-# Scrapes data by using Legistar API and then puts them in a json file
+#
+# Scrapes data by using the Legistar API and then puts them in a json file
 #
 # There are two arguments.
 # Argument #1 is the number of days to scrape
@@ -12,7 +13,7 @@ import datetime as dt
 import argparse
 import logging
 
-VERSION = "1.1"
+VERSION = "1.2"
 
 API_URL = 'http://webapi.legistar.com/v1/oakland/'
 logging.basicConfig(level=logging.INFO)
