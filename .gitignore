@@ -27,3 +27,4 @@ WebPage/website/scraped/*
 test_read_json.py
 /scraper_csv/*
 /scraper_json/*
+/WebPage/website/scraped/
