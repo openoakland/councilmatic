@@ -9,7 +9,7 @@ import re
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from datetime import datetime, timedelta
 
-VERSION = "8.19"    # Version of Program
+VERSION = "8.20"    # Version of Program
 MAXYEARS = 10       # Maximum number of years to output
 FIRSTYEAR = 2014    # First year to start
 COMMITTEES = ["All Meetings", "City Council", "Rules & Legislation", "Public Works", "Life Enrichment", "Public Safety",
