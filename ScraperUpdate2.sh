@@ -29,8 +29,9 @@
 # Version 4.6 stops csv scraper
 # Version 4.9 - Removing old csv stuff
 # Version 5.0 - Moving code to individual directories
+# Version 5.1 - Howard moved files on his home computer - need to deal with spaces
 
-VERSION="5.0" # for ScraperUpdate2.sh
+VERSION="5.1" # for ScraperUpdate2.sh
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 CHOICE="csv"
@@ -42,16 +43,16 @@ else
 fi
 
 if [ $LINUXTYPE = $ISDARWIN ]; then
-	DIR=/Users/matis/Documents/OpenOakland/Councilmatic-master/Councilmatic
-	CRONDIR=/Users/matis/Documents/OpenOakland/Councilmatic-master/Councilmatic/WebPage/website/logs
+	DIR=/Users/matis/Library/Mobile\ Documents/com\~apple\~CloudDocs/Home\ Files/Councilmatic
+    CRONDIR=/Users/matis/Library/Mobile\ Documents/com\~apple\~CloudDocs/Home\ Files/Councilmatic/WebPage/website/logs
 else
 	DIR=/home/howard/Councilmatic
-	CRONDIR=/home/howard/Councilmatic/WebPage/website/logs
+    CRONDIR=/home/howard/Councilmatic/WebPage/website/logs
 	export PATH=$PATH:/home/howard/Councilmatic
 fi
 
 #
-cd $DIR
+cd "$DIR"
 pwd
 rm -rf geckodriver.log || true  #This file gets big quickly
 
@@ -97,9 +98,8 @@ date
 #
 # Scrape the current year if it exists
 #
+echo $CRONDIR/temp.tmp
 if `grep -q "$CURRENTYEAR" "$CRONDIR/temp.tmp"`; then
-
-
    echo "Doing the JSON Scrape for YEAR $CURRENTYEAR"
    COMMAND="src-Scraper/run_meeting_json.py --year $CURRENTYEAR --output WebPage/website/scraped/ScraperTEMP.json"
    echo "Starting the JSON Scrape with the command:" $COMMAND
