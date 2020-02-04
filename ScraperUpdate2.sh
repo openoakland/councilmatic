@@ -30,8 +30,9 @@
 # Version 4.9 - Removing old csv stuff
 # Version 5.0 - Moving code to individual directories
 # Version 5.1 - Howard moved files on his home computer - need to deal with spaces
+# Version 5.2 - Fixing scraper.  It will now work for all years
 
-VERSION="5.1" # for ScraperUpdate2.sh
+VERSION="5.2" # for ScraperUpdate2.sh
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 CHOICE="csv"
@@ -98,74 +99,63 @@ date
 #
 # Scrape the current year if it exists
 #
-echo $CRONDIR/temp.tmp
-if `grep -q "$CURRENTYEAR" "$CRONDIR/temp.tmp"`; then
-   echo "Doing the JSON Scrape for YEAR $CURRENTYEAR"
-   COMMAND="src-Scraper/run_meeting_json.py --year $CURRENTYEAR --output WebPage/website/scraped/ScraperTEMP.json"
-   echo "Starting the JSON Scrape with the command:" $COMMAND
-   $PYTHON $COMMAND
-   retVal=$?
-      if [ $retVal -ne 0 ]; then
-          echo "JSON Scraper error. Will ignore"
-      else
-          mv  WebPage/website/scraped/ScraperTEMP.json  WebPage/website/scraped/Scraper$CURRENTYEAR.json
-          echo "JSON Successful scraper file for year $CURRENTYEAR"
-      fi
-      echo ""
-fi
+echo "Doing the JSON Scrape for YEAR $CURRENTYEAR"
+COMMAND="src-Scraper/run_meeting_json.py --year $CURRENTYEAR --output WebPage/website/scraped/ScraperTEMP.json"
+echo "Starting the JSON Scrape with the command:" $COMMAND
+$PYTHON $COMMAND
+retVal=$?
+  if [ $retVal -ne 0 ]; then
+      echo "JSON Scraper error. Will ignore"
+  else
+      mv  WebPage/website/scraped/ScraperTEMP.json  WebPage/website/scraped/Scraper$CURRENTYEAR.json
+      echo "JSON Successful scraper file for year $CURRENTYEAR"
+  fi
+  echo ""
 #
 # Check if December
 #
 if [ "$CURRENTMONTH" == "12" ];then
-    echo "This month is December"
-    if `grep -q "$NEXTYEAR" "$CRONDIR/temp.tmp"`; then
+    echo "This month is December"     #This code has not been tested for December
 
-        #echo "Processing next year"
-        #$PYTHON  run_calendar2.py -d "$NEXTYEAR"  > WebPage/website/scraped/temp2."$CHOICE"
-        #retVal=$?
-        #if [ $retVal -ne 0 ]; then
-        #    echo "CSV Scraper error. Will ignore"
-        #else
-        #    mv WebPage/website/scraped/temp2."$CHOICE" WebPage/website/scraped/year"$NEXTYEAR"."$CHOICE"
-        #    echo "CSV Successful scraper file"
-        #fi
-        #
+    #echo "Processing next year"
+    #$PYTHON  run_calendar2.py -d "$NEXTYEAR"  > WebPage/website/scraped/temp2."$CHOICE"
+    #retVal=$?
+    #if [ $retVal -ne 0 ]; then
+    #    echo "CSV Scraper error. Will ignore"
+    #else
+    #    mv WebPage/website/scraped/temp2."$CHOICE" WebPage/website/scraped/year"$NEXTYEAR"."$CHOICE"
+    #    echo "CSV Successful scraper file"
+    #fi
+    #
 
+    echo "Doing the JSON Scrape for YEAR $NEXTYEAR"
+    COMMAND="src-Scraper/run_meeting_json.py --year $NEXTYEAR --output WebPage/website/scraped/ScraperTEMP.json"
+    echo "Starting the JSON Scrape with the command:" $COMMAND
+    $PYTHON $COMMAND
+    retVal=$?
+    if [ $retVal -ne 0 ]; then
+        echo "JSON Scraper error. Will ignore"
+    else
+        mv  WebPage/website/scraped/ScraperTEMP.json  WebPage/website/scraped/Scraper$NEXTYEAR.json
+        echo "JSON Successful scraper file for year $NEXTYEAR"
+    fi
+    echo ""
 
-        echo "Doing the JSON Scrape for YEAR $NEXTYEAR"
-        COMMAND="src-Scraper/run_meeting_json.py --year $NEXTYEAR --output WebPage/website/scraped/ScraperTEMP.json"
-        echo "Starting the JSON Scrape with the command:" $COMMAND
-        $PYTHON $COMMAND
-        retVal=$?
+elif [ "$CURRENTMONTH" == "1" ];then
+
+    echo "Doing the JSON Scrape for YEAR $LASTYEAR"
+    COMMAND="src-Scraper/run_meeting_json.py --year $LASTYEAR --output WebPage/website/scraped/ScraperTEMP.json"
+    echo "Starting the JSON Scrape with the command:" $COMMAND
+    $PYTHON $COMMAND
+    retVal=$?
         if [ $retVal -ne 0 ]; then
             echo "JSON Scraper error. Will ignore"
         else
-            mv  WebPage/website/scraped/ScraperTEMP.json  WebPage/website/scraped/Scraper$NEXTYEAR.json
-            echo "JSON Successful scraper file for year $NEXTYEAR"
+            mv  WebPage/website/scraped/ScraperTEMP.json  WebPage/website/scraped/Scraper$LASTYEAR.json
+            echo "JSON Successful scraper file for year $LASTYEAR"
         fi
-            echo ""
-    else
-        echo "Next year file not ready"
-    fi
+    echo ""
 
-elif [ "$CURRENTMONTH" == "1" ];then
-    if `grep -q "$LASTYEAR" "$CRONDIR/temp.tmp"`; then
-
-        echo "Doing the JSON Scrape for YEAR $LASTYEAR"
-        COMMAND="src-Scraper/run_meeting_json.py --year $LASTYEAR --output WebPage/website/scraped/ScraperTEMP.json"
-        echo "Starting the JSON Scrape with the command:" $COMMAND
-        $PYTHON $COMMAND
-        retVal=$?
-            if [ $retVal -ne 0 ]; then
-                echo "JSON Scraper error. Will ignore"
-            else
-                mv  WebPage/website/scraped/ScraperTEMP.json  WebPage/website/scraped/Scraper$LASTYEAR.json
-                echo "JSON Successful scraper file for year $LASTYEAR"
-            fi
-        echo ""
-    else
-        echo "Previous year not available"
-    fi
 else
     echo "No need to process any adjacent year"
 fi

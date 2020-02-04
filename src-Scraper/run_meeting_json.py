@@ -13,7 +13,7 @@ import datetime as dt
 import argparse
 import logging
 
-VERSION = "1.2"
+VERSION = "1.3"
 
 API_URL = 'http://webapi.legistar.com/v1/oakland/'
 logging.basicConfig(level=logging.INFO)
@@ -26,6 +26,7 @@ def scrape_api(days, year, meeting_file):
     else:
         date_cutoff = '{}-01-01'.format(year)
 
+    print("date_cuttoff:", date_cutoff)
     logging.info(f"Querying Events API with Date Cutoff: {date_cutoff}")
     meetings = requests.get(
         API_URL + 'Events?$filter=EventDate+ge+datetime%27{}%27'.format(date_cutoff)
@@ -63,6 +64,8 @@ if __name__ == '__main__':
     parser.add_argument("--year", help="Year to retrieve events for (overrides days)", type=int)
     parser.add_argument("--output", help="Name of output file", type=str)
     args = parser.parse_args()
+    print("Year:",args.year)
+    print("Days:",args.days)
     if args.days is None and args.year is None:
         print('Must provide either days or year param')
         exit(1)
