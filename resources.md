@@ -6,7 +6,8 @@ on decisions and policymaking that occurs within these meetings.
 * Legistar User Guide and intro video: https://support.granicus.com/s/article/Legistar
 
 # Mailgun
-* Python (and other) libraries: https://documentation.mailgun.com/en/latest/libraries.html#python
+Mailgun is the email delivery platform that will be tested with the intention to use it for sending message to change notice subbscribers.
+* Python (and other) libraries are found here: https://documentation.mailgun.com/en/latest/libraries.html#python
 * API Examples within the API reference page: https://documentation.mailgun.com/en/latest/api-sending.html#examples
 
 # Markdown syntax
