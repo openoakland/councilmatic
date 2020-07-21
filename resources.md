@@ -1,7 +1,7 @@
 # Legistar (now Granicus).
 Legistar is the SaaS service used by the the city of Oakland to organize and publish information on meetings.  It is also used to manage information
 on decisions and policymaking that occurs within these meetings.
-* The following links shows the publically available meeting calendar which is part of the Legistar package. https://oakland.legistar.com/Calendar.aspx This is the data display that is improved by Councilmatic.  Almost all of the data displayed in this calendar can be acquired from the Legistar API.
+* The following link shows the publically available meeting calendar which is part of the Legistar package. https://oakland.legistar.com/Calendar.aspx This is the data display that is improved by Councilmatic.  Almost all of the data displayed in this calendar can be acquired from the Legistar API.
 * Main page for Legistar Web API is http://webapi.legistar.com/
 * Legistar User Guide and intro video: https://support.granicus.com/s/article/Legistar
 
