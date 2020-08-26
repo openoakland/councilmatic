@@ -1,36 +1,46 @@
 # Councilmatic
 
 # Setup
-# This needs to be updated.  It is completly wrong
+# 
+# IF pip (My prefered method):
+  1. Download Python
+  2. make sure you're in the project directory
+     and download the packages like so:
+  ```
+  pip install -r requirements.txt
+  ```
 
-1. Install Anaconda 
-  * https://www.anaconda.com/download
-2. Create conda env
-  * conda env create -f environment.yml
-3. Download geckodriver and add to path. Make sure to install Firefox if you don't have it as well.
-  * https://github.com/mozilla/geckodriver/releases
-  <br>
-note: We used Katalon IDE brower plugin to easy generate some of python selenium statements the normal selenium IDE no longer supports Python code exports.
-  
-# start up conda env
-```
-source activate new_councilmatic
-```
+  Disregard below
+# IF Conda:
 
-# update conda env
-```
-source activate new_councilmatic
-conda env update -f=environment.yml
-```
+  1. Install Anaconda 
+    * https://www.anaconda.com/download
+  2. Create conda env
+    * conda env create -f environment.yml
+  3. Download geckodriver and add to path. Make sure to install Firefox if you don't have it as well.
+    * https://github.com/mozilla/geckodriver/releases
+    <br>
+  note: We used Katalon IDE brower plugin to easy generate some of python selenium statements the normal selenium IDE no longer supports Python code exports.
+    
+  # start up conda env
+  ```
+  source activate new_councilmatic
+  ```
 
-# install conda env into jupyter notebook
-```
-source activate new_councilmatic
-python -m ipykernel install --user --name new_councilmatic --display-name "new councilmatic"
-```
+  # update conda env
+  ```
+  source activate new_councilmatic
+  conda env update -f=environment.yml
+  ```
+
+  # install conda env into jupyter notebook
+  ```
+  source activate new_councilmatic
+  python -m ipykernel install --user --name new_councilmatic --display-name "new councilmatic"
+  ```
 
 
-```
+  ```
 
 ### By Year and Search Words Example (2018)
 
