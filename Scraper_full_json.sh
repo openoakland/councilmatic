@@ -22,7 +22,9 @@ fi
 if [ $LINUXTYPE = $ISDARWIN ]; then
 	PYTHON=/Users/matis/anaconda3/bin/python   #Must specify correct version of Python
 else
-	PYTHON=/home/howard/miniconda3/bin/python  #Must specify correct version of Python
+	# PYTHON=/home/howard/miniconda3/bin/python  #Must specify correct version of Python
+    PYTHON=C:/Users/Peter/Documents/Projects/councilmatic/councilmatic_venv/Scripts/python.exe
+    DIR=C:/Users/Peter/Documents/Projects/councilmatic
 fi
 
 echo $PYTHON
