@@ -22,9 +22,7 @@ fi
 if [ $LINUXTYPE = $ISDARWIN ]; then
 	PYTHON=/Users/matis/anaconda3/bin/python   #Must specify correct version of Python
 else
-	# PYTHON=/home/howard/miniconda3/bin/python  #Must specify correct version of Python
-    PYTHON=C:/Users/Peter/Documents/Projects/councilmatic/councilmatic_venv/Scripts/python.exe
-    DIR=C:/Users/Peter/Documents/Projects/councilmatic
+	PYTHON=/home/howard/miniconda3/bin/python  #Must specify correct version of Python
 fi
 
 echo $PYTHON
@@ -53,5 +51,3 @@ done
 
 echo "Scraper_full_json.sh completed"
 #
-
-
