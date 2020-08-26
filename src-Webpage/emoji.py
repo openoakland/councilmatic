@@ -32,6 +32,7 @@ def get_topics(meeting: dict, keyword_map: dict) -> Tuple[str, str]:
     topics = set()   # Tells this is an Oakland meeting
     topics.add("#oakmtg ")
     emojis = set()
+    print(meeting['EventDate'])
     agenda = meeting['EventBodyName'] + " " +  " ".join(a['EventItemTitle'] or '' for a in meeting['EventAgenda'])
     for k, v in keyword_map.items():
         if re.search('\\b' + k + '\\b', agenda, re.IGNORECASE):
@@ -50,7 +51,7 @@ def twitter_read_json(file: Union[List[dict], str], printit: bool=False) -> List
             meetings = json.load(f)
     else:
         meetings = file
-    topics = read_topics(r'C:\Users\Peter\Documents\Projects\Councilmatic\councilmatic\src-Tweeter\topics.tsv')
+    topics = read_topics(r'C:\Users\Peter\Documents\Projects\councilmatic\src-Tweeter\topics.tsv')
 
     # print(type(meetings))
     csv = [[m['EventBodyName'],
