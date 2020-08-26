@@ -81,6 +81,12 @@
           <h5 class="event-day__item-time">
             {{ event['EventTime'] }}
           </h5>
+          <h5>
+            {{ event['TopicEmojis'] }}
+          </h5>
+          <p>
+            {{ event['TopicHashtags'] }}
+          </p>
 
           <div class="event-day__item-actions">
             {% if event['EventVideoPath'] %}
