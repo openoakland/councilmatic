@@ -3,6 +3,7 @@ import argparse
 from scraper.controller.action_details import ActionDetails
 from scraper.model.action_details import ActionDetails as ActionDetailsModel
 
+
 def get_args():
     parser = argparse.ArgumentParser()
 
@@ -11,17 +12,18 @@ def get_args():
 
     return parser.parse_args()
 
+
 def scrape(args):
     ad = ActionDetails(args.url)
     ad.run()
     ad.close()
+
 
 def main():
     args = get_args()
 
     scrape(args)
 
+
 if __name__ == "__main__":
     main()
-
-        

@@ -14,14 +14,21 @@ import os
 
 
 def dateLessThanEqual(date1, date2):  # Compare whether deadline has passed
-    datetime1 = datetime.strptime(date1, '%m/%d/%Y')
-    datetime2 = datetime.strptime(date2, '%m/%d/%Y')
+    datetime1 = datetime.strptime(date1, "%m/%d/%Y")
+    datetime2 = datetime.strptime(date2, "%m/%d/%Y")
     return datetime1 <= datetime2
 
 
 def read_csvfile(datafile, search_string, f2):
-    data = list(csv.reader(open(datafile, encoding="utf-8"), delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL,
-                           skipinitialspace=True))
+    data = list(
+        csv.reader(
+            open(datafile, encoding="utf-8"),
+            delimiter=",",
+            quotechar='"',
+            quoting=csv.QUOTE_ALL,
+            skipinitialspace=True,
+        )
+    )
     numrows = len(data)
     # numcolumns = len(data[0])
     citycouncil = search_string
@@ -30,7 +37,9 @@ def read_csvfile(datafile, search_string, f2):
 
         if len(data[i][:]) >= 9:
             meeting = data[i][0]
-            meeting = meeting.replace(" and ", " & ")  # must do this because non-standardization of Oakland
+            meeting = meeting.replace(
+                " and ", " & "
+            )  # must do this because non-standardization of Oakland
             if citycouncil in meeting:
                 meeting_video = data[i][8]
                 meeting_date = data[i][1]
@@ -50,12 +59,14 @@ def read_csvfile(datafile, search_string, f2):
                     link = meeting_agenda
                     link_text = "Click for Agenda"
                 else:
-                    link = 'none'
-                    link_text = 'none'
+                    link = "none"
+                    link_text = "none"
 
-                present = datetime.now().strftime('%m/%d/%Y')
-                agenda_deadline = datetime.strptime(meeting_date, '%m/%d/%Y') + timedelta(days=10)
-                agenda_deadline = agenda_deadline.strftime('%m/%d/%Y')
+                present = datetime.now().strftime("%m/%d/%Y")
+                agenda_deadline = datetime.strptime(
+                    meeting_date, "%m/%d/%Y"
+                ) + timedelta(days=10)
+                agenda_deadline = agenda_deadline.strftime("%m/%d/%Y")
 
                 if dateLessThanEqual(present, meeting_date):
                     link_text = "Meeting at " + meeting_time + " in the " + meeting_room
@@ -69,10 +80,10 @@ def read_csvfile(datafile, search_string, f2):
                     # print out meeting details in preliminary time
                     write_http_row(f2, meeting_date, link, link_text, "video")
         else:
-            print("***Error** on line", i)   # Error condition
+            print("***Error** on line", i)  # Error condition
             if len(data[i][:]) > 0:
                 print(data[i][0])
-                print(' ')
+                print(" ")
 
 
 def write_http_row(f2, date, link, message, emessage):
@@ -86,19 +97,33 @@ def write_http_row(f2, date, link, message, emessage):
     f2.write(lineout + "\n")
 
     if link == "none":
-        lineout = '<td>' + message  # if no link omit it
+        lineout = "<td>" + message  # if no link omit it
     elif emessage == "video":
-        lineout = '<td> <a href="' + link + '" target=\n_top data-toggle="tooltip" title="Open in new page">' \
-                  + message + "</a>"
+        lineout = (
+            '<td> <a href="'
+            + link
+            + '" target=\n_top data-toggle="tooltip" title="Open in new page">'
+            + message
+            + "</a>"
+        )
     else:
-        lineout = '<td>' + message + " | "'<a href="' + link + '" target=\n_top">' + "Click for agenda</a>"
+        lineout = (
+            "<td>" + message + " | "
+            '<a href="' + link + '" target=\n_top">' + "Click for agenda</a>"
+        )
 
-    if https in emessage:       # to add e-comment
-        lineout = lineout + " | " '<a href="' + emessage + '" target=\n_top">' + "Click to comment electronically</a>"
+    if https in emessage:  # to add e-comment
+        lineout = (
+            lineout + " | "
+            '<a href="'
+            + emessage
+            + '" target=\n_top">'
+            + "Click to comment electronically</a>"
+        )
 
     f2.write(lineout + "\n")
 
-    lineout = '</td>'
+    lineout = "</td>"
     f2.write(lineout + "\n")
 
     lineout = "</tr>"
@@ -110,7 +135,7 @@ def write_http_row(f2, date, link, message, emessage):
 #
 def make_navbar(type, list, year_list, committee_list, loop_type, loop_index, f2):
     #   write the top of navbar
-    if type ==1:
+    if type == 1:
         url = "template/template_navbar_top.txt"
         tooltip = "Select committee of interest"
     else:
@@ -123,15 +148,28 @@ def make_navbar(type, list, year_list, committee_list, loop_type, loop_index, f2
         f2.write(linenav + "\n")
 
         if loop_type:
-           year_bar = str(year_list[loop_index])      # Looping over the committees so fixed year
-           committee_bar = str(index)
+            year_bar = str(
+                year_list[loop_index]
+            )  # Looping over the committees so fixed year
+            committee_bar = str(index)
         else:
-            year_bar = str(year_list[index])           # Looping over the years so fixed committee
+            year_bar = str(
+                year_list[index]
+            )  # Looping over the years so fixed committee
             committee_bar = str(loop_index)
 
-        urlnavbar = '../' + year_bar + '/committee' + committee_bar + ".html"  # looping over years
-        linenav = '<a class="nav-link" target="_self" href="' + urlnavbar + '" data-toggle="tooltip" title="' \
-            + tooltip + '">' + item + '</a>'  # Problem may be here
+        urlnavbar = (
+            "../" + year_bar + "/committee" + committee_bar + ".html"
+        )  # looping over years
+        linenav = (
+            '<a class="nav-link" target="_self" href="'
+            + urlnavbar
+            + '" data-toggle="tooltip" title="'
+            + tooltip
+            + '">'
+            + item
+            + "</a>"
+        )  # Problem may be here
         f2.write(linenav + "\n")
 
         f2.write("    </li>" + "\n")
@@ -139,6 +177,7 @@ def make_navbar(type, list, year_list, committee_list, loop_type, loop_index, f2
     url = "template/template_navbar_bottom.txt"
     create_html(url, f2)  # Create  template for HTML page
     f2.write(" " + "\n")
+
 
 #
 # Main program
@@ -148,24 +187,32 @@ def make_navbar(type, list, year_list, committee_list, loop_type, loop_index, f2
 version = "4.0"
 print(" ")
 print("<------------------Running main.py - Version", version, "------------------>")
-committees = ["City Council", "Rules & Legislation", "Public Works", "Life Enrichment", "Public Safety",
-              "Oakland Redevelopment", "Community & Economic Development", "Finance & Management"]
+committees = [
+    "City Council",
+    "Rules & Legislation",
+    "Public Works",
+    "Life Enrichment",
+    "Public Safety",
+    "Oakland Redevelopment",
+    "Community & Economic Development",
+    "Finance & Management",
+]
 
 # Figure out which years to use
 
 
-earliestYear = 2013    # The earliest year to process minus 1
-maxyears = 10       # Maximum number of years to look at
+earliestYear = 2013  # The earliest year to process minus 1
+maxyears = 10  # Maximum number of years to look at
 currentYear = datetime.now().year
 currentMonth = datetime.now().month
-if currentMonth == 12:      # Start processing the next year in December
+if currentMonth == 12:  # Start processing the next year in December
     startyear = currentYear + 1
 else:
     startyear = currentYear
 endyear = max(earliestYear, earliestYear - maxyears)
 
 years = []
-for i in range(startyear, endyear, -1):   # Calculated the years to process
+for i in range(startyear, endyear, -1):  # Calculated the years to process
     years.append(str(i))
 
 for index_year, year in enumerate(years):
@@ -176,7 +223,7 @@ for index_year, year in enumerate(years):
         outfile = "../website/" + year + "/committee" + str(index) + ".html"
         os.makedirs(os.path.dirname(outfile), exist_ok=True)
         if index == 0:
-            save_outfile = outfile   # Save the first committee as default
+            save_outfile = outfile  # Save the first committee as default
         with open(outfile, "w") as f1:
             #
             #   write style section of the web page
@@ -194,7 +241,9 @@ for index_year, year in enumerate(years):
             #
             f1.write("<tr>" + "\n")  # Needed when use columns for full webpage
             #
-            f1.write('<td style="width: 388px;">' + "\n")  # Needed when use columns for full webpage
+            f1.write(
+                '<td style="width: 388px;">' + "\n"
+            )  # Needed when use columns for full webpage
             #
             #   write the sidebar
             url = "temp/dynamic_calendar.txt"
@@ -206,16 +255,18 @@ for index_year, year in enumerate(years):
             create_html(url, f1)  # Create  template for HTML page
             f1.write(" " + "\n")
             #
-            loop_committee = True # Loop over committees
+            loop_committee = True  # Loop over committees
             loop_index = index_year  # Fix the year
-            make_navbar(1, committees, years, committees, loop_committee, loop_index, f1)
+            make_navbar(
+                1, committees, years, committees, loop_committee, loop_index, f1
+            )
 
             #  write the top of the web page
             url = "template/template_above_table.txt"
             create_html(url, f1)  # Create  template for HTML page
             f1.write(" " + "\n")
 
-            line = '<div align="center"><h3>' + committee + " - " + year + '</h3></div>'
+            line = '<div align="center"><h3>' + committee + " - " + year + "</h3></div>"
             f1.write(line)
 
             url = "template/template_table_top.txt"
@@ -240,13 +291,13 @@ for index_year, year in enumerate(years):
             create_html(url, f1)  # Create  template for HTML page
             f1.write(" " + "\n")
             f1.close()  # Close the file
-            if index ==0:
+            if index == 0:
                 indexfile = "../website/" + year + "/index.html"
                 shutil.copyfile(outfile, indexfile)
     if years[index_year] == str(currentYear):  # Put the main index.html as current year
-            indexfile = "../website/pc/index.html"
-            shutil.copyfile(save_outfile, indexfile)
-            print("Saving ", year, save_outfile, "as default file")
+        indexfile = "../website/pc/index.html"
+        shutil.copyfile(save_outfile, indexfile)
+        print("Saving ", year, save_outfile, "as default file")
 
 print("<-----------------End of main.py------------------------------->")
 
