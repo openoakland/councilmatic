@@ -234,7 +234,7 @@ for latest_event_dict in latest_json_array:
                                             (peima for peima in prior_ei_dict['EventItemMatterAttachments'] if
                                              peima["MatterAttachmentId"] == eima_dict['MatterAttachmentId']), -1)
 
-                                        # Check if above iterator above reached its end (didn't find a match... which means new EI)
+                                        # Check if iterator above reached its end (didn't find a match... which means new EI)
                                         if prior_eima_dict == -1:
                                             print('~/~New MatterAttachmentId: ' +
                                                   str(eima_dict['MatterAttachmentId']) + '  Matter attachment name: ' +
