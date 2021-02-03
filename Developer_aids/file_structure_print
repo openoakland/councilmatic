@@ -1,0 +1,425 @@
+* * * * * * Councilmatic Web File Structure * * * * * *
+ |-2015
+ | |-rules-and-legislation.html
+ | |-all-meetings.html
+ | |-city-council.html
+ | |-committee3.html
+ | |-committee6.html
+ | |-public-works.html
+ | |-finance-and-management.html
+ | |-committee4.html
+ | |-committee0.html
+ | |-committee1.html
+ | |-committee2.html
+ | |-index.html
+ | |-committee7.html
+ | |-committee5.html
+ | |-life-enrichment.html
+ | |-community-and-economic-development.html
+ | |-oakland-redevelopment.html
+ | |-public-safety.html
+ |-2025
+ |-2016
+ | |-rules-and-legislation.html
+ | |-all-meetings.html
+ | |-city-council.html
+ | |-committee3.html
+ | |-committee6.html
+ | |-public-works.html
+ | |-finance-and-management.html
+ | |-committee4.html
+ | |-committee0.html
+ | |-committee1.html
+ | |-committee2.html
+ | |-index.html
+ | |-committee7.html
+ | |-committee5.html
+ | |-life-enrichment.html
+ | |-community-and-economic-development.html
+ | |-oakland-redevelopment.html
+ | |-public-safety.html
+ |-pc
+ | |-index.html
+ |-sitemap-mobile.xml
+ |-robots.txt
+ |-info
+ | |-README.txt
+ | |-license.txt
+ |-googleddf61e72bcd598e6.html
+ |-2020
+ | |-rules-and-legislation.html
+ | |-all-meetings.html
+ | |-city-council.html
+ | |-public-works.html
+ | |-finance-and-management.html
+ | |-life-enrichment.html
+ | |-community-and-economic-development.html
+ | |-oakland-redevelopment.html
+ | |-public-safety.html
+ |-2014
+ | |-rules-and-legislation.html
+ | |-all-meetings.html
+ | |-city-council.html
+ | |-committee3.html
+ | |-committee6.html
+ | |-public-works.html
+ | |-finance-and-management.html
+ | |-committee4.html
+ | |-committee0.html
+ | |-committee1.html
+ | |-committee2.html
+ | |-index.html
+ | |-committee7.html
+ | |-committee5.html
+ | |-life-enrichment.html
+ | |-community-and-economic-development.html
+ | |-oakland-redevelopment.html
+ | |-public-safety.html
+ |-sitemap.xml
+ |-logs
+ | |-scraperdailyupdate3.log
+ | |-scraperdailyupdate.log
+ | |-TweetIt_12am.log
+ | |-scraperdailyupdate_12pm.log
+ | |-scraperdailyupdate_12am.log
+ | |-temp.tmp
+ | |-scraperdailyupdate_6pm.log
+ | |-Scraper_full_json.log
+ | |-scraperdailyupdate1.log
+ | |-TweetIt.log
+ | |-scraperdailyupdate2.log
+ | |-scraperdailyupdate_test.log
+ |-2022
+ |-2021
+ | |-rules-and-legislation.html
+ | |-all-meetings.html
+ | |-city-council.html
+ | |-public-works.html
+ | |-finance-and-management.html
+ | |-life-enrichment.html
+ | |-community-and-economic-development.html
+ | |-oakland-redevelopment.html
+ | |-public-safety.html
+ |-css
+ | |-style-18Nov13.css
+ | |-style_original.css
+ | |-style.css
+ |-upcoming
+ | |-rules-and-legislation.html
+ | |-all-meetings.html
+ | |-city-council.html
+ | |-public-works.html
+ | |-finance-and-management.html
+ | |-life-enrichment.html
+ | |-community-and-economic-development.html
+ | |-oakland-redevelopment.html
+ | |-public-safety.html
+ |-index.html
+ |-2019
+ | |-rules-and-legislation.html
+ | |-all-meetings.html
+ | |-city-council.html
+ | |-public-works.html
+ | |-finance-and-management.html
+ | |-index.html
+ | |-life-enrichment.html
+ | |-community-and-economic-development.html
+ | |-oakland-redevelopment.html
+ | |-public-safety.html
+ |-2018
+ | |-rules-and-legislation.html
+ | |-all-meetings.html
+ | |-city-council.html
+ | |-public-works.html
+ | |-finance-and-management.html
+ | |-index.html
+ | |-life-enrichment.html
+ | |-community-and-economic-development.html
+ | |-oakland-redevelopment.html
+ | |-public-safety.html
+ |-scraped
+ | |-year2019.csv
+ | |-Scraper2021.json
+ | |-year2016.csv
+ | |-Scraper2020.json
+ | |-temp2014.json
+ | |-Scraper2018.json
+ | |-ScraperTEMP.json
+ | |-Scraper2019.json
+ | |-temp2016.json
+ | |-temp2018.json
+ | |-year2017.csv
+ | |-temp2015.json
+ | |-temp2019.json
+ | |-temp2017.json
+ | |-Scraper2017.json
+ | |-year2015.csv
+ | |-Scraper2016.json
+ | |-year2014.csv
+ | |-year2018.csv
+ | |-.gitkeep
+ | |-Scraper2014.json
+ | |-Twitter.json
+ | |-Scraper2015.json
+ |-2017
+ | |-rules-and-legislation.html
+ | |-all-meetings.html
+ | |-city-council.html
+ | |-public-works.html
+ | |-finance-and-management.html
+ | |-life-enrichment.html
+ | |-community-and-economic-development.html
+ | |-oakland-redevelopment.html
+ | |-public-safety.html
+ |-images
+ | |-logo2.jpg
+ | |-openoakland.jpg
+ | |-logo3.jpg
+ | |-OpenOakland-48.png
+ | |-OpenOakland-24.png
+ | |-openoakland-32.jpg
+ | |-iCal-icon-32.png
+ | |-comment-32.png
+ | |-OpenOakland-400.jpg
+ | |-agenda-24.png
+ | |-OpenOakland-logo-white-316.png
+ | |-OpenOakland-400.psd
+ | |-City-of-Oakland-Logo-GREEN.png
+ | |-openoakland-logo-open-70dc2dcc.png
+ | |-agenda-32.png
+ | |-agenda-48.png
+ | |-agenda-origiinal.png
+ | |-oologo.png
+ | |-tweets
+ | | |-DSC_2343.jpg
+ | | |-DSC_2285.jpg
+ | | |-DSC_2354.jpeg
+ | | |-DSC_2430.jpg
+ | | |-DSC_2318.jpg
+ | | |-Screen Shot 2019-03-09 at 3.29.10 PM.png
+ | | |-DSC_2493.jpeg
+ | | |-DSC_2234.jpg
+ | | |-DSC_2364.jpg
+ | | |-DSC_2392.jpg
+ | | |-DSC_2438.jpg
+ | | |-DSC_2251.jpg
+ | | |-DSC_2361.jpg
+ | | |-DSC_2380.jpg
+ | | |-DSC_2357.jpg
+ | | |-DSC_2492.jpeg
+ | | |-DSC_2356.jpg
+ | | |-DSC_2496.jpeg
+ | | |-DSC_2486.jpeg
+ | | |-DSC_2494.jpeg
+ | | |-DSC_2325.jpg
+ | | |-DSC_2381.jpeg
+ | | |-DSC_2375.jpg
+ | | |-Screen Shot 2019-03-09 at 3.25.32 PM.png
+ | | |-Screen Shot 2019-03-14 at 3.37.00 AM.png
+ | | |-DSC_2455.jpg
+ | | |-DSC_2249.jpg
+ | | |-DSC_2398.jpeg
+ | | |-DSC_2307.jpg
+ | | |-Screen Shot 2019-03-09 at 3.19.53 PM.png
+ | | |-DSC_2339.jpg
+ | | |-DSC_2349.jpg
+ | | |-DSC_2272.jpg
+ | | |-DSC_2410.jpg
+ | | |-Screen Shot 2019-03-14 at 3.42.29 AM.png
+ | | |-DSC_2488.jpeg
+ | | |-DSC_2247.jpg
+ | | |-DSC_2393.jpg
+ | | |-Screen Shot 2019-03-09 at 3.19.29 PM.png
+ | | |-DSC_2337.jpg
+ | | |-DSC_2444.jpg
+ | | |-DSC_2328.jpg
+ | | |-DSC_2386.jpeg
+ | | |-DSC_2448.jpg
+ | | |-DSC_2345.jpg
+ | | |-DSC_2324.jpg
+ | | |-DSC_2481.jpeg
+ | | |-DSC_2342.jpg
+ | | |-DSC_2313.jpg
+ | | |-DSC_2474.jpeg
+ | | |-DSC_2275.jpg
+ | | |-Screen Shot 2019-03-14 at 3.35.12 AM.png
+ | | |-DSC_2397.jpg
+ | | |-DSC_2400.jpeg
+ | | |-DSC_2379.jpeg
+ | | |-Screen Shot 2019-03-09 at 3.21.40 PM.png
+ | | |-Screen Shot 2019-03-09 at 3.30.41 PM.png
+ | | |-DSC_2233.jpg
+ | | |-Screen Shot 2019-03-09 at 3.18.38 PM.png
+ | | |-DSC_2442.jpg
+ | | |-DSC_2348.jpg
+ | | |-DSC_2472.jpeg
+ | | |-DSC_2308.jpg
+ | | |-DSC_2407.jpg
+ | | |-DSC_2277.jpg
+ | | |-DSC_2417.jpeg
+ | | |-DSC_2382.jpg
+ | | |-DSC_2387.jpeg
+ | | |-DSC_2483.jpeg
+ | | |-DSC_2485.jpg
+ | | |-Screen Shot 2019-03-14 at 3.43.24 AM.png
+ | | |-DSC_2327.jpg
+ | | |-DSC_2268.jpg
+ | | |-DSC_2408.jpg
+ | | |-DSC_2290.jpg
+ | | |-DSC_2335.jpg
+ | | |-Screen Shot 2019-03-09 at 3.26.29 PM.png
+ | | |-DSC_2347.jpg
+ | | |-DSC_2378.jpeg
+ | | |-Screen Shot 2019-03-14 at 3.43.52 AM.png
+ | | |-DSC_2399.jpg
+ | | |-DSC_2424.jpg
+ | | |-DSC_2235.jpg
+ | | |-DSC_2299.jpg
+ | | |-DSC_2350.jpg
+ | | |-Screen Shot 2019-03-09 at 3.24.56 PM.png
+ | | |-DSC_2282.jpg
+ | | |-DSC_2353.jpeg
+ | | |-DSC_2391.jpeg
+ | | |-DSC_2473.jpg
+ | | |-Screen Shot 2019-03-09 at 3.18.57 PM.png
+ | | |-DSC_2390.jpg
+ | | |-DSC_2316.jpg
+ | | |-DSC_2482.jpeg
+ | | |-DSC_2449.jpg
+ | | |-DSC_2256.jpg
+ | | |-DSC_2487.jpeg
+ | | |-DSC_2294.jpg
+ | | |-DSC_2374.jpeg
+ | | |-DSC_2329.jpg
+ | | |-Screen Shot 2019-03-14 at 3.36.23 AM.png
+ | | |-DSC_2283.jpg
+ | | |-DSC_2309.jpg
+ | | |-DSC_2217.jpg
+ | | |-Screen Shot 2019-03-09 at 3.21.08 PM.png
+ | | |-DSC_2466.jpeg
+ | | |-DSC_2312.jpeg
+ | | |-DSC_2425.jpg
+ | | |-DSC_2453.jpg
+ | | |-DSC_2214.jpg
+ | | |-DSC_2491.jpeg
+ | | |-Screen Shot 2019-03-09 at 3.19.14 PM.png
+ | | |-DSC_2416.jpg
+ | | |-DSC_2296.jpg
+ | | |-DSC_2305.jpg
+ | | |-Screen Shot 2019-03-09 at 3.20.47 PM.png
+ | | |-DSC_2241.jpg
+ | | |-DSC_2371.jpeg
+ | | |-DSC_2334.jpg
+ | | |-DSC_2411.jpg
+ | | |-DSC_2372.jpg
+ | | |-DSC_2427.jpg
+ | | |-DSC_2315.jpg
+ | | |-DSC_2366.jpg
+ | | |-DSC_2278.jpg
+ | | |-DSC_2405.jpeg
+ | | |-DSC_2238.jpg
+ | | |-Screen Shot 2019-03-14 at 3.40.15 AM.png
+ | | |-DSC_2420.jpg
+ | | |-DSC_2237.jpg
+ | | |-DSC_2447.jpg
+ | | |-Screen Shot 2019-03-09 at 3.28.05 PM.png
+ | | |-DSC_2362.jpg
+ | | |-DSC_2422.jpg
+ | | |-DSC_2490.jpeg
+ | | |-image1.png
+ | | |-DSC_2376.jpg
+ | | |-Screen Shot 2019-03-09 at 3.18.01 PM.png
+ | | |-DSC_2246.jpg
+ | | |-DSC_2323.jpg
+ | | |-DSC_2499.jpeg
+ | | |-DSC_2317.jpg
+ | | |-DSC_2270.jpg
+ | | |-DSC_2497.jpeg
+ | | |-DSC_2279.jpg
+ | | |-DSC_2267.jpg
+ | | |-DSC_2303.jpg
+ | | |-DSC_2489.jpeg
+ | | |-DSC_2260.jpg
+ | | |-DSC_2450.jpg
+ | | |-DSC_2310.jpg
+ | | |-DSC_2351.jpg
+ | | |-DSC_2338.jpg
+ | | |-3.17.39 PM.png
+ | | |-DSC_2500.jpeg
+ | | |-DSC_2415.jpg
+ | | |-Screen Shot 2019-03-09 at 3.31.34 PM.png
+ | | |-DSC_2479.jpeg
+ | | |-Screen Shot 2019-03-09 at 3.29.42 PM.png
+ | | |-DSC_2385.jpg
+ | | |-DSC_2264.jpg
+ | | |-DSC_2377.jpeg
+ | | |-DSC_2341.jpeg
+ | | |-DSC_2436.jpg
+ | | |-DSC_2418.jpg
+ | | |-DSC_2340.jpg
+ | | |-DSC_2236.jpg
+ | | |-DSC_2286.jpg
+ | | |-DSC_2306.jpg
+ | | |-DSC_2266.jpg
+ | | |-DSC_2383.jpeg
+ | | |-DSC_2321.jpg
+ | | |-DSC_2215.jpg
+ | | |-DSC_2330.jpg
+ | | |-DSC_2498.jpeg
+ | | |-DSC_2271.jpg
+ | | |-DSC_2288.jpg
+ | | |-DSC_2281.jpg
+ | | |-DSC_2240.jpg
+ | | |-DSC_2346.jpg
+ | | |-DSC_2468.jpeg
+ | | |-DSC_2441.jpg
+ | | |-DSC_2229.jpg
+ | | |-DSC_2253.jpg
+ | | |-Screen Shot 2019-03-14 at 3.44.22 AM.png
+ | | |-Screen Shot 2019-03-09 at 3.20.23 PM.png
+ | | |-DSC_2454.jpg
+ | | |-DSC_2428.jpg
+ | | |-Screen Shot 2019-03-09 at 3.20.35 PM.png
+ | | |-filelist.txt
+ | | |-DSC_2263.jpg
+ | | |-DSC_2276.jpg
+ | | |-DSC_2369.jpg
+ | | |-DSC_2388.jpg
+ | | |-DSC_2394.jpg
+ | | |-DSC_2255.jpg
+ | | |-DSC_2463.jpg
+ | | |-DSC_2239.jpg
+ | | |-DSC_2274.jpg
+ | | |-DSC_2419.jpg
+ | | |-DSC_2414.jpeg
+ | | |-DSC_2320.jpg
+ | | |-DSC_2395.jpg
+ | | |-DSC_2495.jpeg
+ | | |-Screen Shot 2019-03-14 at 3.42.55 AM.png
+ | | |-DSC_2462.jpeg
+ | | |-DSC_2300.jpg
+ | | |-DSC_2409.jpg
+ | | |-DSC_2413.jpg
+ | | |-DSC_2295.jpg
+ | | |-DSC_2284.jpg
+ | | |-DSC_2273.jpg
+ | | |-DSC_2254.jpg
+ | | |-DSC_2439.jpg
+ | | |-DSC_2261.jpg
+ | | |-DSC_2352.jpeg
+ | | |-DSC_2365.jpeg
+ | |-icon_oakland.svg
+ | |-download.jpg
+ | |-OpenOakland-32.png
+ | |-comment.png
+ | |-agenda.png
+ | |-comment.jpeg
+ | |-comment-48.png
+ | |-iCal-icon-48.png
+ | |-openoakland-logo-32.png
+ | |-oologo-80.png
+ | |-ical.gif
+ |-2023
+
+Created using find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"
+from /var/www/councilmatic
