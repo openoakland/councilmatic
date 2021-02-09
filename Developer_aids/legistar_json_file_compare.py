@@ -99,19 +99,22 @@ prior_json_array = json.load(prior_file)
 
 # ! Remember that we also need to also detect additions and deletions.
 
-item_exception_list = ['EventActualLastModifiedUtc', 'EventMinutesLastPublishedUTC', 'EventRowVersion',
-                       'EventItemActionFlag',
-                       'EventItemActionId', 'EventItemActionName', 'EventItemActionText',
-                       'EventItemLastModifiedUtc', 'EventItemMinutesNote', 'EventItemMinutesSequence',
-                       'EventItemMover', 'Measure Amending Powers Of The Police Commission', 'EventItemMoverId',
-                       'EventItemPassedFlagName',
-                       'EventItemRollCallFlag', 'EventItemRowVersion', 'EventItemSeconder',
-                       'EventItemSeconderId', 'EventLastModifiedUtc', 'MatterAttachmentAgiloftId',
-                       'MatterAttachmentBinary', 'MatterAttachmentDescription', 'MatterAttachmentFileName',
-                       'MatterAttachmentGuid', 'MatterAttachmentIsBoardLetter', 'MatterAttachmentIsHyperlink',
-                       'MatterAttachmentIsMinuteOrder', 'MatterAttachmentIsSupportingDocument',
-                       'MatterAttachmentLastModifiedUtc', 'MatterAttachmentMatterVersion',
-                       'MatterAttachmentRowVersion', 'MatterAttachmentShowOnInternetPage']
+item_exception_list = ['EventActualLastModifiedUtc', 'EventAgenda', 'EventAgendaLastPublishedUTC',
+                       'EventAgendaStatusId', 'EventBodyId', 'EventComment', 'EventGuid', 'EventId',
+                       'EventInSiteURL', 'EventItemAccelaRecordId', 'EventItemActionId', 'EventItemActionName',
+                       'EventItemActionText', 'EventItemAgendaNumber', 'EventItemEventId', 'EventItemFlagExtra',
+                       'EventItemGuid', 'EventItemId', 'EventItemLastModifiedUtc', 'EventItemMatterAttachments',
+                       'EventItemMatterGuid', 'EventItemMatterId', 'EventItemMinutesSequence',
+                       'EventItemMoverId', 'EventItemPassedFlag', 'EventItemPassedFlagName',
+                       'EventItemRollCallFlag', 'EventItemRowVersion', 'EventItems', 'EventItemSeconderId',
+                       'EventItemTally', 'EventItemVersion', 'EventItemVideoIndex', 'EventLastModifiedUtc',
+                       'EventMinutesLastPublishedUTC', 'EventMinutesStatusId', 'EventRowVersion',
+                       'MatterAttachmentAgiloftId', 'MatterAttachmentBinary', 'MatterAttachmentDescription',
+                       'MatterAttachmentFileName', 'MatterAttachmentGuid', 'MatterAttachmentIsBoardLetter',
+                       'MatterAttachmentId', 'MatterAttachmentIsHyperlink', 'MatterAttachmentIsMinuteOrder',
+                       'MatterAttachmentIsSupportingDocument', 'MatterAttachmentLastModifiedUtc',
+                       'MatterAttachmentMatterVersion', 'MatterAttachmentPrintWithReports',
+                       'MatterAttachmentRowVersion', 'MatterAttachmentShowOnInternetPage', 'MatterAttachmentSort']
 
 results_list = []
 
