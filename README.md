@@ -20,6 +20,10 @@ A branch name of **main** is the new GitHub standard for default branches.  Usin
 The next step is to clone **main** to a new **develop** branch within GitHub.  A **develop**ment area will be set up on the CM server with code cloned from the new GitHub **develop** branch (which should set up the local **develop** branch to track the GitHub **develop** branch as origin.
 
 These mods will then allow the testing of changes from pull requests on the server before pulling into production code of the new **main** branches.
+
+#### Set up of development folders for code testing on the CM server
+
+Intent to use /usr/local/councilmatic/dev for the constructor files (Bash and Python)
 ------
 ###### Everything below will be deleted soon
 ------
