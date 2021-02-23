@@ -1,5 +1,21 @@
 # Councilmatic
+**2021-02-23 Changes in process**
+The branch **develop** has been renamed to **main**.  Therefore the following three lines need to be run on your local **develop** repository to resync with GitHub.
 
+`$ sudo git branch -m develop main`
+`$ sudo git fetch origin`
+`$ git branch -u origin/main main`
+(note: the "sudo" command is for Ubuntu distros)
+
+A bit of background: at some point in history the default branch was changed from **master** to **develop**.  At that time all testing of code changes was done on a PC (on a MAC which explains the reference to "Darwin" in the code).
+
+**main** is the new GitHub standard for naming default branches.  Using **main** for CM meant that we didn't need to figure out what to do with the old **master** branch.
+
+The next step is to clone **main** to a new **develop** branch within GitHub.  A **develop**ment area will be set up on the CM server with code cloned from the new GitHub **develop** branch (which should set up the local **develop** branch to track the GitHub **develop** branch as origin.
+
+These mods will then allow the testing of changes from pull requests on the server before pulling into production code of the new **main** branches.
+
+- - - - - - - - - - - - - - - - - - - - Everything below will be deleted soon - - - - - - - - - - - - - - - - - - - - 
 # Setup
 # This needs to be updated.  It is completly wrong
 
