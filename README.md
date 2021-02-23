@@ -24,6 +24,7 @@ These mods will then allow the testing of changes from pull requests on the serv
 #### Set up of development folders for code testing on the CM server
 
 Intent to use /usr/local/councilmatic/dev for the constructor files (Bash and Python)
+
 ------
 ###### Everything below will be deleted soon
 ------
