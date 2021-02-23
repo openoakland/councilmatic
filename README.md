@@ -1,5 +1,5 @@
 # Councilmatic
-##2021-02-23 Changes in process
+## 2021-02-23 Changes in process
 
 The branch **develop** has been renamed to **main**.  Therefore the following three lines need to be run on your local **develop** repository to resync with GitHub.
 
