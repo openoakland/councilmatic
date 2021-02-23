@@ -13,7 +13,7 @@ $ git branch -u origin/main main
 
 A bit of background: at some point in history the default branch was changed from **master** to **develop**.  At that time all testing of code changes was done on a PC (on a MAC which explains the reference to "Darwin" in the code).
 
-**main** is the new GitHub standard for naming default branches.  Using **main** for CM meant that we didn't need to figure out what to do with the old **master** branch.
+A branch name of **main** is the new GitHub standard for default branches.  Using **main** for CM meant that we didn't need to figure out what to do with the old **master** branch.
 
 The next step is to clone **main** to a new **develop** branch within GitHub.  A **develop**ment area will be set up on the CM server with code cloned from the new GitHub **develop** branch (which should set up the local **develop** branch to track the GitHub **develop** branch as origin.
 
