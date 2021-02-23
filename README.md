@@ -9,7 +9,7 @@ $ sudo git fetch origin
 $ git branch -u origin/main main
 ```
 
-(note: the "sudo" command is for Ubuntu distros)
+*(note: the "sudo" command is for Ubuntu distros)*
 
 A bit of background: at some point in history the default branch was changed from **master** to **develop**.  At that time all testing of code changes was done on a PC (on a MAC which explains the reference to "Darwin" in the code).
 
