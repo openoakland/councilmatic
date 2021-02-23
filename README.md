@@ -3,9 +3,11 @@
 
 The branch **develop** has been renamed to **main**.  Therefore the following three lines need to be run on your local **develop** repository to resync with GitHub.
 
-`$ sudo git branch -m develop main
+```
+$ sudo git branch -m develop main
 $ sudo git fetch origin
-$ git branch -u origin/main main`
+$ git branch -u origin/main main
+```
 
 (note: the "sudo" command is for Ubuntu distros)
 
