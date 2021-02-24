@@ -23,7 +23,10 @@ These mods will then allow the testing of changes from pull requests on the serv
 
 #### Set up of development folders for code testing on the CM server
 
-Intent to use /usr/local/councilmatic/dev for the constructor files (Bash and Python)
+* Created directories /usr/local/councilmatic and /usr/local/councilmatic/dev for the constructor files (Bash and Python) from /home/howard/Councilmatic. The new dev/ folder will be loaded by cloning from a new **develop** repository. The dev/ directory is owned by root:dev.
+* Web files from /var/www/councilmatic were copied into /var/www/councilmatic/dev.
+* Changed the group of 
+* Todo: After cloning constructor code into /usr/local/councilmatic/dev then check for paths tha determine where the generated pages are placed.  The dev/ constructor code will need to generate pages to /var/www/councilmatic/dev. This path may need to be carried by a configuration variable.
 
 ------
 ###### Everything below will be deleted soon
