@@ -1,7 +1,10 @@
 import argparse
 
 from scraper.controller.legislation_details import LegislationDetails
-from scraper.model.legislation_details import LegislationDetails as LegislationDetailsModel
+from scraper.model.legislation_details import (
+    LegislationDetails as LegislationDetailsModel,
+)
+
 
 def get_args():
     parser = argparse.ArgumentParser()
@@ -11,17 +14,18 @@ def get_args():
 
     return parser.parse_args()
 
+
 def scrape(args):
     ld = LegislationDetails(args.url)
     ld.run()
     ld.close()
+
 
 def main():
     args = get_args()
 
     scrape(args)
 
+
 if __name__ == "__main__":
     main()
-
-        
