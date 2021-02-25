@@ -15,6 +15,7 @@
 import sys
 import json
 import os
+import re
 from datetime import datetime
 
 '''
@@ -56,8 +57,21 @@ file1 = sys.argv[1]
 file2 = sys.argv[2]
 
 # Find the Modified dates for the files
-file1_timestamp = os.stat( file1 ).st_mtime
-file2_timestamp = os.stat( file2 ).st_mtime
+#file1_timestamp = os.stat( file1 ).st_mtime  # stat dates change as files are copied
+#file2_timestamp = os.stat( file2 ).st_mtime  # stat dates change as files are copied
+dtpattern = re.compile(r"(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})")
+datestringmatches = dtpattern.findall(file1)
+# Todo: add error message here if len(datestringmatches) > 1
+dsmatch = datestringmatches[0]
+file1_timestamp = datetime( int(dsmatch[0]), int(dsmatch[1]), int(dsmatch[2]),
+                                     int(dsmatch[3]), int(dsmatch[4]), int(dsmatch[5]) ).timestamp()
+datestringmatches = dtpattern.findall(file2)
+# Todo: add error message here if len(datestringmatches) > 1
+dsmatch = datestringmatches[0]
+file2_timestamp = datetime( int(dsmatch[0]), int(dsmatch[1]), int(dsmatch[2]),
+                                     int(dsmatch[3]), int(dsmatch[4]), int(dsmatch[5]) ).timestamp()
+#print('The timestamp of the first file is: ',file1_timestamp)
+#print('The timestamp of the second file is: ',file2_timestamp)
 
 # Determine which time stamp is older.
 if (file1_timestamp < file2_timestamp):
