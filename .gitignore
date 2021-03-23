@@ -30,5 +30,5 @@ test_read_json.py
 /scraper_json/*
 /WebPage/website/scraped/
 /councilmatic_venv
-
+/councilmatic.conf
 Peter_Scraper.sh

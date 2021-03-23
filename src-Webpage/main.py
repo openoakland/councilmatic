@@ -18,6 +18,7 @@ COMMITTEES = ["All Meetings", "City Council", "Rules & Legislation", "Public Wor
               "Oakland Redevelopment", "Community & Economic Development", "Finance & Management"]
 CURRENT_DIRECTORY = os.path.abspath(os.path.dirname(__file__))
 CURRENT_YEAR = datetime.now().year
+PATH_FROM_ROOT = os.environ["WEBSITEPATHRELATIVETOROOT"]
 
 
 def councilmatic_date(mydate):  # function used in Jinja2
@@ -143,13 +144,13 @@ def render_committee_page(committee_name, year, meetings=[], sidebar_items=[]):
     # populate the list of "Other Years" for the page navigation
     other_years = {}
     for other_year in YEARS:
-        link = '/{}/{}.html'.format(other_year, slug)
+        link = '/{}{}/{}.html'.format(PATH_FROM_ROOT, other_year, slug)
         other_years[other_year] = link
 
     # populate the list of "Other Committees" for the page navigation
     other_committees = {}
     for other_committee_name in COMMITTEES:
-        link = '/{}/{}.html'.format(year, committee_name_to_url(other_committee_name))
+        link = '/{}{}/{}.html'.format(PATH_FROM_ROOT, year, committee_name_to_url(other_committee_name))
         other_committees[other_committee_name] = link
 
     jinja_env = Environment(

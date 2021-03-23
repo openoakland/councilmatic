@@ -33,12 +33,15 @@ def get_topics(meeting: dict, keyword_map: dict) -> Tuple[str, str]:
     topics.add("#oakmtg ")
     emojis = set()
     print(meeting['EventDate'])
-    agenda = meeting['EventBodyName'] + " " +  " ".join(a['EventItemTitle'] or '' for a in meeting['EventAgenda'])
-    for k, v in keyword_map.items():
-        if re.search('\\b' + k + '\\b', agenda, re.IGNORECASE):
-            # topics.add("#" + v['topic'].replace(' ', ''))
-            topics.add("#" + v['topic'].replace(' ', '') + " ")  # HSM adding a space afterwards
-            emojis.add(v['emoji'])
+    #for item in meeting:
+    #    print(item)
+    if(meeting.get('EventAgenda')):
+        agenda = meeting['EventBodyName'] + " " +  " ".join(a['EventItemTitle'] or '' for a in meeting['EventAgenda'])
+        for k, v in keyword_map.items():
+            if re.search('\\b' + k + '\\b', agenda, re.IGNORECASE):
+                # topics.add("#" + v['topic'].replace(' ', ''))
+                topics.add("#" + v['topic'].replace(' ', '') + " ")  # HSM adding a space afterwards
+                emojis.add(v['emoji'])
 
     return ''.join(topics), ''.join(emojis)
 
@@ -51,7 +54,7 @@ def twitter_read_json(file: Union[List[dict], str], printit: bool=False) -> List
             meetings = json.load(f)
     else:
         meetings = file
-    topics = read_topics(r'C:\Users\Peter\Documents\Projects\councilmatic\src-Tweeter\topics.tsv')
+    topics = read_topics(r'/usr/local/councilmatic/dev/councilmatic/src-Tweeter/topics.tsv')
 
     # print(type(meetings))
     csv = [[m['EventBodyName'],
@@ -68,7 +71,7 @@ def twitter_read_json(file: Union[List[dict], str], printit: bool=False) -> List
 
 
 def test() -> None:
-    filename = r"C:\Users\Peter\Documents\Projects\Councilmatic\councilmatic\WebPage\website\scraped\Scraper2020.json"
+    filename = r"/var/www/councilmatic/dev/scraped/Scraper2021.json"
     schedule = twitter_read_json(filename, False)
     print(schedule)
 

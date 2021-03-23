@@ -23,9 +23,11 @@
 
       <p class="d-inline-block ml-lg-2 text-nowrap">
         {% if past_year %}
-        <a href="../upcoming/{{ committee['slug'] }}.html" class="councilmatic-title-link">View Upcoming Meetings</a>
+        <a href="/dev/upcoming/{{ committee['slug'] }}.html" class="councilmatic-title-link">View Upcoming Meetings</a>
+	<!-- if not dev site, switch to         <a href="../upcoming/{{ committee['slug'] }}.html" class="councilmatic-title-link">View Upcoming Meetings</a> -->
         {% else %}
-        <a href="../{{ now.year }}/{{ committee['slug'] }}.html" class="councilmatic-title-link">View Previous Meetings</a>
+        <a href="/dev/{{ now.year }}/{{ committee['slug'] }}.html" class="councilmatic-title-link">View Previous Meetings</a>
+        <!-- if not dev site, switch to         <a href="../{{ now.year }}/{{ committee['slug'] }}.html" class="councilmatic-title-link">View Previous Meetings</a> -->
         {% endif %}
       </p>
 
