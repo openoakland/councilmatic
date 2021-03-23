@@ -5,9 +5,11 @@
 import os
 import json
 import re
-
+from pprint import pprint
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from datetime import datetime, timedelta
+
+from emoji import twitter_read_json
 
 VERSION = "8.21"    # Version of Program
 MAXYEARS = 10       # Maximum number of years to output
@@ -16,6 +18,7 @@ COMMITTEES = ["All Meetings", "City Council", "Rules & Legislation", "Public Wor
               "Oakland Redevelopment", "Community & Economic Development", "Finance & Management"]
 CURRENT_DIRECTORY = os.path.abspath(os.path.dirname(__file__))
 CURRENT_YEAR = datetime.now().year
+PATH_FROM_ROOT = os.environ["WEBSITEPATHRELATIVETOROOT"]
 
 
 def councilmatic_date(mydate):  # function used in Jinja2
@@ -76,7 +79,6 @@ def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False,
     today = datetime.now()
     midnight = datetime.combine(today, datetime.min.time())
     meetings_by_date = {}
-
     for meeting in scraped_data:
         # skip the meeting if the meeting name doesn't match the committee filter
         if committee_name_filter != "All Meetings":
@@ -117,7 +119,11 @@ def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False,
             # skip is desiginated a test meeting is in the comments
             if "THIS IS NOT A REAL MEETING" in str(meeting["EventComment"]):
                 continue
-
+        
+        
+        schedule = twitter_read_json([meeting], printit=False)
+        meeting['TopicHashtags'] = schedule[0][-2]
+        meeting['TopicEmojis'] = schedule[0][-1]
 
         # add the meeting to the calendar
         if not meeting_date in meetings_by_date:
@@ -138,13 +144,13 @@ def render_committee_page(committee_name, year, meetings=[], sidebar_items=[]):
     # populate the list of "Other Years" for the page navigation
     other_years = {}
     for other_year in YEARS:
-        link = '/{}/{}.html'.format(other_year, slug)
+        link = '/{}{}/{}.html'.format(PATH_FROM_ROOT, other_year, slug)
         other_years[other_year] = link
 
     # populate the list of "Other Committees" for the page navigation
     other_committees = {}
     for other_committee_name in COMMITTEES:
-        link = '/{}/{}.html'.format(year, committee_name_to_url(other_committee_name))
+        link = '/{}{}/{}.html'.format(PATH_FROM_ROOT, year, committee_name_to_url(other_committee_name))
         other_committees[other_committee_name] = link
 
     jinja_env = Environment(
@@ -163,7 +169,7 @@ def render_committee_page(committee_name, year, meetings=[], sidebar_items=[]):
     else:
         past_year = False
 
-    with open(outfile, 'w') as f:
+    with open(outfile, 'w', encoding="utf-8") as f:
         template_args = {
             "other_years": other_years,
             "other_committees": other_committees,
@@ -173,7 +179,7 @@ def render_committee_page(committee_name, year, meetings=[], sidebar_items=[]):
             },
             "meetings": meetings,
             "past_year": past_year,
-            "now": datetime.now()
+            "now": datetime.now(),
         }
         f.write(template.render(**template_args))
 
@@ -223,5 +229,5 @@ for committee_name in COMMITTEES:
 index_path = os.path.abspath(os.path.join(CURRENT_DIRECTORY, "../WebPage/website/index.html"))
 if not os.path.exists(index_path):
     os.symlink("upcoming/all-meetings.html", index_path)
-
+# check
 print("<------------------Program main.py completed------------------>")
