@@ -33,9 +33,8 @@
 # Version 5.2 - Fixing scraper.  It will now work for all years
 
 VERSION="5.2" # for ScraperUpdate2.sh
-ISDARWIN='Darwin'
-LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 CHOICE="csv"
+source councilmatic.conf
 
 if [ $LINUXTYPE = $ISDARWIN ]; then
 	echo "ScraperUpdate2.sh is Running under Mac OSX/Darwin"
@@ -47,9 +46,9 @@ if [ $LINUXTYPE = $ISDARWIN ]; then
 	DIR=/Users/matis/Library/Mobile\ Documents/com\~apple\~CloudDocs/Home\ Files/Councilmatic
     CRONDIR=/Users/matis/Library/Mobile\ Documents/com\~apple\~CloudDocs/Home\ Files/Councilmatic/WebPage/website/logs
 else
-	DIR=/home/howard/Councilmatic
-    CRONDIR=/home/howard/Councilmatic/WebPage/website/logs
-	export PATH=$PATH:/home/howard/Councilmatic
+	DIR=$PWD #/usr/local/councilmatic/dev/councilmatic #/home/howard/Councilmatic
+    #CRONDIR=/home/howard/Councilmatic/WebPage/website/logs
+	export PATH=$PATH:$PWD #/usr/local/councilmatic/dev/councilmatic #/home/howard/Councilmatic
 fi
 
 #
@@ -73,15 +72,16 @@ fi
 CURRENTYEAR=`date +"%Y"`
 CURRENTMONTH=`date +"%m"`
 
+# prevfilename="WebPage/website/scraped/Scraper{}-holdprevious.json".format$(CURRENTYEAR)
+# dwnldfilename="WebPage/website/scraped/Scraper{}.json".format$(CURRENTYEAR)
+prevfilename="WebPage/website/scraped/Scraper-holdprevious.json"
+printf -v currentdwnldfilename "WebPage/website/scraped/Scraper%s.json" "$CURRENTYEAR"
+
+# ##### Rename the last download file to a generic "prev" name. (Scraper-holdprevious.json)
+mv $currentdwnldfilename $prevfilename
+
 # echo $LASTYEAR $CURRENTYEAR $NEXTYEAR $CURRENTMONTH #uncomment for debug 
 
-if [ $LINUXTYPE = $ISDARWIN ]; then
-	PYTHON=/Users/matis/anaconda3/bin/python     #Must specify correct version of Python
-else
-	PYTHON=/home/howard/miniconda3/bin/python  #Must specify correct version of Python
-fi
-
-echo $PYTHON
 export MOZ_HEADLESS=1 #Needed to run Firefox Headless
 
 # for GECKO
@@ -107,10 +107,26 @@ retVal=$?
   if [ $retVal -ne 0 ]; then
       echo "JSON Scraper error. Will ignore"
   else
-      mv  WebPage/website/scraped/ScraperTEMP.json  WebPage/website/scraped/Scraper$CURRENTYEAR.json
+      mv  WebPage/website/scraped/ScraperTEMP.json  $currentdwnldfilename
       echo "JSON Successful scraper file for year $CURRENTYEAR"
   fi
   echo ""
+
+# Code from diffbatch.sh but using Bash cmp for an initial check for changes.
+# USE PARAMS for the years in the two file names below.
+
+# Compare files to see if copy should be saved
+if cmp -s "$prevfilename" "$currentdwnldfilename" ; then
+    echo "Nothing changed between last and newly downloaded JSON data file."
+    echo ''
+    rm $prevfilename
+else
+    echo "Something changed between last and newly downloaded JSON data file. Labeling and saving the previous file."
+    echo ''
+#   ##### Change the generic "previous" name to a dated file to hold for testing and verification.
+    mv $prevfilename "${prevfilename%.*}_$(date -d@$(stat --printf='%Y' "$prevfilename") +%Y%m%d%H%M%S).${prevfilename##*.}"
+fi
+
 #
 # Check if December
 #
@@ -173,15 +189,19 @@ echo " "
 
 #cp upcoming/all-meetings.html index.html  # make a default page
 
-if [ $LINUXTYPE = $ISDARWIN ]; then
-	echo 'Skipping CopyFiles step because LINUXTYPE = ISDARWIN'
-else
+if id -nG | grep -qw "dev"; then
+    chgrp dev WebPage/website/scraped/*
+fi
+if [ ! -z "$WEBSITEPATH" ]; then  #if [ $HOSTNAME = 'ip-172-31-38-33' ]; then
 	cd $DIR #Go back to councilmatic directory
-	# Copy files to actual website
-	echo "Copying files to actual website"
-	sudo cp -R /home/howard/Councilmatic/WebPage/website/* /var/www/councilmatic/
-	rm -f /home/howard/Councilmatic/WebPage/website/images/tweets/*   #remove files from local tweet directory	
-	sudo sh -c 'ls --format single-column /var/www/councilmatic/images/tweets/ > /var/www/councilmatic/images/tweets/filelist.txt' 
+	# Copy files to actual dev website
+	echo "Copying files to actual dev website"
+	cp -R --preserve=ownership ./WebPage/website/* $WEBSITEPATH #/var/www/councilmatic/dev
+	rm -f ./WebPage/website/images/tweets/*   #remove files from local tweet directory	
+#	sh -c 'ls --format single-column /var/www/councilmatic/dev/images/tweets/ > /var/www/councilmatic/dev/images/tweets/filelist.txt' 
+        sh -c "ls --format single-column $WEBSITEPATH/images/tweets/ > $WEBSITEPATH/images/tweets/filelist.txt"
+else
+	echo 'Skipping CopyFiles step because not on AWS instance'
 fi
 
 date

@@ -51,5 +51,3 @@ done
 
 echo "Scraper_full_json.sh completed"
 #
-
-
