@@ -32,6 +32,7 @@
 # Version 5.1 - Howard moved files on his home computer - need to deal with spaces
 # Version 5.2 - Fixing scraper.  It will now work for all years
 
+cd "$(dirname "$0")" # sets the current working directory to the directory of the script.
 VERSION="5.2" # for ScraperUpdate2.sh
 CHOICE="csv"
 source councilmatic.conf
