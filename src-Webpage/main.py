@@ -6,6 +6,7 @@ import os
 import json
 import re
 from pprint import pprint
+import itertools
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from datetime import datetime, timedelta
 
@@ -60,7 +61,49 @@ def format_date(date):  # Function used in Jinja2
     """
     return re.sub("\\b0(\\d)", "\\1", date.strftime("%m/%d/%Y"))
 
+def format_date_google_calendar(date):  # Jinja2 calls this to get the date in the format for Google Calendar links
+    """
+    format a date object for Google Calendar
+    - for now assumes that the events all last an hour
+    eg: 20180512
+    """
+    return date.strftime("%Y%m%d")
 
+def format_time_google_calendar(time):  # Jinja2 calls this to get the date in the format for Google Calendar links
+    """
+    format a date object for Google Calendar
+    - for now assumes that the events all last an hour
+    eg: 20180512
+    """
+    timeobj = datetime.strptime(time, "%I:%M %p")
+    return timeobj.strftime("%H%M%S")
+
+def format_date_outlook_calendar(date):  # Jinja2 calls this to get the date in the format for Outlook Calendar links
+    """
+    format a date object for Outlook Calendar
+    - for now assumes that the events all last an hour
+    eg: 20180512
+    """
+    return date.strftime("%Y-%m-%d")
+
+def format_starttime_outlook_calendar(time):  # Jinja2 calls this to get the date in the format for Outlook Calendar links
+    """
+    format a date object for Outlook Calendar
+    - for now assumes that the events all last an hour
+    eg: 20180512
+    """
+    timeobj = datetime.strptime(time, "%I:%M %p")
+    return timeobj.strftime("%H:%M:%S+00:00")
+
+def format_endtime_outlook_calendar(time):  # Jinja2 calls this to get the date in the format for Outlook Calendar links
+    """
+    format a date object for Outlook Calendar
+    - for now assumes that the events all last an hour
+    eg: 20180512
+    """
+    timeobj = datetime.strptime(time, "%I:%M %p")
+    timeobj += timedelta(hours=1)
+    return timeobj.strftime("%H:%M:%S+00:00")
 
 def committee_name_to_url(committee_name):  # e.g. "Rules & Legislation" -> 'rules-and-legislation'
     return re.sub(r'[^a-z]+', '-', committee_name.lower().replace('&', 'and'))
@@ -105,14 +148,14 @@ def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False,
         # Do not skip upcoming meetings in the Calendar if they are cancelled
         if not upcoming_only:
             # skip the meeting if it's a cancellation
-            if skip_cancellations and 'cancel' in meeting['EventBodyName'].lower():  # different spelling of Cancel...
+            if skip_cancellations and 'cancel' in str(meeting['EventBodyName']).lower():  # different spelling of Cancel...
                 continue
 
             # skip the meeting if there's no `EventDate` in the agenda:
             if not meeting['EventDate']:
                 continue
 
-            # skip is the word cancel is in the comments
+            # skip if the word cancel is in the comments
             if "cancel" in str(meeting["EventComment"]).lower():
                 continue
 
@@ -150,15 +193,25 @@ def render_committee_page(committee_name, year, meetings=[], sidebar_items=[]):
     # populate the list of "Other Committees" for the page navigation
     other_committees = {}
     for other_committee_name in COMMITTEES:
-        link = '/{}{}/{}.html'.format(PATH_FROM_ROOT, year, committee_name_to_url(other_committee_name))
+        #link = '/{}{}/{}.html'.format(PATH_FROM_ROOT, year, committee_name_to_url(other_committee_name))
+        link = '{}.html'.format(committee_name_to_url(other_committee_name))
         other_committees[other_committee_name] = link
 
     jinja_env = Environment(
         loader=FileSystemLoader(os.path.abspath(os.path.join(__file__, '../template'))),
         autoescape=select_autoescape(['html']),
     )
+    jinja_env.globals.update(zip=zip)
+    jinja_env.globals.update(str=str)
+    jinja_env.globals.update(int=int)
+    jinja_env.globals.update(re=re)
 
     jinja_env.filters['format_date'] = format_date
+    jinja_env.filters['format_date_google_calendar'] = format_date_google_calendar
+    jinja_env.filters['format_time_google_calendar'] = format_time_google_calendar
+    jinja_env.filters['format_date_outlook_calendar'] = format_date_outlook_calendar
+    jinja_env.filters['format_starttime_outlook_calendar'] = format_starttime_outlook_calendar
+    jinja_env.filters['format_endtime_outlook_calendar'] = format_endtime_outlook_calendar
     jinja_env.filters['councilmatic_date'] = councilmatic_date
     template = jinja_env.get_template('committee.html')
 
@@ -180,6 +233,7 @@ def render_committee_page(committee_name, year, meetings=[], sidebar_items=[]):
             "meetings": meetings,
             "past_year": past_year,
             "now": datetime.now(),
+            "path_from_root": PATH_FROM_ROOT,
         }
         f.write(template.render(**template_args))
 
@@ -206,7 +260,7 @@ for year in YEARS:
             scraped_data = json.load(f)
         DATA_BY_YEAR[year] = scraped_data
     except Exception as e:
-        raise Exception("Could not process {}: {}".format(scraped_file, e))
+         raise Exception("Could not process {}: {}".format(scraped_file, e))
 
 # generate a page for each committee in that year
 for committee_name in COMMITTEES:

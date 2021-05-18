@@ -3,7 +3,8 @@
 }
 
 html, body {
-  background-color: #DDF0C7;
+  font-family: Josefin Sans;
+  background-color: #F2F2F2; /*#DDF0C7;*/
   min-width: 360px;
 }
 
@@ -11,6 +12,21 @@ a:link { color: #215276; }              /* unvisited link */
 a:hover { color: darkgreen;}          /* mouse over link */
 a:active {color: GoldenRod;}          /* selected link */
 a:visited {color: #215276;}         /* visited link */
+
+
+details summary {
+}
+
+details summary div {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-left: 5px;
+}
+
+details summary div div {
+    flex:0 25%;
+}
 
 .councilmatic-navbar {
   background-color: #212528;
@@ -76,7 +92,7 @@ a:visited {color: #215276;}         /* visited link */
 
 .calendar {
   width: 100%;
-  padding: 20px 0;
+  padding: 40px 0;
   color: #363b41;
   display: inline-block;
 }
@@ -99,8 +115,21 @@ a:visited {color: #215276;}         /* visited link */
 
 .event-day {
   display: block;
-  margin-top: 2em;
-  margin-bottom: 3em;
+/*  margin-top: 2em;
+  margin-bottom: 3em;*/
+  border-top: 1px solid black;
+  margin-top: 0rem;
+  margin-bottom: 35px;
+}
+
+.event-day__datebar {
+  margin-top: 1rem;
+  font-size: 1.3rem;
+}
+
+.event-day__timebar {
+    font-size: 1.2rem;
+    color: #808080;
 }
 
 .event-day__date {
@@ -108,8 +137,13 @@ a:visited {color: #215276;}         /* visited link */
 }
 
 .event-day__item {
-  color: #363b41;
+/*  color: #363b41;*/
   margin: 2rem 0;
+  background-color: #fff;
+  color: #000;
+  margin-top: 0;
+  margin-bottom: 0;
+/*  padding: 20px 20px 10px 20px;*/
 }
 
 .event-day__item-time {
@@ -117,9 +151,15 @@ a:visited {color: #215276;}         /* visited link */
   margin-right: 2rem;
 }
 
+.event-day__item-title {
+  display: inline-block;
+  margin-right: 2rem;
+  font-size: 1.3rem;
+}
+
 .event-day__item-details {
   font-size: 12px;
-  margin-bottom: .5rem;
+  margin-bottom: .0rem;
 }
 
 .event-day__item-actions {
@@ -136,3 +176,249 @@ a:visited {color: #215276;}         /* visited link */
 }
 
 div.content { width: 313px }
+
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+details:hover {
+    color: #808080;
+}	      
+
+details summary {
+    width: 100%;
+    padding: 0.0rem 0;
+    /*    border-top: 1px solid black;*/
+    margin-top:0.5rem;
+    padding-bottom:0.5rem;
+    position: relative;
+    cursor: pointer;
+    font-size: 1.00rem;
+    font-weight: bold;
+    list-style: none;
+}
+
+details summary:after {
+    content: "+";
+    position: absolute;
+    font-size: 1.50rem;
+    text-shadow: 1px -1px 0px rgba(200,200,200,0.8);
+    line-height: 0;
+    margin-top: 0.7rem;
+/*    margin-left: 0.1rem;*/
+    left: 3.8rem;
+    top: 0;
+    font-weight: 500;
+    transform-origin: center;
+    transition: 200ms linear;
+}
+details[open] summary:after {
+    transform: rotate(45deg);
+    font-size: 1.50rem;
+}
+details summary {
+    outline: 0;
+}
+details p {
+    font-size: 12px;
+    margin: 0 0 0rem;
+    padding-top: 0rem;
+}
+
+.button {
+    border: 1px solid #808080;
+    margin: 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2rem;
+    /*padding: 1rem 7.05rem;*/
+    cursor: pointer;
+}
+
+.button-stream {
+    width: 50%;
+    color: #FFFFFF;
+    background-color: #008CBA; /* blue */
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+}
+.button-stream-dead {
+    width: 50%;
+    color: #FFFFFF;
+    background-color: #808080; /* gray */
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    pointer-events: none;
+}
+.button-remind {
+    width: 50%;
+    color: #008CBA;
+    background-color: #FFFFFF; /* white */
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+}
+
+.button-calendar {
+    width: 25%;
+    color: #008CBA;
+    background-color: #FFFFFF; /* white */
+    padding: 0.0rem 0.0rem 0.0rem 0.0rem;
+}
+
+.filterspan:hover {
+    color: #A0A0A0;
+}
+
+.navbar-menuspan {
+    font-size: 20px;
+    cursor: pointer;
+    color: #FFFFFF;
+    margin: 0 1.0rem;
+    white-space: nowrap;
+}
+
+.navbar-menuspan:hover {
+    color: #A0A0A0;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    left: 0;
+    background-color: #FFFFFF; /* white */
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+    text-align: left;
+    color: #000; /* black */
+    padding-left: 0rem;
+}
+
+.sidebar .closebtn {
+    font-size: 36px;
+    margin-left: 14rem;
+}
+
+.sidebar .closebtn:hover {
+    color: #A0A0A0;
+}
+
+.sidebar a:hover{
+    color: #A0A0A0;
+    text-decoration: none;
+}
+
+.sidebar details summary {
+    width: 100%;
+    padding: 0.0rem 0;
+    /*    border-top: 1px solid black;*/
+    margin-top:0.5rem;
+    padding-bottom:0.5rem;
+    position: relative;
+    cursor: pointer;
+    font-size: 1.00rem;
+    font-weight: bold;
+    list-style: none;
+}
+
+.sidebar details summary:hover{
+    color: #A0A0A0;
+}
+
+.sidebar details summary:after {
+    content:">";
+    text-shadow: none;
+    left: 6rem;
+    position: absolute;
+    width: 100%;
+    padding: 0.0rem 0;
+    transform-origin: 5px;
+    transition: 200ms linear;
+}
+
+.sidebar details[open] summary:after {
+    transform: rotate(90deg);
+}
+
+
+.overlay {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    left: 0;
+    background-color: #FFFFFF; /* white */
+    overflow-y: hidden;
+    transition: 0.5s;
+    color: #000; /* black */
+}
+
+.overlay a {
+    color: #000;
+}
+
+.overlay .closebtn {
+    position: relative;
+    right: -10rem;
+    font-size: 36px;
+    text-align: center;
+    display: block;
+}
+
+.overlay a:hover{
+    color: #A0A0A0;
+    text-decoration: none;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.overlay details summary {
+    width: 100%;
+    padding: 0.0rem 0;
+    /*    border-top: 1px solid black;*/
+    margin-top:0.5rem;
+    padding-bottom:0.5rem;
+    position: relative;
+    cursor: pointer;
+    font-size: 1.00rem;
+    font-weight: bold;
+    list-style: none;
+}
+
+.overlay details summary:hover{
+    color: #A0A0A0;
+}
+
+.overlay details summary:after {
+    content:">";
+    text-shadow: none;
+    left: 6rem;
+    position: absolute;
+    width: 100%;
+    padding: 0.0rem 0;
+    transform-origin: center;
+    transition: 200ms linear;
+}
+
+.overlay details[open] summary:after {
+    transform: rotate(90deg);
+}
+
+
+.col-sm-7-2 {
+    flex: 0 0 30rem;
+    max-width: 30rem;
+}
