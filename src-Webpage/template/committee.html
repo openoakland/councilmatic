@@ -61,6 +61,8 @@
       {% endif %}
       #}
 
+      <hr class="hr-event-day" style="height:2px; background-color:gray;">
+
       {% if not meetings %}
       <div class="event-day">
       We couldn't find any scheduled meetings for
@@ -87,15 +89,8 @@
           </div>
 
               <details style="border:thin silver solid;">
-                <summary>Agenda
+                <summary  class="show-on-scroll is-visible">Agenda
  
-       {#   <p style="margin:0; font-size: 1.0rem; color: #808080;">
-	    {% for (emoji, topic) in zip(event['TopicEmojis'].split(" "), event['TopicHashtags'].split(" ")) %}
-	    {% if loop.index != 1 %} <br> {% endif %} {# don't put line breaks before the first topic in the list #}
-       {#     {{ emoji + " " + topic }}
-	    {% endfor %}
-          </p>
-       #}
           {# emojis in flexbox #}
           <div style="margin:0; font-size: 1.0rem; color: #808080;">
             {% for (emoji, topic) in zip(event['TopicEmojis'].split(" "), event['TopicHashtags'].split(" ")) %}
@@ -150,22 +145,23 @@
 		{% if 'granicus' in str(event['EventVideoPath']) %} {# if link contains oakland.granicus then it is live #}
 		<button class="button button-stream", style="float: right;", onclick="window.location.href='{{ event['EventVideoPath'] }}&embed=1';"><i class="fas fa-video"></i> Stream</a></button>
                 {% elif 'zoom' in str(event['EventVideoPath']) %} {# if link contains zoom then it is live #}
-	        <button class="button button-stream", style="float: right;", onclick="window.location.href='{{ event['EventVideoPath'] }}';"><i class="fas fa-users"></i> Join</a></button>
+	        <button class="button button-join", style="float: right;", onclick="window.location.href='{{ event['EventVideoPath'] }}';" id="zoom-meeting_{{ event['EventId'] }}_{{ date }}_{{ event['EventTime'] }}"><i class="fas fa-users"></i> Join</button>
                 {% else %}
                 <button class="button button-stream-dead", style="float: right;", disabled, title="meeting link not available yet"><i class="fas fa-video"></i> </a></button>
                 {% endif %}
               {% if not past_year %}
               <p id="calendar-buttons-{{ event['EventId'] }}", style="display: none; margin: 0;">
-		<button class="button button-calendar", style="float: left; white-space: nowrap;", onclick="window.location.href='https://calendar.google.com/calendar/r/eventedit?text={{ re.sub(' ','+',re.sub('&','and',str(event['EventBodyName']))) }}&dates={{ date | format_date_google_calendar }}T{{ str(event['EventTime']) | format_time_google_calendar }}/{{ date | format_date_google_calendar }}T{{ int(str(event['EventTime']) | format_time_google_calendar) + 10000 }}&details=For+details,+link+here:+{{ re.sub(' ', '+',str(event['EventInSiteURL'])) }}&location={{ re.sub(' ', '+',str(event['EventLocation'])) }}'"><i class="fab fa-google"></i>Google</button>
-		<button class="button button-calendar", style="float: left; white-space: nowrap;", onclick="window.location.href='/{{ path_from_root }}calendars/{{ event['EventId'] }}.ics'"><i class="fab fa-apple"></i>Apple</button>
-		<button class="button button-calendar", style="float: left; white-space: nowrap;", onclick="window.location.href='https://outlook.office.com/calendar/0/deeplink/compose?body=For details, link here: {{ str(event['EventInSiteURL']) }}&enddt={{ date | format_date_outlook_calendar }}T{{ str(event['EventTime']) | format_endtime_outlook_calendar }}&location={{ str(event['EventLocation']) }}&path=%2Fcalendar%2Faction%2Fcompose&startdt={{ date | format_date_outlook_calendar }}T{{ str(event['EventTime']) | format_starttime_outlook_calendar }}&subject={{ re.sub('&','and',str(event['EventBodyName'])) }}'"><i class="fab fa-windows"></i>Outlook</button>
-		<button class="button button-calendar", style="float: left; white-space: nowrap;", onclick="window.location.href='/{{ path_from_root }}calendars/{{ event['EventId'] }}.ics'"><i class="far fa-star"></i>Other</button>
+		<button class="button button-calendar", style="float: left; white-space: nowrap;", onclick="window.location.href='https://calendar.google.com/calendar/r/eventedit?text={{ re.sub(' ','+',re.sub('&','and',str(event['EventBodyName']))) }}&dates={{ date | format_date_google_calendar }}T{{ str(event['EventTime']) | format_time_google_calendar }}/{{ date | format_date_google_calendar }}T{{ int(str(event['EventTime']) | format_time_google_calendar) + 10000 }}&details=For+details,+link+here:+{{ re.sub(' ', '+',str(event['EventInSiteURL'])) }}&location={{ re.sub(' ', '+',str(event['EventLocation'])) }}'"><i class="fab fa-google"></i> Google</button>
+		<button class="button button-calendar", style="float: left; white-space: nowrap;", onclick="window.location.href='/{{ path_from_root }}calendars/{{ event['EventId'] }}.ics'"><i class="fab fa-apple"></i> Apple</button>
+		<button class="button button-calendar", style="float: left; white-space: nowrap;", onclick="window.location.href='https://outlook.office.com/calendar/0/deeplink/compose?body=For details, link here: {{ str(event['EventInSiteURL']) }}&enddt={{ date | format_date_outlook_calendar }}T{{ str(event['EventTime']) | format_endtime_outlook_calendar }}&location={{ str(event['EventLocation']) }}&path=%2Fcalendar%2Faction%2Fcompose&startdt={{ date | format_date_outlook_calendar }}T{{ str(event['EventTime']) | format_starttime_outlook_calendar }}&subject={{ re.sub('&','and',str(event['EventBodyName'])) }}'"><i class="fab fa-windows"></i> Outlook</button>
+		<button class="button button-calendar", style="float: left; white-space: nowrap;", onclick="window.location.href='/{{ path_from_root }}calendars/{{ event['EventId'] }}.ics'"><i class="far fa-star"></i> Other</button>
 		<!--	      <button class="button button-remind", style="float: left;"><i class="fas fa-calendar-plus"></i> Remind</button>-->
 	      </p>
 	      {% endif %}
             </div>
         {% endfor %}
-      </div>
+        </div>
+        <hr class="hr-event-day">
       {% endfor %}
     </div>
   </div>

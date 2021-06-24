@@ -113,14 +113,23 @@ details summary div div {
   color: #A39D9E;
 }
 
+.hr-event-day {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    height: 4px;
+    width: 100%;
+    background-color: black;
+    float: left;
+}	       
+
 .event-day {
   display: block;
 /*  margin-top: 2em;
-  margin-bottom: 3em;*/
-  border-top: 1px solid black;
-  margin-top: 0rem;
+  margin-bottom: 3em;
+  border-top: 5px solid black;*/
   margin-bottom: 35px;
 }
+
 
 .event-day__datebar {
   margin-top: 1rem;
@@ -202,17 +211,33 @@ details summary:after {
     content: "+";
     position: absolute;
     font-size: 1.50rem;
-    text-shadow: 1px -1px 0px rgba(200,200,200,0.8);
+/*    text-shadow: 1px -1px 0px rgba(200,200,200,0.8);*/
     line-height: 0;
     margin-top: 0.7rem;
 /*    margin-left: 0.1rem;*/
     left: 3.8rem;
     top: 0;
     font-weight: 500;
-    transform-origin: center;
-    transition: 200ms linear;
+/*    transform-origin: center;
+    transition: 2000ms linear;*/
 }
+
+.event-day__item details summary:after {
+    transition: transform 2s;
+    transform: rotate(0deg);
+}
+.event-day__item details summary.is-visible:after {
+    transition: transform 2s;
+    transform: rotate(90deg);
+}
+.event-day__item details[open] summary:after {
+    transition: transform 200ms;
+    transform: rotate(45deg);
+    font-size: 1.50rem;
+}
+
 details[open] summary:after {
+    transition: transform 200ms;
     transform: rotate(45deg);
     font-size: 1.50rem;
 }
@@ -234,6 +259,14 @@ details p {
     font-size: 1.2rem;
     /*padding: 1rem 7.05rem;*/
     cursor: pointer;
+}
+
+.button-join {
+    width: 50%;
+    color: #FFFFFF;
+    background-color: #008CBA; /* blue */
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
 }
 
 .button-stream {
@@ -364,9 +397,8 @@ details p {
 
 .overlay .closebtn {
     position: relative;
-    right: -10rem;
+    margin-left: 80%;
     font-size: 36px;
-    text-align: center;
     display: block;
 }
 

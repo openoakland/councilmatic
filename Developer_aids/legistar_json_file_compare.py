@@ -332,7 +332,8 @@ for latest_event_dict in latest_json_array:
 
 # results_list = {"1 and 2":results_list}  if I need to put a list identifier
 # now write output to a file
-resultJSONFile = open("F:\\Data\\JetBrains\\PyCharmProjects\\OpenOakland\\councilmatic_project\\PythonFileDiffWork\\results.json", "a")
+#resultJSONFile = open("F:\\Data\\JetBrains\\PyCharmProjects\\OpenOakland\\councilmatic_project\\PythonFileDiffWork\\results.json", "a")
+resultJSONFile = open("results.json", "a")
 # magic happens here to make it pretty-printed
 resultJSONFile.write(json.dumps(results_list, sort_keys=False, indent=4))
 resultJSONFile.close()

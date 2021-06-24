@@ -27,9 +27,9 @@
     <meta name="twitter:widgets:link-color" content="#000000">
     <meta name="twitter:widgets:border-color" content="#000000">
     <meta name="twitter:partner" content="tfwp">
-    <link rel="icon" href="http://www.openoakland.org/wp-content/uploads/2015/11/cropped-logo_240x240-32x32.png" sizes="32x32" />
-    <link rel="icon" href="http://www.openoakland.org/wp-content/uploads/2015/11/cropped-logo_240x240-192x192.png" sizes="192x192" />
-    <link rel="apple-touch-icon-precomposed" href="http://www.openoakland.org/wp-content/uploads/2015/11/cropped-logo_240x240-180x180.png" />
+    <link rel="icon" href="https://www.openoakland.org/wp-content/uploads/2015/11/cropped-logo_240x240-32x32.png" sizes="32x32" />
+    <link rel="icon" href="https://www.openoakland.org/wp-content/uploads/2015/11/cropped-logo_240x240-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon-precomposed" href="https://www.openoakland.org/wp-content/uploads/2015/11/cropped-logo_240x240-180x180.png" />
   </head>
 
   <body>
@@ -74,7 +74,7 @@
           </a>
 	<p>
 	  
-          <a href="http://gisapps.mapoakland.com/councildistricts/" target="_blank">
+          <a href="https://gisapps.mapoakland.com/councildistricts/" target="_blank">
             Find Your District &amp; Representative
             <i class="fas fa-external-link-alt fa-xs"></i>
           </a>
@@ -205,6 +205,52 @@
     </div>
 
     <script>
+      var d = new Date();
+      var zoomButtons = document.getElementsByClassName("button-join");
+      for (var i = 0; i < zoomButtons.length; i++) {
+			  let zoomMeeting = zoomButtons.item(i).id.split("_");
+			  let zoomMeetingDate = zoomMeeting[2].split(" ")[0].split("-"); /* year, month, day*/
+			  let zoomMeetingTime = zoomMeeting[3].split(":");
+			  let meridian = zoomMeetingTime[1].split(" ")[1]; /* AM or PM */
+			  zoomMeetingTime[1] = zoomMeetingTime[1].split(" ")[0];
+	  let midnight = new Date();
+			  midnight.setHours(24,0,0,0);
+                 	  let timeToMidnight = (midnight-d)/(1000*60*60) /* in hours */;
+			  if (meridian == "PM") {
+			  zoomMeetingTime[0] = parseInt(zoomMeetingTime[0]) + 12;
+			  }
+			  let zoomMeetingFullDate = new Date(zoomMeetingDate[0], parseInt(zoomMeetingDate[1])-1, zoomMeetingDate[2], zoomMeetingTime[0], zoomMeetingTime[1]);
+			  let timeDiff = ((zoomMeetingFullDate-d)/(1000*60*60)); /* in hours*/
+			  if ((timeDiff) > 1) {
+	                      if ((timeDiff) > 24) {
+				  var daysForward = Math.ceil((timeDiff-timeToMidnight)/24)
+				  if(daysForward > 1)
+                                       document.getElementById(zoomButtons.item(i).id).innerHTML = "<i class='fas fa-users'></i> Join <font size='-6' weight='normal'>(in "+daysForward+" days)</font>";
+				  else
+                                       document.getElementById(zoomButtons.item(i).id).innerHTML = "<i class='fas fa-users'></i> Join <font size='-6' weight='normal'>(in "+daysForward+" day)</font>";
+	}
+	else {
+        document.getElementById(zoomButtons.item(i).id).innerHTML = "<i class='fas fa-users'></i> Join <font size='-6' weight='normal'>(in "+Math.round(timeDiff)+" hrs)</font>";
+	}
+	}
+	else {
+	    if(timeDiff < -24) {
+		var daysPast = Math.floor(Math.abs(timeDiff/24)+Math.abs(timeToMidnight/24));
+		if(daysPast > 1)
+		    document.getElementById(zoomButtons.item(i).id).innerHTML = "<i class='fas fa-users'></i> Join <font size='-6' weight='normal'>("+daysPast+" days ago)</font>";
+		else
+		    document.getElementById(zoomButtons.item(i).id).innerHTML = "<i class='fas fa-users'></i> Join <font size='-6' weight='normal'>("+daysPast+" day ago)</font>";
+		      }
+	else if(timeDiff < -1) {
+			   document.getElementById(zoomButtons.item(i).id).innerHTML = "<i class='fas fa-users'></i> Join <font size='-6' weight='normal'>("+Math.round(Math.abs(timeDiff))+" hrs ago)</font>";
+			   }
+	else {
+                           document.getElementById(zoomButtons.item(i).id).innerHTML = "<i class='fas fa-users'></i> Join <font size='-6' weight='normal'>(in <1 hr)</font>";
+			   }
+			   }
+			   }
+			  																			    
+      
       function toggleCalendarLinks(id) {
       var x = document.getElementById("calendar-buttons-"+id);
       if (x.style.display === "none") {
@@ -252,7 +298,31 @@
       }
       window.location.href = '/{{ path_from_root }}' + filterYear + '/' + filterCommittee;
       }
-    </script>
+
+      /* Scroll animations */
+      // Observer options.
+      const options = {
+	  root: null,
+	  rootMargin: '0px',
+	  threshold: 0.7,
+      };
+      
+      const callback = function(entries) {
+	  entries.forEach(entry => {
+	      entry.target.classList.toggle("is-visible");
+	  });
+      };
+
+      const observer = new IntersectionObserver(callback, options);
+
+      const targets = document.querySelectorAll(".show-on-scroll");
+      targets.forEach(function(target) {
+	  observer.observe(target);
+      });
+
+
+
+</script>
 
   </body>
 </html>
