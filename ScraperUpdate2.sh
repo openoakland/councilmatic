@@ -32,17 +32,19 @@
 # Version 5.1 - Howard moved files on his home computer - need to deal with spaces
 # Version 5.2 - Fixing scraper.  It will now work for all years
 
+cd "$(dirname "$0")" # sets the current working directory to the directory of the script.
 VERSION="5.2" # for ScraperUpdate2.sh
 CHOICE="csv"
 source councilmatic.conf
+ISDARWIN='Darwin'
 
-if [ $LINUXTYPE = $ISDARWIN ]; then
+if [ "$LINUXTYPE" == "$ISDARWIN" ]; then
 	echo "ScraperUpdate2.sh is Running under Mac OSX/Darwin"
 else
 	echo "ScraperUpdate2.sh is NOT Running under Darwin, assuming Ubuntu/AWS"
 fi
 
-if [ $LINUXTYPE = $ISDARWIN ]; then
+if [ "$LINUXTYPE" == "$ISDARWIN" ]; then
 	DIR=/Users/matis/Library/Mobile\ Documents/com\~apple\~CloudDocs/Home\ Files/Councilmatic
     CRONDIR=/Users/matis/Library/Mobile\ Documents/com\~apple\~CloudDocs/Home\ Files/Councilmatic/WebPage/website/logs
 else
@@ -58,7 +60,7 @@ rm -rf geckodriver.log || true  #This file gets big quickly
 
 # Here is the DATE-RELATED year-gathering code, deal with differences in Darwin vs. Ubuntu date command.
 
-if [ $LINUXTYPE = $ISDARWIN ]; then
+if [ "$LINUXTYPE" == "$ISDARWIN" ]; then
 	LASTYEAR=`date -v-1y  +"%Y"`
 	NEXTYEAR=`date -v+1y  +"%Y"`
 else
@@ -85,7 +87,7 @@ mv $currentdwnldfilename $prevfilename
 export MOZ_HEADLESS=1 #Needed to run Firefox Headless
 
 # for GECKO
-if [ $LINUXTYPE = $ISDARWIN ]; then
+if [ "$LINUXTYPE" == "$ISDARWIN" ]; then
 	PATH="/Users/matis/.drivers:${PATH}"   #PATH set and export ONLY necessary when ISDARWIN
 	export PATH
 fi
@@ -100,7 +102,7 @@ date
 # Scrape the current year if it exists
 #
 echo "Doing the JSON Scrape for YEAR $CURRENTYEAR"
-COMMAND="src-Scraper/run_meeting_json.py --year $CURRENTYEAR --output WebPage/website/scraped/ScraperTEMP.json"
+COMMAND="src-Scraper/run_meeting_json.py --year $CURRENTYEAR --output WebPage/website/scraped/ScraperTEMP.json --calendars WebPage/website/calendars/"
 echo "Starting the JSON Scrape with the command:" $COMMAND
 $PYTHON $COMMAND
 retVal=$?
@@ -111,6 +113,19 @@ retVal=$?
       echo "JSON Successful scraper file for year $CURRENTYEAR"
   fi
   echo ""
+
+echo "Workaround: Scraping Granicus to fix empty Video links in $currentdwnldfilename"
+COMMAND="src-Scraper/scrape_granicus.py --file $currentdwnldfilename"
+echo "Starting the JSON Scrape with the command:" $COMMAND
+$PYTHON $COMMAND
+retVal=$?
+  if [ $retVal -ne 0 ]; then
+      echo "Granicus error. Will ignore"
+  else
+      echo "Granicus successfully scraped."
+  fi
+  echo ""
+
 
 # Code from diffbatch.sh but using Bash cmp for an initial check for changes.
 # USE PARAMS for the years in the two file names below.
@@ -145,7 +160,7 @@ if [ "$CURRENTMONTH" == "12" ];then
     #
 
     echo "Doing the JSON Scrape for YEAR $NEXTYEAR"
-    COMMAND="src-Scraper/run_meeting_json.py --year $NEXTYEAR --output WebPage/website/scraped/ScraperTEMP.json"
+    COMMAND="src-Scraper/run_meeting_json.py --year $NEXTYEAR --output WebPage/website/scraped/ScraperTEMP.json --calendars WebPage/website/calendars/"
     echo "Starting the JSON Scrape with the command:" $COMMAND
     $PYTHON $COMMAND
     retVal=$?
@@ -160,7 +175,7 @@ if [ "$CURRENTMONTH" == "12" ];then
 elif [ "$CURRENTMONTH" == "1" ];then
 
     echo "Doing the JSON Scrape for YEAR $LASTYEAR"
-    COMMAND="src-Scraper/run_meeting_json.py --year $LASTYEAR --output WebPage/website/scraped/ScraperTEMP.json"
+    COMMAND="src-Scraper/run_meeting_json.py --year $LASTYEAR --output WebPage/website/scraped/ScraperTEMP.json --calendars WebPage/website/calendars/"
     echo "Starting the JSON Scrape with the command:" $COMMAND
     $PYTHON $COMMAND
     retVal=$?
@@ -175,6 +190,7 @@ elif [ "$CURRENTMONTH" == "1" ];then
 else
     echo "No need to process any adjacent year"
 fi
+
 #
 # Now make the webpage
 #
@@ -193,11 +209,14 @@ if id -nG | grep -qw "dev"; then
     chgrp dev WebPage/website/scraped/*
 fi
 if [ ! -z "$WEBSITEPATH" ]; then  #if [ $HOSTNAME = 'ip-172-31-38-33' ]; then
-	cd $DIR #Go back to councilmatic directory
+	cd "$DIR" #Go back to councilmatic directory
 	# Copy files to actual dev website
 	echo "Copying files to actual dev website"
+	rm -f $WEBSITEPATH/calendars/* # remove old calendar files from website directory
 	cp -R --preserve=ownership ./WebPage/website/* $WEBSITEPATH #/var/www/councilmatic/dev
-	rm -f ./WebPage/website/images/tweets/*   #remove files from local tweet directory	
+	rm -f ./WebPage/website/images/tweets/*   #remove files from local tweet directory
+	rm -f ./WebPage/website/calendars/*       #remove calendar files from calendar directory
+	
 #	sh -c 'ls --format single-column /var/www/councilmatic/dev/images/tweets/ > /var/www/councilmatic/dev/images/tweets/filelist.txt' 
         sh -c "ls --format single-column $WEBSITEPATH/images/tweets/ > $WEBSITEPATH/images/tweets/filelist.txt"
 else

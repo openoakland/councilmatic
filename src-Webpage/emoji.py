@@ -29,9 +29,9 @@ def read_topics(filename: str) -> dict:
 
 def get_topics(meeting: dict, keyword_map: dict) -> Tuple[str, str]:
     # Returns a tuple (topics, emojis) for a given meeting
-    topics = set()   # Tells this is an Oakland meeting
-    topics.add("#oakmtg ")
-    emojis = set()
+    topics = []   # Tells this is an Oakland meeting
+    #topics.add("#oakmtg ")
+    emojis = []
     print(meeting['EventDate'])
     #for item in meeting:
     #    print(item)
@@ -40,8 +40,12 @@ def get_topics(meeting: dict, keyword_map: dict) -> Tuple[str, str]:
         for k, v in keyword_map.items():
             if re.search('\\b' + k + '\\b', agenda, re.IGNORECASE):
                 # topics.add("#" + v['topic'].replace(' ', ''))
-                topics.add("#" + v['topic'].replace(' ', '') + " ")  # HSM adding a space afterwards
-                emojis.add(v['emoji'])
+                #topics.add("#" + v['topic'].replace(' ', '') + " ")  # HSM adding a space afterwards
+                newtopic = v['topic'].replace(' ', '')
+                if newtopic + " " not in topics:
+                    topics.append(newtopic + " " )  # HSM adding a space afterwards
+                    #print("|"+v['emoji'].replace(' ', '')+"|\n")
+                    emojis.append(v['emoji'].replace(' ', '') + " ")
 
     return ''.join(topics), ''.join(emojis)
 

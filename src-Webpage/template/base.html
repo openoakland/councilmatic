@@ -12,37 +12,178 @@
     </script>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>{% block page_title %}Oakland City Council Meetings{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Josefin+Sans" />
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="/{{ path_from_root }}css/style.css">
+    <!-- if not dev site then 
     <link rel="stylesheet" href="../css/style.css">
+    -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <meta name="twitter:widgets:link-color" content="#000000">
     <meta name="twitter:widgets:border-color" content="#000000">
     <meta name="twitter:partner" content="tfwp">
-    <link rel="icon" href="http://www.openoakland.org/wp-content/uploads/2015/11/cropped-logo_240x240-32x32.png" sizes="32x32" />
-    <link rel="icon" href="http://www.openoakland.org/wp-content/uploads/2015/11/cropped-logo_240x240-192x192.png" sizes="192x192" />
-    <link rel="apple-touch-icon-precomposed" href="http://www.openoakland.org/wp-content/uploads/2015/11/cropped-logo_240x240-180x180.png" />
+    <link rel="icon" href="https://www.openoakland.org/wp-content/uploads/2015/11/cropped-logo_240x240-32x32.png" sizes="32x32" />
+    <link rel="icon" href="https://www.openoakland.org/wp-content/uploads/2015/11/cropped-logo_240x240-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon-precomposed" href="https://www.openoakland.org/wp-content/uploads/2015/11/cropped-logo_240x240-180x180.png" />
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark councilmatic-navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark councilmatic-navbar" style="position: fixed; top: 0; width: 100%; padding: 0; z-index: 100;">
       <div class="container">
-        <a class="navbar-brand" href="/">
-
-          <h4> <span class="councilmatic-logo"></span> Oakland City Council - California</h4>
-          <i><h6> <font size="-1">Updated {{ now.strftime("%A, %B %d, %Y at %I:%M %p") }} <font size="-1"></h6></i>
-        </a>
+        <!--<a class="navbar-brand" href="javascript:void(0)" onclick="openMenuOverlay">-->
+	<div class="" style="position: inherit; width: 58.333333%; height: 80px;">
+          <h4 class="navbar-brand", style="margin-bottom:0;"> <span class="councilmatic-logo"></span> Oakland City Council - California
+	  </h4>
+	  <span class="navbar-menuspan" onclick="openMenuOverlay()">
+	    <i class="fas fa-bars" style="margin-right:1rem;"></i>
+	    <font size="-1" weight="normal">Updated {{ now.strftime("%A, %B %d, %Y at %I:%M %p") }} </font>
+														   </span>
+	</div>
+        <!--</a>-->
       </div>
     </nav>
 
-    <div class="councilmatic-body-container container">
+    <div class="councilmatic-body-container container" style="margin-top: 3.5rem">
       {% block body_content %}{% endblock %}
     </div>
 
+    {# overlay pane #}
+    <div id="menuOverlay" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeMenuOverlay()">&times;</a>
+      <div class="overlay-content">
+	<h4 style="margin-bottom: 1rem;"> What would you like to find?</h4>
+	<p>
+	  <a href="/{{ path_from_root }}upcoming/{{ committee['slug'] }}.html">Upcoming Meetings</a>
+	<p>
+	  <a href="/{{ path_from_root }}{{ now.year }}/{{ committee['slug'] }}.html">Past Meetings</a>
+
+      <details>
+	<summary>
+	  Additional Services
+	  </summary>
+      
+	<p>
+          <a href="https://www.oaklandca.gov/departments/oakland-city-council" target="_blank">
+            Oakland City Council
+            <i class="fas fa-external-link-alt fa-xs"></i>
+          </a>
+	<p>
+	  
+          <a href="https://gisapps.mapoakland.com/councildistricts/" target="_blank">
+            Find Your District &amp; Representative
+            <i class="fas fa-external-link-alt fa-xs"></i>
+          </a>
+	  
+	<p>
+          <a href="https://www.oaklandca.gov/services/order-an-agenda-packet" target="_blank">
+            Subscribe to Meeting Notes
+            <i class="fas fa-external-link-alt fa-xs"></i>
+          </a>
+	  
+	<p>
+          <a href="https://www.oaklandca.gov/services/request-a-city-council-agenda-item" target="_blank">
+            Request an Agenda Item
+            <i class="fas fa-external-link-alt fa-xs"></i>
+          </a>
+	  
+	<p>
+	  <a href="https://solar.oaklandnet.com/Speaker/form" target="_blank">
+            Sign Up to Speak
+            <i class="fas fa-external-link-alt fa-xs"></i>
+	  </a>
+	  
+	<p>
+          <a href="https://forms.gle/vf1gR78Pub1NWcGD9" target="_blank">
+            Participate in Oakland Council Survey
+            <i class="fas fa-external-link-alt fa-xs"></i>
+          </a>
+      </details>
+
+      	<p style="font-size: 1.5rem; margin-top: 1rem;">
+	  <a href="mailto:councilmatic@openoakland.org?subject=Feedback%20for%20Oakland%20Councilmatic" style="margin-right: 1rem;"><i class="fas fa-envelope"></i></a>
+	  
+	  <a href="https://twitter.com/OCouncilmatic"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+
+    {# sidepane #}
+    <div id="filterSidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeFilterSidebar()">&times;</a>
+
+      <h4>Filter</h4>
+      
+      <p>
+	<!--<a href="/{{ path_from_root }}{{ now.year }}/{{ committee['slug'] }}.html" class="councilmatic-title-link">Previous Meetings</a>-->
+	<details>
+	  <summary>
+	    Dates
+	  </summary>
+
+	  <form name="yearform">
+	    <ul style="list-style-type: none;">
+	    <li>
+	      {% if not past_year  %}
+	      <input type="radio" id="upcoming" name="year" value="upcoming" checked>
+	      {% else %}
+	      <input type="radio" id="upcoming" name="year" value="upcoming">
+	      {% endif %}
+	      <label for="upcoming">upcoming</label>
+	    </li>
+	    <li>
+	      Past Meetings:
+	    </li>
+            {% for year, link in other_years.items() %}
+	    <li>
+	      {% if str(past_year) == str(year) %}
+	      <input type="radio" id="{{ year }}" name="year" value="{{ year }}" checked>
+	      {% else %}
+	      <input type="radio" id="{{ year }}" name="year" value="{{ year }}">
+	      {% endif %}
+	      <label for="{{ year }}">{{ year }}</label>
+	    </li>
+          {% endfor %}
+	  </ul>
+	  </form>
+	</details>
+
+      <p>
+	<details style="margin-bottom: 1rem">
+	  <summary>
+	    Committees
+	  </summary>
+	  
+
+	  <form name="committeeform">
+	  <ul style="list-style-type: none;">
+	  {% for committee_name, committee_link in other_committees.items() %}
+          <!--<a class="dropdown-item" href="{{ committee_link }}">-->
+	  <li>
+	  {% if str(committee['name']) == committee_name %}
+	    <input type="radio" id="{{ committee_name }}" name="committee" value="{{ committee_link }}" checked>
+	  {% else %}
+	    <input type="radio" id="{{ committee_name }}" name="committee" value="{{ committee_link }}">
+	  {% endif %}
+            <label for="{{ committee_name }}">{{ committee_name }}</label>
+            <!--</a>-->
+	  </li>
+          {% endfor %}
+	  </ul>
+	  </form>
+	</details>
+        <button class="btn" type="button" onclick="document.getElementById('upcoming').checked = 'true'; document.getElementById('All Meetings').checked = 'true';">
+	  Reset
+	</button>
+        <button class="btn btn-outline-dark" type="button" id="filter" onclick="filterPage()" style="margin-left:1rem">
+	  Select
+	</button>
+    </div>
+    
+    
 
     <div class="councilmatic-footer">
       <div class="container">
@@ -62,5 +203,126 @@
             data-show-count="false">Follow @OCouncilmatic</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
     </div>
+
+    <script>
+      var d = new Date();
+      var zoomButtons = document.getElementsByClassName("button-join");
+      for (var i = 0; i < zoomButtons.length; i++) {
+			  let zoomMeeting = zoomButtons.item(i).id.split("_");
+			  let zoomMeetingDate = zoomMeeting[2].split(" ")[0].split("-"); /* year, month, day*/
+			  let zoomMeetingTime = zoomMeeting[3].split(":");
+			  let meridian = zoomMeetingTime[1].split(" ")[1]; /* AM or PM */
+			  zoomMeetingTime[1] = zoomMeetingTime[1].split(" ")[0];
+	  let midnight = new Date();
+			  midnight.setHours(24,0,0,0);
+                 	  let timeToMidnight = (midnight-d)/(1000*60*60) /* in hours */;
+			  if (meridian == "PM") {
+			  zoomMeetingTime[0] = parseInt(zoomMeetingTime[0]) + 12;
+			  }
+			  let zoomMeetingFullDate = new Date(zoomMeetingDate[0], parseInt(zoomMeetingDate[1])-1, zoomMeetingDate[2], zoomMeetingTime[0], zoomMeetingTime[1]);
+			  let timeDiff = ((zoomMeetingFullDate-d)/(1000*60*60)); /* in hours*/
+			  if ((timeDiff) > 1) {
+	                      if ((timeDiff) > 24) {
+				  var daysForward = Math.ceil((timeDiff-timeToMidnight)/24)
+				  if(daysForward > 1)
+                                       document.getElementById(zoomButtons.item(i).id).innerHTML = "<i class='fas fa-users'></i> Join <font size='-6' weight='normal'>(in "+daysForward+" days)</font>";
+				  else
+                                       document.getElementById(zoomButtons.item(i).id).innerHTML = "<i class='fas fa-users'></i> Join <font size='-6' weight='normal'>(in "+daysForward+" day)</font>";
+	}
+	else {
+        document.getElementById(zoomButtons.item(i).id).innerHTML = "<i class='fas fa-users'></i> Join <font size='-6' weight='normal'>(in "+Math.round(timeDiff)+" hrs)</font>";
+	}
+	}
+	else {
+	    if(timeDiff < -24) {
+		var daysPast = Math.floor(Math.abs(timeDiff/24)+Math.abs(timeToMidnight/24));
+		if(daysPast > 1)
+		    document.getElementById(zoomButtons.item(i).id).innerHTML = "<i class='fas fa-users'></i> Join <font size='-6' weight='normal'>("+daysPast+" days ago)</font>";
+		else
+		    document.getElementById(zoomButtons.item(i).id).innerHTML = "<i class='fas fa-users'></i> Join <font size='-6' weight='normal'>("+daysPast+" day ago)</font>";
+		      }
+	else if(timeDiff < -1) {
+			   document.getElementById(zoomButtons.item(i).id).innerHTML = "<i class='fas fa-users'></i> Join <font size='-6' weight='normal'>("+Math.round(Math.abs(timeDiff))+" hrs ago)</font>";
+			   }
+	else {
+                           document.getElementById(zoomButtons.item(i).id).innerHTML = "<i class='fas fa-users'></i> Join <font size='-6' weight='normal'>(in <1 hr)</font>";
+			   }
+			   }
+			   }
+			  																			    
+      
+      function toggleCalendarLinks(id) {
+      var x = document.getElementById("calendar-buttons-"+id);
+      if (x.style.display === "none") {
+      x.style.display = "block";
+      } else {
+      x.style.display = "none";
+      }
+      }
+
+      /* Set the width of the "filter" sidebar to 100% */
+      function openFilterSidebar() {
+      document.getElementById("filterSidebar").style.width = "100%";
+      document.getElementById("filterSidebar").style.paddingLeft = "5rem";
+      }
+
+      /* Set the width of the "filter" sidebar to 0 */
+      function closeFilterSidebar() {
+      document.getElementById("filterSidebar").style.width = "0";
+      document.getElementById("filterSidebar").style.paddingLeft = "0rem";
+      }
+
+      /* Set the height of the "menu" overlay to 100% */
+      function openMenuOverlay() {
+      document.getElementById("menuOverlay").style.height = "100%";
+      }
+
+      /* Set the height of the "menu" overlay to 0 */
+      function closeMenuOverlay() {
+      document.getElementById("menuOverlay").style.height = "0%";
+      }
+
+      /* Filter sidebar */
+      function filterPage() {
+      var filterYear;
+      var filterCommittee;
+      for(var i=0; i<document.yearform.year.length; i++) {
+	if(document.yearform.year[i].checked) {					  
+	  filterYear = document.yearform.year[i].value;
+	}
+      }
+      for(var i=0; i<document.committeeform.committee.length; i++) {
+	if(document.committeeform.committee[i].checked) {					  
+	  filterCommittee = document.committeeform.committee[i].value;
+	}
+      }
+      window.location.href = '/{{ path_from_root }}' + filterYear + '/' + filterCommittee;
+      }
+
+      /* Scroll animations */
+      // Observer options.
+      const options = {
+	  root: null,
+	  rootMargin: '0px',
+	  threshold: 0.7,
+      };
+      
+      const callback = function(entries) {
+	  entries.forEach(entry => {
+	      entry.target.classList.toggle("is-visible");
+	  });
+      };
+
+      const observer = new IntersectionObserver(callback, options);
+
+      const targets = document.querySelectorAll(".show-on-scroll");
+      targets.forEach(function(target) {
+	  observer.observe(target);
+      });
+
+
+
+</script>
+
   </body>
 </html>

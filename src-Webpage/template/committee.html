@@ -1,4 +1,5 @@
 {% extends "base.html" %}  
+
 {% block page_title %}
   Oakland City Council Agenda
   {% if committee['name'] != 'City Council' %}
@@ -10,42 +11,39 @@
 {% endblock %}
 
 {% block body_content %}
+
+
 <div class="row mt-3">
-  <div class="col-xs-12 col-sm-7 order-2 order-sm-1">
+  <div class="col-xs-12 col-sm-10 order-2 order-sm-1" style="position: inherit;">
     <div class="calendar">
-      <h1 class="d-inline-block">
+{#      <h1 class="d-inline-block">
         {% if past_year %}
-        Previous Meetings
+        Past Meetings
         {% else %}
         Upcoming Meetings
         {% endif %}
       </h1>
+#}
+      <span class="filterspan" style="font-size:20px;cursor:pointer;white-space:nowrap;width:25%;float:left;" onclick="openFilterSidebar()"><i class="fas fa-sliders-h"></i> Filter  
+      </span>
 
-      <p class="d-inline-block ml-lg-2 text-nowrap">
-        {% if past_year %}
-        <a href="/dev/upcoming/{{ committee['slug'] }}.html" class="councilmatic-title-link">View Upcoming Meetings</a>
-	<!-- if not dev site, switch to         <a href="../upcoming/{{ committee['slug'] }}.html" class="councilmatic-title-link">View Upcoming Meetings</a> -->
-        {% else %}
-        <a href="/dev/{{ now.year }}/{{ committee['slug'] }}.html" class="councilmatic-title-link">View Previous Meetings</a>
-        <!-- if not dev site, switch to         <a href="../{{ now.year }}/{{ committee['slug'] }}.html" class="councilmatic-title-link">View Previous Meetings</a> -->
-        {% endif %}
-      </p>
-
-      <h3>Filter by Committee</h3>
-      <div class="dropdown d-inline-block">
-        <button class="btn btn-outline-dark dropdown-toggle" type="button" id="committeeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          {{ committee['name'] }}
-        </button>
-
-        <div class="dropdown-menu" aria-labelledby="committees-dropdown">
-          {% for committee_name, committee_link in other_committees.items() %}
-          <a class="dropdown-item" href="{{ committee_link }}">
-            {{ committee_name }}
-          </a>
-          {% endfor %}
-        </div>
+      <div style="margin-top: 0.1rem;">
+	  {% if past_year %}
+  	    {% if 'All Meetings' in str(committee['name']) %}
+	    [ All Meetings in {{ past_year }} ]
+	    {% else %}
+	    [ {{ committee['name'] }} Meetings in {{ past_year }} ]
+	    {% endif %}
+	  {% else %}
+  	    {% if 'All Meetings' in str(committee['name']) %}
+	    [ All Upcoming Meetings ]
+	    {% else %}
+	    [ Upcoming {{ committee['name'] }} Meetings ]
+	    {% endif %}
+	  {% endif %}
       </div>
 
+      {#
       {% if past_year %}
       <div class="dropdown d-inline-block">
         <button class="btn btn-outline-dark dropdown-toggle" type="button" id="yearDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -61,6 +59,9 @@
         </div>
       </div>
       {% endif %}
+      #}
+
+      <hr class="hr-event-day" style="height:2px; background-color:gray;">
 
       {% if not meetings %}
       <div class="event-day">
@@ -71,54 +72,34 @@
 
       {% for date, events in meetings.items() | sort %}
       <div class="event-day">
-        <h4>
-          {{ date | councilmatic_date }}
+          <div class="event-day__datebar"> {{ date | councilmatic_date }}
           <span class="event-day__date" >
             {{ date | format_date }}
           </span>
-        </h4>
-
+	  </div>
+	  
         {% for event in events %}
+	  {% if loop.index != 1 %} <hr style="margin-top:0.1rem; margin-bottom:0.1rem;"> {% endif %} {# divide multiple events in the same day with a horizontal rule #}
         <div class="event-day__item">
-          <h5 class="event-day__item-time">
-            {{ event['EventTime'] }}
-          </h5>
-          <h5>
-            {{ event['TopicEmojis'] }}
-          </h5>
-          <p>
-            {{ event['TopicHashtags'] }}
-          </p>
 
-          <div class="event-day__item-actions">
-            {% if event['EventVideoPath'] %}
-            <a href="{{ event['EventVideoPath'] }}" title="View Minutes" target="_blank">
-              <i class="far fa-list-alt"></i>
-              Video Minutes
-            </a>
-            {% elif event['EventMinutesFile'] %}
-            <a href="{{ event['EventMinutesFile'] }}" title="View Minutes" target="_blank">
-              <i class="far fa-list-alt"></i>
-              Minutes
-            </a>
-            {% elif event['EventAgendaFile'] %}
-            <a href="{{ event['EventAgendaFile'] }}" title="View Agenda" target="_blank">
-              <i class="far fa-list-alt"></i>
-              Agenda
-            </a>
-            {% else %}
-              Agenda is not available
-
-            {% endif %}
+          <div class="event-day__item-title">
+            <h3>{{ event['EventBodyName'] }}</h3>
+            <span class="event-day__timebar"><strong>{{ event['EventTime'] }} </strong> &emsp;
+	    {{ event['EventLocation'] }}</span>
           </div>
 
-          <div class="event-day__item-details">
-            <font size="+1">{{ event['EventBodyName'] }}</font> <br/>
-            {{ event['EventLocation'] }}
+              <details style="border:thin silver solid;">
+                <summary  class="show-on-scroll is-visible">Agenda
+ 
+          {# emojis in flexbox #}
+          <div style="margin:0; font-size: 1.0rem; color: #808080;">
+            {% for (emoji, topic) in zip(event['TopicEmojis'].split(" "), event['TopicHashtags'].split(" ")) %}
+            <div style="white-space: nowrap;">{{ emoji + " " + topic }}</div>
+            {% endfor %}
+          </div>
+	  </summary>
             {% if event.get('EventAgendaDisplayable') %}
-              <details>
-                <summary class="mb-3">Meeting Agenda</summary>
-                <ul>
+                <ul style="list-style: none; padding: 0; margin: 0;">
                   {% for agendaItem in event.get('EventAgenda', []) %}
                     {% if 'EventItemSubject' in agendaItem %}
                       <li>
@@ -127,56 +108,63 @@
                     {% endif %}
                   {% endfor %}
                 </ul>
+		
+			  {% if event['EventVideoPath'] and 'zoom' not in str(event['EventVideoPath']) %}
+			  <a href="{{ event['EventVideoPath'] }}" title="View Minutes" target="_blank">
+			    <i class="far fa-list-alt"></i>
+			    Video Minutes
+			  </a>
+			  {% elif event['EventMinutesFile'] %}
+			  <a href="{{ event['EventMinutesFile'] }}" title="View Minutes" target="_blank">
+			    <i class="far fa-list-alt"></i>
+			    Minutes
+			  </a>
+			  {% elif event['EventAgendaFile'] %}
+			  <a href="{{ event['EventAgendaFile'] }}" title="Full Agenda PDF" target="_blank">
+			    Full Agenda PDF
+			    <i class="fas fa-external-link-alt fa-xs"></i>
+			  </a>
+			  <!--<br><br>-->
+			  {% else %}
+			  Full Agenda is not available
+
+			  {% endif %}
+
+
+	      {% else %}
+	      <br>
+              {% endif %}
               </details>
-            {% endif %}
-          </div>
-        </div>
+
+              {% if past_year %}
+ 	      <button class="button button-remind", style="float: left; color: #808080; pointer-events: none;", disabled><i class="fas fa-calendar-plus"></i> Remind</button>
+	      {% else %}
+ 	      <button class="button button-remind", style="float: left;", onclick="toggleCalendarLinks({{ event['EventId'] }})"><i class="fas fa-calendar-plus"></i> Remind</button>
+	      {% endif %}
+		<!--	      https://calendar.google.com/calendar/r/eventedit?text=My+Custom+Event&dates=20180512T230000Z/20180513T030000Z&details=For+details,+link+here:+https://example.com/tickets-43251101208&location=Garage+Boston+-+20+Linden+Street+-+Allston,+MA+02134-->
+		{% if 'granicus' in str(event['EventVideoPath']) %} {# if link contains oakland.granicus then it is live #}
+		<button class="button button-stream", style="float: right;", onclick="window.location.href='{{ event['EventVideoPath'] }}&embed=1';"><i class="fas fa-video"></i> Stream</a></button>
+                {% elif 'zoom' in str(event['EventVideoPath']) %} {# if link contains zoom then it is live #}
+	        <button class="button button-join", style="float: right;", onclick="window.location.href='{{ event['EventVideoPath'] }}';" id="zoom-meeting_{{ event['EventId'] }}_{{ date }}_{{ event['EventTime'] }}"><i class="fas fa-users"></i> Join</button>
+                {% else %}
+                <button class="button button-stream-dead", style="float: right;", disabled, title="meeting link not available yet"><i class="fas fa-video"></i> </a></button>
+                {% endif %}
+              {% if not past_year %}
+              <p id="calendar-buttons-{{ event['EventId'] }}", style="display: none; margin: 0;">
+		<button class="button button-calendar", style="float: left; white-space: nowrap;", onclick="window.location.href='https://calendar.google.com/calendar/r/eventedit?text={{ re.sub(' ','+',re.sub('&','and',str(event['EventBodyName']))) }}&dates={{ date | format_date_google_calendar }}T{{ str(event['EventTime']) | format_time_google_calendar }}/{{ date | format_date_google_calendar }}T{{ int(str(event['EventTime']) | format_time_google_calendar) + 10000 }}&details=For+details,+link+here:+{{ re.sub(' ', '+',str(event['EventInSiteURL'])) }}&location={{ re.sub(' ', '+',str(event['EventLocation'])) }}'"><i class="fab fa-google"></i> Google</button>
+		<button class="button button-calendar", style="float: left; white-space: nowrap;", onclick="window.location.href='/{{ path_from_root }}calendars/{{ event['EventId'] }}.ics'"><i class="fab fa-apple"></i> Apple</button>
+		<button class="button button-calendar", style="float: left; white-space: nowrap;", onclick="window.location.href='https://outlook.office.com/calendar/0/deeplink/compose?body=For details, link here: {{ str(event['EventInSiteURL']) }}&enddt={{ date | format_date_outlook_calendar }}T{{ str(event['EventTime']) | format_endtime_outlook_calendar }}&location={{ str(event['EventLocation']) }}&path=%2Fcalendar%2Faction%2Fcompose&startdt={{ date | format_date_outlook_calendar }}T{{ str(event['EventTime']) | format_starttime_outlook_calendar }}&subject={{ re.sub('&','and',str(event['EventBodyName'])) }}'"><i class="fab fa-windows"></i> Outlook</button>
+		<button class="button button-calendar", style="float: left; white-space: nowrap;", onclick="window.location.href='/{{ path_from_root }}calendars/{{ event['EventId'] }}.ics'"><i class="far fa-star"></i> Other</button>
+		<!--	      <button class="button button-remind", style="float: left;"><i class="fas fa-calendar-plus"></i> Remind</button>-->
+	      </p>
+	      {% endif %}
+            </div>
         {% endfor %}
-      </div>
+        </div>
+        <hr class="hr-event-day">
       {% endfor %}
     </div>
   </div>
 
-  <div class="col-xs-12 col-sm-4 offset-sm-1 order-1 order-sm-2">
-      <div class="councilmatic-sidebar">
-          <h3 class="councilmatic-sidebar__header d-none d-sm-block">Additional Services</h3>
-
-          <p>
-              <a href="https://www.oaklandca.gov/departments/oakland-city-council" target="_blank">
-                  Oakland City Council
-                  <i class="fas fa-external-link-alt fa-xs"></i>
-              </a>
-          <p>
-
-              <a href="http://gisapps.mapoakland.com/councildistricts/" target="_blank">
-                  Find Your District &amp; Representative
-                  <i class="fas fa-external-link-alt fa-xs"></i>
-              </a>
-
-          <p>
-              <a href="https://www.oaklandca.gov/services/order-an-agenda-packet" target="_blank">
-                  Subscribe to Meeting Notes
-                  <i class="fas fa-external-link-alt fa-xs"></i>
-              </a>
-
-          <p>
-          <a href="https://www.oaklandca.gov/services/request-a-city-council-agenda-item" target="_blank">
-              Request an Agenda Item
-              <i class="fas fa-external-link-alt fa-xs"></i>
-          </a>
-
-      <p>
-      <a href="https://solar.oaklandnet.com/Speaker/form" target="_blank">
-        Sign Up to Speak
-        <i class="fas fa-external-link-alt fa-xs"></i>
-      </a>
-
-        <p>
-          <a href="https://forms.gle/vf1gR78Pub1NWcGD9" target="_blank">
-            Participate in Oakland Council Survey
-            <i class="fas fa-external-link-alt fa-xs"></i>
-          </a>
-    </div>
-  </div>
 </div>
 {% endblock %}
