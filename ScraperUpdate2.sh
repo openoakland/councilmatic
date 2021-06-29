@@ -134,7 +134,7 @@ retVal=$?
 if cmp -s "$prevfilename" "$currentdwnldfilename" ; then
     echo "Nothing changed between last and newly downloaded JSON data file."
     echo ''
-    rm $prevfilename
+    rm -f $prevfilename
 else
     echo "Something changed between last and newly downloaded JSON data file. Labeling and saving the previous file."
     echo ''

@@ -72,12 +72,12 @@ def scrape_api(days, year, meeting_file, calendar_dir):
                             meeting['EventVideoPath'] = zoomLink[0]
 
                 filename = str(calendar_dir) + str(meeting['EventId']) + ".ics"
-                if path.exists(filename): #Temp work around for error of file not found
-                    f = open(filename, 'w')
-                    f.write("BEGIN:VCALENDAR\nVERSION:2.0\nCALSCALE:GREGORIAN\nBEGIN:VEVENT\nDTSTART;TZID=America/Los_Angeles:" + meeting_date.strftime("%Y%m%d") + "T" + str(dt.datetime.strptime(str(meeting['EventTime']), "%I:%M %p").strftime("%H%M%S")) + "\nDTEND;TZID=America/Los_Angeles:" + meeting_date.strftime("%Y%m%d") + "T" + str(int(dt.datetime.strptime(str(meeting['EventTime']), "%I:%M %p").strftime("%H%M%S"))+10000) + "\nSUMMARY:" + str(meeting['EventBodyName']) + "\nURL:" + str(meeting['EventInSiteURL']) + "\nDESCRIPTION:For details link here:" + str(meeting['EventInSiteURL']) + "\nLOCATION:" + str(meeting['EventLocation']) + "\nEND:VEVENT\nEND:VCALENDAR\n")
-                    f.close()
-                else:
-                    print("The following file was not found near line 78 of run_meeting_json.py:",filename)
+                #if path.exists(filename): #Temp work around for error of file not found
+                f = open(filename, 'w')
+                f.write("BEGIN:VCALENDAR\nVERSION:2.0\nCALSCALE:GREGORIAN\nBEGIN:VEVENT\nDTSTART;TZID=America/Los_Angeles:" + meeting_date.strftime("%Y%m%d") + "T" + str(dt.datetime.strptime(str(meeting['EventTime']), "%I:%M %p").strftime("%H%M%S")) + "\nDTEND;TZID=America/Los_Angeles:" + meeting_date.strftime("%Y%m%d") + "T" + str(int(dt.datetime.strptime(str(meeting['EventTime']), "%I:%M %p").strftime("%H%M%S"))+10000) + "\nSUMMARY:" + str(meeting['EventBodyName']) + "\nURL:" + str(meeting['EventInSiteURL']) + "\nDESCRIPTION:For details link here:" + str(meeting['EventInSiteURL']) + "\nLOCATION:" + str(meeting['EventLocation']) + "\nEND:VEVENT\nEND:VCALENDAR\n")
+                f.close()
+                #else:
+                #    print("The following file was not found near line 78 of run_meeting_json.py:",filename)
                     
         except requests.exceptions.RequestException:
             logging.warning("Error retrieving agenda...")
