@@ -13,6 +13,7 @@
 
 VERSION="2.2"
 ISDARWIN='Darwin'
+source councilmatic.conf
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 if [ $LINUXTYPE = $ISDARWIN ]; then
 	echo "Scraper_Twitter.sh is Running under Mac OSX/Darwin"
@@ -25,9 +26,9 @@ if [ $LINUXTYPE = $ISDARWIN ]; then
 	DIR=/Users/matis/Documents/OpenOakland/Councilmatic-master/Councilmatic
 	CRONDIR=/Users/matis/Documents/OpenOakland/Councilmatic-master/Councilmatic/WebPage/website/logs
 else
-	DIR=/home/howard/Councilmatic
-	CRONDIR=/home/howard/Councilmatic/WebPage/website/logs
-	export PATH=$PATH:/home/howard/Councilmatic
+	DIR=$PWD #/home/howard/Councilmatic
+	#CRONDIR=/home/howard/Councilmatic/WebPage/website/logs
+	export PATH=$PATH:$PWD #/home/howard/Councilmatic
 fi
 
 #
@@ -94,7 +95,7 @@ echo "Version "$VERSION" of Scraoer_Twitter.sh" 			#Clear cron log file
 ## source set_json_scraper_symlink.sh # Set environment for json
 date
 echo "Doing the JSON Scrape"
-COMMAND="src-Scraper/run_meeting_json.py --days 7 --output WebPage/website/scraped/TwitterTEMP.json"
+COMMAND="src-Scraper/run_meeting_json.py --days 7 --output WebPage/website/scraped/TwitterTEMP.json --calendars WebPage/website/calendars/"
 echo "Starting the Scrape with the command:" $COMMAND
 $PYTHON $COMMAND
 retVal=$?
@@ -105,6 +106,12 @@ else
     echo "Successful scraper file"
 fi
 date
-$PYTHON src-Tweeter/Tweeter.py TRUE
+if [[ $WEBSITEPATH == *"dev"* ]]; then
+    # if 'dev' version then don't actually tweet
+    $PYTHON src-Tweeter/Tweeter.py FALSE
+else
+    # otherwise, go ahead and tweet
+    $PYTHON src-Tweeter/Tweeter.py TRUE
+fi
 echo "Scraper_Twitter.sh completed"
 #

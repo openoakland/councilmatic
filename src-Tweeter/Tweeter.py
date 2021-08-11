@@ -19,10 +19,12 @@ LOOKAHEAD = 7  # Number of the days to look ahead for meetings. Program witten f
 MAXTWEETSIZE = 273      # Maximums size for a tweet
 TWEETURLSIZE = 23       # Size of a URL
 
+PATH_FROM_ROOT = os.environ["WEBSITEPATHRELATIVETOROOT"]
+
 #HASHTAG = "#oakmtg"     # Hashtag to use
 
 '''
-This runs off a a file  ".tweeter"  which resides in your home directory.  The format is below
+This runs off a a file  ".tweeter"  which resides in the main councilmatic directory.  The format is below
 
     consumer_key: "consumer_key"
     consumer_secret: "consumer_password"
@@ -49,8 +51,12 @@ def pick_image_directory(): # Return an image at random (This should be initiali
 
 
 def read_dot_tweeter():  # Read the .tweeter file in the home directory to get the keys to the twitter account
-    path = os.path.expanduser('~') + "/.tweeter"
-    file = open(path, "r")
+    path = os.getcwd() + "/.tweeter"
+    try: 
+        file = open(path, "r")
+    except PermissionError:
+        print("Don't have permission to access .tweeter! Assuming that this is a trail run and I shouldn't be able to actually tweet")
+        return [] # return empty key values
     key = []
     for i in range(0, 4):
         line = file.readline().split()
@@ -127,6 +133,9 @@ def main_program(make_a_tweet):
                 theTweet1 = day_of_week + " " + event_day + " at " + schedule[i][2] + " Oakland " + committee
                 hashtags = schedule[i][4]
                 emojis = schedule[i][5]
+
+#L.K. TO TEST                #hashtags_and_emojis = for (emoji, topic) in zip(emojis.split(" "), hashtags.split(" "))
+#L.K. TO TEST                #print(hashtags_and_emojis)
 
                 if not "Meeting" in theTweet1:
                     theTweetend = ' Meeting.'
