@@ -29,7 +29,7 @@ def read_topics(filename: str) -> dict:
 
 def get_topics(meeting: dict, keyword_map: dict) -> Tuple[str, str]:
     # Returns a tuple (topics, emojis) for a given meeting
-    topics = []   # Tells this is an Oakland meeting
+    topics = []
     #topics.add("#oakmtg ")
     emojis = []
     print(meeting['EventDate'])
