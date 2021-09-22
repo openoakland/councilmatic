@@ -56,10 +56,10 @@ def read_dot_tweeter():  # Read the .tweeter file in the home directory to get t
         file = open(path, "r")
     except PermissionError:
         print("Don't have permission to access .tweeter! Assuming that this is a trial run and I shouldn't be able to actually tweet")
-        return [] # return empty key values
+        return ['','','',''] # return empty key values
     except IOError:    # file does not exist (or some other IOError)
         print("Can't find .tweeter! Assuming that this is a trial run and I shouldn't be able to actually tweet")
-        return [] # return empty key values    
+        return ['','','',''] # return empty key values    
     key = []
     for i in range(0, 4):
         line = file.readline().split()
@@ -107,7 +107,7 @@ def random_string(length):      # Return a random string
 def main_program(make_a_tweet):
     key = read_dot_tweeter()   # Read the permissions for sending the Tweet
     filename = "WebPage/website/scraped/Twitter.json"
-    schedule = twitter_read_json(filename, False)  # The json will contains region of interest.
+    schedule = twitter_read_json(filename, printit=True)  # The json will contains region of interest.
     # Argument says whether want to print out parts of json file
 
     numrows = len(schedule)
@@ -137,8 +137,10 @@ def main_program(make_a_tweet):
                 hashtags = schedule[i][4]
                 emojis = schedule[i][5]
 
-#L.K. TO TEST                #hashtags_and_emojis = for (emoji, topic) in zip(emojis.split(" "), hashtags.split(" "))
-#L.K. TO TEST                #print(hashtags_and_emojis)
+                hashtags_and_emojis = ""
+                for (emoji, topic) in zip(emojis.split(" "), hashtags.split(" ")):
+                    print(emoji + " " + topic)
+                    hashtags_and_emojis = hashtags_and_emojis + " " + emoji + " " + topic
 
                 if not "Meeting" in theTweet1:
                     theTweetend = ' Meeting.'
@@ -146,11 +148,11 @@ def main_program(make_a_tweet):
                     theTweetend = ''
 
                 if "CANCELLED" in theTweet1:   # Don't put the agenda if cancelled
-                    theTweetend += ' ' + hashtags + " " + emojis
+                    theTweetend += ' ' + hashtags_and_emojis #hashtags + " " + emojis
                 elif agenda == "":
-                    theTweetend += ' ' + hashtags + emojis
+                    theTweetend += ' ' + hashtags_and_emojis #hashtags + emojis
                 else:
-                    theTweetend += ' ' + " Agenda is " + agenda + " " + hashtags + emojis
+                    theTweetend += ' ' + " Agenda is " + agenda + " " + hashtags_and_emojis #hashtags + emojis
 
                 theTweet = theTweet1 + theTweetend
                 maximumCouncilTweet = MAXTWEETSIZE - min(TWEETURLSIZE - len(agenda), TWEETURLSIZE)  # Twitter has a
