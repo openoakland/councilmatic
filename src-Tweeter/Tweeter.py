@@ -55,8 +55,11 @@ def read_dot_tweeter():  # Read the .tweeter file in the home directory to get t
     try: 
         file = open(path, "r")
     except PermissionError:
-        print("Don't have permission to access .tweeter! Assuming that this is a trail run and I shouldn't be able to actually tweet")
+        print("Don't have permission to access .tweeter! Assuming that this is a trial run and I shouldn't be able to actually tweet")
         return [] # return empty key values
+    except IOError:    # file does not exist (or some other IOError)
+        print("Can't find .tweeter! Assuming that this is a trial run and I shouldn't be able to actually tweet")
+        return [] # return empty key values    
     key = []
     for i in range(0, 4):
         line = file.readline().split()
