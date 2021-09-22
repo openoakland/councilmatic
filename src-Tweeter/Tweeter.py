@@ -107,7 +107,7 @@ def random_string(length):      # Return a random string
 def main_program(make_a_tweet):
     key = read_dot_tweeter()   # Read the permissions for sending the Tweet
     filename = "WebPage/website/scraped/Twitter.json"
-    schedule = twitter_read_json(filename, printit=True)  # The json will contains region of interest.
+    schedule = twitter_read_json(filename, printit=False)  # The json will contains region of interest.
     # Argument says whether want to print out parts of json file
 
     numrows = len(schedule)
@@ -139,7 +139,6 @@ def main_program(make_a_tweet):
 
                 hashtags_and_emojis = ""
                 for (emoji, topic) in zip(emojis.split(" "), hashtags.split(" ")):
-                    print(emoji + " " + topic)
                     hashtags_and_emojis = hashtags_and_emojis + " " + emoji + " " + topic
 
                 if not "Meeting" in theTweet1:
