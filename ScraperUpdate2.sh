@@ -205,9 +205,9 @@ echo " "
 
 #cp upcoming/all-meetings.html index.html  # make a default page
 
-if id -nG | grep -qw "dev"; then
-    chgrp dev WebPage/website/scraped/*
-fi
+#if id -nG | grep -qw "dev"; then
+#    chgrp dev WebPage/website/scraped/*
+#fi
 if [ ! -z "$WEBSITEPATH" ]; then  #if [ $HOSTNAME = 'ip-172-31-38-33' ]; then
 	cd "$DIR" #Go back to councilmatic directory
 	# Copy files to actual dev website

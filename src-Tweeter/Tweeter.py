@@ -19,10 +19,12 @@ LOOKAHEAD = 7  # Number of the days to look ahead for meetings. Program witten f
 MAXTWEETSIZE = 273      # Maximums size for a tweet
 TWEETURLSIZE = 23       # Size of a URL
 
+PATH_FROM_ROOT = os.environ["WEBSITEPATHRELATIVETOROOT"]
+
 #HASHTAG = "#oakmtg"     # Hashtag to use
 
 '''
-This runs off a a file  ".tweeter"  which resides in your home directory.  The format is below
+This runs off a a file  ".tweeter"  which resides in the main councilmatic directory.  The format is below
 
     consumer_key: "consumer_key"
     consumer_secret: "consumer_password"
@@ -49,8 +51,15 @@ def pick_image_directory(): # Return an image at random (This should be initiali
 
 
 def read_dot_tweeter():  # Read the .tweeter file in the home directory to get the keys to the twitter account
-    path = os.path.expanduser('~') + "/.tweeter"
-    file = open(path, "r")
+    path = os.getcwd() + "/.tweeter"
+    try: 
+        file = open(path, "r")
+    except PermissionError:
+        print("Don't have permission to access .tweeter! Assuming that this is a trial run and I shouldn't be able to actually tweet")
+        return ['','','',''] # return empty key values
+    except IOError:    # file does not exist (or some other IOError)
+        print("Can't find .tweeter! Assuming that this is a trial run and I shouldn't be able to actually tweet")
+        return ['','','',''] # return empty key values    
     key = []
     for i in range(0, 4):
         line = file.readline().split()
@@ -98,7 +107,7 @@ def random_string(length):      # Return a random string
 def main_program(make_a_tweet):
     key = read_dot_tweeter()   # Read the permissions for sending the Tweet
     filename = "WebPage/website/scraped/Twitter.json"
-    schedule = twitter_read_json(filename, False)  # The json will contains region of interest.
+    schedule = twitter_read_json(filename, printit=False)  # The json will contains region of interest.
     # Argument says whether want to print out parts of json file
 
     numrows = len(schedule)
@@ -128,17 +137,21 @@ def main_program(make_a_tweet):
                 hashtags = schedule[i][4]
                 emojis = schedule[i][5]
 
+                hashtags_and_emojis = ""
+                for (emoji, topic) in zip(emojis.split(" "), hashtags.split(" ")):
+                    hashtags_and_emojis = hashtags_and_emojis + " " + emoji + " " + topic
+
                 if not "Meeting" in theTweet1:
                     theTweetend = ' Meeting.'
                 else:
                     theTweetend = ''
 
                 if "CANCELLED" in theTweet1:   # Don't put the agenda if cancelled
-                    theTweetend += ' ' + hashtags + " " + emojis
+                    theTweetend += ' ' + hashtags_and_emojis #hashtags + " " + emojis
                 elif agenda == "":
-                    theTweetend += ' ' + hashtags + emojis
+                    theTweetend += ' ' + hashtags_and_emojis #hashtags + emojis
                 else:
-                    theTweetend += ' ' + " Agenda is " + agenda + " " + hashtags + emojis
+                    theTweetend += ' ' + " Agenda is " + agenda + " " + hashtags_and_emojis #hashtags + emojis
 
                 theTweet = theTweet1 + theTweetend
                 maximumCouncilTweet = MAXTWEETSIZE - min(TWEETURLSIZE - len(agenda), TWEETURLSIZE)  # Twitter has a
