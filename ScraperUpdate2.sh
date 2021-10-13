@@ -35,7 +35,7 @@
 cd "$(dirname "$0")" # sets the current working directory to the directory of the script.
 VERSION="5.2" # for ScraperUpdate2.sh
 CHOICE="csv"
-source councilmatic.conf
+source `dirname "$0"`/councilmatic.conf
 ISDARWIN='Darwin'
 
 if [ "$LINUXTYPE" == "$ISDARWIN" ]; then
@@ -48,9 +48,9 @@ if [ "$LINUXTYPE" == "$ISDARWIN" ]; then
 	DIR=/Users/matis/Library/Mobile\ Documents/com\~apple\~CloudDocs/Home\ Files/Councilmatic
     CRONDIR=/Users/matis/Library/Mobile\ Documents/com\~apple\~CloudDocs/Home\ Files/Councilmatic/WebPage/website/logs
 else
-	DIR=$PWD #/usr/local/councilmatic/dev/councilmatic #/home/howard/Councilmatic
+	DIR=`dirname "$0"` #$PWD #/usr/local/councilmatic/dev/councilmatic #/home/howard/Councilmatic
     #CRONDIR=/home/howard/Councilmatic/WebPage/website/logs
-	export PATH=$PATH:$PWD #/usr/local/councilmatic/dev/councilmatic #/home/howard/Councilmatic
+	export PATH=$PATH:`dirname "$0"` #/usr/local/councilmatic/dev/councilmatic #/home/howard/Councilmatic
 fi
 
 #
