@@ -13,7 +13,7 @@
 
 VERSION="2.2"
 ISDARWIN='Darwin'
-source councilmatic.conf
+source `dirname "$0"`/councilmatic.conf
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 if [ $LINUXTYPE = $ISDARWIN ]; then
 	echo "Scraper_Twitter.sh is Running under Mac OSX/Darwin"
@@ -26,9 +26,9 @@ if [ $LINUXTYPE = $ISDARWIN ]; then
 	DIR=/Users/matis/Documents/OpenOakland/Councilmatic-master/Councilmatic
 	CRONDIR=/Users/matis/Documents/OpenOakland/Councilmatic-master/Councilmatic/WebPage/website/logs
 else
-	DIR=$PWD #/home/howard/Councilmatic
+	DIR=`dirname "$0"` #/home/howard/Councilmatic
 	#CRONDIR=/home/howard/Councilmatic/WebPage/website/logs
-	export PATH=$PATH:$PWD #/home/howard/Councilmatic
+	export PATH=$PATH:`dirname "$0"` #/home/howard/Councilmatic
 fi
 
 #
@@ -71,11 +71,11 @@ FINALDAY=$LASTMONTH"/"$LASTDAY"/"$LASTYEAR   # uncomment for debug
 echo "The final day is "$FINALDAY
 
 
-if [ $LINUXTYPE = $ISDARWIN ]; then
-	PYTHON=/Users/matis/anaconda3/bin/python   #Must specify correct version of Python
-else
-	PYTHON=/home/howard/miniconda3/bin/python  #Must specify correct version of Python
-fi
+#if [ $LINUXTYPE = $ISDARWIN ]; then
+#	PYTHON=/Users/matis/anaconda3/bin/python   #Must specify correct version of Python
+#else
+#	PYTHON=/home/howard/miniconda3/bin/python  #Must specify correct version of Python
+#fi
 
 echo $PYTHON
 export MOZ_HEADLESS=1 #Needed to run Firefox Headless
