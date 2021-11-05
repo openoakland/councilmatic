@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+
+if [ "$EUID" -ne 0 ]
+  then echo "! ! ! ! ! ! This script must be run as root (sudo Scraper_Twitter.sh)"
+  exit
+fi
 #
 # Scrape the Oakland Counmcil Legistar webpage and then Tweet upcoming meetings
 # Written by Howard Matis - April 14, 2019
