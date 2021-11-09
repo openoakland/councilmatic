@@ -1,4 +1,8 @@
 # Councilmatic
+## Notes for cloning
+### 2021-11-09
+* Python 3.7 is the minimum version of Python.
+* python3-tqdm is a required package that must be added to the receiving server.
 ## Changes in process
 ### 2021-02-23
 #### Renaming the "develop" branch
@@ -28,75 +32,7 @@ These mods will then allow the testing of changes from pull requests on the serv
 * Changed the group of 
 * Todo: After cloning constructor code into /usr/local/councilmatic/dev then check for paths tha determine where the generated pages are placed.  The dev/ constructor code will need to generate pages to /var/www/councilmatic/dev. This path may need to be carried by a configuration variable.
 
-------
-###### Everything below will be deleted soon
-------
 
-# Setup
-# 
-# IF pip (My prefered method):
-  1. Download Python
-  2. make sure you're in the project directory
-     and download the packages like so:
-  ```
-  pip install -r requirements.txt
-  ```
-
-  Disregard below
-# IF Conda:
-
-  1. Install Anaconda 
-    * https://www.anaconda.com/download
-  2. Create conda env
-    * conda env create -f environment.yml
-  3. Download geckodriver and add to path. Make sure to install Firefox if you don't have it as well.
-    * https://github.com/mozilla/geckodriver/releases
-    <br>
-  note: We used Katalon IDE brower plugin to easy generate some of python selenium statements the normal selenium IDE no longer supports Python code exports.
-    
-  # start up conda env
-  ```
-  source activate new_councilmatic
-  ```
-
-  # update conda env
-  ```
-  source activate new_councilmatic
-  conda env update -f=environment.yml
-  ```
-
-  # install conda env into jupyter notebook
-  ```
-  source activate new_councilmatic
-  python -m ipykernel install --user --name new_councilmatic --display-name "new councilmatic"
-  ```
-
-
-  ```
-
-### By Year and Search Words Example (2018)
-
-```
-python run_calendar.py -d 2018 -s "parking"
-```
-
-### Save as CSV Example (deprecated)
-
-```
-python run_calendar.py -d 2018 -s "parking" > parking2018.csv
-```
-
-### To create the web page
-
-```
-Run ScraperUpdate_AWS.sh on Amazon Server
-```
-
-
-# To run in jupyter notebook
-```
-jupyter notebook calendar.ipynb
-```
 # Web location of production site
 
 https://oaklandcouncil.net
