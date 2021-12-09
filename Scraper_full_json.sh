@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-if [ "$EUID" -ne 0 ]
-  then echo "! ! ! ! ! ! This script must be run as root (sudo Scraper_full_json.sh)"
-  exit
-fi
-
 #
 # Update JSON Database - To be run to establish a baseline of files
 #

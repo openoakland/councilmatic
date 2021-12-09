@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-if [ "$EUID" -ne 0 ]
-  then echo "! ! ! ! ! ! This script must be run as root (sudo ScraperUpdate2.sh)"
-  exit
-fi
-
 #
 # Update JSON Database and then create a webpage
 #
