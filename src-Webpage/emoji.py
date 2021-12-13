@@ -5,6 +5,9 @@ import json
 import re
 import datetime
 from typing import Tuple, List, Union
+import os
+
+CURRENT_DIRECTORY = os.path.abspath(os.path.dirname(__file__))
 
 def parse_timestamp(ts: str) -> str:
     # Used to parse the timestamp for each meeting
@@ -58,7 +61,7 @@ def twitter_read_json(file: Union[List[dict], str], printit: bool=False) -> List
             meetings = json.load(f)
     else:
         meetings = file
-    topics = read_topics(r'/usr/local/councilmatic/dev/councilmatic/src-Tweeter/topics.tsv')
+    topics = read_topics(os.path.join(CURRENT_DIRECTORY, '../src-Tweeter/topics.tsv'))
 
     # print(type(meetings))
     csv = [[m['EventBodyName'],

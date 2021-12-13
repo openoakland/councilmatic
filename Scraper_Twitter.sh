@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 #
 # Scrape the Oakland Counmcil Legistar webpage and then Tweet upcoming meetings
 # Written by Howard Matis - April 14, 2019

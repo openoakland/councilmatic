@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 #
 # Update JSON Database and then create a webpage
 #
@@ -36,6 +37,9 @@ cd "$(dirname "$0")" # sets the current working directory to the directory of th
 VERSION="5.2" # for ScraperUpdate2.sh
 CHOICE="csv"
 source `dirname "$0"`/councilmatic.conf
+source `dirname "$0"`/commoncode.sh
+check_for_json_data_files # function in commoncode.sh to check for files WebPage/website/scraped/Scraper20xx.json
+
 ISDARWIN='Darwin'
 
 if [ "$LINUXTYPE" == "$ISDARWIN" ]; then

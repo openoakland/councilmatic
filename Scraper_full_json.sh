@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 #
 # Update JSON Database - To be run to establish a baseline of files
 #
@@ -8,6 +9,10 @@
 # This does a full update from 2014 to the current year
 
 VERSION="3.1"
+source `dirname "$0"`/councilmatic.conf
+source `dirname "$0"`/commoncode.sh
+check_for_json_data_files # function in commoncode.sh to check for files WebPage/website/scraped/Scraper20xx.json
+
 ISDARWIN='Darwin'
 LINUXTYPE=$(uname -s) # If equals ISDARWIN then we are running under OSX on a local development Mac
 
