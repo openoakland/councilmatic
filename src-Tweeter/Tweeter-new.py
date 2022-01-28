@@ -24,7 +24,8 @@ PATH_FROM_ROOT = os.environ["WEBSITEPATHRELATIVETOROOT"]
 #HASHTAG = "#oakmtg"     # Hashtag to use
 
 '''
-This runs off a file  ".tweeter"  which resides in the main councilmatic directory.  The format is below
+This runs off a file  ".tweeter-new"  which resides in the main councilmatic directory.  
+The format of the data in the file is like the following:
 
     consumer_key: consumer_key
     consumer_secret: consumer_password
@@ -51,14 +52,14 @@ def pick_image_directory(): # Return an image at random (This should be initiali
 
 
 def read_dot_tweeter():  # Read the .tweeter file in the home directory to get the keys to the twitter account
-    path = os.getcwd() + "/.tweeter"
+    path = os.getcwd() + "/.tweeter-new"
     try: 
         file = open(path, "r")
     except PermissionError:
-        print("Don't have permission to access .tweeter! Assuming that this is a trial run and I shouldn't be able to actually tweet")
+        print("Don't have permission to access .tweeter-new! Assuming that this is a trial run and I shouldn't be able to actually tweet")
         return ['','','',''] # return empty key values
     except IOError:    # file does not exist (or some other IOError)
-        print("Can't find .tweeter! Assuming that this is a trial run and I shouldn't be able to actually tweet")
+        print("Can't find .tweeter-new! Assuming that this is a trial run and I shouldn't be able to actually tweet")
         return ['','','',''] # return empty key values    
     key = []
     for i in range(0, 4):

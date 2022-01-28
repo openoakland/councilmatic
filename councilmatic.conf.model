@@ -11,17 +11,18 @@
 #
 
 # The following lines of code are intended for the production directory and they are only intented as an
-# aid to a site maintainer who may be manually executing a script to force an update. If one of the target
+# aid to a site maintainer who may be manually executing a script to force an update. THESE LINES MAY ALSO
+# BE USEFUL when cloning and testing the code on another platform. If one of the target
 # scripts is launched in production without root privileges, it will only partially run and therefore
 # require to be rerun under 'sudo'. DO NOT use this in the dev environment as dev code should always be
 # run with the privileges of the dev group.
 
-## Create an associative array where the keys are the file names that must be run as root.
+## Creating an associative array where the keys are the file names that must be run as root.
 #declare -A targetFilesAR=(
 # ["Scraper_Twitter.sh"]=0 ["ScraperUpdate2.sh"]=0 ["Scraper_full_json.sh"]=0
 #)
 #
-## Get the name of the currently running script
+## Getting the name of the currently running script
 #script_name=`basename  "$0"`
 ##echo $script_name
 #
