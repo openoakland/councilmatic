@@ -21,13 +21,8 @@ if [ $LINUXTYPE = $ISDARWIN ]; then
 	DIR=/Users/matis/Documents/OpenOakland/Councilmatic-master/Councilmatic
 else
 	echo "NOT Running under Darwin, assuming Ubuntu/AWS"
-	DIR=/home/howard/Councilmatic
-fi
-
-if [ $LINUXTYPE = $ISDARWIN ]; then
-	PYTHON=/Users/matis/anaconda3/bin/python   #Must specify correct version of Python
-else
-	PYTHON=/home/howard/miniconda3/bin/python  #Must specify correct version of Python
+	DIR=`dirname "$0"`
+	export PATH=$PATH:`dirname "$0"`
 fi
 
 echo $PYTHON
@@ -41,7 +36,7 @@ CURRENTYEAR=`date +"%Y"`
 
 for ((YEAR=2014; YEAR<=CURRENTYEAR; YEAR++)); do      # Start the loop from 2014
         echo "Doing the JSON Scrape for YEAR $YEAR"
-        COMMAND="src-Scraper/run_meeting_json.py --year $YEAR --output WebPage/website/scraped/ScraperTEMP.json"
+        COMMAND="src-Scraper/run_meeting_json.py --year $YEAR --output WebPage/website/scraped/ScraperTEMP.json --calendars WebPage/website/calendars/"
         echo "Starting the Scrape with the command:" $COMMAND
         $PYTHON $COMMAND
         retVal=$?
