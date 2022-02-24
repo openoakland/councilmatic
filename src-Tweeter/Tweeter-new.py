@@ -24,13 +24,15 @@ PATH_FROM_ROOT = os.environ["WEBSITEPATHRELATIVETOROOT"]
 #HASHTAG = "#oakmtg"     # Hashtag to use
 
 '''
-This runs off a file  ".tweeter-new"  which resides in the main councilmatic directory.  
-The format of the data in the file is like the following:
+This requires a credentials file  ".tweeter-new"  which resides in the main councilmatic directory.  
+The format of the data in the file is like the following.  Replace the {credential name} with the 
+credential. Now curved braces, no quotes, just a simple four-line file.
 
-    consumer_key: consumer_key
-    consumer_secret: consumer_password
-    access_key: access_key
-    access_secret: access_password
+- - - This represents the top of the file. - - Do not include this line. - - - - - 
+consumer_key: {consumer_key}
+consumer_secret: {consumer_password}
+access_key: {access_key}
+access_secret: {access_password}
 
 Make sure this file does not have world access and is not accessible to the public
 '''
