@@ -10,8 +10,6 @@
 
 VERSION="2.3"
 source `dirname "$0"`/councilmatic.conf
-echo "Scraper_Twitter.sh is NOT Running under Darwin, assuming Ubuntu/AWS"
-
 
 DIR=`dirname "$0"` #/usr/local/councilmatic for production
 export PATH=$PATH:`dirname "$0"`
@@ -26,8 +24,6 @@ then
 else
     echo "nok"
 fi
-
-# This works on both platforms
 
 CURRENTYEAR=`date +"%Y"`
 CURRENTMONTH=`date +"%m"`
