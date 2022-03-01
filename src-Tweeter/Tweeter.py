@@ -131,9 +131,11 @@ def main_program(make_a_tweet):
                             # tomorrow, or same day of week
                 committee = schedule[i][0]
                 if "City Council" in committee:
-                    committee = "City Council - (" + committee + ")"
+                    #committee = "City Council - (" + committee + ")"
+                    committee = "City Council"
                 agenda = schedule[i][3]
-                theTweet1 = day_of_week + " " + event_day + " at " + schedule[i][2] + " Oakland " + committee
+                #theTweet1 = day_of_week + " " + event_day + " at " + schedule[i][2] + " Oakland " + committee
+                theTweet1 = day_of_week + " " + event_day + " Oakland " + committee
                 hashtags = schedule[i][4]
                 emojis = schedule[i][5]
 
@@ -153,13 +155,15 @@ def main_program(make_a_tweet):
                 else:
                     theTweetend += ' ' + " Agenda is " + agenda + " " + hashtags_and_emojis #hashtags + emojis
 
+                theTweetend = (' meeting. We are now tweeting from @OaklandCityCncl. Follow us there to continue ' + 
+                               'to receive meeting details. We are also at https://oaklandcouncil.net.')
                 theTweet = theTweet1 + theTweetend
                 maximumCouncilTweet = MAXTWEETSIZE - min(TWEETURLSIZE - len(agenda), TWEETURLSIZE)  # Twitter has a
                                                                                                     # fixed URL Size
                 extra_chars = len(theTweet) - maximumCouncilTweet
                 if extra_chars > 0:  # Trim the Tweet to the maximum size
                     theTweet = theTweet1[:-extra_chars] + theTweetend
-                print("The Tweet for", day_of_week, "with length", len(theTweet), "is:", theTweet)
+                print("The Tweet for", day_of_week, "with length", len(theTweet), "is:\n\n", theTweet, "\n")
 
                 tweet_meeting(key, theTweet, make_a_tweet, pick_image_directory())
                 print()
@@ -180,7 +184,7 @@ def main():
         print("About to to an actual Tweet")
         tweetit = True
     else:
-        print("Will on only be doing a test Tweet")
+        print("Will only be doing a test Tweet")
         tweetit = False
     main_program(tweetit)
 
