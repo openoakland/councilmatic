@@ -84,7 +84,7 @@ prevfilename="WebPage/website/scraped/Scraper-holdprevious.json"
 printf -v currentdwnldfilename "WebPage/website/scraped/Scraper%s.json" "$CURRENTYEAR"
 
 # ##### Rename the last download file to a generic "prev" name. (Scraper-holdprevious.json)
-mv $currentdwnldfilename $prevfilename
+#mv $currentdwnldfilename $prevfilename
 
 # echo $LASTYEAR $CURRENTYEAR $NEXTYEAR $CURRENTMONTH #uncomment for debug 
 
@@ -135,16 +135,20 @@ retVal=$?
 # USE PARAMS for the years in the two file names below.
 
 # Compare files to see if copy should be saved
-if cmp -s "$prevfilename" "$currentdwnldfilename" ; then
-    echo "Nothing changed between last and newly downloaded JSON data file."
-    echo ''
-    rm -f $prevfilename
-else
-    echo "Something changed between last and newly downloaded JSON data file. Labeling and saving the previous file."
-    echo ''
-#   ##### Change the generic "previous" name to a dated file to hold for testing and verification.
-    mv $prevfilename "${prevfilename%.*}_$(date -d@$(stat --printf='%Y' "$prevfilename") +%Y%m%d%H%M%S).${prevfilename##*.}"
-fi
+# This section has been commented out because many "holdprevious" files were being
+# generated with each update.  Need to disable now and debug later if the change
+# detection is to be developed.  Also see the mv command near line 87 which has been
+# commented out.
+#if cmp -s "$prevfilename" "$currentdwnldfilename" ; then
+#    echo "Nothing changed between last and newly downloaded JSON data file."
+#    echo ''
+#    rm -f $prevfilename
+#else
+#    echo "Something changed between last and newly downloaded JSON data file. Labeling and saving the previous file."
+#    echo ''
+##   ##### Change the generic "previous" name to a dated file to hold for testing and verification.
+#    mv $prevfilename "${prevfilename%.*}_$(date -d@$(stat --printf='%Y' "$prevfilename") +%Y%m%d%H%M%S).${prevfilename##*.}"
+#fi
 
 #
 # Check if December
