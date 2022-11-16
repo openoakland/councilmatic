@@ -14,9 +14,12 @@ def fix_empty_video_links(meeting_file):
     f = open(meeting_file,'r+')
     data = json.load(f)
 
-    # if Video URL is empty let's try scraping the legistar website for it
+    # fill in video URLs from EventMedia id
     for meeting in data:
-        if meeting['EventVideoPath'] is None and meeting['EventInSiteURL'] is not None:
+        if meeting['EventMedia'] is not None:
+            meeting['EventVideoPath'] = 'http://oakland.granicus.com/MediaPlayer.php?view_id=2&clip_id=' + meeting['EventMedia']
+        # if Video URL is empty let's try scraping the legistar website for it
+        if meeting['EventMedia'] is None and meeting['EventVideoPath'] is None and meeting['EventInSiteURL'] is not None:
             print(meeting['EventInSiteURL'])
             try:
                 legistar_site_scrape = requests.get(meeting['EventInSiteURL'], timeout=5)

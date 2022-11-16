@@ -50,6 +50,10 @@ def scrape_api(days, year, meeting_file, calendar_dir):
         meeting_time = dt.datetime.strptime(meeting['EventTime'], '%I:%M %p')
         meeting_date = meeting_date.replace(hour=meeting_time.hour, minute=meeting_time.minute)
         meeting['EventDate'] = meeting_date.isoformat()
+
+        # add CDP path to dictionary for meeting
+        meeting['EventCDPPath'] = None;
+        
         try:
             agenda = requests.get(API_URL + 'Events/{}/EventItems?AgendaNote=1&MinutesNote=1&Attachments=1'.format(meeting['EventId'])).json()
             meeting['EventAgenda'] = agenda

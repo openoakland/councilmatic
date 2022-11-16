@@ -133,9 +133,13 @@ def load_meetings(scraped_data, committee_name_filter=None, upcoming_only=False,
 
         # skip the meeting if only upcoming meetings were requested
         meeting_date = datetime.strptime(meeting['EventDate'], '%Y-%m-%dT%H:%M:%S')
+        daydiff = (meeting_date - midnight).days
         if upcoming_only:
-            daydiff = (meeting_date - midnight).days
             if daydiff < 0:
+                continue
+        # skip upcoming meeting if only upcoming meetings were not requested
+        else:
+            if daydiff > 0:
                 continue
 
         # Make agenda items more presentable

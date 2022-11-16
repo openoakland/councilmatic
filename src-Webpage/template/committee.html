@@ -70,7 +70,7 @@
       </div>
       {% endif %}
 
-      {% for date, events in meetings.items() | sort %}
+      {% for date, events in meetings.items() | sort(reverse=past_year) %}
       <div class="event-day">
           <div class="event-day__datebar"> {{ date | councilmatic_date }}
           <span class="event-day__date" >
@@ -109,11 +109,22 @@
                   {% endfor %}
                 </ul>
 		
-			  {% if event['EventVideoPath'] and 'zoom' not in str(event['EventVideoPath']) %}
+		          {% if event['EventVideoPath'] and 'zoom' not in str(event['EventVideoPath']) %}
 			  <a href="{{ event['EventVideoPath'] }}" title="View Minutes" target="_blank">
 			    <i class="far fa-list-alt"></i>
-			    Video Minutes
-			  </a>
+			    Video Minutes (External - Granicus)
+		            {% if event['EventCDPPAth'] %}
+			    <br>
+			    <a href="" title="View Minutes" target="_blank">
+			    <i class="far fa-list-alt"></i>
+			    Video Minutes (External - CDP)
+			    </a>
+			    {% endif %}
+			  {% elif event['EventCDPPAth'] %}
+			    <a href="" title="View Minutes" target="_blank">
+			    <i class="far fa-list-alt"></i>
+			    Video Minutes (External - CDP)
+			    </a>
 			  {% elif event['EventMinutesFile'] %}
 			  <a href="{{ event['EventMinutesFile'] }}" title="View Minutes" target="_blank">
 			    <i class="far fa-list-alt"></i>
@@ -121,7 +132,7 @@
 			  </a>
 			  {% elif event['EventAgendaFile'] %}
 			  <a href="{{ event['EventAgendaFile'] }}" title="Full Agenda PDF" target="_blank">
-			    Full Agenda PDF
+			    Full Agenda PDF (Granicus)
 			    <i class="fas fa-external-link-alt fa-xs"></i>
 			  </a>
 			  <!--<br><br>-->
