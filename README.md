@@ -1,9 +1,5 @@
 # Councilmatic
 
-## Active Notices
-
-The recent cloning error has been resolved. Required files not included in the repository are now created when the scripts are first run. 
-
 ## The Production Site
 
 Website –> https://OaklandCouncil.net
