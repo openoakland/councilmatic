@@ -33,6 +33,15 @@ When a site is newly cloned the script Scraper_full_json.sh must be run first to
 ### Mission & Vision
 To foster openness of policy making in Oakland Government. This is to be accomplished by improving the accessibility of City Council meeting information and by promoting interest in City Council activities.
 
+### Code of Conduct
+City Government Improvement Project - Code of Conduct
+
+1. Unified Purpose: We acknowledge that we have united with the shared objective of enhancing our city government. Our commitment is to the betterment of our community and the governance that guides it.
+2. Passion and Dedication: We recognize that passions can ignite in any volunteer endeavor that is truly meaningful. Such fervor is a testament to the importance of our work and the dedication of our team members.
+3. Respect and Representation: In every interaction, whether with fellow team members or external stakeholders, we will act with the utmost respect. As representatives of this project, our demeanor and conduct should consistently reflect our collective values and goals.
+
+By participating in this initiative, we pledge to uphold this code of conduct and to ensure that our actions contribute positively to the cause we've come together to champion.
+
 ### Core Functionality
 Reformat & publish public information on Oakland City Council and the seven subcommittees of:
 * Finance & Management
