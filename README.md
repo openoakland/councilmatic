@@ -20,7 +20,8 @@ The repository contains a file councilmatic.conf.model. This file should be copi
 
 When a site is newly cloned the script Scraper_full_json.sh must be run first to download all required historical data.  The newly created site can then be regularly updated by running ScraperUpdate2.sh at intervals.  The Councilmatic production site update schedule is midnight, 6am, and 6pm.
 
-# Sept 5, 2023 Councilmatic Presentation
+# Sept 5, 2023 Councilmatic Presentation /
+# Sept 19 Coders Opening Doors to Oakland City Government
 ## About Councilmatic
 ### History of Councilmatic (CM)
 * Earliest data files contain 2014 meeting information.
